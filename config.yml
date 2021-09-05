@@ -1,0 +1,40 @@
+default:
+
+  # URL for getting project data
+  ef_pubxls_url: "https://dotaceeu.cz/getmedia/009dba87-d944-4f66-9bd4-2eb166e2ef92/2021_07_30_Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls"
+
+  # sestavy from MS
+  sest_dir: "data-input/sestavy 20210528"
+  sest_xlsx_prj: "E001 Identifikace projektu.xlsx"
+  sest_xlsx_fin: "E003 Finance celkem.xlsx"
+  sest_xlsx_zop: "E004 Žádosti o platbu.xlsx"
+  sest_xlsx_obl: "E005 Kategorizace_oblast.xlsx"
+
+  # PRV data-input
+
+  prv_data_path: "data-input/prv/PRV 2014-20 k XII. 2020.XLSX"
+
+  # Quest/Hermin categorisations
+  mc_xlsx_q: "data-input/kategorizace/kategorie_questNEW-2.xlsx"
+  mc_xlsx_h: "data-input/kategorizace/AIS_desagregace_rHERMIN.xlsx"
+  mc_xlsx_prv: "data-input/kategorizace/Navrh - KATEGORIZACE - Operace PRV + priority.xlsx"
+
+  # IDs
+  czso_pop_table_id: "130149"
+
+  # export location - macro
+  export_dir: "data-export/export_202108"
+
+  export_reg_xlsx_a: "sum_reg_quarterly.xlsx"
+  export_reg_xlsx_q: "sum_reg_annual.xlsx"
+  export_reg_csv_a: "sum_reg_quarterly.csv"
+  export_reg_csv_q: "sum_reg_annual.csv"
+
+  export_xlsx_a: "sum_quarterly.xlsx"
+  export_xlsx_q: "sum_annual.xlsx"
+  export_csv_a: "sum_quarterly.csv"
+  export_csv_q: "sum_annual.csv"
+
+  export_cdbk: "sum_codebook.yaml"
+
+  repo_remote: "https://github.com/cdeorgcz/esiftagging"
