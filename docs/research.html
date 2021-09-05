@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Rešerše</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="site/site.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">ESIF data</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="README.html">Základní info</a>
+</li>
+<li>
+  <a href="s_doc.html">Dokumentace</a>
+</li>
+<li>
+  <a href="log.html">Postup práce</a>
+</li>
+<li>
+  <a href="research.html">Rešerše</a>
+</li>
+<li>
+  <a href="s_output.html">Validace &amp; dokumentace výstupů</a>
+</li>
+<li>
+  <a href="s_inputchecks.html">Validace vstupů</a>
+</li>
+<li>
+  <a href="dev.html">Technická dokumentace</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/cdeorgcz/esiftagging">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://petrbouchal.xyz">
+    <span class="fas fa-asterisk fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Rešerše</h1>
+
+</div>
+
+
+<p>Tento dokument</p>
+<div id="koncepční-úvaha-jak-na-kategorizace" class="section level2">
+<h2>Koncepční úvaha: jak na kategorizace</h2>
+<ul>
+<li><p><a href="https://ec.europa.eu/clima/sites/clima/files/docs/tracking_climate_expenditure_en.pdf">shrnutí EK</a> o monitoringu výdajů ve vztahu ke klimatu</p>
+<ul>
+<li>na str. 4 obsahuje</li>
+</ul></li>
+<li><p><a href="https://ec.europa.eu/info/sites/default/files/business_economy_euro/banking_and_finance/documents/200309-sustainable-finance-teg-final-report-taxonomy-annexes_en.pdf">technická zpráva k témuž</a></p></li>
+<li><p><a href="https://www.europarl.europa.eu/RegData/etudes/STUD/2020/654166/IPOL_STU(2020)654166_EN.pdf">studie pro EP</a> (červenec 2020)</p></li>
+<li><p><a href="http://trinomics.eu/wp-content/uploads/2018/07/Climate-mainstreaming-in-the-EU-Budget-preparing-for-the-next-MFF.pdf">Climate mainstreaming in the EU Budget: preparing for the next MFF</a> - report pro EK (2017)</p></li>
+<li><p>RRF kategorizace - Annex VI v <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32021R0241&amp;from=EN#d1e32-63-1">Reg. 2021/241</a></p>
+<ul>
+<li>cca 144 kategorií - podobné, ale jiné než 12X kategorií pro ESIF 2014-20</li>
+</ul></li>
+</ul>
+</div>
+<div id="z-čeho-můžeme-vyjít-v-datech" class="section level2">
+<h2>Z čeho můžeme vyjít v datech</h2>
+<ul>
+<li>data o PRV a obecně zemědělských dotacích fungují jinak, než data o “běžných” ESI programech</li>
+<li>pro obě sady můžeme pracovat buď s hrubšími veřejnými daty, nebo s jemnějšími daty, která na žádost poskytuje MMR - zde je potřeba ověřit, zda je můžeme použít, popř. co z nich zveřejnit, a zda je dostaneme i v budoucnu</li>
+</ul>
+<div id="data-o-esi-fondech-mimo-prv" class="section level3">
+<h3>Data o ESI fondech mimo PRV</h3>
+<p><strong>Otevřená data</strong> poskytuje MMR ve dvou formách:</p>
+<ul>
+<li>nešikovné a dost hrubé XML jako <a href="http://data.mmr.cz/organization/54b77179-1047-4548-8037-9128009ee11e?tags=esif">oficiální otevřená data</a> - stálo by dost energie to zpracovat do použitelné podoby, což zřejmě ani nestojí za to
+<ul>
+<li>obsahuje aspoň nějaké informace o specifických cílech</li>
+<li>oproti Excelu zde nenajdeme informace o (tematických) kategoriích intervencí a o ekonomických kategoriích intervencí</li>
+</ul></li>
+<li>praktičtější <a href="https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu">Excel tabulku</a>, která je ale hůře zdokumentovaná a není u ní technická garance dostupnosti a stability
+<ul>
+<li>Oproti sestavám od MMR zde nenajdeme procentuální rozdělení projektů mezi jednotlivé specifické cíle, oblasti intervence nebo ekonomické kategorie intervence.</li>
+<li>Oproti XML zde nenajdeme informaci o řazení projektu do specifického cíle</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="co-s-tím" class="section level2">
+<h2>Co s tím</h2>
+<ul>
+<li>otagovat 125 kategorií intervencí; pokud by to bylo příliš hrubé, můžeme to vzít podle specifických cílů (cca 130 kategorií) nebo libovolně doplnit ještě ekonomické kategorie (25 kategorií).</li>
+</ul>
+<div id="dodatky" class="section level4">
+<h4>Dodatky</h4>
+<ul>
+<li><a href="https://drive.google.com/file/d/1ayZ9DK0K5Yt91Z1YYE1q_T2mzKDD1_PK/view">dokumentace open dat MSSF</a></li>
+</ul>
+</div>
+<div id="data-o-zemědělských-dotacích" class="section level3">
+<h3>Data o zemědělských dotacích</h3>
+<p>Otevřená data <a href="https://www.szif.cz/cs/seznam-prijemcu-dotaci?setCookie=true#">poskytuje SZIF ve formě XML</a>. - Pokud chceme jen posčítat výdaje podle “tématu” intervence, není složité ho využít. Problém je, že tematická kategorizace, do které jsou projekty členěny, není nikde zdokumentovaná a není úplně jasné, jak z kategorií v datech usoudit, do které kategorie podle přílohy nařízení daný výdaj patří - data jsou dělena po letech a podle textu na webu data dva roky od zveřejnění mizí - teď jsou dostupná data za 2017-2020, ale v roce 2016 podle sestav MMR proběhlo relativně málo plateb</p>
+<p>Data od MMR (na vyžádání) obsahují jen projektová opatření, tj. nezahrnují plošné platby. Otevřená data naopak obsahují plošná opatření PRV i opatření financovaná z jiných zdrojů (EZZF/EAGF a část národních zdrojů)</p>
+</div>
+<div id="jak-tedy-na-kategorizace" class="section level3">
+<h3>Jak tedy na kategorizace</h3>
+<ul>
+<li><a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0215&amp;from=EN#d1e32-81-1">prováděcí nařízení 215/2014 uvádí v příloze II</a> seznam několika cílů EAFRD, které lze v nějaké míře započíst jako přispívající ke klimatickému cíli - odkazuje se na cíle v čl. 5 <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32013R1305&amp;from=EN#d1363e32-535-1">nařízení o rozvoji venkova (1305/2013)</a> - odstavce a písmena článku 5 pak dávají priority Unie, např. 5 (4) (a) = 4A</li>
+<li>Na <a href="https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fprv2014%2Fzakladni_informace%2Fprog_dokumenty%2F1625641021462%2F1625641087281.pdf#page=234">str. 234 aktuálního znění PRV</a> jsou vyjmenována opatření, vážící se ke každé z priorit v článku 5 - takto tedy můžeme k jednotlivým opatřením doplnit procenta podle přílohy II z prováděcího nařízení výše</li>
+<li>NB pokud existují souhrnné údaje alespoň k alokacím podle priorit Unie z ostatních států, šlo by udělat srovnání - zdá se, že o výdajích jsou <a href="https://data.europa.eu/euodp/en/data/dataset/common-agricultural-policy-indicators-financing-the-cap">data zde</a> a o klimatických číslech <a href="https://data.europa.eu/euodp/en/data/dataset/common-agricultural-policy-indicators-climate-change-and-air-quality/">zde</a></li>
+<li>tabulka od MMR nám umožňuje přiřadit projektová i plošná opatření k prioritám a odsud odvodit vztah ke klimatickýcm cílům - bude třeba dešifrovat názvy opatření v open datech; problém je ale v tom, že u plošných opatření neznáme kód operace, a teprve podle operací lze výdaje třídit do priorit Unie - protože např. opatření 1 (projektové) se váže na několik priorit Unie. Ale dost možná všechna plošná opatření spadají do priorit se stejným klimatickým procentem (P4), takže to nebude problém</li>
+<li>ALE: není jasné, jak vážně brát klimatická procenta z opatření</li>
+</ul>
+<div id="co-s-tím-1" class="section level5">
+<h5>Co s tím</h5>
+<ul>
+<li>projektová opatření jsme schopni navázat na klimatická procenta z nařízení</li>
+<li>jemnější třídění lze udělat na úrovni operací (která ale není dostupná u plošných opatření)</li>
+<li>není jasné, zda lze klimatická procenta z nařízení brát vážne</li>
+<li>peníze mimo EAFRD ignorovat - tagging CAP je jiná disciplína</li>
+</ul>
+</div>
+<div id="sklad-zdrojů-k-datům-szif" class="section level4">
+<h4>Sklad zdrojů k datům SZIF:</h4>
+<ul>
+<li><a href="http://eagri.cz/public/web/file/680981/Program_rozvoje_venkova___schvalene_zneni.pdf">PRV, aktuální znění</a> - via stránky <a href="http://eagri.cz/public/web/mze/dotace/program-rozvoje-venkova-na-obdobi-2014/zakladni-informace/programove-dokumenty/">Programové dokumenty</a></li>
+<li>schéma podpor PRV, <a href="https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fprv2014%2Fzakladni_informace%2F1436519577270.pdf">2014-20</a> - pozor, neplatí, že celé opatření je buď projektové, nebo plošné, viz M08; <a href="http://eagri.cz/public/web/file/668822/Schema_podpor_PRV_od_2020___2.cast___projektova_opatreni.pdf">2021-27</a> via <a href="https://www.szif.cz/cs/prv2014-zakladni_informace">Základní informace o PRV</a></li>
+</ul>
+</div>
+<div id="poznámky-k-datům-szif" class="section level4">
+<h4>Poznámky k datům SZIF:</h4>
+<p>První číslo v kódu operace je číslo opatření tj. 4.1.1 spadá do M4.</p>
+<p>Priorita a prioritní oblast nejsou součástí kódu operace.</p>
+<p>Druhé číslo v kódu operace je zřejmě podopatření.</p>
+<p>Vysvětlivky</p>
+<ul>
+<li>ANC: areas with natural constraints</li>
+<li>SOT: společná organizace trhu</li>
+<li>LFA: less favourer area - méně příznivé oblasti</li>
+<li>GEN?</li>
+<li>EZ = EKOZ - Ekologické zemědělství</li>
+<li>DŽPZ = Welfare = dobré životní podmínky zvířat</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>

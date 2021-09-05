@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>Technická dokumentace</title>
+
+<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<script src="site_libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<link href="site_libs/vis-4.20.1/vis.css" rel="stylesheet" />
+<script src="site_libs/vis-4.20.1/vis.min.js"></script>
+<script src="site_libs/visNetwork-binding-2.0.9/visNetwork.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<link rel="stylesheet" href="site/site.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">ESIF data</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="README.html">Základní info</a>
+</li>
+<li>
+  <a href="s_doc.html">Dokumentace</a>
+</li>
+<li>
+  <a href="log.html">Postup práce</a>
+</li>
+<li>
+  <a href="research.html">Rešerše</a>
+</li>
+<li>
+  <a href="s_output.html">Validace &amp; dokumentace výstupů</a>
+</li>
+<li>
+  <a href="s_inputchecks.html">Validace vstupů</a>
+</li>
+<li>
+  <a href="dev.html">Technická dokumentace</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/cdeorgcz/esiftagging">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://petrbouchal.xyz">
+    <span class="fas fa-asterisk fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Technická dokumentace</h1>
+
+</div>
+
+
+<div id="struktura-a-nástroje" class="section level2">
+<h2>Struktura a nástroje</h2>
+<div id="co-se-děje" class="section level3">
+<h3>Co se děje</h3>
+<ul>
+<li>Na vstupu je
+<ul>
+<li>kupa excel souborů - sestav od MMR</li>
+<li>online excelová tabulka projektů od MMR</li>
+<li>online data Státní pokladny (pro část o veřejných výdajích)</li>
+<li>jeden Arrow dataset</li>
+</ul></li>
+<li>Na výstupu je
+<ul>
+<li>kupa excel a CSV souborů</li>
+<li>webová dokumentace</li>
+<li>codebook</li>
+</ul></li>
+<li>Mezi tím je spousta kroků v <code>tidyverse</code>, které všechna data propojují.</li>
+</ul>
+</div>
+<div id="jak-se-to-děje" class="section level3">
+<h3>Jak se to děje</h3>
+<p>Celý pipeline je organizován nástrojem <code>{targets}</code>, funguje podobně jako <code>make</code>. Ve skriptu <code>_targets.R</code> jsou popsány všechny výstupy (“targets”) a jejich vztahy. <code>{targets}</code> sleduje, které targets neodpovídají aktuálnímu stavu kódu (funkce ve skriptech v <code>R/</code>) a jeho vstupů a po spuštění pipeline (<code>tar_make()</code>) spouští pouze ten kód, který je potřeba pro uvedení výstupů do aktuální podoby. Mezi výstupy patří průběžné datasety, výstupní datové soubory i výstupní datovádokumentace.</p>
+<p>Všechny cesty ke vstupním a výstupním souborům a dalším parametry se nastavují v <code>config.yml</code>.</p>
+<p>O reprodukovatelnost prostředí (tj. udržování správné verze balíků R) se stará systém {renv}.</p>
+<p>Dokumentaci a validaci dat zajišťují postupy v balíku <code>{pointblank}</code></p>
+<p>Dokumentace se generuje ze vstupních RMarkdown souborů do adresáře <code>/docs</code>, který se po push na github automaticky publikuje.</p>
+</div>
+</div>
+<div id="jak-to-znovu-pustit" class="section level2">
+<h2>Jak to znovu pustit</h2>
+<ol style="list-style-type: decimal">
+<li>pustit <code>renv::restore()</code> - tím se do projektu načtou správné verze Rkových balíků</li>
+<li>vložit aktualizované vstupní sestavy do <code>data-input/sestavy [datum]</code></li>
+<li>Zanést cestu do patřičného parametru v <code>config.yml</code></li>
+<li>Zopakovat s daty PRV v <code>data-input/prv</code></li>
+<li>Analogicky lze aktualizovat i excelové soubory</li>
+<li>V <code>config.yml</code> aktualizovat cestu k veřejnému seznamu operací na webu dotaceeu.cz</li>
+<li>Pustit <code>targets::tar_make()</code>, popř. spustit skript <code>build.R</code> nebo použít tlačítko <code>Build</code> na záložce <code>Build</code>.</li>
+</ol>
+</div>
+<div id="dokumentace-pro-reprodukovatelnost" class="section level2">
+<h2>Dokumentace pro reprodukovatelnost</h2>
+<div id="konfigurace" class="section level3">
+<h3>Konfigurace</h3>
+<pre class="details"><code>&quot;./config.yml&quot;</code></pre>
+<details closed>
+<pre class="r"><code>
+default:
+
+  # URL for getting project data
+  ef_pubxls_url: &quot;https://dotaceeu.cz/getmedia/009dba87-d944-4f66-9bd4-2eb166e2ef92/2021_07_30_Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls&quot;
+
+  # sestavy from MS
+  sest_dir: &quot;data-input/sestavy 20210528&quot;
+  sest_xlsx_prj: &quot;E001 Identifikace projektu.xlsx&quot;
+  sest_xlsx_fin: &quot;E003 Finance celkem.xlsx&quot;
+  sest_xlsx_zop: &quot;E004 Žádosti o platbu.xlsx&quot;
+  sest_xlsx_obl: &quot;E005 Kategorizace_oblast.xlsx&quot;
+
+  # PRV data-input
+
+  prv_data_path: &quot;data-input/prv/PRV 2014-20 k XII. 2020.XLSX&quot;
+
+  # Quest/Hermin categorisations
+  mc_xlsx_q: &quot;data-input/kategorizace/kategorie_questNEW-2.xlsx&quot;
+  mc_xlsx_h: &quot;data-input/kategorizace/AIS_desagregace_rHERMIN.xlsx&quot;
+  mc_xlsx_prv: &quot;data-input/kategorizace/Navrh - KATEGORIZACE - Operace PRV + priority.xlsx&quot;
+
+  # IDs
+  czso_pop_table_id: &quot;130149&quot;
+
+  # export location - macro
+  export_dir: &quot;data-export/export_202108&quot;
+
+  export_reg_xlsx_a: &quot;sum_reg_quarterly.xlsx&quot;
+  export_reg_xlsx_q: &quot;sum_reg_annual.xlsx&quot;
+  export_reg_csv_a: &quot;sum_reg_quarterly.csv&quot;
+  export_reg_csv_q: &quot;sum_reg_annual.csv&quot;
+
+  export_xlsx_a: &quot;sum_quarterly.xlsx&quot;
+  export_xlsx_q: &quot;sum_annual.xlsx&quot;
+  export_csv_a: &quot;sum_quarterly.csv&quot;
+  export_csv_q: &quot;sum_annual.csv&quot;
+
+  export_cdbk: &quot;sum_codebook.yaml&quot;
+
+  repo_remote: &quot;https://github.com/cdeorgcz/esiftagging&quot;
+</code></pre>
+</details>
+<p><br></p>
+</div>
+<div id="prostředí" class="section level3">
+<h3>Prostředí</h3>
+<div id="r" class="section level4">
+<h4>R</h4>
+<pre class="details"><code>sessionInfo()</code></pre>
+<details closed>
+<pre class="r"><code>
+R version 4.1.0 (2021-05-18)
+Platform: x86_64-apple-darwin17.0 (64-bit)
+Running under: macOS Big Sur 10.16
+
+Matrix products: default
+BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.dylib
+LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
+
+locale:
+[1] en_US.UTF-8/en_US.UTF-8/en_US.UTF-8/C/en_US.UTF-8/en_US.UTF-8
+
+attached base packages:
+[1] stats     graphics  grDevices datasets  utils     methods   base     
+
+other attached packages:
+ [1] visNetwork_2.0.9      shinyWidgets_0.6.0    shinybusy_0.2.2      
+ [4] shiny_1.6.0           rstudioapi_0.13       pingr_2.0.1          
+ [7] markdown_1.1          gt_0.3.1              clustermq_0.8.95.1   
+[10] bs4Dash_2.0.2         ggplot2_3.3.5         forcats_0.5.1        
+[13] details_0.2.1         pointblank_0.8.0.9000 purrr_0.3.4          
+[16] readr_1.4.0           writexl_1.4.0         lubridate_1.7.10     
+[19] czso_0.3.4            ragg_1.1.3            tidyr_1.1.3          
+[22] arrow_4.0.1.20210718  config_0.3.1          httr_1.4.2           
+[25] curl_4.3.2            janitor_2.1.0         readxl_1.3.1         
+[28] here_1.0.1            stringr_1.4.0         dplyr_1.0.7          
+[31] magrittr_2.0.1        future_1.22.1         tarchetypes_0.3.0    
+[34] targets_0.7.0        
+
+loaded via a namespace (and not attached):
+ [1] colorspace_2.0-1  ellipsis_0.3.2    rprojroot_2.0.2   snakecase_0.11.0 
+ [5] fs_1.5.0          listenv_0.8.0     farver_2.1.0      bit64_4.0.5      
+ [9] fansi_0.5.0       xml2_1.3.2        codetools_0.2-18  extrafont_0.17   
+[13] knitr_1.33        jsonlite_1.7.2    Rttf2pt1_1.3.9    png_0.1-7        
+[17] clipr_0.7.1       compiler_4.1.0    backports_1.2.1   assertthat_0.2.1 
+[21] fastmap_1.1.0     cli_3.0.1         later_1.3.0       hrbrthemes_0.8.0 
+[25] htmltools_0.5.1.1 tools_4.1.0       igraph_1.2.6      gtable_0.3.0     
+[29] glue_1.4.2        Rcpp_1.0.7        cellranger_1.1.0  jquerylib_0.1.4  
+[33] vctrs_0.3.8       extrafontdb_1.0   blastula_0.3.2    xfun_0.23        
+[37] globals_0.14.0    ps_1.6.0          mime_0.11         lifecycle_1.0.0  
+[41] renv_0.14.0       ptrr_0.2.0.9000   scales_1.1.1      hms_1.1.0        
+[45] promises_1.2.0.1  parallel_4.1.0    yaml_2.2.1        gdtools_0.2.3    
+[49] sass_0.4.0        stringi_1.6.2     highr_0.9         desc_1.3.0       
+[53] checkmate_2.0.0   commonmark_1.7    rlang_0.4.11      pkgconfig_2.0.3  
+[57] systemfonts_1.0.2 evaluate_0.14     htmlwidgets_1.5.3 labeling_0.4.2   
+[61] bit_4.0.4         processx_3.5.2    tidyselect_1.1.1  parallelly_1.27.0
+[65] R6_2.5.0          generics_0.1.0    DBI_1.1.1         pillar_1.6.1     
+[69] withr_2.4.2       tibble_3.1.2      crayon_1.4.1      utf8_1.2.1       
+[73] rmarkdown_2.10    grid_4.1.0        data.table_1.14.0 callr_3.7.0      
+[77] digest_0.6.27     xtable_1.8-4      httpuv_1.6.2      textshaping_0.3.5
+[81] munsell_0.5.0     bslib_0.2.5.1    
+</code></pre>
+</details>
+<p><br></p>
+</div>
+<div id="obsah-renv.lock" class="section level4">
+<h4>Obsah renv.lock</h4>
+<pre class="details"><code>&quot;./renv.lock&quot;</code></pre>
+<details closed>
+<pre class="r"><code>
+{
+  &quot;R&quot;: {
+    &quot;Version&quot;: &quot;4.1.0&quot;,
+    &quot;Repositories&quot;: [
+      {
+        &quot;Name&quot;: &quot;CRAN&quot;,
+        &quot;URL&quot;: &quot;https://cran.rstudio.com&quot;
+      }
+    ]
+  },
+  &quot;Packages&quot;: {
+    &quot;BH&quot;: {
+      &quot;Package&quot;: &quot;BH&quot;,
+      &quot;Version&quot;: &quot;1.75.0-0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;e4c04affc2cac20c8fec18385cd14691&quot;
+    },
+    &quot;DBI&quot;: {
+      &quot;Package&quot;: &quot;DBI&quot;,
+      &quot;Version&quot;: &quot;1.1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;030aaec5bc6553f35347cbb1e70b1a17&quot;
+    },
+    &quot;MASS&quot;: {
+      &quot;Package&quot;: &quot;MASS&quot;,
+      &quot;Version&quot;: &quot;7.3-54&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;0e59129db205112e3963904db67fd0dc&quot;
+    },
+    &quot;Matrix&quot;: {
+      &quot;Package&quot;: &quot;Matrix&quot;,
+      &quot;Version&quot;: &quot;1.3-3&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;df57c82e79600601287edfdcef92c2d6&quot;
+    },
+    &quot;R6&quot;: {
+      &quot;Package&quot;: &quot;R6&quot;,
+      &quot;Version&quot;: &quot;2.5.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;b203113193e70978a696b2809525649d&quot;
+    },
+    &quot;RColorBrewer&quot;: {
+      &quot;Package&quot;: &quot;RColorBrewer&quot;,
+      &quot;Version&quot;: &quot;1.1-2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;e031418365a7f7a766181ab5a41a5716&quot;
+    },
+    &quot;RCurl&quot;: {
+      &quot;Package&quot;: &quot;RCurl&quot;,
+      &quot;Version&quot;: &quot;1.98-1.4&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;e43588d9fa3aa87ca9ee96450e810895&quot;
+    },
+    &quot;Rcpp&quot;: {
+      &quot;Package&quot;: &quot;Rcpp&quot;,
+      &quot;Version&quot;: &quot;1.0.7&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;dab19adae4440ae55aa8a9d238b246bb&quot;
+    },
+    &quot;Rttf2pt1&quot;: {
+      &quot;Package&quot;: &quot;Rttf2pt1&quot;,
+      &quot;Version&quot;: &quot;1.3.9&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;da6ab407fa2e5e498ac980f92798cfed&quot;
+    },
+    &quot;arrow&quot;: {
+      &quot;Package&quot;: &quot;arrow&quot;,
+      &quot;Version&quot;: &quot;4.0.1.20210718&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;70f7d57ecac60d93ff1d3846245caa1c&quot;
+    },
+    &quot;askpass&quot;: {
+      &quot;Package&quot;: &quot;askpass&quot;,
+      &quot;Version&quot;: &quot;1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;e8a22846fff485f0be3770c2da758713&quot;
+    },
+    &quot;assertthat&quot;: {
+      &quot;Package&quot;: &quot;assertthat&quot;,
+      &quot;Version&quot;: &quot;0.2.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;50c838a310445e954bc13f26f26a6ecf&quot;
+    },
+    &quot;backports&quot;: {
+      &quot;Package&quot;: &quot;backports&quot;,
+      &quot;Version&quot;: &quot;1.2.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;644043219fc24e190c2f620c1a380a69&quot;
+    },
+    &quot;base64enc&quot;: {
+      &quot;Package&quot;: &quot;base64enc&quot;,
+      &quot;Version&quot;: &quot;0.1-3&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;543776ae6848fde2f48ff3816d0628bc&quot;
+    },
+    &quot;bit&quot;: {
+      &quot;Package&quot;: &quot;bit&quot;,
+      &quot;Version&quot;: &quot;4.0.4&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;f36715f14d94678eea9933af927bc15d&quot;
+    },
+    &quot;bit64&quot;: {
+      &quot;Package&quot;: &quot;bit64&quot;,
+      &quot;Version&quot;: &quot;4.0.5&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;9fe98599ca456d6552421db0d6772d8f&quot;
+    },
+    &quot;bitops&quot;: {
+      &quot;Package&quot;: &quot;bitops&quot;,
+      &quot;Version&quot;: &quot;1.0-7&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;b7d8d8ee39869c18d8846a184dd8a1af&quot;
+    },
+    &quot;blastula&quot;: {
+      &quot;Package&quot;: &quot;blastula&quot;,
+      &quot;Version&quot;: &quot;0.3.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;1f45952e8aadddb043afb988b988dd52&quot;
+    },
+    &quot;blob&quot;: {
+      &quot;Package&quot;: &quot;blob&quot;,
+      &quot;Version&quot;: &quot;1.2.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;9addc7e2c5954eca5719928131fed98c&quot;
+    },
+    &quot;brew&quot;: {
+      &quot;Package&quot;: &quot;brew&quot;,
+      &quot;Version&quot;: &quot;1.0-6&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;92a5f887f9ae3035ac7afde22ba73ee9&quot;
+    },
+    &quot;brio&quot;: {
+      &quot;Package&quot;: &quot;brio&quot;,
+      &quot;Version&quot;: &quot;1.1.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;2f01e16ff9571fe70381c7b9ae560dc4&quot;
+    },
+    &quot;broom&quot;: {
+      &quot;Package&quot;: &quot;broom&quot;,
+      &quot;Version&quot;: &quot;0.7.7&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;2368dde18d8ef1ca933e7e2eea3ece57&quot;
+    },
+    &quot;bs4Dash&quot;: {
+      &quot;Package&quot;: &quot;bs4Dash&quot;,
+      &quot;Version&quot;: &quot;2.0.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;e91fefcf385e2433f574263619307243&quot;
+    },
+    &quot;bslib&quot;: {
+      &quot;Package&quot;: &quot;bslib&quot;,
+      &quot;Version&quot;: &quot;0.2.5.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;2f069f3f42847231aef7baa49bed97b0&quot;
+    },
+    &quot;cachem&quot;: {
+      &quot;Package&quot;: &quot;cachem&quot;,
+      &quot;Version&quot;: &quot;1.0.6&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;648c5b3d71e6a37e3043617489a0a0e9&quot;
+    },
+    &quot;callr&quot;: {
+      &quot;Package&quot;: &quot;callr&quot;,
+      &quot;Version&quot;: &quot;3.7.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;461aa75a11ce2400245190ef5d3995df&quot;
+    },
+    &quot;cellranger&quot;: {
+      &quot;Package&quot;: &quot;cellranger&quot;,
+      &quot;Version&quot;: &quot;1.1.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;f61dbaec772ccd2e17705c1e872e9e7c&quot;
+    },
+    &quot;checkmate&quot;: {
+      &quot;Package&quot;: &quot;checkmate&quot;,
+      &quot;Version&quot;: &quot;2.0.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;a667800d5f0350371bedeb8b8b950289&quot;
+    },
+    &quot;cli&quot;: {
+      &quot;Package&quot;: &quot;cli&quot;,
+      &quot;Version&quot;: &quot;3.0.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;e3ae5d68dea0c55a12ea12a9fda02e61&quot;
+    },
+    &quot;clustermq&quot;: {
+      &quot;Package&quot;: &quot;clustermq&quot;,
+      &quot;Version&quot;: &quot;0.8.95.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;385cd5623e6f8f27dc79437398dceed1&quot;
+    },
+    &quot;codetools&quot;: {
+      &quot;Package&quot;: &quot;codetools&quot;,
+      &quot;Version&quot;: &quot;0.2-18&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;019388fc48e48b3da0d3a76ff94608a8&quot;
+    },
+    &quot;colorspace&quot;: {
+      &quot;Package&quot;: &quot;colorspace&quot;,
+      &quot;Version&quot;: &quot;2.0-1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;6cab523af06ac301e7a40c5529d45882&quot;
+    },
+    &quot;commonmark&quot;: {
+      &quot;Package&quot;: &quot;commonmark&quot;,
+      &quot;Version&quot;: &quot;1.7&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;0f22be39ec1d141fd03683c06f3a6e67&quot;
+    },
+    &quot;config&quot;: {
+      &quot;Package&quot;: &quot;config&quot;,
+      &quot;Version&quot;: &quot;0.3.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;31d77b09f63550cee9ecb5a08bf76e8f&quot;
+    },
+    &quot;cpp11&quot;: {
+      &quot;Package&quot;: &quot;cpp11&quot;,
+      &quot;Version&quot;: &quot;0.3.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;e02edab2bc389c5e4b12949b13df44f2&quot;
+    },
+    &quot;credentials&quot;: {
+      &quot;Package&quot;: &quot;credentials&quot;,
+      &quot;Version&quot;: &quot;1.3.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;db9463f8f96444ac790bef2076048699&quot;
+    },
+    &quot;curl&quot;: {
+      &quot;Package&quot;: &quot;curl&quot;,
+      &quot;Version&quot;: &quot;4.3.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;022c42d49c28e95d69ca60446dbabf88&quot;
+    },
+    &quot;czso&quot;: {
+      &quot;Package&quot;: &quot;czso&quot;,
+      &quot;Version&quot;: &quot;0.3.4&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;53fbcbc0d12b46c7ba668a351510852c&quot;
+    },
+    &quot;data.table&quot;: {
+      &quot;Package&quot;: &quot;data.table&quot;,
+      &quot;Version&quot;: &quot;1.14.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;d1b8b1a821ee564a3515fa6c6d5c52dc&quot;
+    },
+    &quot;dbplyr&quot;: {
+      &quot;Package&quot;: &quot;dbplyr&quot;,
+      &quot;Version&quot;: &quot;2.1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;1f37fa4ab2f5f7eded42f78b9a887182&quot;
+    },
+    &quot;desc&quot;: {
+      &quot;Package&quot;: &quot;desc&quot;,
+      &quot;Version&quot;: &quot;1.3.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;b6963166f7f10b970af1006c462ce6cd&quot;
+    },
+    &quot;details&quot;: {
+      &quot;Package&quot;: &quot;details&quot;,
+      &quot;Version&quot;: &quot;0.2.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;7a18f9d2e53a960aafbe25c043ec3f52&quot;
+    },
+    &quot;diffobj&quot;: {
+      &quot;Package&quot;: &quot;diffobj&quot;,
+      &quot;Version&quot;: &quot;0.3.4&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;feb5b7455eba422a2c110bb89852e6a3&quot;
+    },
+    &quot;digest&quot;: {
+      &quot;Package&quot;: &quot;digest&quot;,
+      &quot;Version&quot;: &quot;0.6.27&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;a0cbe758a531d054b537d16dff4d58a1&quot;
+    },
+    &quot;dplyr&quot;: {
+      &quot;Package&quot;: &quot;dplyr&quot;,
+      &quot;Version&quot;: &quot;1.0.7&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;36f1ae62f026c8ba9f9b5c9a08c03297&quot;
+    },
+    &quot;drat&quot;: {
+      &quot;Package&quot;: &quot;drat&quot;,
+      &quot;Version&quot;: &quot;0.2.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;abc6fbcb235c8101fe23de7451599bdf&quot;
+    },
+    &quot;dtplyr&quot;: {
+      &quot;Package&quot;: &quot;dtplyr&quot;,
+      &quot;Version&quot;: &quot;1.1.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;1e14e4c5b2814de5225312394bc316da&quot;
+    },
+    &quot;ellipsis&quot;: {
+      &quot;Package&quot;: &quot;ellipsis&quot;,
+      &quot;Version&quot;: &quot;0.3.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;bb0eec2fe32e88d9e2836c2f73ea2077&quot;
+    },
+    &quot;evaluate&quot;: {
+      &quot;Package&quot;: &quot;evaluate&quot;,
+      &quot;Version&quot;: &quot;0.14&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;ec8ca05cffcc70569eaaad8469d2a3a7&quot;
+    },
+    &quot;extrafont&quot;: {
+      &quot;Package&quot;: &quot;extrafont&quot;,
+      &quot;Version&quot;: &quot;0.17&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;7f2f50e8f998a4bea4b04650fc4f2ca8&quot;
+    },
+    &quot;extrafontdb&quot;: {
+      &quot;Package&quot;: &quot;extrafontdb&quot;,
+      &quot;Version&quot;: &quot;1.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;a861555ddec7451c653b40e713166c6f&quot;
+    },
+    &quot;fansi&quot;: {
+      &quot;Package&quot;: &quot;fansi&quot;,
+      &quot;Version&quot;: &quot;0.5.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;d447b40982c576a72b779f0a3b3da227&quot;
+    },
+    &quot;farver&quot;: {
+      &quot;Package&quot;: &quot;farver&quot;,
+      &quot;Version&quot;: &quot;2.1.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;c98eb5133d9cb9e1622b8691487f11bb&quot;
+    },
+    &quot;fastmap&quot;: {
+      &quot;Package&quot;: &quot;fastmap&quot;,
+      &quot;Version&quot;: &quot;1.1.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;77bd60a6157420d4ffa93b27cf6a58b8&quot;
+    },
+    &quot;fontawesome&quot;: {
+      &quot;Package&quot;: &quot;fontawesome&quot;,
+      &quot;Version&quot;: &quot;0.2.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;c3910e7cc0ead78538b569d4552c1d16&quot;
+    },
+    &quot;forcats&quot;: {
+      &quot;Package&quot;: &quot;forcats&quot;,
+      &quot;Version&quot;: &quot;0.5.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;81c3244cab67468aac4c60550832655d&quot;
+    },
+    &quot;fresh&quot;: {
+      &quot;Package&quot;: &quot;fresh&quot;,
+      &quot;Version&quot;: &quot;0.2.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;fa54367040deb4537da49b7ac0ee5770&quot;
+    },
+    &quot;fs&quot;: {
+      &quot;Package&quot;: &quot;fs&quot;,
+      &quot;Version&quot;: &quot;1.5.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;44594a07a42e5f91fac9f93fda6d0109&quot;
+    },
+    &quot;future&quot;: {
+      &quot;Package&quot;: &quot;future&quot;,
+      &quot;Version&quot;: &quot;1.22.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;9c56382c3e53f0b4fc0fc16d88fc3974&quot;
+    },
+    &quot;gargle&quot;: {
+      &quot;Package&quot;: &quot;gargle&quot;,
+      &quot;Version&quot;: &quot;1.1.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;bc3bc77ea458de0a6efe94e8e7e9c641&quot;
+    },
+    &quot;gdtools&quot;: {
+      &quot;Package&quot;: &quot;gdtools&quot;,
+      &quot;Version&quot;: &quot;0.2.3&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;12a524de5a491ff39debb9311fc0763f&quot;
+    },
+    &quot;generics&quot;: {
+      &quot;Package&quot;: &quot;generics&quot;,
+      &quot;Version&quot;: &quot;0.1.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;4d243a9c10b00589889fe32314ffd902&quot;
+    },
+    &quot;gert&quot;: {
+      &quot;Package&quot;: &quot;gert&quot;,
+      &quot;Version&quot;: &quot;1.3.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;72b34cde959b806e86cb99fc12d1ba58&quot;
+    },
+    &quot;getPass&quot;: {
+      &quot;Package&quot;: &quot;getPass&quot;,
+      &quot;Version&quot;: &quot;0.2-2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;07a91f99e56951818ab911366db77700&quot;
+    },
+    &quot;ggplot2&quot;: {
+      &quot;Package&quot;: &quot;ggplot2&quot;,
+      &quot;Version&quot;: &quot;3.3.5&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;d7566c471c7b17e095dd023b9ef155ad&quot;
+    },
+    &quot;ggtext&quot;: {
+      &quot;Package&quot;: &quot;ggtext&quot;,
+      &quot;Version&quot;: &quot;0.1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;03d8caec959ac70e2d13bad1ac40667c&quot;
+    },
+    &quot;gh&quot;: {
+      &quot;Package&quot;: &quot;gh&quot;,
+      &quot;Version&quot;: &quot;1.3.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;38c2580abbda249bd6afeec00d14f531&quot;
+    },
+    &quot;git2r&quot;: {
+      &quot;Package&quot;: &quot;git2r&quot;,
+      &quot;Version&quot;: &quot;0.28.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;f64fd34026f6025de71a4354800e6d79&quot;
+    },
+    &quot;gitcreds&quot;: {
+      &quot;Package&quot;: &quot;gitcreds&quot;,
+      &quot;Version&quot;: &quot;0.1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;f3aefccc1cc50de6338146b62f115de8&quot;
+    },
+    &quot;globals&quot;: {
+      &quot;Package&quot;: &quot;globals&quot;,
+      &quot;Version&quot;: &quot;0.14.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;eca8023ed5ca6372479ebb9b3207f5ae&quot;
+    },
+    &quot;glue&quot;: {
+      &quot;Package&quot;: &quot;glue&quot;,
+      &quot;Version&quot;: &quot;1.4.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;6efd734b14c6471cfe443345f3e35e29&quot;
+    },
+    &quot;googledrive&quot;: {
+      &quot;Package&quot;: &quot;googledrive&quot;,
+      &quot;Version&quot;: &quot;1.0.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;79ba5d18133290a69b7c135dc3dfef1a&quot;
+    },
+    &quot;googlesheets4&quot;: {
+      &quot;Package&quot;: &quot;googlesheets4&quot;,
+      &quot;Version&quot;: &quot;0.3.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;fd028aa45f6785d7e83c0ed896b45904&quot;
+    },
+    &quot;gridtext&quot;: {
+      &quot;Package&quot;: &quot;gridtext&quot;,
+      &quot;Version&quot;: &quot;0.1.4&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;5ae1f617531ca2ae244647d9b21b5e74&quot;
+    },
+    &quot;gt&quot;: {
+      &quot;Package&quot;: &quot;gt&quot;,
+      &quot;Version&quot;: &quot;0.3.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;e027761c361e66a24e22f9446b3dd86c&quot;
+    },
+    &quot;gtable&quot;: {
+      &quot;Package&quot;: &quot;gtable&quot;,
+      &quot;Version&quot;: &quot;0.3.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;ac5c6baf7822ce8732b343f14c072c4d&quot;
+    },
+    &quot;haven&quot;: {
+      &quot;Package&quot;: &quot;haven&quot;,
+      &quot;Version&quot;: &quot;2.4.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;9ace652bffef34af558eb5d70903ac2f&quot;
+    },
+    &quot;here&quot;: {
+      &quot;Package&quot;: &quot;here&quot;,
+      &quot;Version&quot;: &quot;1.0.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;24b224366f9c2e7534d2344d10d59211&quot;
+    },
+    &quot;highr&quot;: {
+      &quot;Package&quot;: &quot;highr&quot;,
+      &quot;Version&quot;: &quot;0.9&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;8eb36c8125038e648e5d111c0d7b2ed4&quot;
+    },
+    &quot;hms&quot;: {
+      &quot;Package&quot;: &quot;hms&quot;,
+      &quot;Version&quot;: &quot;1.1.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;e4bf161ccb74a2c1c0e8ac63bbe332b4&quot;
+    },
+    &quot;hrbrthemes&quot;: {
+      &quot;Package&quot;: &quot;hrbrthemes&quot;,
+      &quot;Version&quot;: &quot;0.8.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;0d1257948f016840ad90320ed19c8c7d&quot;
+    },
+    &quot;htmltools&quot;: {
+      &quot;Package&quot;: &quot;htmltools&quot;,
+      &quot;Version&quot;: &quot;0.5.1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;af2c2531e55df5cf230c4b5444fc973c&quot;
+    },
+    &quot;htmlwidgets&quot;: {
+      &quot;Package&quot;: &quot;htmlwidgets&quot;,
+      &quot;Version&quot;: &quot;1.5.3&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;6fdaa86d0700f8b3e92ee3c445a5a10d&quot;
+    },
+    &quot;httpuv&quot;: {
+      &quot;Package&quot;: &quot;httpuv&quot;,
+      &quot;Version&quot;: &quot;1.6.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;a42959b003aad9fc351b10250c5a6b77&quot;
+    },
+    &quot;httr&quot;: {
+      &quot;Package&quot;: &quot;httr&quot;,
+      &quot;Version&quot;: &quot;1.4.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;a525aba14184fec243f9eaec62fbed43&quot;
+    },
+    &quot;ids&quot;: {
+      &quot;Package&quot;: &quot;ids&quot;,
+      &quot;Version&quot;: &quot;1.0.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;99df65cfef20e525ed38c3d2577f7190&quot;
+    },
+    &quot;igraph&quot;: {
+      &quot;Package&quot;: &quot;igraph&quot;,
+      &quot;Version&quot;: &quot;1.2.6&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;7b1f856410253d56ea67ad808f7cdff6&quot;
+    },
+    &quot;ini&quot;: {
+      &quot;Package&quot;: &quot;ini&quot;,
+      &quot;Version&quot;: &quot;0.3.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;6154ec2223172bce8162d4153cda21f7&quot;
+    },
+    &quot;isoband&quot;: {
+      &quot;Package&quot;: &quot;isoband&quot;,
+      &quot;Version&quot;: &quot;0.2.4&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;b2008df40fb297e3fef135c7e8eeec1a&quot;
+    },
+    &quot;janitor&quot;: {
+      &quot;Package&quot;: &quot;janitor&quot;,
+      &quot;Version&quot;: &quot;2.1.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;6de84a8c67fb247e721166049c84695f&quot;
+    },
+    &quot;jpeg&quot;: {
+      &quot;Package&quot;: &quot;jpeg&quot;,
+      &quot;Version&quot;: &quot;0.1-9&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;441ee36360a57b363f4fa3df0c364630&quot;
+    },
+    &quot;jquerylib&quot;: {
+      &quot;Package&quot;: &quot;jquerylib&quot;,
+      &quot;Version&quot;: &quot;0.1.4&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;5aab57a3bd297eee1c1d862735972182&quot;
+    },
+    &quot;jsonlite&quot;: {
+      &quot;Package&quot;: &quot;jsonlite&quot;,
+      &quot;Version&quot;: &quot;1.7.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;98138e0994d41508c7a6b84a0600cfcb&quot;
+    },
+    &quot;knitr&quot;: {
+      &quot;Package&quot;: &quot;knitr&quot;,
+      &quot;Version&quot;: &quot;1.33&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;0bc1b5da1b0eb07cd4b727e95e9ff0b8&quot;
+    },
+    &quot;labeling&quot;: {
+      &quot;Package&quot;: &quot;labeling&quot;,
+      &quot;Version&quot;: &quot;0.4.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;3d5108641f47470611a32d0bdf357a72&quot;
+    },
+    &quot;later&quot;: {
+      &quot;Package&quot;: &quot;later&quot;,
+      &quot;Version&quot;: &quot;1.3.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;7e7b457d7766bc47f2a5f21cc2984f8e&quot;
+    },
+    &quot;lattice&quot;: {
+      &quot;Package&quot;: &quot;lattice&quot;,
+      &quot;Version&quot;: &quot;0.20-44&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;f36bf1a849d9106dc2af72e501f9de41&quot;
+    },
+    &quot;lifecycle&quot;: {
+      &quot;Package&quot;: &quot;lifecycle&quot;,
+      &quot;Version&quot;: &quot;1.0.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;3471fb65971f1a7b2d4ae7848cf2db8d&quot;
+    },
+    &quot;listenv&quot;: {
+      &quot;Package&quot;: &quot;listenv&quot;,
+      &quot;Version&quot;: &quot;0.8.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;0bde42ee282efb18c7c4e63822f5b4f7&quot;
+    },
+    &quot;lubridate&quot;: {
+      &quot;Package&quot;: &quot;lubridate&quot;,
+      &quot;Version&quot;: &quot;1.7.10&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;1ebfdc8a3cfe8fe19184f5481972b092&quot;
+    },
+    &quot;magrittr&quot;: {
+      &quot;Package&quot;: &quot;magrittr&quot;,
+      &quot;Version&quot;: &quot;2.0.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;41287f1ac7d28a92f0a286ed507928d3&quot;
+    },
+    &quot;markdown&quot;: {
+      &quot;Package&quot;: &quot;markdown&quot;,
+      &quot;Version&quot;: &quot;1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;61e4a10781dd00d7d81dd06ca9b94e95&quot;
+    },
+    &quot;memoise&quot;: {
+      &quot;Package&quot;: &quot;memoise&quot;,
+      &quot;Version&quot;: &quot;2.0.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;a0bc51650201a56d00a4798523cc91b3&quot;
+    },
+    &quot;metathis&quot;: {
+      &quot;Package&quot;: &quot;metathis&quot;,
+      &quot;Version&quot;: &quot;1.0.3&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;5056a889bccd51d78697799bc25ece39&quot;
+    },
+    &quot;mgcv&quot;: {
+      &quot;Package&quot;: &quot;mgcv&quot;,
+      &quot;Version&quot;: &quot;1.8-35&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;89fd8b2ad4a6cb4979b78cf2a77ab503&quot;
+    },
+    &quot;mime&quot;: {
+      &quot;Package&quot;: &quot;mime&quot;,
+      &quot;Version&quot;: &quot;0.11&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;8974a907200fc9948d636fe7d85ca9fb&quot;
+    },
+    &quot;modelr&quot;: {
+      &quot;Package&quot;: &quot;modelr&quot;,
+      &quot;Version&quot;: &quot;0.1.8&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;9fd59716311ee82cba83dc2826fc5577&quot;
+    },
+    &quot;munsell&quot;: {
+      &quot;Package&quot;: &quot;munsell&quot;,
+      &quot;Version&quot;: &quot;0.5.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;6dfe8bf774944bd5595785e3229d8771&quot;
+    },
+    &quot;narray&quot;: {
+      &quot;Package&quot;: &quot;narray&quot;,
+      &quot;Version&quot;: &quot;0.4.1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;c64865aba235f36a49d798613cbfccf7&quot;
+    },
+    &quot;nlme&quot;: {
+      &quot;Package&quot;: &quot;nlme&quot;,
+      &quot;Version&quot;: &quot;3.1-152&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;35de1ce639f20b5e10f7f46260730c65&quot;
+    },
+    &quot;openssl&quot;: {
+      &quot;Package&quot;: &quot;openssl&quot;,
+      &quot;Version&quot;: &quot;1.4.4&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;f4dbc5a47fd93d3415249884d31d6791&quot;
+    },
+    &quot;parallelly&quot;: {
+      &quot;Package&quot;: &quot;parallelly&quot;,
+      &quot;Version&quot;: &quot;1.27.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;e38aabb0dde91e5622b83747b559bfc2&quot;
+    },
+    &quot;parsedate&quot;: {
+      &quot;Package&quot;: &quot;parsedate&quot;,
+      &quot;Version&quot;: &quot;1.2.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;7ea462fc29a69bd66f0ec4e596373c3d&quot;
+    },
+    &quot;pillar&quot;: {
+      &quot;Package&quot;: &quot;pillar&quot;,
+      &quot;Version&quot;: &quot;1.6.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;8672ae02bd20f6479bce2d06c7ff1401&quot;
+    },
+    &quot;pingr&quot;: {
+      &quot;Package&quot;: &quot;pingr&quot;,
+      &quot;Version&quot;: &quot;2.0.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;e293e79be42ffd336d938937fd3017fb&quot;
+    },
+    &quot;pkgbuild&quot;: {
+      &quot;Package&quot;: &quot;pkgbuild&quot;,
+      &quot;Version&quot;: &quot;1.2.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;725fcc30222d4d11ec68efb8ff11a9af&quot;
+    },
+    &quot;pkgconfig&quot;: {
+      &quot;Package&quot;: &quot;pkgconfig&quot;,
+      &quot;Version&quot;: &quot;2.0.3&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;01f28d4278f15c76cddbea05899c5d6f&quot;
+    },
+    &quot;pkgload&quot;: {
+      &quot;Package&quot;: &quot;pkgload&quot;,
+      &quot;Version&quot;: &quot;1.2.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;463642747f81879e6752485aefb831cf&quot;
+    },
+    &quot;png&quot;: {
+      &quot;Package&quot;: &quot;png&quot;,
+      &quot;Version&quot;: &quot;0.1-7&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;03b7076c234cb3331288919983326c55&quot;
+    },
+    &quot;pointblank&quot;: {
+      &quot;Package&quot;: &quot;pointblank&quot;,
+      &quot;Version&quot;: &quot;0.8.0.9000&quot;,
+      &quot;Source&quot;: &quot;GitHub&quot;,
+      &quot;RemoteType&quot;: &quot;github&quot;,
+      &quot;RemoteHost&quot;: &quot;api.github.com&quot;,
+      &quot;RemoteUsername&quot;: &quot;rich-iannone&quot;,
+      &quot;RemoteRepo&quot;: &quot;pointblank&quot;,
+      &quot;RemoteRef&quot;: &quot;main&quot;,
+      &quot;RemoteSha&quot;: &quot;12ce1e7c7dffed5051b939d5c323a35ae0f518e3&quot;,
+      &quot;Hash&quot;: &quot;ad87b701848a9344ac4e264d6efd5871&quot;
+    },
+    &quot;praise&quot;: {
+      &quot;Package&quot;: &quot;praise&quot;,
+      &quot;Version&quot;: &quot;1.0.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;a555924add98c99d2f411e37e7d25e9f&quot;
+    },
+    &quot;prettyunits&quot;: {
+      &quot;Package&quot;: &quot;prettyunits&quot;,
+      &quot;Version&quot;: &quot;1.1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;95ef9167b75dde9d2ccc3c7528393e7e&quot;
+    },
+    &quot;processx&quot;: {
+      &quot;Package&quot;: &quot;processx&quot;,
+      &quot;Version&quot;: &quot;3.5.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;0cbca2bc4d16525d009c4dbba156b37c&quot;
+    },
+    &quot;progress&quot;: {
+      &quot;Package&quot;: &quot;progress&quot;,
+      &quot;Version&quot;: &quot;1.2.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;14dc9f7a3c91ebb14ec5bb9208a07061&quot;
+    },
+    &quot;promises&quot;: {
+      &quot;Package&quot;: &quot;promises&quot;,
+      &quot;Version&quot;: &quot;1.2.0.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;4ab2c43adb4d4699cf3690acd378d75d&quot;
+    },
+    &quot;ps&quot;: {
+      &quot;Package&quot;: &quot;ps&quot;,
+      &quot;Version&quot;: &quot;1.6.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;32620e2001c1dce1af49c49dccbb9420&quot;
+    },
+    &quot;ptrr&quot;: {
+      &quot;Package&quot;: &quot;ptrr&quot;,
+      &quot;Version&quot;: &quot;0.2.0.9000&quot;,
+      &quot;Source&quot;: &quot;GitHub&quot;,
+      &quot;RemoteType&quot;: &quot;github&quot;,
+      &quot;RemoteHost&quot;: &quot;api.github.com&quot;,
+      &quot;RemoteUsername&quot;: &quot;petrbouchal&quot;,
+      &quot;RemoteRepo&quot;: &quot;ptrr&quot;,
+      &quot;RemoteRef&quot;: &quot;master&quot;,
+      &quot;RemoteSha&quot;: &quot;feae74dcf742dd9f9fe6086201110995c4eef736&quot;,
+      &quot;Hash&quot;: &quot;b96f29d641037b5c769534b69bf36fe7&quot;
+    },
+    &quot;purrr&quot;: {
+      &quot;Package&quot;: &quot;purrr&quot;,
+      &quot;Version&quot;: &quot;0.3.4&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;97def703420c8ab10d8f0e6c72101e02&quot;
+    },
+    &quot;ragg&quot;: {
+      &quot;Package&quot;: &quot;ragg&quot;,
+      &quot;Version&quot;: &quot;1.1.3&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;663065eff8c6c08eaa9955c6f478ee7a&quot;
+    },
+    &quot;rappdirs&quot;: {
+      &quot;Package&quot;: &quot;rappdirs&quot;,
+      &quot;Version&quot;: &quot;0.3.3&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;5e3c5dc0b071b21fa128676560dbe94d&quot;
+    },
+    &quot;rcmdcheck&quot;: {
+      &quot;Package&quot;: &quot;rcmdcheck&quot;,
+      &quot;Version&quot;: &quot;1.3.3&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;ed95895886dab6d2a584da45503555da&quot;
+    },
+    &quot;readr&quot;: {
+      &quot;Package&quot;: &quot;readr&quot;,
+      &quot;Version&quot;: &quot;1.4.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;2639976851f71f330264a9c9c3d43a61&quot;
+    },
+    &quot;readxl&quot;: {
+      &quot;Package&quot;: &quot;readxl&quot;,
+      &quot;Version&quot;: &quot;1.3.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;63537c483c2dbec8d9e3183b3735254a&quot;
+    },
+    &quot;rematch&quot;: {
+      &quot;Package&quot;: &quot;rematch&quot;,
+      &quot;Version&quot;: &quot;1.0.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;c66b930d20bb6d858cd18e1cebcfae5c&quot;
+    },
+    &quot;rematch2&quot;: {
+      &quot;Package&quot;: &quot;rematch2&quot;,
+      &quot;Version&quot;: &quot;2.1.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;76c9e04c712a05848ae7a23d2f170a40&quot;
+    },
+    &quot;remotes&quot;: {
+      &quot;Package&quot;: &quot;remotes&quot;,
+      &quot;Version&quot;: &quot;2.4.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;a85ebb35721573b196317b49ddd2dfe4&quot;
+    },
+    &quot;renv&quot;: {
+      &quot;Package&quot;: &quot;renv&quot;,
+      &quot;Version&quot;: &quot;0.14.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;30e5eba91b67f7f4d75d31de14bbfbdc&quot;
+    },
+    &quot;rhub&quot;: {
+      &quot;Package&quot;: &quot;rhub&quot;,
+      &quot;Version&quot;: &quot;1.1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;977cce19c029acc6d88a1c861f224819&quot;
+    },
+    &quot;rlang&quot;: {
+      &quot;Package&quot;: &quot;rlang&quot;,
+      &quot;Version&quot;: &quot;0.4.11&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;515f341d3affe0de9e4a7f762efb0456&quot;
+    },
+    &quot;rmarkdown&quot;: {
+      &quot;Package&quot;: &quot;rmarkdown&quot;,
+      &quot;Version&quot;: &quot;2.9.7&quot;,
+      &quot;Source&quot;: &quot;GitHub&quot;,
+      &quot;RemoteType&quot;: &quot;github&quot;,
+      &quot;RemoteHost&quot;: &quot;api.github.com&quot;,
+      &quot;RemoteRepo&quot;: &quot;rmarkdown&quot;,
+      &quot;RemoteUsername&quot;: &quot;rstudio&quot;,
+      &quot;RemoteRef&quot;: &quot;main&quot;,
+      &quot;RemoteSha&quot;: &quot;99df4e7db5ba0108c51557639e661df05554bf1b&quot;,
+      &quot;Hash&quot;: &quot;98b5b0f4290510aaedf2cdf46c60860e&quot;
+    },
+    &quot;roxygen2&quot;: {
+      &quot;Package&quot;: &quot;roxygen2&quot;,
+      &quot;Version&quot;: &quot;7.1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;fcd94e00cc409b25d07ca50f7bf339f5&quot;
+    },
+    &quot;rprojroot&quot;: {
+      &quot;Package&quot;: &quot;rprojroot&quot;,
+      &quot;Version&quot;: &quot;2.0.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;249d8cd1e74a8f6a26194a91b47f21d1&quot;
+    },
+    &quot;rstudioapi&quot;: {
+      &quot;Package&quot;: &quot;rstudioapi&quot;,
+      &quot;Version&quot;: &quot;0.13&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;06c85365a03fdaf699966cc1d3cf53ea&quot;
+    },
+    &quot;rversions&quot;: {
+      &quot;Package&quot;: &quot;rversions&quot;,
+      &quot;Version&quot;: &quot;2.1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;f88fab00907b312f8b23ec13e2d437cb&quot;
+    },
+    &quot;rvest&quot;: {
+      &quot;Package&quot;: &quot;rvest&quot;,
+      &quot;Version&quot;: &quot;1.0.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;74b905b0076e1de6e27f540c95ba68d5&quot;
+    },
+    &quot;sass&quot;: {
+      &quot;Package&quot;: &quot;sass&quot;,
+      &quot;Version&quot;: &quot;0.4.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;50cf822feb64bb3977bda0b7091be623&quot;
+    },
+    &quot;scales&quot;: {
+      &quot;Package&quot;: &quot;scales&quot;,
+      &quot;Version&quot;: &quot;1.1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;6f76f71042411426ec8df6c54f34e6dd&quot;
+    },
+    &quot;selectr&quot;: {
+      &quot;Package&quot;: &quot;selectr&quot;,
+      &quot;Version&quot;: &quot;0.4-2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;3838071b66e0c566d55cc26bd6e27bf4&quot;
+    },
+    &quot;sessioninfo&quot;: {
+      &quot;Package&quot;: &quot;sessioninfo&quot;,
+      &quot;Version&quot;: &quot;1.1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;308013098befe37484df72c39cf90d6e&quot;
+    },
+    &quot;shiny&quot;: {
+      &quot;Package&quot;: &quot;shiny&quot;,
+      &quot;Version&quot;: &quot;1.6.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;6e3b6ae7fe02b5859e4bb277f218b8ae&quot;
+    },
+    &quot;shinyWidgets&quot;: {
+      &quot;Package&quot;: &quot;shinyWidgets&quot;,
+      &quot;Version&quot;: &quot;0.6.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;7dd5f3ee96c64a47fdbc6e437ff1c7e1&quot;
+    },
+    &quot;shinybusy&quot;: {
+      &quot;Package&quot;: &quot;shinybusy&quot;,
+      &quot;Version&quot;: &quot;0.2.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;c38fc071d4def5e642c8dc34c3a082e4&quot;
+    },
+    &quot;snakecase&quot;: {
+      &quot;Package&quot;: &quot;snakecase&quot;,
+      &quot;Version&quot;: &quot;0.11.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;4079070fc210c7901c0832a3aeab894f&quot;
+    },
+    &quot;sourcetools&quot;: {
+      &quot;Package&quot;: &quot;sourcetools&quot;,
+      &quot;Version&quot;: &quot;0.1.7&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;947e4e02a79effa5d512473e10f41797&quot;
+    },
+    &quot;stringi&quot;: {
+      &quot;Package&quot;: &quot;stringi&quot;,
+      &quot;Version&quot;: &quot;1.6.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;9df5e6f9a7fa11b84adf0429961de66a&quot;
+    },
+    &quot;stringr&quot;: {
+      &quot;Package&quot;: &quot;stringr&quot;,
+      &quot;Version&quot;: &quot;1.4.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;0759e6b6c0957edb1311028a49a35e76&quot;
+    },
+    &quot;sys&quot;: {
+      &quot;Package&quot;: &quot;sys&quot;,
+      &quot;Version&quot;: &quot;3.4&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;b227d13e29222b4574486cfcbde077fa&quot;
+    },
+    &quot;sysfonts&quot;: {
+      &quot;Package&quot;: &quot;sysfonts&quot;,
+      &quot;Version&quot;: &quot;0.8.3&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;6a750650ae5e5ba11b45cb5012bd6167&quot;
+    },
+    &quot;systemfonts&quot;: {
+      &quot;Package&quot;: &quot;systemfonts&quot;,
+      &quot;Version&quot;: &quot;1.0.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;f2e17ba09737e2e7e2ec40fc1f9b6e08&quot;
+    },
+    &quot;tarchetypes&quot;: {
+      &quot;Package&quot;: &quot;tarchetypes&quot;,
+      &quot;Version&quot;: &quot;0.3.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;343b4fab1cb5d4f53d4cfb1d74ed8dfe&quot;
+    },
+    &quot;targets&quot;: {
+      &quot;Package&quot;: &quot;targets&quot;,
+      &quot;Version&quot;: &quot;0.7.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;f3bb17418c64dda3c4d4992f31e77afb&quot;
+    },
+    &quot;testthat&quot;: {
+      &quot;Package&quot;: &quot;testthat&quot;,
+      &quot;Version&quot;: &quot;3.0.4&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;575216c9946ca70016c3ffb9c31709ba&quot;
+    },
+    &quot;textshaping&quot;: {
+      &quot;Package&quot;: &quot;textshaping&quot;,
+      &quot;Version&quot;: &quot;0.3.5&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;6bb7e974b464fe72f192e51b4dab67f2&quot;
+    },
+    &quot;tibble&quot;: {
+      &quot;Package&quot;: &quot;tibble&quot;,
+      &quot;Version&quot;: &quot;3.1.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;349b40a9f144516d537c875e786ec8b8&quot;
+    },
+    &quot;tidyr&quot;: {
+      &quot;Package&quot;: &quot;tidyr&quot;,
+      &quot;Version&quot;: &quot;1.1.3&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;450d7dfaedde58e28586b854eeece4fa&quot;
+    },
+    &quot;tidyselect&quot;: {
+      &quot;Package&quot;: &quot;tidyselect&quot;,
+      &quot;Version&quot;: &quot;1.1.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;7243004a708d06d4716717fa1ff5b2fe&quot;
+    },
+    &quot;tidyverse&quot;: {
+      &quot;Package&quot;: &quot;tidyverse&quot;,
+      &quot;Version&quot;: &quot;1.3.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;fc4c72b6ae9bb283416bd59a3303bbab&quot;
+    },
+    &quot;tinytex&quot;: {
+      &quot;Package&quot;: &quot;tinytex&quot;,
+      &quot;Version&quot;: &quot;0.32&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;db9a6f2cf147751322d22c9f6647c7bd&quot;
+    },
+    &quot;utf8&quot;: {
+      &quot;Package&quot;: &quot;utf8&quot;,
+      &quot;Version&quot;: &quot;1.2.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;c3ad47dc6da0751f18ed53c4613e3ac7&quot;
+    },
+    &quot;uuid&quot;: {
+      &quot;Package&quot;: &quot;uuid&quot;,
+      &quot;Version&quot;: &quot;0.1-4&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;e4169eb989a5d03ccb6b628cad1b1b50&quot;
+    },
+    &quot;vctrs&quot;: {
+      &quot;Package&quot;: &quot;vctrs&quot;,
+      &quot;Version&quot;: &quot;0.3.8&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;ecf749a1b39ea72bd9b51b76292261f1&quot;
+    },
+    &quot;viridisLite&quot;: {
+      &quot;Package&quot;: &quot;viridisLite&quot;,
+      &quot;Version&quot;: &quot;0.4.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;55e157e2aa88161bdb0754218470d204&quot;
+    },
+    &quot;visNetwork&quot;: {
+      &quot;Package&quot;: &quot;visNetwork&quot;,
+      &quot;Version&quot;: &quot;2.0.9&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;12545f2acf49d1d346d075580122d89c&quot;
+    },
+    &quot;waiter&quot;: {
+      &quot;Package&quot;: &quot;waiter&quot;,
+      &quot;Version&quot;: &quot;0.2.3&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;30b15e2b6a0abc1e67bb468d9d851071&quot;
+    },
+    &quot;waldo&quot;: {
+      &quot;Package&quot;: &quot;waldo&quot;,
+      &quot;Version&quot;: &quot;0.3.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;312b264fae22fdba83b7a74187a24da8&quot;
+    },
+    &quot;whisker&quot;: {
+      &quot;Package&quot;: &quot;whisker&quot;,
+      &quot;Version&quot;: &quot;0.4&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;ca970b96d894e90397ed20637a0c1bbe&quot;
+    },
+    &quot;whoami&quot;: {
+      &quot;Package&quot;: &quot;whoami&quot;,
+      &quot;Version&quot;: &quot;1.3.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;ef0f4d9b8f2cc2ebeccae1d725b8a023&quot;
+    },
+    &quot;withr&quot;: {
+      &quot;Package&quot;: &quot;withr&quot;,
+      &quot;Version&quot;: &quot;2.4.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;ad03909b44677f930fa156d47d7a3aeb&quot;
+    },
+    &quot;writexl&quot;: {
+      &quot;Package&quot;: &quot;writexl&quot;,
+      &quot;Version&quot;: &quot;1.4.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;edd181b6e10c87497db16d1f8c0d4ed5&quot;
+    },
+    &quot;xfun&quot;: {
+      &quot;Package&quot;: &quot;xfun&quot;,
+      &quot;Version&quot;: &quot;0.23&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;791a57f43c887111490851dcd166d344&quot;
+    },
+    &quot;xml2&quot;: {
+      &quot;Package&quot;: &quot;xml2&quot;,
+      &quot;Version&quot;: &quot;1.3.2&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;d4d71a75dd3ea9eb5fa28cc21f9585e2&quot;
+    },
+    &quot;xopen&quot;: {
+      &quot;Package&quot;: &quot;xopen&quot;,
+      &quot;Version&quot;: &quot;1.0.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;6c85f015dee9cc7710ddd20f86881f58&quot;
+    },
+    &quot;xtable&quot;: {
+      &quot;Package&quot;: &quot;xtable&quot;,
+      &quot;Version&quot;: &quot;1.8-4&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;b8acdf8af494d9ec19ccb2481a9b11c2&quot;
+    },
+    &quot;yaml&quot;: {
+      &quot;Package&quot;: &quot;yaml&quot;,
+      &quot;Version&quot;: &quot;2.2.1&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;2826c5d9efb0a88f657c7a679c7106db&quot;
+    },
+    &quot;zip&quot;: {
+      &quot;Package&quot;: &quot;zip&quot;,
+      &quot;Version&quot;: &quot;2.2.0&quot;,
+      &quot;Source&quot;: &quot;Repository&quot;,
+      &quot;Repository&quot;: &quot;CRAN&quot;,
+      &quot;Hash&quot;: &quot;c7eef2996ac270a18c2715c997a727c5&quot;
+    }
+  }
+}
+</code></pre>
+</details>
+<p><br></p>
+</div>
+</div>
+<div id="targets-zobrazení-pipeline" class="section level3">
+<h3>targets: zobrazení pipeline</h3>
+<pre class="r"><code>targets::tar_visnetwork()</code></pre>
+<pre><code>## 
+## Attaching package: ‘dplyr’
+## 
+## The following objects are masked from ‘package:stats’:
+## 
+##     filter, lag
+## 
+## The following objects are masked from ‘package:base’:
+## 
+##     intersect, setdiff, setequal, union
+## 
+## Warning message:
+## In supportsMulticoreAndRStudio(...) :
+##   [ONE-TIME WARNING] Forked processing (&#39;multicore&#39;) is not supported when running R from RStudio because it is considered unstable. For more details, how to control forked processing or not, and how to silence this warning in future R sessions, see ?parallelly::supportsMulticore</code></pre>
+<div id="htmlwidget-29f33bc0837365441b27" style="width:576px;height:288px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-29f33bc0837365441b27">{"x":{"nodes":{"name":["cis_kraj","compiled_op_sum","ef_pub","ef_pubxls","ef_pubxls_url","efs_compiled","efs_compiled_fin","efs_fin","efs_obl","efs_prj","efs_prj_basic","efs_prj_kat","efs_prj_sc","efs_prv","efs_prv_annual","efs_prv_quarterly","efs_zop","efs_zop_annual","efs_zop_quarterly","export_annual_csv","export_annual_excel","export_quarterly_csv","export_quarterly_excel","pop_obce","readme_md","s_dev_html","s_dev_rmd","s_doc_html","s_doc_rmd","s_index_html","s_inputchecks_html","s_inputchecks_rmd","s_log_html","s_log_rmd","s_output_html","s_output_rmd","s_readme_html","s_readme_rmd","s_research_html","s_research_rmd","siteconf","sitefiles","sum_annual","sum_codebook","sum_codebook_yaml","sum_quarterly","zop_timing_df","zop_timing_plot","zuj_obec","c_export_csv_a","c_export_reg_xlsx_a","c_export_xlsx_q","c_export_xlsx_a","c_export_reg_csv_q","c_export_reg_xlsx_q","c_sest_dir","get_zuj_obec","t_geo_helpers","t_public_list","efs_compile","t_sestavy","make_codebook","t_html","summarise_zop","c_sest_xlsx_zop","c_mc_xlsx_q","c_export_csv_q","op_labels","efs_add_financials","c_czso_pop_table_id","t_export","t_op_compile","t_esif_compile","esif_summarise","summarise_prv","c_mc_xlsx_h","c_export_cdbk","t_codebook","c_ef_pubxls_url","c_sest_xlsx_obl","load_efs_fin","c_sest_xlsx_fin","load_efs_zop","c_export_reg_csv_a","c_export_dir","make_zop_timing_plot","get_stats_pop_obce","c_repo_remote","export_table","c_mc_xlsx_prv","load_prv","cnf","t_valid_zop_timing","c_prv_data_path","c_sest_xlsx_prj","load_efs_obl","add_op_labels","read_pubxls","summarise_by_op","build_efs_timing","load_efs_prj"],"type":["stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","object","object","object","object","object","object","object","function","object","object","function","object","function","object","function","object","object","object","object","function","object","object","object","object","function","function","object","object","object","object","object","function","object","function","object","object","function","function","object","function","object","function","object","object","object","object","function","function","function","function","function","function"],"status":["uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","started","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","outdated","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate"],"seconds":[0.149,0.768,10.859,9.705,1.616,1.93,0.646,7.487,184.422,20.77,0.16,2.136,0.023,1.18,0.278,0.6,3.169,246.39,498.977,0.077,0.027,0.012,1.814,7.421,4.116,10.439,0.001,2.754,0.001,0.003,64.37,2.026,2.722,0.001,4.766,1.79,2.555,1.77,2.927,0.002,1.298,0.001,2.106,1.779,0.006,1.629,2.911,0.243,2.182,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"bytes":[838,3084,13861575,71498240,0,1418856,4634316,5309230,1228511,3009188,2594594,926264,499426,670136,213911,222352,2840699,1747156,2262017,1451,6257,6724,9199,39919,1459,89000,2496,11740,2101,9405,11027839,7364,7654,135,35471,1514,9503,1515,7620,7331,1105,160,825,3150,2799,2225,4318269,8727205,38163,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"branches":[null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"id":["cis_kraj","compiled_op_sum","ef_pub","ef_pubxls","ef_pubxls_url","efs_compiled","efs_compiled_fin","efs_fin","efs_obl","efs_prj","efs_prj_basic","efs_prj_kat","efs_prj_sc","efs_prv","efs_prv_annual","efs_prv_quarterly","efs_zop","efs_zop_annual","efs_zop_quarterly","export_annual_csv","export_annual_excel","export_quarterly_csv","export_quarterly_excel","pop_obce","readme_md","s_dev_html","s_dev_rmd","s_doc_html","s_doc_rmd","s_index_html","s_inputchecks_html","s_inputchecks_rmd","s_log_html","s_log_rmd","s_output_html","s_output_rmd","s_readme_html","s_readme_rmd","s_research_html","s_research_rmd","siteconf","sitefiles","sum_annual","sum_codebook","sum_codebook_yaml","sum_quarterly","zop_timing_df","zop_timing_plot","zuj_obec","c_export_csv_a","c_export_reg_xlsx_a","c_export_xlsx_q","c_export_xlsx_a","c_export_reg_csv_q","c_export_reg_xlsx_q","c_sest_dir","get_zuj_obec","t_geo_helpers","t_public_list","efs_compile","t_sestavy","make_codebook","t_html","summarise_zop","c_sest_xlsx_zop","c_mc_xlsx_q","c_export_csv_q","op_labels","efs_add_financials","c_czso_pop_table_id","t_export","t_op_compile","t_esif_compile","esif_summarise","summarise_prv","c_mc_xlsx_h","c_export_cdbk","t_codebook","c_ef_pubxls_url","c_sest_xlsx_obl","load_efs_fin","c_sest_xlsx_fin","load_efs_zop","c_export_reg_csv_a","c_export_dir","make_zop_timing_plot","get_stats_pop_obce","c_repo_remote","export_table","c_mc_xlsx_prv","load_prv","cnf","t_valid_zop_timing","c_prv_data_path","c_sest_xlsx_prj","load_efs_obl","add_op_labels","read_pubxls","summarise_by_op","build_efs_timing","load_efs_prj"],"label":["cis_kraj","compiled_op_sum","ef_pub","ef_pubxls","ef_pubxls_url","efs_compiled","efs_compiled_fin","efs_fin","efs_obl","efs_prj","efs_prj_basic","efs_prj_kat","efs_prj_sc","efs_prv","efs_prv_annual","efs_prv_quarterly","efs_zop","efs_zop_annual","efs_zop_quarterly","export_annual_csv","export_annual_excel","export_quarterly_csv","export_quarterly_excel","pop_obce","readme_md","s_dev_html","s_dev_rmd","s_doc_html","s_doc_rmd","s_index_html","s_inputchecks_html","s_inputchecks_rmd","s_log_html","s_log_rmd","s_output_html","s_output_rmd","s_readme_html","s_readme_rmd","s_research_html","s_research_rmd","siteconf","sitefiles","sum_annual","sum_codebook","sum_codebook_yaml","sum_quarterly","zop_timing_df","zop_timing_plot","zuj_obec","c_export_csv_a","c_export_reg_xlsx_a","c_export_xlsx_q","c_export_xlsx_a","c_export_reg_csv_q","c_export_reg_xlsx_q","c_sest_dir","get_zuj_obec","t_geo_helpers","t_public_list","efs_compile","t_sestavy","make_codebook","t_html","summarise_zop","c_sest_xlsx_zop","c_mc_xlsx_q","c_export_csv_q","op_labels","efs_add_financials","c_czso_pop_table_id","t_export","t_op_compile","t_esif_compile","esif_summarise","summarise_prv","c_mc_xlsx_h","c_export_cdbk","t_codebook","c_ef_pubxls_url","c_sest_xlsx_obl","load_efs_fin","c_sest_xlsx_fin","load_efs_zop","c_export_reg_csv_a","c_export_dir","make_zop_timing_plot","get_stats_pop_obce","c_repo_remote","export_table","c_mc_xlsx_prv","load_prv","cnf","t_valid_zop_timing","c_prv_data_path","c_sest_xlsx_prj","load_efs_obl","add_op_labels","read_pubxls","summarise_by_op","build_efs_timing","load_efs_prj"],"level":[1,4,4,2,1,6,7,2,2,4,5,5,5,2,3,3,2,3,3,9,9,9,9,2,2,2,1,2,1,3,7,1,2,1,10,1,2,1,2,1,1,1,8,9,10,8,5,6,2,1,0,1,1,0,0,1,1,0,0,1,0,1,0,1,1,0,1,1,1,1,0,0,0,1,1,0,1,0,0,1,1,1,1,0,1,1,1,0,1,0,1,0,0,1,1,1,2,3,3,3,3],"color":["#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#DC863B","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#78B7C5","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823"],"shape":["dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangleDown","triangle","triangleDown","triangle","triangleDown","triangle","triangleDown","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangleDown","triangleDown","triangleDown","triangle","triangle","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangle","triangleDown","triangleDown","triangle","triangle","triangleDown","triangle","triangleDown","triangle","triangleDown","triangleDown","triangleDown","triangleDown","triangle","triangle","triangle","triangle","triangle","triangle"]},"edges":{"from":["add_op_labels","add_op_labels","add_op_labels","add_op_labels","op_labels","efs_prj","efs_compiled_fin","efs_prv_annual","esif_summarise","build_efs_timing","ef_pub","efs_prj","efs_zop","s_readme_rmd","siteconf","sitefiles","s_readme_html","siteconf","sitefiles","c_czso_pop_table_id","get_stats_pop_obce","efs_prv","summarise_prv","efs_zop","summarise_zop","ef_pub","efs_fin","efs_obl","efs_prj","efs_prj_basic","efs_prj_kat","efs_prj_sc","efs_prv","efs_zop","s_inputchecks_rmd","siteconf","sitefiles","zop_timing_df","zop_timing_plot","make_codebook","sum_quarterly","s_doc_rmd","siteconf","sitefiles","efs_prj","efs_compiled_fin","efs_prv_quarterly","esif_summarise","c_sest_dir","c_sest_xlsx_prj","load_efs_prj","s_log_rmd","siteconf","sitefiles","ef_pubxls_url","ef_pub","efs_fin","efs_prv","efs_zop","s_output_rmd","siteconf","sitefiles","sum_annual","sum_codebook","sum_quarterly","c_sest_dir","c_sest_xlsx_zop","load_efs_zop","efs_zop","summarise_zop","c_sest_dir","c_sest_xlsx_fin","load_efs_fin","efs_prj","get_zuj_obec","efs_compile","efs_obl","efs_prj_kat","efs_prj_sc","c_prv_data_path","cis_kraj","load_prv","c_export_cdbk","c_export_dir","sum_codebook","sum_quarterly","c_sest_dir","c_sest_xlsx_obl","load_efs_obl","c_export_csv_a","c_export_dir","export_table","sum_annual","c_export_dir","c_export_xlsx_a","export_table","sum_annual","efs_prv","summarise_prv","s_dev_rmd","siteconf","sitefiles","ef_pubxls","read_pubxls","c_export_csv_q","c_export_dir","export_table","sum_quarterly","make_zop_timing_plot","zop_timing_df","s_readme_rmd","efs_add_financials","efs_compiled","efs_zop_quarterly","s_research_rmd","siteconf","sitefiles","c_export_dir","c_export_xlsx_q","export_table","sum_quarterly","efs_prv_quarterly","efs_zop_quarterly","summarise_by_op"],"to":["read_pubxls","summarise_by_op","build_efs_timing","load_efs_prj","add_op_labels","efs_prj_sc","sum_annual","sum_annual","sum_annual","zop_timing_df","zop_timing_df","zop_timing_df","zop_timing_df","s_readme_html","s_readme_html","s_readme_html","s_index_html","s_index_html","s_index_html","pop_obce","pop_obce","efs_prv_quarterly","efs_prv_quarterly","efs_zop_annual","efs_zop_annual","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","sum_codebook","sum_codebook","s_doc_html","s_doc_html","s_doc_html","efs_prj_kat","sum_quarterly","sum_quarterly","sum_quarterly","efs_prj","efs_prj","efs_prj","s_log_html","s_log_html","s_log_html","ef_pubxls","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","efs_zop","efs_zop","efs_zop","efs_zop_quarterly","efs_zop_quarterly","efs_fin","efs_fin","efs_fin","efs_prj_basic","zuj_obec","efs_compiled","efs_compiled","efs_compiled","efs_compiled","efs_prv","efs_prv","efs_prv","sum_codebook_yaml","sum_codebook_yaml","sum_codebook_yaml","sum_codebook_yaml","efs_obl","efs_obl","efs_obl","export_annual_csv","export_annual_csv","export_annual_csv","export_annual_csv","export_annual_excel","export_annual_excel","export_annual_excel","export_annual_excel","efs_prv_annual","efs_prv_annual","s_dev_html","s_dev_html","s_dev_html","ef_pub","ef_pub","export_quarterly_csv","export_quarterly_csv","export_quarterly_csv","export_quarterly_csv","zop_timing_plot","zop_timing_plot","readme_md","efs_compiled_fin","efs_compiled_fin","efs_compiled_fin","s_research_html","s_research_html","s_research_html","export_quarterly_excel","export_quarterly_excel","export_quarterly_excel","export_quarterly_excel","compiled_op_sum","compiled_op_sum","compiled_op_sum"],"arrows":["to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":{"type":"cubicBezier","forceDirection":"horizontal"}},"physics":{"stabilization":false},"layout":{"hierarchical":{"enabled":true,"direction":"LR"}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":{"text":"","style":"font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"},"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":{"from":1,"to":1},"algorithm":"hierarchical","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":true,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"legend":{"width":0.2,"useGroups":false,"position":"right","ncol":1,"stepX":100,"stepY":100,"zoom":true,"nodes":{"label":["Up to date","Started","Outdated","Stem","Object","Function"],"color":["#354823","#DC863B","#78B7C5","#899DA4","#899DA4","#899DA4"],"shape":["dot","dot","dot","dot","triangleDown","triangle"]},"nodesToDataframe":true}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>
