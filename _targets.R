@@ -25,3 +25,153 @@ future::plan(multicore)
 
 source("R/utils.R")
 source("R/functions.R")
+
+cnf <- config::get(config = "default")
+names(cnf) <- paste0("c_", names(cnf))
+list2env(cnf, envir = .GlobalEnv)
+
+# tar_renv(path = "packages.R")
+
+# ESIF data ---------------------------------------------------------------
+
+
+## Public project data -----------------------------------------------------
+
+t_public_list <- list(
+  tar_download(ef_pubxls, c_ef_pubxls_url,
+               here::here("data-input/ef_publish.xls")),
+  tar_target(ef_pub, read_pubxls(ef_pubxls))
+)
+
+
+# Geo helpers -------------------------------------------------------------
+
+t_geo_helpers <- list(
+  # vazby ZÚJ a obcí, abychom mohli ZÚJ v datech
+  # převést na obce
+  tar_target(zuj_obec, get_zuj_obec()),
+  # číselník krajů pro vložení kódu kraje v PRV
+  tar_target(cis_kraj, czso::czso_get_codelist("cis100")),
+  # populace obcí pro vážení projektů mezi kraji
+  tar_target(pop_obce, get_stats_pop_obce(c_czso_pop_table_id))
+)
+
+## Custom MS sestavy -------------------------------------------------------
+
+t_sestavy <- list(
+  # finanční pokrok
+  tar_target(efs_fin, load_efs_fin(c_sest_dir, c_sest_xlsx_fin)),
+  # seznam ŽOPek
+  tar_target(efs_zop, load_efs_zop(c_sest_dir, c_sest_xlsx_zop)),
+  # základní info o projektech
+  # obsahuje ekonomické kategorie intervence, SC atd.
+  tar_target(efs_prj, load_efs_prj(c_sest_dir, c_sest_xlsx_prj)),
+  # oblasti intervence
+  tar_target(efs_obl, load_efs_obl(c_sest_dir, c_sest_xlsx_obl)),
+  # výřes základních informací o projektech
+  tar_target(efs_prj_basic, efs_prj %>% select(-starts_with("katekon_"),
+                                               -starts_with("sc_")) %>%
+               distinct()),
+  # specifické cíle
+  # bez rozpadu na kategorie intervence
+  # protože ten je v datech nepřiznaný
+  tar_target(efs_prj_sc, efs_prj %>%
+               select(prj_id, starts_with("sc_")) %>%
+               distinct()),
+  # kategorie intervence, bez rozpadu na SC
+  tar_target(efs_prj_kat, efs_prj %>%
+               select(prj_id, starts_with("katekon_")) %>%
+               distinct() %>%
+               group_by(prj_id) %>%
+               mutate(katekon_podil = 1/n())),
+  # sečíst ŽOP za každý projekt po letech
+  tar_target(efs_zop_annual, summarise_zop(efs_zop, quarterly = FALSE)),
+  # a po čtvrtletích
+  tar_target(efs_zop_quarterly, summarise_zop(efs_zop, quarterly = TRUE)),
+  # načíst PRV
+  tar_target(efs_prv, load_prv(c_prv_data_path, cis_kraj)),
+  # posčítat platby PRV za projekt po letech
+  tar_target(efs_prv_annual, summarise_prv(efs_prv, quarterly = FALSE)),
+  # a PRV po čtvrtletích
+  tar_target(efs_prv_quarterly, summarise_prv(efs_prv, quarterly = TRUE))
+)
+
+## Compile  ----------------------------------------------------------------
+
+t_esif_compile <- list(
+  # rozpadnout na všechny známé kategorie
+  tar_target(efs_compiled, efs_compile(efs_prj_kat, efs_obl, efs_prj_sc)),
+  # přidat platby po kvartálech
+  tar_target(efs_compiled_fin,
+             efs_add_financials(efs_compiled, efs_zop_quarterly)),
+  # spojit PRV a ostatní, sečíst po letech, bez regionu
+  tar_target(sum_annual,
+             esif_summarise(efs_compiled_fin,
+                            efs_prv_annual,
+                            quarterly = FALSE, regional = FALSE)),
+  # spojit PRV a ostatní, sečíst po kvartálech, bez regionu
+  tar_target(sum_quarterly,
+             esif_summarise(efs_compiled_fin,
+                            efs_prv_quarterly,
+                            quarterly = TRUE, regional = FALSE))
+)
+
+## Compile by OP -----------------------------------------------------------
+
+t_op_compile <- list(
+  tar_target(compiled_op_sum,
+             summarise_by_op(efs_zop_quarterly, efs_prv_quarterly)))
+
+## Export data for macro models --------------------------------------------
+
+t_export <- list(
+  tar_file(export_annual_csv,
+           export_table(sum_annual,
+                        here::here(c_export_dir, c_export_csv_a),
+                        write_excel_csv2)),
+  tar_file(export_quarterly_csv,
+           export_table(sum_quarterly,
+                        here::here(c_export_dir, c_export_csv_q),
+                        write_excel_csv2)),
+  tar_file(export_annual_excel,
+           export_table(sum_annual,
+                        here::here(c_export_dir, c_export_xlsx_a),
+                        write_xlsx)),
+  tar_file(export_quarterly_excel,
+           export_table(sum_quarterly,
+                        here::here(c_export_dir, c_export_xlsx_q),
+                        write_xlsx))
+)
+
+
+## Validation and exploration ----------------------------------------------
+
+t_valid_zop_timing <- list(
+  tar_target(zop_timing_df, build_efs_timing(efs_prj, efs_zop, ef_pub)),
+  tar_target(zop_timing_plot, make_zop_timing_plot(zop_timing_df))
+)
+
+
+## Build and export codebook -----------------------------------------------
+
+t_codebook <- list(
+  tar_target(sum_codebook,
+             make_codebook(sum_quarterly)),
+  tar_file(sum_codebook_yaml,
+           {pointblank::yaml_write(informant = sum_codebook %>%
+                                     pointblank::set_read_fn(read_fn = ~sum_quarterly),
+                                   path = c_export_dir,
+                                   filename = c_export_cdbk)
+             file.path(c_export_dir, c_export_cdbk)
+           })
+)
+
+# HTML output -------------------------------------------------------------
+
+source("R/html_output.R")
+
+
+# Compile targets lists ---------------------------------------------------
+
+list(t_public_list, t_geo_helpers, t_sestavy, t_op_compile, t_valid_zop_timing,
+     t_esif_compile, t_export, t_codebook, t_html)
