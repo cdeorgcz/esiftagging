@@ -1,0 +1,56 @@
+---
+title: "Přehled projektu"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+source("_targets_packages.R")
+library(targets)
+library(details)
+```
+
+```{r}
+cnf <- config::get()
+```
+
+## Celková analytická logika systému
+
+TO DO
+
+## Data a rozhodnutí
+
+### MSSF a PRV
+
+#### Zdroje
+
+- data ke všem OP kromě PRV pochází ze sestav `` `r 
+cnf$sest_dir` ``. Nejsou zde data o příhraniční spolupráci. Název adresáře obsahuje datum, ke kterému jsou v sestavách aktuální data
+  - E001 Identifikace projektu: rozpad projektu na SC a ekonomické kategorie intervence
+  - E005 Kategorizace_oblast: oblasti intervence podle nařízení
+  - E003 Finance celkem: více finančních řezů, co řádek, to projekt
+  - E004 Žádosti o platbu: co řádek, to platba s datem
+- lokalizace projektů běžných OP:
+  - využíváme výstup předchozího projektu MMR - `Arrow` dataset v adresáři `` `r 
+  cnf$ef_obce_arrowdir` ``
+- data k PRV pochází od MZe a jsou výrazně jednodušší:
+  - jediná tabulka
+  - co řádek, to projekt, včetně financí a NUTS3 (každý projekt má jen jednu NUTS3)
+  
+##### Technické zádrhele u vstupních sestav
+
+- v XLSX s oblastmi intervencí zřejmě chybí sloupce s rozpadem na SC, přičemž ale projekty jsou na SC rozpadlé do řádek, proto součty peněz v jednom projektu přesahují 100 %.
+
+### Časování plateb
+
+- u části žádostí o platbu chyběla data proplacení žádosti, ale z čísla žádosti lze dovodit rok podání žádosti. U těchto žádostí rozkládáme datum proplacení rovnoměrně do všech kvartálů daného roku
+- nepracujeme tedy se začátkem a koncem realizace projektů
+- stejně tak nerozlišujeme platby ANTE a POST
+- pro lepší přesnost by bylo vhodné tyto platby ještě posunout o cca 100 dnů (1 kvartál) dále v čase (odhadovaná prodleva mezi 30. 6. - coby očekávaná střední doba podání ŽOP v roce - a proplacením)
+
+### Hodnoty konfiguračních proměnných v souboru `config.yml`
+
+```{details}
+"./config.yml"
+```
+

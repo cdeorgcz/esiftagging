@@ -1,0 +1,77 @@
+---
+title: "Výstup: dokumentace, validace"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE,
+                      comment = "")
+source("_targets_packages.R")
+options(crayon.enabled = FALSE)
+cnf <- config::get()
+names(cnf) <- paste0("c_", names(cnf))
+list2env(cnf, envir = .GlobalEnv)
+```
+
+```{r load targets}
+targets::tar_load(sum_quarterly)
+targets::tar_load(sum_annual)
+targets::tar_load(ef_pub)
+targets::tar_load(efs_prv)
+targets::tar_load(efs_zop)
+targets::tar_load(efs_fin)
+targets::tar_load(sum_codebook)
+
+```
+
+# {.tabset}
+
+## Dokumentace hlavního výstupu
+
+### Soubory
+
+Vše v `` `r  
+c_export_dir` `` ([Github](`r paste0(c_repo_remote, "/tree/master/", c_export_dir)`)) 
+
+- součty po letech: `` `r  
+c_export_csv_a` `` / `` `r  
+c_export_xlsx_a` ``
+- součty po čtvrtletích: `` `r  
+c_export_csv_q` `` / `` `r  
+c_export_xlsx_q` ``
+
+CSV soubory uzpůsobeny pro Excel (úprava konce řádků) a CEE region (odděleno středníky, desetinná čárka).
+
+### Codebook
+
+```{r codebook}
+sum_codebook
+```
+
+Zapsáno v `r file.path(c_export_dir, c_export_cdbk)`
+
+## Náhled proměnných
+
+```{r columns}
+glimpse(sum_quarterly)
+```
+
+## Validace výstupu
+
+IN PROGRESS
+
+```{r}
+sum_quarterly %>% 
+  count(dt_zop_rok, wt = round(fin_vyuct_czv/1e9, 2)) %>% 
+  spread(dt_zop_rok, n)
+```
+```{r}
+sum_quarterly %>% 
+  count(source, wt = fin_vyuct_czv)
+```
+
+```{r}
+efs_fin %>% count(wt = fin_vyuct_czv)
+efs_zop %>% count(wt = fin_vyuct_czv)
+```
+

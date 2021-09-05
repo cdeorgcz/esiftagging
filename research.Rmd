@@ -1,0 +1,91 @@
+---
+title: "Rešerše"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Tento dokument
+
+## Koncepční úvaha: jak na kategorizace
+
+- [shrnutí EK](https://ec.europa.eu/clima/sites/clima/files/docs/tracking_climate_expenditure_en.pdf) o monitoringu výdajů ve vztahu ke klimatu
+  - na str. 4 obsahuje 
+- [technická zpráva k témuž](https://ec.europa.eu/info/sites/default/files/business_economy_euro/banking_and_finance/documents/200309-sustainable-finance-teg-final-report-taxonomy-annexes_en.pdf)
+- [studie pro EP](https://www.europarl.europa.eu/RegData/etudes/STUD/2020/654166/IPOL_STU(2020)654166_EN.pdf) (červenec 2020)
+- [Climate mainstreaming in the EU Budget: preparing for the next MFF](http://trinomics.eu/wp-content/uploads/2018/07/Climate-mainstreaming-in-the-EU-Budget-preparing-for-the-next-MFF.pdf) - report pro EK (2017)
+
+- RRF kategorizace - Annex VI v [Reg. 2021/241](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32021R0241&from=EN#d1e32-63-1)
+  - cca 144 kategorií - podobné, ale jiné než 12X kategorií pro ESIF 2014-20
+
+
+## Z čeho můžeme vyjít v datech
+
+- data o PRV a obecně zemědělských dotacích fungují jinak, než data o "běžných" ESI programech
+- pro obě sady můžeme pracovat buď s hrubšími veřejnými daty, nebo s jemnějšími daty, která na žádost poskytuje MMR - zde je potřeba ověřit, zda je můžeme použít, popř. co z nich zveřejnit, a zda je dostaneme i v budoucnu
+
+### Data o ESI fondech mimo PRV
+
+**Otevřená data** poskytuje MMR ve dvou formách:
+
+- nešikovné a dost hrubé XML jako [oficiální otevřená data](http://data.mmr.cz/organization/54b77179-1047-4548-8037-9128009ee11e?tags=esif) - stálo by dost energie to zpracovat do použitelné podoby, což zřejmě ani nestojí za to
+  - obsahuje aspoň nějaké informace o specifických cílech
+  - oproti Excelu zde nenajdeme informace o (tematických) kategoriích intervencí a o ekonomických kategoriích intervencí
+- praktičtější [Excel tabulku](https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu), která je ale hůře zdokumentovaná a není u ní technická garance dostupnosti a stability
+  - Oproti sestavám od MMR zde nenajdeme procentuální rozdělení projektů mezi jednotlivé specifické cíle, oblasti intervence nebo ekonomické kategorie intervence.
+  - Oproti XML zde nenajdeme informaci o řazení projektu do specifického cíle
+  
+## Co s tím
+
+- otagovat 125 kategorií intervencí; pokud by to bylo příliš hrubé, můžeme to vzít podle specifických cílů (cca 130 kategorií) nebo libovolně doplnit ještě ekonomické kategorie (25 kategorií).
+
+#### Dodatky
+
+- [dokumentace open dat MSSF](https://drive.google.com/file/d/1ayZ9DK0K5Yt91Z1YYE1q_T2mzKDD1_PK/view)
+
+### Data o zemědělských dotacích
+
+Otevřená data [poskytuje SZIF ve formě XML](https://www.szif.cz/cs/seznam-prijemcu-dotaci?setCookie=true#). 
+ - Pokud chceme jen posčítat výdaje podle "tématu" intervence, není složité ho využít. Problém je, že tematická kategorizace, do které jsou projekty členěny, není nikde zdokumentovaná a není úplně jasné, jak z kategorií v datech usoudit, do které kategorie podle přílohy nařízení daný výdaj patří
+ - data jsou dělena po letech a podle textu na webu data dva roky od zveřejnění mizí - teď jsou dostupná data za 2017-2020, ale v roce 2016 podle sestav MMR proběhlo relativně málo plateb
+ 
+Data od MMR (na vyžádání) obsahují jen projektová opatření, tj. nezahrnují plošné platby. Otevřená data naopak obsahují plošná opatření PRV i opatření financovaná z jiných zdrojů (EZZF/EAGF a část národních zdrojů)
+
+### Jak tedy na kategorizace
+
+- [prováděcí nařízení 215/2014 uvádí v příloze II](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0215&from=EN#d1e32-81-1) seznam několika cílů EAFRD, které lze v nějaké míře započíst jako přispívající ke klimatickému cíli - odkazuje se na cíle v čl. 5 [nařízení o rozvoji venkova (1305/2013)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32013R1305&from=EN#d1363e32-535-1) - odstavce a písmena článku 5 pak dávají priority Unie, např. 5 (4) (a) = 4A
+- Na [str. 234 aktuálního znění PRV](https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fprv2014%2Fzakladni_informace%2Fprog_dokumenty%2F1625641021462%2F1625641087281.pdf#page=234) jsou vyjmenována opatření, vážící se ke každé z priorit v článku 5 - takto tedy můžeme k jednotlivým opatřením doplnit procenta podle přílohy II z prováděcího nařízení výše
+- NB pokud existují souhrnné údaje alespoň k alokacím podle priorit Unie z ostatních států, šlo by udělat srovnání - zdá se, že o výdajích jsou [data zde](https://data.europa.eu/euodp/en/data/dataset/common-agricultural-policy-indicators-financing-the-cap) a o klimatických číslech [zde](https://data.europa.eu/euodp/en/data/dataset/common-agricultural-policy-indicators-climate-change-and-air-quality/)
+- tabulka od MMR nám umožňuje přiřadit projektová i plošná opatření k prioritám a odsud odvodit vztah ke klimatickýcm cílům - bude třeba dešifrovat názvy opatření v open datech; problém je ale v tom, že u plošných opatření neznáme kód operace, a teprve podle operací lze výdaje třídit do priorit Unie - protože např. opatření 1 (projektové) se váže na několik priorit Unie. Ale dost možná všechna plošná opatření spadají do priorit se stejným klimatickým procentem (P4), takže to nebude problém
+- ALE: není jasné, jak vážně brát klimatická procenta z opatření
+
+##### Co s tím
+
+- projektová opatření jsme schopni navázat na klimatická procenta z nařízení
+- jemnější třídění lze udělat na úrovni operací (která ale není dostupná u plošných opatření)
+- není jasné, zda lze klimatická procenta z nařízení brát vážne
+- peníze mimo EAFRD ignorovat - tagging CAP je jiná disciplína
+
+#### Sklad zdrojů k datům SZIF:
+
+- [PRV, aktuální znění](http://eagri.cz/public/web/file/680981/Program_rozvoje_venkova___schvalene_zneni.pdf) - via stránky [Programové dokumenty](http://eagri.cz/public/web/mze/dotace/program-rozvoje-venkova-na-obdobi-2014/zakladni-informace/programove-dokumenty/)
+- schéma podpor PRV, [2014-20](https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fprv2014%2Fzakladni_informace%2F1436519577270.pdf) - pozor, neplatí, že celé opatření je buď projektové, nebo plošné, viz M08; [2021-27](http://eagri.cz/public/web/file/668822/Schema_podpor_PRV_od_2020___2.cast___projektova_opatreni.pdf) via [Základní informace o PRV](https://www.szif.cz/cs/prv2014-zakladni_informace)
+
+#### Poznámky k datům SZIF:
+
+První číslo v kódu operace je číslo opatření tj. 4.1.1 spadá do M4.
+
+Priorita a prioritní oblast nejsou součástí kódu operace.
+
+Druhé číslo v kódu operace je zřejmě podopatření.
+
+Vysvětlivky
+
+- ANC: areas with natural constraints
+- SOT: společná organizace trhu
+- LFA: less favourer area - méně příznivé oblasti
+- GEN?
+- EZ = EKOZ - Ekologické zemědělství
+- DŽPZ = Welfare = dobré životní podmínky zvířat

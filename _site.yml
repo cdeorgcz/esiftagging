@@ -10,6 +10,10 @@ navbar:
     href: README.html
   - text: Dokumentace
     href: s_doc.html
+  - text: Postup práce
+    href: log.html
+  - text: Rešerše
+    href: research.html
   - text: Validace & dokumentace výstupů
     href: s_output.html
   - text: Validace vstupů
