@@ -1,13 +1,21 @@
 ---
 title: "Rešerše"
-output: html_document
+output: 
+  html_document:
+    toc: yes
+    toc_depth: 4
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(gt)
+targets::tar_load(efs_compiled)
+targets::tar_load(efs_prv)
+targets::tar_load(prv_priorities)
 ```
 
-Tento dokument
+Tento dokument slouží jako shrnutí sesbíraných informací k možnostem 
 
 ## Koncepční úvaha: jak na kategorizace
 
@@ -36,6 +44,36 @@ Tento dokument
   - Oproti sestavám od MMR zde nenajdeme procentuální rozdělení projektů mezi jednotlivé specifické cíle, oblasti intervence nebo ekonomické kategorie intervence.
   - Oproti XML zde nenajdeme informaci o řazení projektu do specifického cíle
   
+- [prováděcí nařízení 215/2014 uvádí v příloze I](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0215&from=EN#d1e32-81-1) 125 oblastí intervencí (ty u projektů známe) a jejich procentuální započtení ke klimatickým cílům
+
+#### Kategorizace {.tabset .pills}
+  
+##### Oblasti intervencí
+
+```{r}
+efs_compiled %>% 
+  distinct(oblast_intervence_kod,
+           oblast_intervence_nazev) %>% 
+  gt::gt()
+```
+
+##### Specifické cíle
+
+```{r}
+efs_compiled %>% 
+  distinct(sc_id, sc_nazev) %>% 
+  gt::gt()
+```
+
+##### Kategorie intervencí
+
+```{r}
+efs_compiled %>% 
+  distinct(katekon_kod,
+           katekon_nazev) %>% 
+  gt::gt()
+```
+  
 #### Co s tím
 
 - otagovat 125 kategorií intervencí; pokud by to bylo příliš hrubé, můžeme to vzít podle specifických cílů (cca 130 kategorií) nebo libovolně doplnit ještě ekonomické kategorie (25 kategorií).
@@ -52,7 +90,27 @@ Otevřená data [poskytuje SZIF ve formě XML](https://www.szif.cz/cs/seznam-pri
  
 Data od MMR (na vyžádání) obsahují jen projektová opatření, tj. nezahrnují plošné platby. Otevřená data naopak obsahují plošná opatření PRV i opatření financovaná z jiných zdrojů (EZZF/EAGF a část národních zdrojů)
 
-### Jak tedy na kategorizace
+#### Kategorizace {.tabset .pills}
+
+##### Ze seznamu SZIF
+
+```{r}
+prv_priorities %>% 
+  distinct() %>% 
+  gt()
+```
+
+##### V sestavě MMR
+
+```{r}
+efs_prv %>% 
+  count(priorita, opatreni, operace, prv_operace_kod, wt = fin_vyuct_czv/1e9, name = "Celkem CZV vyúčováno (Kč)")
+```
+
+
+##### Z open dat (TO DO)
+
+#### Jak tedy na kategorizace u PRV
 
 - [prováděcí nařízení 215/2014 uvádí v příloze II](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0215&from=EN#d1e32-81-1) seznam několika cílů EAFRD, které lze v nějaké míře započíst jako přispívající ke klimatickému cíli - odkazuje se na cíle v čl. 5 [nařízení o rozvoji venkova (1305/2013)](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32013R1305&from=EN#d1363e32-535-1) - odstavce a písmena článku 5 pak dávají priority Unie, např. 5 (4) (a) = 4A
 - Na [str. 234 aktuálního znění PRV](https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fprv2014%2Fzakladni_informace%2Fprog_dokumenty%2F1625641021462%2F1625641087281.pdf#page=234) jsou vyjmenována opatření, vážící se ke každé z priorit v článku 5 - takto tedy můžeme k jednotlivým opatřením doplnit procenta podle přílohy II z prováděcího nařízení výše
@@ -62,7 +120,7 @@ Data od MMR (na vyžádání) obsahují jen projektová opatření, tj. nezahrnu
 
 ##### Co s tím
 
-- projektová opatření jsme schopni navázat na klimatická procenta z nařízení
+- projektová opatření PRV jsme schopni navázat na klimatická procenta z nařízení
 - jemnější třídění lze udělat na úrovni operací (která ale není dostupná u plošných opatření)
 - není jasné, zda lze klimatická procenta z nařízení brát vážne
 - peníze mimo EAFRD ignorovat - tagging CAP je jiná disciplína
