@@ -15,7 +15,7 @@ targets::tar_load(efs_prv)
 targets::tar_load(prv_priorities)
 ```
 
-Tento dokument slouží jako shrnutí sesbíraných informací k možnostem 
+Tento dokument slouží jako shrnutí sesbíraných informací k možnostem rozpadu dat o výdajích z ESI fondů na kategorie použitelné pro climate tagging - a jako skladiště poznámek, odkazů a zdrojů.
 
 ## Koncepční úvaha: jak na kategorizace
 
