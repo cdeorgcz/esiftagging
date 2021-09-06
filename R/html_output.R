@@ -9,7 +9,7 @@ t_html <- list(
     siteconf
     sitefiles
     s_readme_html
-    file.copy("docs/README.html", "docs/index.html")
+    file.copy("docs/README.html", "docs/index.html", overwrite = TRUE)
     "docs/index.html"}),
 
   tar_file(s_readme_html, command = {!! tar_knitr_deps_expr("README.Rmd")

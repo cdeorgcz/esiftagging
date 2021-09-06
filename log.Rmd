@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
 - [Github profil CDE](https://github.com/cdeorgcz) + základní [web rozcestník](https://cdeoorgcz.github.io)
 - základ [dokumentace projektu](https://cdeoorgcz.github.io/esiftagging)
 - [načtení dat ESIF ze sestav MMR](s_output.html)
-- načtení dat PRV ze sestavy MMR (s_output.html)
+- [načtení dat PRV ze sestavy MMR](s_output.html)
 
 ### In progress
 
