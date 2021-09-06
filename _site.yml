@@ -6,8 +6,6 @@ exclude: ["LICENSE.md", "*.csv", "*.rds", "renv", "renv.lock", "data-input", "da
 navbar:
   title: "ESIF data"
   left:
-  - text: Základní info
-    href: README.html
   - text: Dokumentace
     href: s_doc.html
   - text: Postup práce

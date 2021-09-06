@@ -7,3 +7,31 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Update 6. 9. 2011
+
+### Hotovo
+
+- sestavení projektu včetně přípravy na opakovatelný recept
+- [Github profil CDE](https://github.com/cdeorgcz) + základní [web rozcestník](https://cdeoorgcz.github.io)
+- základ [dokumentace projektu](https://cdeoorgcz.github.io/esiftagging)
+- [načtení dat ESIF ze sestav MMR](s_output.html)
+- načtení dat PRV ze sestavy MMR (s_output.html)
+
+### In progress
+
+- načtení dat PRV z open dat
+- [rešerše kategorizací pro ESI fondy mimo PRV + PRV](research.html)
+
+### K potvrzení (praktikálie)
+
+- název github profilu + název projektu
+- jazyk dokumentace
+
+### K rozhodnutí (koncepční)
+
+- zdroj dat ESIF
+- kategorizace ESIF pro klima semafor (viz [rešerši](research.html))
+- zdroj dat PRV
+- zahrnutí plošných opatření PRV (viz [rešerši](research.html))
+- zdroj kategorizací pro semafor z dat PRV
+- možnost mezinárodního srovnání (výhledově)

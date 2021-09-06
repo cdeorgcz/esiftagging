@@ -12,7 +12,6 @@ Tento dokument
 ## Koncepční úvaha: jak na kategorizace
 
 - [shrnutí EK](https://ec.europa.eu/clima/sites/clima/files/docs/tracking_climate_expenditure_en.pdf) o monitoringu výdajů ve vztahu ke klimatu
-  - na str. 4 obsahuje 
 - [technická zpráva k témuž](https://ec.europa.eu/info/sites/default/files/business_economy_euro/banking_and_finance/documents/200309-sustainable-finance-teg-final-report-taxonomy-annexes_en.pdf)
 - [studie pro EP](https://www.europarl.europa.eu/RegData/etudes/STUD/2020/654166/IPOL_STU(2020)654166_EN.pdf) (červenec 2020)
 - [Climate mainstreaming in the EU Budget: preparing for the next MFF](http://trinomics.eu/wp-content/uploads/2018/07/Climate-mainstreaming-in-the-EU-Budget-preparing-for-the-next-MFF.pdf) - report pro EK (2017)
@@ -37,7 +36,7 @@ Tento dokument
   - Oproti sestavám od MMR zde nenajdeme procentuální rozdělení projektů mezi jednotlivé specifické cíle, oblasti intervence nebo ekonomické kategorie intervence.
   - Oproti XML zde nenajdeme informaci o řazení projektu do specifického cíle
   
-## Co s tím
+#### Co s tím
 
 - otagovat 125 kategorií intervencí; pokud by to bylo příliš hrubé, můžeme to vzít podle specifických cílů (cca 130 kategorií) nebo libovolně doplnit ještě ekonomické kategorie (25 kategorií).
 
@@ -48,8 +47,8 @@ Tento dokument
 ### Data o zemědělských dotacích
 
 Otevřená data [poskytuje SZIF ve formě XML](https://www.szif.cz/cs/seznam-prijemcu-dotaci?setCookie=true#). 
- - Pokud chceme jen posčítat výdaje podle "tématu" intervence, není složité ho využít. Problém je, že tematická kategorizace, do které jsou projekty členěny, není nikde zdokumentovaná a není úplně jasné, jak z kategorií v datech usoudit, do které kategorie podle přílohy nařízení daný výdaj patří
- - data jsou dělena po letech a podle textu na webu data dva roky od zveřejnění mizí - teď jsou dostupná data za 2017-2020, ale v roce 2016 podle sestav MMR proběhlo relativně málo plateb
+  - Pokud chceme jen posčítat výdaje podle "tématu" intervence, není složité ho využít. Problém je, že tematická kategorizace, do které jsou projekty členěny, není nikde zdokumentovaná a není úplně jasné, jak z kategorií v datech usoudit, do které kategorie podle přílohy nařízení daný výdaj patří
+  - data jsou dělena po letech a podle textu na webu data dva roky od zveřejnění mizí - teď jsou dostupná data za 2017-2020, ale v roce 2016 podle sestav MMR proběhlo relativně málo plateb
  
 Data od MMR (na vyžádání) obsahují jen projektová opatření, tj. nezahrnují plošné platby. Otevřená data naopak obsahují plošná opatření PRV i opatření financovaná z jiných zdrojů (EZZF/EAGF a část národních zdrojů)
 
