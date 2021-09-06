@@ -32,19 +32,7 @@ list2env(cnf, envir = .GlobalEnv)
 
 # tar_renv(path = "packages.R")
 
-# ESIF data ---------------------------------------------------------------
-
-
-## Public project data -----------------------------------------------------
-
-t_public_list <- list(
-  tar_download(ef_pubxls, c_ef_pubxls_url,
-               here::here("data-input/ef_publish.xls")),
-  tar_target(ef_pub, read_pubxls(ef_pubxls))
-)
-
-
-# Geo helpers -------------------------------------------------------------
+## Geo helpers -------------------------------------------------------------
 
 t_geo_helpers <- list(
   # vazby ZÚJ a obcí, abychom mohli ZÚJ v datech
@@ -54,6 +42,23 @@ t_geo_helpers <- list(
   tar_target(cis_kraj, czso::czso_get_codelist("cis100")),
   # populace obcí pro vážení projektů mezi kraji
   tar_target(pop_obce, get_stats_pop_obce(c_czso_pop_table_id))
+)
+
+
+# ESIF data ---------------------------------------------------------------
+
+## PRV list of priorities
+
+t_prv_priorities <- list(
+  tar_target(prv_priorities, load_priority_list_prv(c_priority_prv_xls))
+)
+
+## Public project data -----------------------------------------------------
+
+t_public_list <- list(
+  tar_download(ef_pubxls, c_ef_pubxls_url,
+               here::here("data-input/ef_publish.xls")),
+  tar_target(ef_pub, read_pubxls(ef_pubxls))
 )
 
 ## Custom MS sestavy -------------------------------------------------------
@@ -173,5 +178,5 @@ source("R/html_output.R")
 
 # Compile targets lists ---------------------------------------------------
 
-list(t_public_list, t_geo_helpers, t_sestavy, t_op_compile, t_valid_zop_timing,
+list(t_public_list, t_prv_priorities, t_geo_helpers, t_sestavy, t_op_compile, t_valid_zop_timing,
      t_esif_compile, t_export, t_codebook, t_html)

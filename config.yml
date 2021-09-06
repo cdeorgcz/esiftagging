@@ -3,6 +3,13 @@ default:
   # URL for getting project data
   ef_pubxls_url: "https://dotaceeu.cz/getmedia/009dba87-d944-4f66-9bd4-2eb166e2ef92/2021_07_30_Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls"
 
+  # PRV data-input
+
+  prv_opendata_zipxml: ["prv_prijemci_2017.zip", "prv_prijemci_2018.zip", "prv_prijemci_2019.zip", "prv_prijemci_2020.zip"]
+  prv_opendata_urls: ["https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197147275.zip", "https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197121858.zip", "https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1590753721920.zip", "https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1622192829773.zip"]
+  prv_opendata_dir: "data-input/opendata-szif"
+  prv_data_path: "data-input/sestavy-prv_2020-12/PRV 2014-20 k XII. 2020.XLSX"
+
   # sestavy from MS
   sest_dir: "data-input/sestavy 20210528"
   sest_xlsx_prj: "E001 Identifikace projektu.xlsx"
@@ -10,14 +17,9 @@ default:
   sest_xlsx_zop: "E004 Žádosti o platbu.xlsx"
   sest_xlsx_obl: "E005 Kategorizace_oblast.xlsx"
 
-  # PRV data-input
-
-  prv_data_path: "data-input/prv/PRV 2014-20 k XII. 2020.XLSX"
 
   # Quest/Hermin categorisations
-  mc_xlsx_q: "data-input/kategorizace/kategorie_questNEW-2.xlsx"
-  mc_xlsx_h: "data-input/kategorizace/AIS_desagregace_rHERMIN.xlsx"
-  mc_xlsx_prv: "data-input/kategorizace/Navrh - KATEGORIZACE - Operace PRV + priority.xlsx"
+  priority_prv_xls: "data-input/Navrh - KATEGORIZACE - Operace PRV + priority.xlsx"
 
   # IDs
   czso_pop_table_id: "130149"
