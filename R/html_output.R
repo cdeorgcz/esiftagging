@@ -5,18 +5,13 @@ t_html <- list(
   tar_file(sitefiles, "site"),
   # https://github.com/jdblischak/workflowr/issues/238#issuecomment-782024069
 
-  tar_file(s_index_html, command = {
-    siteconf
-    sitefiles
-    s_readme_html
-    file.copy("docs/README.html", "docs/index.html", overwrite = TRUE)
-    "docs/index.html"}),
-
-  tar_file(s_readme_html, command = {!! tar_knitr_deps_expr("README.Rmd")
+  tar_file(s_index_html, command = {!! tar_knitr_deps_expr("README.Rmd")
     siteconf
     sitefiles
     rmarkdown::render_site(s_readme_rmd)
-    "docs/README.html"}),
+    file.remove("docs/index.html")
+    file.rename("docs/README.html", "docs/index.html")
+    "docs/index.html"}),
 
   tar_file(s_doc_rmd, "s_doc.Rmd"),
   tar_file(s_doc_html, command = {!! tar_knitr_deps_expr("s_doc.Rmd")
