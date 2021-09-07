@@ -7,7 +7,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Update 6. 9. 2011
+## Update 6. 9. 2021
 
 ### Hotovo
 
