@@ -55,6 +55,7 @@ Tento dokument slouží jako shrnutí sesbíraných informací k možnostem rozp
 efs_compiled %>% 
   distinct(oblast_intervence_kod,
            oblast_intervence_nazev) %>% 
+  arrange(oblast_intervence_kod) %>% 
   gt::gt()
 ```
 
@@ -63,6 +64,7 @@ efs_compiled %>%
 ```{r}
 efs_compiled %>% 
   distinct(sc_id, sc_nazev) %>% 
+  arrange(sc_id) %>% 
   gt::gt()
 ```
 
@@ -72,6 +74,7 @@ efs_compiled %>%
 efs_compiled %>% 
   distinct(katekon_kod,
            katekon_nazev) %>% 
+  arrange(katekon_kod) %>% 
   gt::gt()
 ```
   
@@ -98,6 +101,7 @@ Data od MMR (na vyžádání) obsahují jen projektová opatření, tj. nezahrnu
 ```{r}
 prv_priorities %>% 
   distinct() %>% 
+  arrange(prv_operace_kod) %>% 
   gt()
 ```
 
@@ -105,7 +109,10 @@ prv_priorities %>%
 
 ```{r}
 efs_prv %>% 
-  count(priorita, opatreni, operace, prv_operace_kod, wt = fin_vyuct_czv/1e9, name = "Celkem CZV vyúčováno (Kč)")
+  count(priorita, opatreni, operace, prv_operace_kod, 
+        wt = fin_vyuct_czv/1e9, name = "Celkem CZV vyúčováno (mld. Kč)") %>% 
+  mutate(`Celkem CZV vyúčováno (mld. Kč)` = round(`Celkem CZV vyúčováno (mld. Kč)`, 2)) %>% 
+  DT::datatable()
 ```
 
 

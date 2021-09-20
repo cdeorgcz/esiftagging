@@ -10,7 +10,8 @@ tar_option_set(packages = c("dplyr", "here", "readxl",
                             "dplyr", "future", "arrow", "tidyr",
                             "ragg", "magrittr", "czso", "lubridate", "writexl",
                             "readr", "purrr", "pointblank", "tarchetypes",
-                            "details", "forcats", "ggplot2"),
+                            "details", "forcats", "ggplot2",
+                            "xml2", "tibble", "ptrr", "DT"),
                # debug = "compiled_macro_sum_quarterly",
                # imports = c("purrrow"),
 )
@@ -21,7 +22,7 @@ options(crayon.enabled = TRUE,
         czso.dest_dir = "~/czso_data",
         yaml.eval.expr = TRUE)
 
-future::plan(multicore)
+future::plan(multisession)
 
 source("R/utils.R")
 source("R/functions.R")
@@ -127,6 +128,24 @@ t_op_compile <- list(
   tar_target(compiled_op_sum,
              summarise_by_op(efs_zop_quarterly, efs_prv_quarterly)))
 
+
+## Load climate categorisations --------------------------------------------
+
+### From regulation --------------------------------------------------------
+
+t_climacat_reg <- list(
+  tar_file(reg_table_nonagri_xlsx, c_reg_table_nonagri_xlsx),
+  tar_target(reg_table_nonagri,
+             process_reg_table_nonagri(reg_table_nonagri_xlsx))
+)
+
+
+## Integrate climate tag ---------------------------------------------------
+
+t_klimatag <- list(
+  tar_target(efs_tagged, left_join(efs_compiled_fin, reg_table_nonagri))
+)
+
 ## Export data for macro models --------------------------------------------
 
 t_export <- list(
@@ -179,4 +198,5 @@ source("R/html_output.R")
 # Compile targets lists ---------------------------------------------------
 
 list(t_public_list, t_prv_priorities, t_geo_helpers, t_sestavy, t_op_compile, t_valid_zop_timing,
-     t_esif_compile, t_export, t_codebook, t_html)
+     t_esif_compile, t_export, t_codebook, t_html, t_prv_opendata,
+     t_climacat_reg, t_klimatag)

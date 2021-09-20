@@ -10,3 +10,5 @@ ts <- as.list(targets::tar_manifest(fields = name)[["name"]])
 names(ts) <- ts
 
 cnf <- config::get(config = "default")
+names(cnf) <- paste0("c_", names(cnf))
+list2env(cnf, envir = .GlobalEnv)

@@ -1,7 +1,8 @@
 default:
 
   # URL for getting project data
-  ef_pubxls_url: "https://dotaceeu.cz/getmedia/009dba87-d944-4f66-9bd4-2eb166e2ef92/2021_07_30_Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls"
+  # ef_pubxls_url: "https://dotaceeu.cz/getmedia/009dba87-d944-4f66-9bd4-2eb166e2ef92/2021_07_30_Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls"
+  ef_pubxls_url: "https://dotaceeu.cz/getmedia/6297d56b-0b57-418d-ad25-dd16bd687479/2021_06-Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls"
 
   # PRV data-input
 
@@ -20,6 +21,12 @@ default:
 
   # Quest/Hermin categorisations
   priority_prv_xls: "data-input/Navrh - KATEGORIZACE - Operace PRV + priority.xlsx"
+
+  # Climate categoristions
+
+  ## From legislation
+  reg_table_nonagri_xlsx: "data-input/regulation-tables/reg-table_1_climate-categories_nonagri.xlsx"
+
 
   # IDs
   czso_pop_table_id: "130149"
