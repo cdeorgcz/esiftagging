@@ -19,7 +19,7 @@ Detailnější dokumentace k pipelinu na tvorbu dat pro makro modely:
 
 ## Dokumentace souborů
 
--   `esifunguji.Rproj`: konfigurace RStudio projektu
+-   `esiftagging.Rproj`: konfigurace RStudio projektu
 -   `_targets.R`: hlavní soubor definující datový pipeline
 -   `_site.yml`: konfigurace webu generovaného uvnitř pipeline do složky
     `docs`
@@ -37,6 +37,5 @@ Detailnější dokumentace k pipelinu na tvorbu dat pro makro modely:
     (needitovat ručně)
 -   `R`: kód funkcí, které dohromady vytváří pipeline
 -   `scripts`: jiný kód mimo pipeline - odkladiště
--   `sp_data`: cache dat Státní pokladny
 
 Detaily v [technické dokumentaci](dev.html).
