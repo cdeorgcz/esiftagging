@@ -243,7 +243,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">ESIF data</a>
+      <a class="navbar-brand" href="index.html">ESIF tagging</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -257,13 +257,25 @@ $(document).ready(function () {
   <a href="research.html">Rešerše</a>
 </li>
 <li>
-  <a href="s_output.html">Validace &amp; dokumentace výstupů</a>
+  <a href="s_listing.html">Pomůcka pro ruční tagging</a>
 </li>
 <li>
-  <a href="s_inputchecks.html">Validace vstupů</a>
+  <a href="s_output.html">Dokumentace výstupů</a>
 </li>
-<li>
-  <a href="dev.html">Technická dokumentace</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Technická dokumentace
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="s_inputchecks.html">Validace vstupů</a>
+    </li>
+    <li>
+      <a href="dev.html">Vývojářská dokumentace</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -295,9 +307,16 @@ $(document).ready(function () {
 
 <div id="section" class="section level1 tabset">
 <h1 class="tabset"></h1>
-<div id="náhled-hlavního-výstupu" class="section level2">
-<h2>Náhled hlavního výstupu</h2>
-<p><img src="s_output_files/figure-html/unnamed-chunk-1-1.png" width="576" /></p>
+<div id="náhled-hlavního-výstupu" class="section level2 tabset tabset-pills">
+<h2 class="tabset tabset-pills">Náhled hlavního výstupu</h2>
+<div id="všechny-op" class="section level3">
+<h3>Všechny OP</h3>
+<p><img src="s_output_files/figure-html/unnamed-chunk-1-1.png" width="100%" /></p>
+</div>
+<div id="szp-vč.-prv" class="section level3">
+<h3>SZP vč. PRV</h3>
+<p><img src="s_output_files/figure-html/unnamed-chunk-2-1.png" width="100%" /></p>
+</div>
 </div>
 <div id="dokumentace-hlavního-výstupu" class="section level2">
 <h2>Dokumentace hlavního výstupu</h2>
@@ -863,9 +882,9 @@ html {
   </tbody>
   <tfoot class="gt_sourcenotes">
     <tr>
-      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2021-09-20 10:53:59 CEST</span>
+      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2021-10-04 00:53:36 CEST</span>
 <span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;margin:5px 1px 5px 0;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">&lt; 1 s</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2021-09-20 10:53:59 CEST</span></td>
+<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2021-10-04 00:53:36 CEST</span></td>
     </tr>
   </tfoot>
   

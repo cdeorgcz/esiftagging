@@ -243,7 +243,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">ESIF data</a>
+      <a class="navbar-brand" href="index.html">ESIF tagging</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -257,13 +257,25 @@ $(document).ready(function () {
   <a href="research.html">Rešerše</a>
 </li>
 <li>
-  <a href="s_output.html">Validace &amp; dokumentace výstupů</a>
+  <a href="s_listing.html">Pomůcka pro ruční tagging</a>
 </li>
 <li>
-  <a href="s_inputchecks.html">Validace vstupů</a>
+  <a href="s_output.html">Dokumentace výstupů</a>
 </li>
-<li>
-  <a href="dev.html">Technická dokumentace</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Technická dokumentace
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="s_inputchecks.html">Validace vstupů</a>
+    </li>
+    <li>
+      <a href="dev.html">Vývojářská dokumentace</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -293,9 +305,44 @@ $(document).ready(function () {
 </div>
 
 
+<div id="update-30.-9.-2021" class="section level2">
+<h2>Update 30. 9. 2021</h2>
+<div id="nové" class="section level3">
+<h3>Nové</h3>
+<ul>
+<li><a href="s_listing.html">interaktivní náhledy kategorií pro ruční tagging</a></li>
+</ul>
+</div>
+<div id="hotovo" class="section level3">
+<h3>Hotovo</h3>
+<ul>
+<li>načtení dat PRV z open dat</li>
+<li>napojení oficiálních klima kategorií na data o SZP/PRV - viz <a href="s_output.html">náhled výstupu</a></li>
+</ul>
+</div>
+<div id="doplněno" class="section level3">
+<h3>Doplněno</h3>
+<ul>
+<li><a href="s_doc.html">dokumentace projektu</a></li>
+</ul>
+</div>
+<div id="in-progress" class="section level3">
+<h3>In progress</h3>
+<ul>
+<li>tabulkový export hlavních výstupů</li>
+<li>formální dokumentace výstupů (codebook)</li>
+</ul>
+</div>
+<div id="otázky" class="section level3">
+<h3>Otázky</h3>
+<ul>
+<li>má být OP Z a OP VVV v kategorii “0 %” nebo “neznámé/nic”?</li>
+</ul>
+</div>
+</div>
 <div id="update-6.-9.-2021" class="section level2">
 <h2>Update 6. 9. 2021</h2>
-<div id="hotovo" class="section level3">
+<div id="hotovo-1" class="section level3">
 <h3>Hotovo</h3>
 <ul>
 <li>sestavení projektu včetně přípravy na opakovatelný recept</li>
@@ -305,7 +352,7 @@ $(document).ready(function () {
 <li><a href="s_output.html">načtení dat PRV ze sestavy MMR</a></li>
 </ul>
 </div>
-<div id="in-progress" class="section level3">
+<div id="in-progress-1" class="section level3">
 <h3>In progress</h3>
 <ul>
 <li>načtení dat PRV z open dat</li>

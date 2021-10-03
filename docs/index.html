@@ -243,7 +243,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">ESIF data</a>
+      <a class="navbar-brand" href="index.html">ESIF tagging</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -257,13 +257,25 @@ $(document).ready(function () {
   <a href="research.html">Rešerše</a>
 </li>
 <li>
-  <a href="s_output.html">Validace &amp; dokumentace výstupů</a>
+  <a href="s_listing.html">Pomůcka pro ruční tagging</a>
 </li>
 <li>
-  <a href="s_inputchecks.html">Validace vstupů</a>
+  <a href="s_output.html">Dokumentace výstupů</a>
 </li>
-<li>
-  <a href="dev.html">Technická dokumentace</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Technická dokumentace
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="s_inputchecks.html">Validace vstupů</a>
+    </li>
+    <li>
+      <a href="dev.html">Vývojářská dokumentace</a>
+    </li>
+  </ul>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -308,7 +320,7 @@ $(document).ready(function () {
 <div id="dokumentace-souborů" class="section level2">
 <h2>Dokumentace souborů</h2>
 <ul>
-<li><code>esifunguji.Rproj</code>: konfigurace RStudio projektu</li>
+<li><code>esiftagging.Rproj</code>: konfigurace RStudio projektu</li>
 <li><code>_targets.R</code>: hlavní soubor definující datový pipeline</li>
 <li><code>_site.yml</code>: konfigurace webu generovaného uvnitř pipeline do složky <code>docs</code></li>
 <li><code>_interactive.R</code>: konfigurace webu generovaného uvnitř pipeline do složky <code>docs</code></li>
@@ -322,7 +334,6 @@ $(document).ready(function () {
 <li><code>renv</code>: skladiště systému renv pro reprodukovatelnost prostředí (needitovat ručně)</li>
 <li><code>R</code>: kód funkcí, které dohromady vytváří pipeline</li>
 <li><code>scripts</code>: jiný kód mimo pipeline - odkladiště</li>
-<li><code>sp_data</code>: cache dat Státní pokladny</li>
 </ul>
 <p>Detaily v <a href="dev.html">technické dokumentaci</a>.</p>
 </div>
