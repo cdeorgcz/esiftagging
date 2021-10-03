@@ -41,3 +41,16 @@ export_table <- function(data, path, fun, ...) {
 
   return(path)
 }
+
+pc <- function(x, accuracy = 1) {
+  ptrr::label_percent_cz(accuracy = accuracy)(x)
+}
+
+nm <- function(x, accuracy = 1) {
+  ptrr::label_number_cz(accuracy = accuracy)(x)
+}
+
+bn <- function(x, accuracy = 1) {
+  if(is.data.frame(x) & identical(dim(x), as.integer(c(1,1)))) x <- x[[1]]
+  paste0(ptrr::label_number_cz(accuracy = accuracy)(x/1e9), " mld. Kč")
+}
