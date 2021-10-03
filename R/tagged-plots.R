@@ -1,0 +1,51 @@
+make_plot_tagged_all <- function(esif_tagged_sum) {
+  esif_tagged_sum %>%
+    mutate(climate_share_code = case_when(climate_share == 0 ~ "none",
+                                          climate_share == 0.4 ~ "partial (40%)",
+                                          climate_share == 1 ~ "full (100%)",
+                                          is.na(climate_share) ~ "unknown") %>%
+             fct_relevel("full (100%)", "partial (40%)", "none", "unknown") %>% fct_rev()) %>%
+    group_by(climate_share_code) %>%
+    count(op_zkr, wt = fin_vyuct_czv/1e9) %>%
+    ungroup() %>%
+    mutate(op_zkr = as_factor(op_zkr) %>% fct_reorder(n, "sum")) %>%
+    ggplot(aes(y = op_zkr, x = n, fill = climate_share_code)) +
+    scale_fill_manual(values = c(`full (100%)` = "darkgreen", `partial (40%)` = "lightgreen",
+                                 none = "darkgrey", unknown = "lightgrey"), name = NULL) +
+    geom_col() +
+    scale_x_continuous(expand = ptrr::flush_axis) +
+    theme_ptrr("x", legend.position = "bottom", legend.key.size = unit(10, "pt")) +
+    labs(title = "Spending by climate tags",
+         subtitle = "bn CZK, all spending. Follows official climate tags.",
+         caption = "Payment data for CZ-PL programme unavailable.")
+}
+
+make_plot_tagged_agri_detail <- function(agri_tagged) {
+  agri_tagged %>%
+    count(fond, typ_podpory, opatreni, climate_share, wt = fin_vyuct_czv/1e9) %>%
+    mutate(opatreni = as.factor(opatreni) %>% fct_reorder(n, .fun = "sum")) %>%
+    ggplot(aes(n, paste0(fond, "\n", typ_podpory), fill = n, group = opatreni)) +
+    geom_col() +
+    facet_grid(.~climate_share, labeller = label_both) +
+    theme_ptrr("x", legend.position = "bottom", multiplot = T)
+}
+
+make_plot_tagged_agri <- function(agri_tagged) {
+  agri_tagged %>%
+    mutate(fond_typ = as_factor(paste0(fond, "\n", typ_podpory)) %>%
+             fct_reorder(fin_vyuct_czv, "sum")) %>%
+    count(fond_typ, opatreni, climate_share, wt = fin_vyuct_czv/1e9) %>%
+    mutate(climate_share_code = case_when(climate_share == 0 ~ "none",
+                                          climate_share == 0.4 ~ "partial (40%)",
+                                          climate_share == 1 ~ "full (100%)",
+                                          is.na(climate_share) ~ "unknown") %>%
+             fct_relevel("full (100%)", "partial (40%)", "none", "unknown") %>% fct_rev()) %>%
+    ggplot(aes(n, fond_typ, fill = climate_share_code)) +
+    scale_x_continuous(expand = ptrr::flush_axis) +
+    scale_fill_manual(values = c(`full (100%)` = "darkgreen", `partial (40%)` = "lightgreen",
+                                 none = "darkgrey", unknown = "lightgrey"), name = NULL) +
+    geom_col() +
+    theme_ptrr("x", legend.position = "bottom", legend.key.size = unit(10, "pt")) +
+    labs(title = "CAP spending by climate tags",
+         subtitle = "bn CZK, all spending. Follows official climate tags.")
+}

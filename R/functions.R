@@ -6,4 +6,6 @@ source(here::here("R/geo-helpers.R"))
 source(here::here("R/zop_timing.R"))
 source(here::here("R/agri.R"))
 source(here::here("R/regulation-categories.R"))
+source(here::here("R/tagging-aid.R"))
+source(here::here("R/tagged-plots.R"))
 

@@ -53,5 +53,12 @@ t_html <- list(
     siteconf
     sitefiles
     rmarkdown::render_site(s_research_rmd)
-    "docs/research.html"})
+    "docs/research.html"}),
+
+  tar_file(s_listing_rmd, "s_listing.Rmd"),
+  tar_file(s_listing_html, command = {!! tar_knitr_deps_expr("s_listing.Rmd")
+    siteconf
+    sitefiles
+    rmarkdown::render_site(s_listing_rmd)
+    "docs/s_listing.html"})
 )
