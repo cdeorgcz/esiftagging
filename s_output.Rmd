@@ -22,30 +22,25 @@ targets::tar_load(efs_zop)
 targets::tar_load(efs_fin)
 targets::tar_load(sum_codebook)
 targets::tar_load(efs_tagged)
+targets::tar_load(esif_tagged_sum)
 ```
 
 # {.tabset}
 
-## Náhled hlavního výstupu
+## Náhled hlavního výstupu {.tabset .tabset-pills}
 
-```{r}
-efs_tagged %>% 
-  add_op_labels() %>% 
-  mutate(oblast_intervence_klimatag_code = case_when(oblast_intervence_klimatag == 0 ~ "none",
-                                                     oblast_intervence_klimatag == 0.4 ~ "partial",
-                                                     oblast_intervence_klimatag == 1 ~ "full",
-                                                     is.na(oblast_intervence_klimatag) ~ "unknown") %>% 
-           fct_relevel("full", "partial", "none", "unknown") %>% fct_rev()) %>% 
-  group_by(oblast_intervence_klimatag_code) %>% 
-  count(op_zkr, wt = fin_vyuct_czv/1e9) %>% 
-  ggplot(aes(y = op_zkr, x = n, fill = oblast_intervence_klimatag_code)) +
-  scale_fill_manual(values = c(full = "darkgreen", partial = "lightgreen",
-                               none = "darkgrey", unknown = "lightgrey"), name = NULL) +
-  geom_col() +
-  theme_ptrr("x", legend.position = "bottom") +
-  labs(title = "Spending by climate tags",
-       subtitle = "bn CZK, all spending. Follows official climate tags.")
+### Všechny OP
+
+```{r, out.width="100%"}
+tar_read(plot_tagged_all)
 ```
+
+### SZP vč. PRV
+
+```{r, out.width="100%"}
+targets::tar_read(plot_tagged_agri)
+```
+
 
 
 ## Dokumentace hlavního výstupu
@@ -87,6 +82,7 @@ sum_quarterly %>%
   count(dt_zop_rok, wt = round(fin_vyuct_czv/1e9, 2)) %>% 
   spread(dt_zop_rok, n)
 ```
+
 ```{r}
 sum_quarterly %>% 
   count(source, wt = fin_vyuct_czv)
