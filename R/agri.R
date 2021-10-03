@@ -70,3 +70,49 @@ extract_agri_payments_year <- function(xml_path) {
   return(sxml_platby_flat)
 }
 
+tag_agri <- function(agri_opendata, reg_table_agri) {
+
+  prv_opatreni_regex <- paste0(reg_table_agri$opatreni_regex, collapse = ")|(")
+  prv_opatreni_regex <- paste0("(", prv_opatreni_regex, ")")
+
+  reg_table_agri_tojoin <- reg_table_agri %>%
+    select(opatreni_nazev, opatreni_id, climate_share)
+
+  agri_opendata_tagged <- agri_opendata %>%
+    mutate(opatreni_id = str_extract(opatreni, prv_opatreni_regex)) %>%
+    left_join(reg_table_agri_tojoin, by = "opatreni_id") %>%
+    mutate(climate_share = if_else(is.na(climate_share) & str_detect(fond, "EAFRD"),
+                                   0, climate_share))
+
+  return(agri_opendata_tagged)
+}
+
+subset_prv_tagged <- function(agri_tagged) {
+  agri_tagged %>%
+    filter(fond == "EAFRD 14-20") %>%
+    select(starts_with("fin"), dt_rok,
+           prv_opatreni_orig = opatreni,
+           prv_opatreni_typ = typ_podpory,
+           prv_opatreni_id = opatreni_id,
+           prv_opatreni_nazev = opatreni_nazev, climate_share) %>%
+    mutate(op_zkr = "PRV")
+}
+
+summarise_prv_tagged <- function(prv_tagged) {
+  prv_tagged %>%
+    group_by(op_zkr,
+             prv_opatreni_orig,
+             prv_opatreni_id,
+             prv_opatreni_typ,
+             prv_opatreni_nazev,
+             climate_share) %>%
+    summarise(across(starts_with("fin"), ~sum(.x, na.rm = TRUE)), .groups = "drop")
+}
+
+summarise_agri_tagged <- function(agri_tagged) {
+  agri_tagged %>%
+    group_by(fond, typ_podpory,
+             opatreni,
+             climate_share) %>%
+    summarise(across(starts_with("fin"), ~sum(.x, na.rm = TRUE)))
+}
