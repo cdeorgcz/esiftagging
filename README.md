@@ -29,8 +29,7 @@ ESIF:
 -   `_targets.R`: hlavní soubor definující datový pipeline
 -   `_site.yml`: konfigurace webu generovaného uvnitř pipeline do složky
     `docs`
--   `_interactive.R`: konfigurace webu generovaného uvnitř pipeline do
-    složky `docs`
+-   `_interactive.R`: utilita - načítá objekty pro interaktivní vývoj
 -   `build.R`: utilita - spouští pipeline, v RStudio projectu navázáno
     na Build command
 -   `*.Rmd`: zdroje webové dokumentace
