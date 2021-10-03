@@ -5,16 +5,22 @@ ESIF climate tagging
 <!-- badges: start -->
 <!-- badges: end -->
 
-TO DO
+Climate tagging výdajů ESI fondů v ČR, 2014-20.
 
 **Vytvořeno pro Centrum pro dopravu a energetiku jako součást projektu
-*XXX* (CODE)**
+LIFE *XXX* (CODE)**
 
-Detailnější dokumentace k pipelinu na tvorbu dat pro makro modely:
+Detailnější dokumentace k pipelinu na přípravu a tagging dat o výdajích
+ESIF:
 
 -   [obsahová dokumentace](s_doc.html)
+
+-   [dokumentace a validace výstupu](s_output.html)
+
+-   [pomůcka pro ruční tagging](s_listing.html)
+
 -   [vstupní validace dat](s_inputchecks.html)
--   [dokumantace a validace výstupu](s_output.html)
+
 -   [technická dokumentace](dev.html)
 
 ## Dokumentace souborů
@@ -33,6 +39,9 @@ Detailnější dokumentace k pipelinu na tvorbu dat pro makro modely:
 -   `data-input`: vstupní data
 -   `data-output`: výstupní data ve formátu pro R
 -   `data-processed`: mezidata
+-   `site`: adresář pro pomocné soubory webové dokumentace - jejich
+    změna spustí rebuild stránek; celý adresář se publikuje spolu s
+    webovou dokumentací
 -   `renv`: skladiště systému renv pro reprodukovatelnost prostředí
     (needitovat ručně)
 -   `R`: kód funkcí, které dohromady vytváří pipeline

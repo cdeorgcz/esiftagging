@@ -308,14 +308,15 @@ $(document).ready(function () {
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 <!-- badges: end -->
-<p>TO DO</p>
-<p><strong>Vytvořeno pro Centrum pro dopravu a energetiku jako součást projektu <em>XXX</em> (CODE)</strong></p>
-<p>Detailnější dokumentace k pipelinu na tvorbu dat pro makro modely:</p>
+<p>Climate tagging výdajů ESI fondů v ČR, 2014-20.</p>
+<p><strong>Vytvořeno pro Centrum pro dopravu a energetiku jako součást projektu LIFE <em>XXX</em> (CODE)</strong></p>
+<p>Detailnější dokumentace k pipelinu na přípravu a tagging dat o výdajích ESIF:</p>
 <ul>
-<li><a href="s_doc.html">obsahová dokumentace</a></li>
-<li><a href="s_inputchecks.html">vstupní validace dat</a></li>
-<li><a href="s_output.html">dokumantace a validace výstupu</a></li>
-<li><a href="dev.html">technická dokumentace</a></li>
+<li><p><a href="s_doc.html">obsahová dokumentace</a></p></li>
+<li><p><a href="s_output.html">dokumentace a validace výstupu</a></p></li>
+<li><p><a href="s_listing.html">pomůcka pro ruční tagging</a></p></li>
+<li><p><a href="s_inputchecks.html">vstupní validace dat</a></p></li>
+<li><p><a href="dev.html">technická dokumentace</a></p></li>
 </ul>
 <div id="dokumentace-souborů" class="section level2">
 <h2>Dokumentace souborů</h2>
@@ -331,6 +332,7 @@ $(document).ready(function () {
 <li><code>data-input</code>: vstupní data</li>
 <li><code>data-output</code>: výstupní data ve formátu pro R</li>
 <li><code>data-processed</code>: mezidata</li>
+<li><code>site</code>: adresář pro pomocné soubory webové dokumentace - jejich změna spustí rebuild stránek; celý adresář se publikuje spolu s webovou dokumentací</li>
 <li><code>renv</code>: skladiště systému renv pro reprodukovatelnost prostředí (needitovat ručně)</li>
 <li><code>R</code>: kód funkcí, které dohromady vytváří pipeline</li>
 <li><code>scripts</code>: jiný kód mimo pipeline - odkladiště</li>
