@@ -26,7 +26,8 @@ default:
 
   ## From legislation
   reg_table_nonagri_xlsx: "data-input/regulation-tables/reg-table_1_climate-categories_nonagri.xlsx"
-
+  reg_table_agri_xlsx: "data-input/regulation-tables/reg-table_1_climate-categories_agri.xlsx"
+  reg_table_agri_sheetname: "cz_priorities"
 
   # IDs
   czso_pop_table_id: "130149"

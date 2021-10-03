@@ -152,15 +152,22 @@ t_op_compile <- list(
 t_climacat_reg <- list(
   tar_file(reg_table_nonagri_xlsx, c_reg_table_nonagri_xlsx),
   tar_target(reg_table_nonagri,
-             process_reg_table_nonagri(reg_table_nonagri_xlsx))
+             process_reg_table_nonagri(reg_table_nonagri_xlsx)),
+  tar_file(reg_table_agri_xlsx, c_reg_table_agri_xlsx),
+  tar_target(reg_table_agri,
+             read_reg_table_agri(reg_table_agri_xlsx,
+                                 c_reg_table_agri_sheetname))
 )
 
 
 ## Integrate climate tag ---------------------------------------------------
 
-t_klimatag <- list(
-  tar_target(efs_tagged, left_join(efs_compiled_fin, reg_table_nonagri))
+t_climate_tag <- list(
+  tar_target(efs_tagged, left_join(efs_compiled_fin, reg_table_nonagri,
+                                   by = "oblast_intervence_kod")),
+  tar_target(agri_tagged, tag_agri(agri_opendata, reg_table_agri))
 )
+
 
 ## Export data for macro models --------------------------------------------
 
@@ -214,5 +221,5 @@ source("R/html_output.R")
 # Compile targets lists ---------------------------------------------------
 
 list(t_public_list, t_prv_priorities, t_geo_helpers, t_sestavy, t_op_compile, t_valid_zop_timing,
-     t_esif_compile, t_export, t_codebook, t_html, t_prv_opendata,
-     t_climacat_reg, t_klimatag)
+     t_esif_compile, t_export, t_codebook, t_html, t_agri_opendata,
+     t_climacat_reg, t_climate_tag, t_tagged_summarised, t_tagging_aid,
