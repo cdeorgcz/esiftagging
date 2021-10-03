@@ -14,8 +14,9 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 - Na vstupu je 
   - kupa excel souborů - sestav od MMR
   - online excelová tabulka projektů od MMR
-  - online data Státní pokladny (pro část o veřejných výdajích)
+  - online XML data SZIF o platbách
   - jeden Arrow dataset
+  - konfigurace cest. URL a parametrů v `config.yml`
 - Na výstupu je
   - kupa excel a CSV souborů
   - webová dokumentace
@@ -26,7 +27,7 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 
 Celý pipeline je organizován nástrojem `{targets}`, funguje podobně jako `make`. Ve skriptu `_targets.R` jsou popsány všechny výstupy ("targets") a jejich vztahy. `{targets}` sleduje, které targets neodpovídají aktuálnímu stavu kódu (funkce ve skriptech v `R/`) a jeho vstupů a po spuštění pipeline (`tar_make()`) spouští pouze ten kód, který je potřeba pro uvedení výstupů do aktuální podoby. Mezi výstupy patří průběžné datasety, výstupní datové soubory i výstupní datovádokumentace.
 
-Všechny cesty ke vstupním a výstupním souborům a dalším parametry se nastavují v `config.yml`.
+Všechny cesty ke vstupním a výstupním souborům a další parametry se nastavují v `config.yml`.
 
 O reprodukovatelnost prostředí (tj. udržování správné verze balíků R) se stará systém {renv}.
 
