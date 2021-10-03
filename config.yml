@@ -45,6 +45,8 @@ default:
   export_csv_a: "sum_quarterly.csv"
   export_csv_q: "sum_annual.csv"
 
+  export_tagging_xlsx: "site/export-tagging-all.xlsx"
+
   export_cdbk: "sum_codebook.yaml"
 
   repo_remote: "https://github.com/cdeorgcz/esiftagging"

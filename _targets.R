@@ -11,7 +11,8 @@ tar_option_set(packages = c("dplyr", "here", "readxl",
                             "ragg", "magrittr", "czso", "lubridate", "writexl",
                             "readr", "purrr", "pointblank", "tarchetypes",
                             "details", "forcats", "ggplot2",
-                            "xml2", "tibble", "ptrr", "DT"),
+                            "xml2", "tibble", "ptrr", "DT", "plotly",
+                            "summarywidget", "htmltools", "crosstalk"),
                # debug = "compiled_macro_sum_quarterly",
                # imports = c("purrrow"),
 )
@@ -191,6 +192,58 @@ t_export <- list(
 )
 
 
+t_tagged_summarised <- list(
+  tar_target(efs_tagged_sum_prj,
+             summarise_tagged(efs_tagged %>% add_op_labels(),
+                              prj_id, sc_id, sc_nazev, op_zkr) %>%
+               left_join(efs_prj %>% distinct(prj_id, prj_nazev), by = "prj_id")),
+  tar_target(efs_tagged_sum_kat,
+             summarise_tagged(efs_tagged)),
+  tar_target(efs_tagged_sum_op_sc,
+             summarise_tagged(efs_tagged %>% add_op_labels(),
+                              sc_id, sc_nazev, op_zkr)),
+  tar_target(efs_tagged_sum_op,
+             summarise_tagged(efs_tagged %>% add_op_labels(),
+                              op_zkr)),
+  tar_target(prv_tagged, subset_prv_tagged(agri_tagged)),
+  tar_target(prv_tagged_sum, summarise_prv_tagged(prv_tagged)),
+  tar_target(agri_tagged_sum, summarise_agri_tagged(agri_tagged))
+
+)
+
+
+## Summarise and compile tagged data ---------------------------------------
+
+t_tagged_compiled <- list(
+  tar_target(esif_tagged_sum, bind_rows(efs_tagged_sum_op_sc, prv_tagged_sum))
+)
+
+## Plots of main outputs
+
+t_tagged_plots <- list(
+  tar_target(plot_tagged_agri, make_plot_tagged_agri(agri_tagged)),
+  tar_target(plot_tagged_all, make_plot_tagged_all(esif_tagged_sum))
+)
+
+
+## Overview for manual tagging ----------------------------------------------
+
+t_tagging_aid <- list(
+  tar_target(efs_tagged_for_plot,
+             prep_tagged_for_plot(efs_tagged_sum_op_sc)),
+  tar_target(efs_plotly, make_efs_plotly(efs_tagged_for_plot)),
+  tar_target(agri_plotly, make_agri_plotly(agri_tagged)),
+  tar_file(export_for_tagging,
+           writexl::write_xlsx(list(
+             all = esif_tagged_sum,
+             prv_detail = prv_tagged_sum,
+             agri_detail = agri_tagged_sum,
+             nonagri_detail = efs_tagged_sum_op_sc,
+             nonagri_projekty = efs_tagged_sum_prj
+           ),
+           c_export_tagging_xlsx))
+)
+
 ## Validation and exploration ----------------------------------------------
 
 t_valid_zop_timing <- list(
@@ -223,3 +276,4 @@ source("R/html_output.R")
 list(t_public_list, t_prv_priorities, t_geo_helpers, t_sestavy, t_op_compile, t_valid_zop_timing,
      t_esif_compile, t_export, t_codebook, t_html, t_agri_opendata,
      t_climacat_reg, t_climate_tag, t_tagged_summarised, t_tagging_aid,
+     t_tagged_compiled, t_tagged_plots)

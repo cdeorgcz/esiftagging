@@ -13,6 +13,9 @@ navbar:
   - text: Rešerše
     href: research.html
   - text: Validace & dokumentace výstupů
+  - text: Pomůcka pro ruční tagging
+    href: s_listing.html
+  - text: Dokumentace výstupů
     href: s_output.html
   - text: Validace vstupů
     href: s_inputchecks.html

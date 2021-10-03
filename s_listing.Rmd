@@ -1,0 +1,157 @@
+---
+title: "Náhledy pro ruční tagging"
+output: 
+  html_document:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+source("R/utils.R")
+source("_targets_packages.R")
+
+targets::tar_load(efs_tagged)
+targets::tar_load(efs_tagged_sum_prj)
+targets::tar_load(efs_tagged_sum_kat)
+targets::tar_load(efs_tagged_sum_op)
+targets::tar_load(efs_tagged_sum_op_sc)
+targets::tar_load(efs_tagged_for_plot)
+targets::tar_load(efs_plotly)
+targets::tar_load(agri_plotly)
+targets::tar_load(agri_tagged_sum)
+
+cnf <- config::get()
+```
+
+#   {.tabset}
+
+Grafy a tabulky níže slouží jako pomůcka pro ruční tagování výdajů. 
+
+Graf lze přetažením zaměřit na vybrané kategorie, dvojklikem se vrátíte na celkový pohled.
+
+[Excelový export](`r cnf$export_tagging_xlsx`) těchto dat spolu s rozpady non-agri výdajů na jednotlivé projekty.
+
+## ESIF Mimo SZP
+
+V tabulce pracujeme s kombinací *specifických cílů (SC)* (střední úroveň hierarchie cílů operačního programu - níže jsou výzvy a pak už jen projekty) a *oblastí intervencí* (evropská kategorizace výdajů, na niž jsou navázány klimatické kategorie).
+
+Graf zobrazuje pouze specifické cíle - kategorie intervencí jsou zjednudušeny na klimatické kategorie. (Jeden SC ale může být rozložen mezi více oblastí intervencí - viz tabulku). Rozpad až na úroveň projektů je v [excelovém exportu](`r cnf$export_tagging_xlsx`).
+
+```{r, out.width="100%"}
+efs_plotly
+```
+
+Tabulka níže umožňuje vybírat specifické kombinace specifického cíle a oblasti intervencí podle jejich klima tagu a operačního programu, popř. podle textového filtru.
+
+Pro změnu tagu bude potřeba zapracovat do pipeline dodatečnou tabulku s novými tagy. Ta by měla identifikovat specifická cíl, popř. kombinaci cíle a oblasti, které se týká - tj. měla by obsahovat sloupce s kódy (`sc_id` a `oblast_intervence_kod`) a sloupec s novým klima tagem.
+
+```{r}
+shared_sum_prj <- SharedData$new(slice_sample(efs_tagged_sum_prj, n = 1000))
+shared_sum_op_sc <- SharedData$new(efs_tagged_sum_op_sc %>% 
+                                     select(-fin_vyuct_narodni, -fin_vyuct_eu,
+                                            -fin_vyuct_eu, -fin_vyuct_jine_nar_ver,
+                                            -fin_vyuct_sf, -fin_vyuct_sr,
+                                            -fin_vyuct_kraj, -fin_vyuct_obec,
+                                            -fin_vyuct_soukr, -fin_vyuct_narodni_verejne) %>% 
+                                     mutate(op_zkr = as.factor(op_zkr),
+                                            fin_vyuct_czv = fin_vyuct_czv/1e9))
+```
+
+```{r}
+filter_checkbox("op_id", "OP", shared_sum_op_sc, ~op_zkr, inline = TRUE)
+```
+
+```{r}
+bscols(filter_checkbox("climate_share", "Klimatag", shared_sum_op_sc,
+                       ~climate_share, inline = TRUE), 
+       filter_slider("czv", "Výdaje v daném SC a kategorii (mld. Kč)", shared_sum_op_sc, 
+                     ~fin_vyuct_czv, round = 1))
+```
+
+```{r}
+bscols(htmltools::div(list("Výdaje ve vybraných kategoriích (mld. Kč):",
+                           summarywidget(shared_sum_op_sc, "sum", "fin_vyuct_czv"))),
+       htmltools::div(list("Orientační počet projektů ve vybraných kategoriích (mld. Kč):",
+                           summarywidget(shared_sum_op_sc, "sum", "n_prj"))),
+       htmltools::div(list("Vybraných řádků (kategorie a SC):",
+                           summarywidget(shared_sum_op_sc, "count"))))
+```
+
+
+```{r}
+# add our table next to the filters
+DT::datatable(shared_sum_op_sc, 
+              colnames = c(oblast_nazev = "oblast_intervence_nazev_en",
+                           oblast_kod = "oblast_intervence_kod",
+                           tag = "climate_share",
+                           `CZV (mld. Kč)` = "fin_vyuct_czv"),
+              filter = "top", rownames = FALSE, 
+              selection = list(mode = "none"),
+              extensions = "Buttons",
+              options = list(
+                dom = 'pBrti',
+                buttons = c('copy', 'csv', 'excel', 'pdf'))) %>% 
+  DT::formatRound("CZV (mld. Kč)", 2) %>% 
+  DT::formatPercentage("tag")
+```
+
+## SZP
+
+Pro orientaci zobrazujeme všechny výdaje SZP. (Přetažením lze vybrat jen některé kategorie.)
+
+Pracujeme s úrovní opatření - jemnější není k dispozici. Přes operační program lze opatření PRV navázat na priority fondu EAFRD a tedy klimatické kategorie. U jiných fondů nejsou klimatické kategorie oficiálně stanoveny.
+
+```{r, out.width="100%"}
+agri_plotly
+```
+
+Tabulka níže umožňuje vybírat specifické kombinace specifického cíle a oblasti intervencí podle jejich klima tagu a operačního programu, popř. podle textového filtru. Je to tedy jemnější úroveň rozpadu, než na které jsou určené klimatagy.
+
+Pro změnu tagu bude potřeba zapracovat do pipeline dodatečnou tabulku s novými tagy. Ta by měla identifikovat specifická cíl, popř. kombinaci cíle a oblasti, které se týká - tj. měla by obsahovat sloupce s názvem opatření a fondu (`fond` a `opatreni`) a sloupec s novým klima tagem.
+
+```{r}
+shared_agri <- SharedData$new(agri_tagged_sum %>% 
+                                mutate(fond = as.factor(fond),
+                                       climate_share = scales::label_percent(1)(climate_share),
+                                       typ_podpory = as.factor(typ_podpory),
+                                       fin_vyuct_czv = fin_vyuct_czv/1e9) %>% 
+                                select(-fin_vyuct_narodni, -fin_vyuct_eu) %>% 
+                                replace_na(list(climate_share = "nic")))
+```
+
+```{r}
+bscols(filter_checkbox("fond", "Fond", shared_agri,
+                       ~fond, inline = TRUE), 
+       filter_checkbox("typ_podpory", "Typ podpory", shared_agri, 
+                       ~typ_podpory, inline = TRUE))
+```
+
+```{r}
+bscols(filter_checkbox("climate_share", "Klimatag", shared_agri,
+                       ~climate_share, inline = TRUE), 
+       filter_slider("czv", "Výdaje v opatření (mld. Kč)", shared_agri, 
+                     ~fin_vyuct_czv, round = 1))
+```
+
+```{r}
+bscols(htmltools::div(list("Výdaje ve vybraných kategoriích (mld. Kč):",
+                           summarywidget(shared_agri, "sum", "fin_vyuct_czv"))),
+       htmltools::div(list("Vybráno kategorií:",
+                           summarywidget(shared_agri, "count"))))
+```
+
+
+```{r}
+# add our table next to the filters
+DT::datatable(shared_agri, 
+              colnames = c(tag = "climate_share",
+                           `CZV (mld. Kč)` = "fin_vyuct_czv"),
+              filter = "top", rownames = FALSE, 
+              selection = list(mode = "none"),
+              extensions = "Buttons",
+              options = list(
+                dom = 'pBrti',
+                buttons = c('copy', 'csv', 'excel', 'pdf'))) %>% 
+  DT::formatRound("CZV (mld. Kč)", 2)
+```
