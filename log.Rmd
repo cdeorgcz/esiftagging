@@ -7,6 +7,31 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Update 30. 9. 2021
+
+### Nové
+
+- [interaktivní náhledy kategorií pro ruční tagging](s_listing.html)
+
+### Hotovo
+
+- načtení dat PRV z open dat
+- napojení oficiálních klima kategorií na data o SZP/PRV - viz [náhled výstupu](s_output.html)
+
+
+### Doplněno
+
+- [dokumentace projektu](s_doc.html)
+
+### In progress
+
+- tabulkový export hlavních výstupů
+- formální dokumentace výstupů (codebook)
+
+### Otázky
+
+- má být OP Z a OP VVV v kategorii "0 %" nebo "neznámé/nic"?
+
 ## Update 6. 9. 2021
 
 ### Hotovo
