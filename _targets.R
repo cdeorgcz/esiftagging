@@ -54,6 +54,22 @@ t_prv_priorities <- list(
   tar_target(prv_priorities, load_priority_list_prv(c_priority_prv_xls))
 )
 
+t_agri_opendata <- list(
+  tar_target(agri_opendata_urls, c_agri_opendata_urls),
+  tar_target(agri_opendata_paths, file.path(c_agri_opendata_dir,
+                                            c_agri_opendata_zipxml)),
+  tar_target(agri_opendata_zipfiles,
+             {download.file(agri_opendata_urls,
+                            agri_opendata_paths,
+                            method = "libcurl")
+               agri_opendata_paths
+             }, format = "file", pattern = map(agri_opendata_urls,
+                                               agri_opendata_paths)),
+  tar_target(agri_opendata,
+             extract_agri_payments_year(agri_opendata_zipfiles),
+             pattern = map(agri_opendata_zipfiles))
+)
+
 ## Public project data -----------------------------------------------------
 
 t_public_list <- list(

@@ -6,9 +6,9 @@ default:
 
   # PRV data-input
 
-  prv_opendata_zipxml: ["prv_prijemci_2017.zip", "prv_prijemci_2018.zip", "prv_prijemci_2019.zip", "prv_prijemci_2020.zip"]
-  prv_opendata_urls: ["https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197147275.zip", "https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197121858.zip", "https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1590753721920.zip", "https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1622192829773.zip"]
-  prv_opendata_dir: "data-input/opendata-szif"
+  agri_opendata_zipxml: ["agri_prijemci_2017.zip", "agri_prijemci_2018.zip", "agri_prijemci_2019.zip", "agri_prijemci_2020.zip"]
+  agri_opendata_urls: ["https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197147275.zip", "https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197121858.zip", "https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1590753721920.zip", "https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1622192829773.zip"]
+  agri_opendata_dir: "data-input/opendata-szif"
   prv_data_path: "data-input/sestavy-prv_2020-12/PRV 2014-20 k XII. 2020.XLSX"
 
   # sestavy from MS
