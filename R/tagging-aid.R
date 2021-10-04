@@ -10,6 +10,13 @@ summarise_tagged <- function(data, ...) {
     arrange(oblast_intervence_kod, ...)
 }
 
+summarise_tagged_op_only <- function(data_nonagri, data_prv) {
+  bind_rows(data_prv, data_nonagri) %>%
+    group_by(op_zkr, climate_share) %>%
+    summarise(across(starts_with("fin_"), ~sum(.x, na.rm = TRUE)),
+              .groups = "drop")
+}
+
 prep_tagged_for_plot <- function(efs_tagged_sum_op_sc) {
   efs_tagged_sum_op_sc %>%
     drop_na(climate_share) %>%

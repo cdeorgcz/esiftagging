@@ -215,7 +215,7 @@ t_tagged_summarised <- list(
 ## Summarise and compile tagged data ---------------------------------------
 
 t_tagged_compiled <- list(
-  tar_target(esif_tagged_sum, bind_rows(efs_tagged_sum_op_sc, prv_tagged_sum))
+  tar_target(esif_tagged_sum, summarise_tagged_op_only(efs_tagged_sum_op_sc, prv_tagged_sum))
 )
 
 ## Plots of main outputs
@@ -235,7 +235,7 @@ t_tagging_aid <- list(
   tar_target(agri_plotly, make_agri_plotly(agri_tagged)),
   tar_file(export_for_tagging,
            writexl::write_xlsx(list(
-             all = esif_tagged_sum,
+             sumar = esif_tagged_sum,
              prv_detail = prv_tagged_sum,
              agri_detail = agri_tagged_sum,
              nonagri_detail = efs_tagged_sum_op_sc,
