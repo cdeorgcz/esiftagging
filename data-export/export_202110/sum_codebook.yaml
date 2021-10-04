@@ -1,42 +1,44 @@
 type: informant
-read_fn: ~sum_quarterly
-tbl_name: compiled_macro_sum_quarterly
+read_fn: ~esif_tagged_sum_op
+tbl_name: esif_tagged_sum_op
 info_label: Codebook hlavního výstupu
 lang: en
 locale: en
 table:
-  name: compiled_macro_sum_quarterly
-  _columns: 14
-  _rows: 43.0
+  name: esif_tagged_sum_op
+  _columns: 19
+  _rows: 196.0
   _type: tbl_df
-  Info: Tabulka se součty výdajů podle času, kraje, kategorie QUEST/HERMIN, TC DoP
-    a cíle EU2020
-  Note: Platí pro data po kvartálech a analogicky i pro roční data
-  Celková struktura: 'dlouhý formát: čas a kraj jsou v řádcích, metadata a jednotlivé
+  Info: Tabulka se součty výdajů podle OP, klima tagu a kategorie určující klimatag
+  Rozsah: Z CAP/SZP zahruje jen PRV - projektová i plošná opatření
+  Proměnné: kategorie určující klimatag je u PRV opatření, u ostatních OP je to oblast
+    intervencí
+  Detail: Codebook obsahuje všechny proměnné obsažené v různých exportech
+  Celková struktura: 'dlouhý formát: kategorie jsou v řádcích, metadata a jednotlivé
     zdroje financí jsou ve sloupcích'
   Názvy proměnných: |-
     platí i pro ostatní datové sady v pipeline:
     - `dt_`: proměnné časového určení
     - `fin_`: finanční údaje
 columns:
-  dt_zop_rok:
-    _type: numeric
-    Popis: Rok proplacení ŽOP
-    Zdroj dat: Datum proplacení ŽOP
-    Typ: Časový údaj (datum)
-  source:
+  oblast_intervence_nazev_en:
     _type: character
-    Popis: Zdroj dat (MSSF/MSEU nebo SZIF (PRV))
-  dt_zop_kvartal:
+    Typ: Oblast intervence (area of intervention)
+    Note: Nexistuje u výdajů CAP - zde jen nařízení
+    Detail: Kategorie určená v nařízení, na niž jsou v prováděcím nařízení navázány
+      klima tagy
+  oblast_intervence_kod:
+    _type: character
+    Typ: Oblast intervence (area of intervention)
+    Note: Nexistuje u výdajů CAP - zde jen nařízení
+    Detail: Kategorie určená v nařízení, na niž jsou v prováděcím nařízení navázány
+      klima tagy
+  climate_share:
     _type: numeric
-    Popis: Kvartál proplacení ŽOP
-    Zdroj dat: Datum proplacení ŽOP
-    Typ: Časový údaj (datum)
-  dt_zop_kvartal_datum:
-    _type: Date
-    Popis: První den kvartálu
-    Zdroj dat: Datum proplacení ŽOP
-    Typ: Časový údaj (datum)
+    Popis: Podíl přispění ke klimatu - podle prováděcího nařízení EK
+  op_zkr:
+    _type: character
+    Popis: Česká zkratka operačního programu
   fin_vyuct_czv:
     _type: numeric
     Typ: Finance
@@ -97,3 +99,21 @@ columns:
     Jednotka: CZK
     Zdroj dat: ŽOP sečtené podle data proplacení
     Zdroj financí: Národní
+  n_prj:
+    _type: integer
+  prv_opatreni_orig:
+    _type: character
+    Typ: Opatření PRV/CAP
+    Note: Existuje jen u výdajů CAP
+  prv_opatreni_id:
+    _type: character
+    Typ: Opatření PRV/CAP
+    Note: Existuje jen u výdajů CAP
+  prv_opatreni_typ:
+    _type: character
+    Typ: Opatření PRV/CAP
+    Note: Existuje jen u výdajů CAP
+  prv_opatreni_nazev:
+    _type: character
+    Typ: Opatření PRV/CAP
+    Note: Existuje jen u výdajů CAP

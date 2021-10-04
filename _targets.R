@@ -291,10 +291,10 @@ t_valid_zop_timing <- list(
 
 t_codebook <- list(
   tar_target(sum_codebook,
-             make_codebook(sum_quarterly)),
+             make_codebook(esif_tagged_sum_op)),
   tar_file(sum_codebook_yaml,
            {pointblank::yaml_write(informant = sum_codebook %>%
-                                     pointblank::set_read_fn(read_fn = ~sum_quarterly),
+                                     pointblank::set_read_fn(read_fn = ~esif_tagged_sum_op),
                                    path = c_export_dir,
                                    filename = c_export_cdbk)
              file.path(c_export_dir, c_export_cdbk)

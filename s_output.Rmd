@@ -14,8 +14,6 @@ list2env(cnf, envir = .GlobalEnv)
 ```
 
 ```{r load targets}
-targets::tar_load(sum_quarterly)
-targets::tar_load(sum_annual)
 targets::tar_load(ef_pub)
 targets::tar_load(efs_prv)
 targets::tar_load(efs_zop)
@@ -23,6 +21,7 @@ targets::tar_load(efs_fin)
 targets::tar_load(sum_codebook)
 targets::tar_load(efs_tagged)
 targets::tar_load(esif_tagged_sum)
+targets::tar_load(esif_tagged_sum_op)
 ```
 
 # {.tabset}
@@ -50,12 +49,21 @@ targets::tar_read(plot_tagged_agri)
 Vše v `` `r  
 c_export_dir` `` ([Github](`r paste0(c_repo_remote, "/tree/master/", c_export_dir)`)) 
 
-- součty po letech: `` `r  
-c_export_csv_a` `` / `` `r  
-c_export_xlsx_a` ``
-- součty po čtvrtletích: `` `r  
-c_export_csv_q` `` / `` `r  
-c_export_xlsx_q` ``
+- OP + klimatag: `` `r  
+c_export_all_ops_xlsx` `` / `` `r  
+c_export_all_ops_csv` ``
+- totéž + kategorie, z níž je odvozen klimatag: `` `r  
+c_export_all_ops_detail_xlsx` `` / `` `r  
+c_export_all_ops_detail_csv` ``
+- totéž + kategorie, z níž je odvozen klimatag + spec. cíl; vše mimo PRV: `` `r  
+c_export_nonagri_detail_xlsx` `` / `` `r  
+c_export_nonagri_detail_csv` ``
+- totéž + kategorie, z níž je odvozen klimatag + spec. cíl + projekt; vše mimo PRV: `` `r  
+c_export_nonagri_projekty_xlsx` `` / `` `r  
+c_export_nonagri_projekty_csv` ``
+- celé CAP výdaje s klimatagy a opatřeními determinujícími klimatag: `` `r  
+c_export_agri_detail_xlsx` `` / `` `r  
+c_export_agri_detail_csv` ``
 
 CSV soubory uzpůsobeny pro Excel (úprava konce řádků) a CEE region (odděleno středníky, desetinná čárka).
 
@@ -67,29 +75,16 @@ sum_codebook
 
 Zapsáno v `r file.path(c_export_dir, c_export_cdbk)`
 
-## Náhled proměnných
+## Náhled proměnných {.tabset .tabset-pills}
+
+### Společný výstup
 
 ```{r columns}
-glimpse(sum_quarterly)
+glimpse(esif_tagged_sum_op)
 ```
 
 ## Validace výstupu
 
 IN PROGRESS
 
-```{r}
-sum_quarterly %>% 
-  count(dt_zop_rok, wt = round(fin_vyuct_czv/1e9, 2)) %>% 
-  spread(dt_zop_rok, n)
-```
-
-```{r}
-sum_quarterly %>% 
-  count(source, wt = fin_vyuct_czv)
-```
-
-```{r}
-efs_fin %>% count(wt = fin_vyuct_czv)
-efs_zop %>% count(wt = fin_vyuct_czv)
-```
 
