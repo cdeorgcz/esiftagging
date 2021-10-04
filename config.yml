@@ -36,12 +36,14 @@ default:
   export_dir: "data-export/export_202110"
 
   export_all_ops_xlsx: "sum_tagged_all_ops.xlsx"
+  export_all_ops_detail_xlsx: "sum_tagged_all_ops_detail.xlsx"
   export_prv_detail_xlsx: "sum_tagged_prv_detail.xlsx"
   export_nonagri_detail_xlsx: "sum_tagged_nonagri_detail.xlsx"
   export_nonagri_projekty_xlsx: "sum_tagged_nonagri_projekty.xlsx"
   export_agri_detail_xlsx: "sum_tagged_agri_detail.xlsx"
 
   export_all_ops_csv: "sum_tagged_all_ops.csv"
+  export_all_ops_detail_csv: "sum_tagged_all_ops_detail.csv"
   export_prv_detail_csv: "sum_tagged_prv_detail.csv"
   export_nonagri_detail_csv: "sum_tagged_nonagri_detail.csv"
   export_nonagri_projekty_csv: "sum_tagged_nonagri_projekty.csv"

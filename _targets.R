@@ -260,6 +260,7 @@ t_tagging_aid <- list(
   tar_file(export_for_tagging,
            writexl::write_xlsx(list(
              sumar = esif_tagged_sum,
+             esif_detail = esif_tagged_sum_op,
              prv_detail = prv_tagged_sum,
              agri_detail = agri_tagged_sum,
              nonagri_detail = efs_tagged_sum_op_sc,
@@ -268,6 +269,14 @@ t_tagging_aid <- list(
            c_export_tagging_xlsx))
 )
 
+  tar_file(export_all_ops_detail_xlsx,
+           export_table(esif_tagged_sum_op,
+                        here::here(c_export_dir, c_export_all_ops_detail_xlsx),
+                        write_xlsx)),
+  tar_file(export_all_ops_detail_csv,
+           export_table(esif_tagged_sum_op,
+                        here::here(c_export_dir, c_export_all_ops_detail_csv),
+                        write_csv)),
 ## Validation and exploration ----------------------------------------------
 
 t_valid_zop_timing <- list(
