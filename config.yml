@@ -33,12 +33,19 @@ default:
   czso_pop_table_id: "130149"
 
   # export location - macro
-  export_dir: "data-export/export_202108"
+  export_dir: "data-export/export_202110"
 
-  export_reg_xlsx_a: "sum_reg_quarterly.xlsx"
-  export_reg_xlsx_q: "sum_reg_annual.xlsx"
-  export_reg_csv_a: "sum_reg_quarterly.csv"
-  export_reg_csv_q: "sum_reg_annual.csv"
+  export_all_ops_xlsx: "sum_tagged_all_ops.xlsx"
+  export_prv_detail_xlsx: "sum_tagged_prv_detail.xlsx"
+  export_nonagri_detail_xlsx: "sum_tagged_nonagri_detail.xlsx"
+  export_nonagri_projekty_xlsx: "sum_tagged_nonagri_projekty.xlsx"
+  export_agri_detail_xlsx: "sum_tagged_agri_detail.xlsx"
+
+  export_all_ops_csv: "sum_tagged_all_ops.csv"
+  export_prv_detail_csv: "sum_tagged_prv_detail.csv"
+  export_nonagri_detail_csv: "sum_tagged_nonagri_detail.csv"
+  export_nonagri_projekty_csv: "sum_tagged_nonagri_projekty.csv"
+  export_agri_detail_csv: "sum_tagged_agri_detail.csv"
 
   export_xlsx_a: "sum_quarterly.xlsx"
   export_xlsx_q: "sum_annual.xlsx"

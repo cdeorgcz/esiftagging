@@ -170,25 +170,49 @@ t_climate_tag <- list(
 )
 
 
-## Export data for macro models --------------------------------------------
+## Export summaries of tagged data --------------------------------------------
 
 t_export <- list(
-  tar_file(export_annual_csv,
-           export_table(sum_annual,
-                        here::here(c_export_dir, c_export_csv_a),
-                        write_excel_csv2)),
-  tar_file(export_quarterly_csv,
-           export_table(sum_quarterly,
-                        here::here(c_export_dir, c_export_csv_q),
-                        write_excel_csv2)),
-  tar_file(export_annual_excel,
-           export_table(sum_annual,
-                        here::here(c_export_dir, c_export_xlsx_a),
+  tar_file(export_all_ops_xlsx,
+           export_table(esif_tagged_sum,
+                        here::here(c_export_dir, c_export_all_ops_xlsx),
                         write_xlsx)),
-  tar_file(export_quarterly_excel,
-           export_table(sum_quarterly,
-                        here::here(c_export_dir, c_export_xlsx_q),
-                        write_xlsx))
+  tar_file(export_prv_detail_xlsx,
+           export_table(prv_tagged_sum,
+                        here::here(c_export_dir, c_export_prv_detail_xlsx),
+                        write_xlsx)),
+  tar_file(export_agri_detail_xlsx,
+           export_table(agri_tagged_sum,
+                        here::here(c_export_dir, c_export_agri_detail_xlsx),
+                        write_xlsx)),
+  tar_file(export_nonagri_detail_xlsx,
+           export_table(efs_tagged_sum_op_sc,
+                        here::here(c_export_dir, c_export_nonagri_detail_xlsx),
+                        write_xlsx)),
+  tar_file(export_nonagri_projekty_xlsx,
+           export_table(efs_tagged_sum_prj,
+                        here::here(c_export_dir, c_export_nonagri_projekty_xlsx),
+                        write_xlsx)),
+  tar_file(export_all_ops_csv,
+           export_table(esif_tagged_sum,
+                        here::here(c_export_dir, c_export_all_ops_csv),
+                        write_excel_csv2)),
+  tar_file(export_prv_detail_csv,
+           export_table(prv_tagged_sum,
+                        here::here(c_export_dir, c_export_prv_detail_csv),
+                        write_excel_csv2)),
+  tar_file(export_agri_detail_csv,
+           export_table(agri_tagged_sum,
+                        here::here(c_export_dir, c_export_agri_detail_csv),
+                        write_excel_csv2)),
+  tar_file(export_nonagri_detail_csv,
+           export_table(efs_tagged_sum_op_sc,
+                        here::here(c_export_dir, c_export_nonagri_detail_csv),
+                        write_excel_csv2)),
+  tar_file(export_nonagri_projekty_csv,
+           export_table(efs_tagged_sum_prj,
+                        here::here(c_export_dir, c_export_nonagri_projekty_csv),
+                        write_excel_csv2))
 )
 
 
