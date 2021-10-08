@@ -12,7 +12,7 @@ default:
   prv_data_path: "data-input/sestavy-prv_2020-12/PRV 2014-20 k XII. 2020.XLSX"
 
   # sestavy from MS
-  sest_dir: "data-input/sestavy 20210528"
+  sest_dir: "data-input/sestavy_2021-05-28"
   sest_xlsx_prj: "E001 Identifikace projektu.xlsx"
   sest_xlsx_fin: "E003 Finance celkem.xlsx"
   sest_xlsx_zop: "E004 Žádosti o platbu.xlsx"
