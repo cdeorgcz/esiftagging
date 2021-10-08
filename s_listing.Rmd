@@ -66,7 +66,7 @@ filter_checkbox("op_id", "OP", shared_sum_op_sc, ~op_zkr, inline = TRUE)
 ```{r}
 bscols(filter_checkbox("climate_share", "Klimatag", shared_sum_op_sc,
                        ~climate_share, inline = TRUE), 
-       filter_slider("czv", "Výdaje v daném SC a kategorii (mld. Kč)", shared_sum_op_sc, 
+       filter_slider("czv", "Výdaje v daném SC a oblasti intervence (mld. Kč)", shared_sum_op_sc, 
                      ~fin_vyuct_czv, round = 1))
 ```
 
@@ -75,7 +75,7 @@ bscols(htmltools::div(list("Výdaje ve vybraných kategoriích (mld. Kč):",
                            summarywidget(shared_sum_op_sc, "sum", "fin_vyuct_czv"))),
        htmltools::div(list("Orientační počet projektů ve vybraných kategoriích (mld. Kč):",
                            summarywidget(shared_sum_op_sc, "sum", "n_prj"))),
-       htmltools::div(list("Vybraných řádků (kategorie a SC):",
+       htmltools::div(list("Vybraných řádků (oblast a SC):",
                            summarywidget(shared_sum_op_sc, "count"))))
 ```
 
