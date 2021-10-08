@@ -53,7 +53,8 @@ shared_sum_op_sc <- SharedData$new(efs_tagged_sum_op_sc %>%
                                             -fin_vyuct_eu, -fin_vyuct_jine_nar_ver,
                                             -fin_vyuct_sf, -fin_vyuct_sr,
                                             -fin_vyuct_kraj, -fin_vyuct_obec,
-                                            -fin_vyuct_soukr, -fin_vyuct_narodni_verejne) %>% 
+                                            -fin_vyuct_soukr, -fin_vyuct_narodni_verejne
+                                            -op_id) %>% 
                                      mutate(op_zkr = as.factor(op_zkr),
                                             fin_vyuct_czv = fin_vyuct_czv/1e9))
 ```

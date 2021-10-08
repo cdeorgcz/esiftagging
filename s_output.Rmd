@@ -19,9 +19,11 @@ targets::tar_load(efs_prv)
 targets::tar_load(efs_zop)
 targets::tar_load(efs_fin)
 targets::tar_load(sum_codebook)
+targets::tar_load(prj_codebook)
 targets::tar_load(efs_tagged)
 targets::tar_load(esif_tagged_sum)
 targets::tar_load(esif_tagged_sum_op)
+targets::tar_load(efs_tagged_sum_prj)
 ```
 
 # {.tabset}
@@ -67,21 +69,38 @@ c_export_agri_detail_csv` ``
 
 CSV soubory uzpůsobeny pro Excel (úprava konce řádků) a CEE region (odděleno středníky, desetinná čárka).
 
-### Codebook
+### Codebook {.tabset .tabset-pills}
 
-```{r codebook}
+#### Projektová úroveň
+
+```{r codebook-prj}
+prj_codebook
+```
+
+Zapsáno v `r file.path(c_export_dir, c_export_cdbk_prj)`
+
+#### Součty
+
+Zapsáno v `r file.path(c_export_dir, c_export_cdbk_sum)`
+
+```{r codebook-sum}
 sum_codebook
 ```
 
-Zapsáno v `r file.path(c_export_dir, c_export_cdbk)`
-
 ## Náhled proměnných {.tabset .tabset-pills}
 
-### Společný výstup
+### Projektová úroveň
 
 ```{r columns}
+glimpse(efs_tagged_sum_prj)
+```
+
+### Součty
+
+```{r columns-sum}
 glimpse(esif_tagged_sum_op)
 ```
+
 
 ## Validace výstupu
 

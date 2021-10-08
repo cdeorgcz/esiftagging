@@ -1,0 +1,122 @@
+type: informant
+read_fn: ~esif_tagged_sum_op
+tbl_name: esif_tagged_sum_prj
+info_label: Codebook hlavního výstupu
+lang: en
+locale: en
+table:
+  name: esif_tagged_sum_prj
+  _columns: 20
+  _rows: 196.0
+  _type: tbl_df
+  Info: Tabulka se součty výdajů podle OP, klima tagu a kategorie určující klimatag
+  Rozsah: Z CAP/SZP zahruje jen PRV - projektová i plošná opatření
+  Proměnné: kategorie určující klimatag je u PRV opatření, u ostatních OP je to oblast
+    intervencí
+  Detail: Codebook obsahuje všechny proměnné obsažené v různých exportech
+  Celková struktura: 'dlouhý formát: kategorie jsou v řádcích, metadata a jednotlivé
+    zdroje financí jsou ve sloupcích'
+  Názvy proměnných: |-
+    platí i pro ostatní datové sady v pipeline:
+    - `dt_`: proměnné časového určení
+    - `fin_`: finanční údaje
+columns:
+  oblast_intervence_nazev_en:
+    _type: character
+    Typ: Oblast intervence (area of intervention)
+    Note: Nexistuje u výdajů CAP - zde jen nařízení
+    Detail: Kategorie určená v nařízení, na niž jsou v prováděcím nařízení navázány
+      klima tagy
+  oblast_intervence_kod:
+    _type: character
+    Typ: Oblast intervence (area of intervention)
+    Note: Nexistuje u výdajů CAP - zde jen nařízení
+    Detail: Kategorie určená v nařízení, na niž jsou v prováděcím nařízení navázány
+      klima tagy
+  climate_share:
+    _type: numeric
+    Popis: Podíl přispění ke klimatu - podle prováděcího nařízení EK
+  op_zkr:
+    _type: character
+    Popis: Česká zkratka operačního programu
+  op_id:
+    _type: character
+    Popis: Kód operačního programu
+  fin_vyuct_czv:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Celkové způsobilé výdaje
+  fin_vyuct_eu:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Příspěvek Unie
+  fin_vyuct_sr:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Státní rozpočet
+  fin_vyuct_sf:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Státní fondy
+  fin_vyuct_kraj:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Kraj
+  fin_vyuct_obec:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Obec
+  fin_vyuct_jine_nar_ver:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Soukromý
+  fin_vyuct_soukr:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Soukromý
+  fin_vyuct_narodni_verejne:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Národní
+  fin_vyuct_narodni:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Národní
+  n_prj:
+    _type: integer
+  prv_opatreni_orig:
+    _type: character
+    Typ: Opatření PRV/CAP
+    Note: Existuje jen u výdajů CAP
+  prv_opatreni_id:
+    _type: character
+    Typ: Opatření PRV/CAP
+    Note: Existuje jen u výdajů CAP
+  prv_opatreni_typ:
+    _type: character
+    Typ: Opatření PRV/CAP
+    Note: Existuje jen u výdajů CAP
+  prv_opatreni_nazev:
+    _type: character
+    Typ: Opatření PRV/CAP
+    Note: Existuje jen u výdajů CAP

@@ -176,16 +176,21 @@ t_climate_tag <- list(
 t_tagged_summarised <- list(
   tar_target(efs_tagged_sum_prj,
              summarise_tagged(efs_tagged %>% add_op_labels(),
-                              prj_id, sc_id, sc_nazev, op_zkr) %>%
-               left_join(efs_prj %>% distinct(prj_id, prj_nazev), by = "prj_id")),
+                              prj_id, sc_id, sc_nazev, op_zkr, op_id) %>%
+               left_join(efs_prj %>% distinct(prj_id, prj_nazev,
+                                              vyzva_id, vyzva_nazev),
+                         by = "prj_id") %>%
+               left_join(ef_pub %>% distinct(prj_id, prj_shrnuti,
+                                             p_ic, p_forma, p_nazev),
+                         by = "prj_id")),
   tar_target(efs_tagged_sum_kat,
              summarise_tagged(efs_tagged)),
   tar_target(efs_tagged_sum_op_sc,
              summarise_tagged(efs_tagged %>% add_op_labels(),
-                              sc_id, sc_nazev, op_zkr)),
+                              sc_id, sc_nazev, op_zkr, op_id)),
   tar_target(efs_tagged_sum_op,
              summarise_tagged(efs_tagged %>% add_op_labels(),
-                              op_zkr)),
+                              op_zkr, op_id)),
   tar_target(esif_tagged_sum_op, bind_rows(efs_tagged_sum_op, prv_tagged_sum)),
   tar_target(prv_tagged, subset_prv_tagged(agri_tagged)),
   tar_target(prv_tagged_sum, summarise_prv_tagged(prv_tagged)),
@@ -296,8 +301,17 @@ t_codebook <- list(
            {pointblank::yaml_write(informant = sum_codebook %>%
                                      pointblank::set_read_fn(read_fn = ~esif_tagged_sum_op),
                                    path = c_export_dir,
-                                   filename = c_export_cdbk)
-             file.path(c_export_dir, c_export_cdbk)
+                                   filename = c_export_cdbk_sum)
+             file.path(c_export_dir, c_export_cdbk_sum)
+           }),
+  tar_target(prj_codebook,
+             make_codebook(efs_tagged_sum_prj)),
+  tar_file(prj_codebook_yaml,
+           {pointblank::yaml_write(informant = sum_codebook %>%
+                                     pointblank::set_read_fn(read_fn = ~efs_tagged_sum_prj),
+                                   path = c_export_dir,
+                                   filename = c_export_cdbk_prj)
+             file.path(c_export_dir, c_export_cdbk_prj)
            })
 )
 

@@ -1,5 +1,5 @@
-make_codebook <- function(esif_tagged_sum_op) {
-  create_informant(tbl = esif_tagged_sum_op,
+make_codebook <- function(esif_tagged_sum_prj) {
+  create_informant(tbl = esif_tagged_sum_prj,
                    label = "Codebook hlavního výstupu") %>%
     info_tabular(Info = "Tabulka se součty výdajů podle OP, klima tagu a kategorie určující klimatag",
                  Rozsah = "Z CAP/SZP zahruje jen PRV - projektová i plošná opatření",
@@ -20,6 +20,8 @@ make_codebook <- function(esif_tagged_sum_op) {
                  Typ = "Identifikace specifického cíle podle OP") %>%
     info_columns(starts_with("op_zkr"),
                  Popis = "Česká zkratka operačního programu") %>%
+    info_columns(starts_with("op_id"),
+                 Popis = "Kód operačního programu") %>%
     info_columns(starts_with("fond"),
                  Popis = "Fond CAP") %>%
     info_columns(starts_with("typ_podpory"),
@@ -29,6 +31,7 @@ make_codebook <- function(esif_tagged_sum_op) {
     info_columns(starts_with("prj_"),
                  Typ = "Informace o projektu. Nedostupné u PRV") %>%
     info_columns(starts_with("dt_"), Typ = "Časový údaj (datum)") %>%
+    info_columns(starts_with("p_"), Typ = "Informace o příjemci") %>%
     info_columns(starts_with("fin_"), Typ = "Finance",
                  Jednotka = "CZK",
                  `Zdroj dat` = "ŽOP sečtené podle data proplacení") %>%

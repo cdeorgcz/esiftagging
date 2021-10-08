@@ -56,6 +56,7 @@ default:
 
   export_tagging_xlsx: "site/export-tagging-all.xlsx"
 
-  export_cdbk: "sum_codebook.yaml"
+  export_cdbk_sum: "codebook_sum.yaml"
+  export_cdbk_prj: "codebook_prj.yaml"
 
   repo_remote: "https://github.com/cdeorgcz/esiftagging"
