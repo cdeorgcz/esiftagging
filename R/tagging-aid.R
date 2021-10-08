@@ -4,7 +4,7 @@ summarise_tagged <- function(data, ...) {
              climate_share) %>%
     group_by(..., .add = TRUE) %>%
     # summarise(across(starts_with("fin_"), sum, na.rm = T)) %>%
-    summarise(across(starts_with("fin_"), ~sum(.x, na.rm = TRUE)),
+    summarise(across(starts_with("fin_"), ~sum(.x * radek_podil, na.rm = TRUE)),
               n_prj = n_distinct(prj_id),
               .groups = "drop") %>%
     arrange(oblast_intervence_kod, ...)
