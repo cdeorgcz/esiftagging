@@ -46,7 +46,7 @@ default:
   export_all_ops_detail_csv: "sum_tagged_all_ops_detail.csv"
   export_prv_detail_csv: "sum_tagged_prv_detail.csv"
   export_nonagri_detail_csv: "sum_tagged_nonagri_detail.csv"
-  export_nonagri_projekty_csv: "sum_tagged_nonagri_projekty.csv"
+  export_nonagri_projekty_parquet: "sum_tagged_nonagri_projekty.parquet"
   export_agri_detail_csv: "sum_tagged_agri_detail.csv"
 
   export_xlsx_a: "sum_quarterly.xlsx"

@@ -277,10 +277,10 @@ t_export <- list(
            export_table(efs_tagged_sum_op_sc,
                         here::here(c_export_dir, c_export_nonagri_detail_csv),
                         write_excel_csv2)),
-  tar_file(export_nonagri_projekty_csv,
+  tar_file(export_nonagri_projekty_parquet,
            export_table(efs_tagged_sum_prj,
-                        here::here(c_export_dir, c_export_nonagri_projekty_csv),
-                        write_excel_csv2))
+                        here::here(c_export_dir, c_export_nonagri_projekty_parquet),
+                        write_parquet))
 )
 
 
