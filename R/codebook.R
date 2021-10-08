@@ -25,8 +25,9 @@ make_codebook <- function(esif_tagged_sum_op) {
     info_columns(starts_with("typ_podpory"),
                  Popis = "Typ podpory CAP") %>%
     info_columns(starts_with("prj_id"),
-                 Popis = "Kód projektu",
-                 Note = "Nedostupné pro CAP/PRV") %>%
+                 Popis = "Kód projektu") %>%
+    info_columns(starts_with("prj_"),
+                 Typ = "Informace o projektu. Nedostupné u PRV") %>%
     info_columns(starts_with("dt_"), Typ = "Časový údaj (datum)") %>%
     info_columns(starts_with("fin_"), Typ = "Finance",
                  Jednotka = "CZK",
