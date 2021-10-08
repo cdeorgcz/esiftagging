@@ -62,7 +62,7 @@ c_export_nonagri_detail_xlsx` `` / `` `r
 c_export_nonagri_detail_csv` ``
 - totéž + kategorie, z níž je odvozen klimatag + spec. cíl + projekt; vše mimo PRV: `` `r  
 c_export_nonagri_projekty_xlsx` `` / `` `r  
-c_export_nonagri_projekty_csv` ``
+c_export_nonagri_projekty_parquet` `` - velký soubor, export je ve formátu Parquet
 - celé CAP výdaje s klimatagy a opatřeními determinujícími klimatag: `` `r  
 c_export_agri_detail_xlsx` `` / `` `r  
 c_export_agri_detail_csv` ``
