@@ -49,11 +49,7 @@ Pro změnu tagu bude potřeba zapracovat do pipeline dodatečnou tabulku s nový
 ```{r}
 shared_sum_prj <- SharedData$new(slice_sample(efs_tagged_sum_prj, n = 1000))
 shared_sum_op_sc <- SharedData$new(efs_tagged_sum_op_sc %>% 
-                                     select(-fin_vyuct_narodni, -fin_vyuct_eu,
-                                            -fin_vyuct_eu, -fin_vyuct_jine_nar_ver,
-                                            -fin_vyuct_sf, -fin_vyuct_sr,
-                                            -fin_vyuct_kraj, -fin_vyuct_obec,
-                                            -fin_vyuct_soukr, -fin_vyuct_narodni_verejne
+                                     select(-starts_with("fin_"), fin_vyuct_czv,
                                             -op_id) %>% 
                                      mutate(op_zkr = as.factor(op_zkr),
                                             fin_vyuct_czv = fin_vyuct_czv/1e9))
