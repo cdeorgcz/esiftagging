@@ -109,7 +109,7 @@ agri_plotly
 
 Tabulka níže umožňuje vybírat specifické kombinace specifického cíle a oblasti intervencí podle jejich klima tagu a operačního programu, popř. podle textového filtru. Je to tedy jemnější úroveň rozpadu, než na které jsou určené klimatagy.
 
-Pro změnu tagu bude potřeba zapracovat do pipeline dodatečnou tabulku s novými tagy. Ta by měla identifikovat specifická cíl, popř. kombinaci cíle a oblasti, které se týká - tj. měla by obsahovat sloupce s názvem opatření a fondu (`fond` a `opatreni`) a sloupec s novým klima tagem.
+Pro změnu tagu bude potřeba zapracovat do pipeline dodatečnou tabulku s novými tagy. Ta by měla identifikovat specifický cíl, popř. kombinaci cíle a oblasti, které se týká - tj. měla by obsahovat sloupce s názvem opatření a fondu (`fond` a `opatreni`) a sloupec s novým klima tagem.
 
 ```{r}
 shared_agri <- SharedData$new(agri_tagged_sum %>% 
