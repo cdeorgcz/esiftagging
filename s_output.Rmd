@@ -73,11 +73,12 @@ CSV soubory uzpůsobeny pro Excel (úprava konce řádků) a CEE region (odděle
 
 #### Projektová úroveň
 
+Zapsáno v `r file.path(c_export_dir, c_export_cdbk_prj)`
+
 ```{r codebook-prj}
 prj_codebook
 ```
 
-Zapsáno v `r file.path(c_export_dir, c_export_cdbk_prj)`
 
 #### Součty
 

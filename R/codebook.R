@@ -1,5 +1,5 @@
-make_codebook <- function(esif_tagged_sum_prj) {
-  create_informant(tbl = esif_tagged_sum_prj,
+make_codebook <- function(data) {
+  create_informant(tbl = data,
                    label = "Codebook hlavního výstupu") %>%
     info_tabular(Info = "Tabulka se součty výdajů podle OP, klima tagu a kategorie určující klimatag",
                  Rozsah = "Z CAP/SZP zahruje jen PRV - projektová i plošná opatření",
@@ -28,6 +28,11 @@ make_codebook <- function(esif_tagged_sum_prj) {
                  Popis = "Typ podpory CAP") %>%
     info_columns(starts_with("prj_id"),
                  Popis = "Kód projektu") %>%
+    info_columns(starts_with("prj_id"),
+                 Popis = "Kód projektu") %>%
+    info_columns(starts_with("p_ico"), Popis = "IČO příjemce") %>%
+    info_columns(starts_with("p_nazev"), Popis = "Název příjemce") %>%
+    info_columns(starts_with("p_forma"), Popis = "Právní forma příjemce") %>%
     info_columns(starts_with("prj_"),
                  Typ = "Informace o projektu. Nedostupné u PRV") %>%
     info_columns(starts_with("dt_"), Typ = "Časový údaj (datum)") %>%
@@ -43,6 +48,5 @@ make_codebook <- function(esif_tagged_sum_prj) {
     info_columns(contains("_kraj"), `Zdroj financí` = "Kraj") %>%
     info_columns(contains("_soukr"), `Zdroj financí` = "Soukromý") %>%
     info_columns(contains("_jine_nar"), `Zdroj financí` = "Soukromý") %>%
-    info_columns(contains("_narodni"),
-                 `Zdroj financí` = "Národní")
+    info_columns(contains("_narodni"), `Zdroj financí` = "Národní")
   }

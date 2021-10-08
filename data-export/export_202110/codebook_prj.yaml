@@ -1,11 +1,11 @@
 type: informant
 read_fn: ~efs_tagged_sum_prj
-tbl_name: esif_tagged_sum_prj
+tbl_name: data
 info_label: Codebook hlavního výstupu
 lang: en
 locale: en
 table:
-  name: esif_tagged_sum_prj
+  name: data
   _columns: 20
   _rows: 196.0
   _type: tbl_df
