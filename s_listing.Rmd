@@ -1,12 +1,11 @@
 ---
 title: "Náhledy pro ruční tagging"
 output: 
-  html_document:
-    code_folding: hide
+  html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 
 source("R/utils.R")
 source("_targets_packages.R")
