@@ -31,7 +31,7 @@ Graf lze přetažením zaměřit na vybrané kategorie, dvojklikem se vrátíte 
 
 [Excelový export](`r cnf$export_tagging_xlsx`) těchto dat spolu s rozpady non-agri výdajů na jednotlivé projekty.
 
-## ESIF Mimo SZP
+## ESIF mimo SZP
 
 V tabulce pracujeme s kombinací *specifických cílů (SC)* (střední úroveň hierarchie cílů operačního programu - níže jsou výzvy a pak už jen projekty) a *oblastí intervencí* (evropská kategorizace výdajů, na niž jsou navázány klimatické kategorie).
 
