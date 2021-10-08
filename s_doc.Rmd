@@ -46,6 +46,8 @@ cnf$sest_dir` ``. Nejsou zde data o příhraniční spolupráci (o projektech an
     - nepracujeme s identifikací příjemce; pracujeme s platbami, nikoli jednotlivými operacemi
     - obsahuje projektové i plošné operace PRV + všechny operace financované ze EZZF/EAGF
     - názvy opatření neodpovídají přesně názvům v custom sestavě ani názvům v OP ani ve [schématu](https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fprv2014%2Fzakladni_informace%2F1436519577270.pdf)
+    
+Nepoužíváme žádná data o finančních nástrojích - vše jsou pouze dotace.
 
 #### Jaká data využíváme
 
