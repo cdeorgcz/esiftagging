@@ -4,6 +4,11 @@ source("_targets_packages.R")
 source("R/utils.R")
 source("R/functions.R")
 
+library(usethis)
+library(devtools)
+library(targets)
+library(tarchetypes)
+
 options(scipen = 9)
 
 ts <- as.list(targets::tar_manifest(fields = name)[["name"]])
