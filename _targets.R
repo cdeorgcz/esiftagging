@@ -172,11 +172,6 @@ t_climate_tag <- list(
 
 ## Summarise and compile tagged data ---------------------------------------
 
-t_tagged_compiled <- list(
-  tar_target(esif_tagged_sum,
-             summarise_tagged_op_only(efs_tagged_sum_op_sc, prv_tagged_sum))
-)
-
 
 t_tagged_summarised <- list(
   tar_target(efs_tagged_sum_prj,
@@ -198,6 +193,11 @@ t_tagged_summarised <- list(
 
 )
 
+
+t_tagged_compiled <- list(
+  tar_target(esif_tagged_sum,
+             summarise_tagged_op_only(efs_tagged_sum_op_sc, prv_tagged_sum))
+)
 ## Plots of main outputs ---------------------------------------------------
 
 t_tagged_plots <- list(
