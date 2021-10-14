@@ -7,6 +7,16 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Úpravy a doplnění 14. 10. 2021
+
+- v [exportech](https://github.com/cdeorgcz/esiftagging/tree/main/data-export/export_202110) doplněno:
+  - sloupec `fin_vyuct_verejne`
+  - v exportech na úrovni projektů doplněny sloupce s IČO a názvem příjemce a s anotací projektu
+  - odstraněn export na projektové úrovni v CSV, ponechán jen excel - CSV byl příliš velký pro export na Github. Alternativně můžu dodat např. Parquet pro zpracování v Pythonu a R.
+- přepočteny součty v exportech - drobná oprava po validaci.
+
+Zbývající (ne)dodělávky trackuji v [Issues na Githubu](https://github.com/cdeorgcz/esiftagging/issues).
+
 ## Update 30. 9. 2021
 
 ### Nové
