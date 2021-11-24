@@ -35,6 +35,9 @@ targets::tar_load(efs_tagged_sum_prj)
 ```{r plot-all-op, out.width="100%"}
 tar_read(plot_tagged_op)
 ```
+
+```{r plot-weighted-op, out.width="100%"}
+targets::tar_read(plot_weighted_op)
 ```
 
 ### SZP vč. PRV

@@ -208,6 +208,7 @@ t_tagged_compiled <- list(
 t_tagged_plots <- list(
   tar_target(plot_tagged_agri, make_plot_tagged_agri(agri_tagged)),
   tar_target(plot_tagged_all, make_plot_tagged_all(esif_tagged_sum))
+  tar_target(plot_weighted_op, make_plot_weighted_all(esif_tagged_sum))
 )
 
 ## Overview for manual tagging ----------------------------------------------

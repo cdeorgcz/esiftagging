@@ -36,6 +36,23 @@ make_plot_tagged_all <- function(esif_tagged_sum) {
          caption = "Payment data for CZ-PL programme unavailable.")
 }
 
+make_plot_weighted_all <- function(esif_tagged_sum) {
+  data <- esif_tagged_sum %>%
+
+    count(op_zkr, wt = fin_vyuct_czv * climate_share / 1e9) %>%
+    mutate(op_zkr = as_factor(op_zkr) %>% fct_reorder(n))
+
+  ggplot(data, aes(y = op_zkr, x = n)) +
+    geom_col(fill = "darkblue") +
+    scale_x_continuous(expand = ptrr::flush_axis) +
+    theme_ptrr("x", legend.position = "none") +
+    geom_text(aes(label = round(n, 0)), hjust = 1.5,
+              colour = "white", family = "IBM Plex Sans") +
+    labs(title = "Total contribution to climate",
+         subtitle = "bn CZK, all spending weighted by official climate tags.",
+         caption = "Payment data for CZ-PL programme unavailable.")
+
+}
 make_plot_tagged_agri_detail <- function(agri_tagged) {
   agri_tagged %>%
     count(fond, typ_podpory, opatreni, climate_share, wt = fin_vyuct_czv/1e9) %>%
