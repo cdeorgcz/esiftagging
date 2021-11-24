@@ -53,6 +53,44 @@ make_plot_weighted_all <- function(esif_tagged_sum) {
          caption = "Payment data for CZ-PL programme unavailable.")
 
 }
+
+make_plot_all <- function(esif_tagged_sum) {
+
+  weighted_contribution <- esif_tagged_sum %>%
+    count(wt = fin_vyuct_czv * climate_share / 1e9) %>%
+    pull()
+
+  data <- esif_tagged_sum %>%
+    mutate(climate_share_code = case_when(climate_share == 0 ~ "No tag",
+                                          climate_share == 0.4 ~ "Partial (40%)",
+                                          climate_share == 1 ~ "Full (100%)",
+                                          is.na(climate_share) ~ "Unknown")) %>%
+    filter(climate_share_code != "Unknown") %>%
+    count(climate_share_code, wt = fin_vyuct_czv / 1e9) %>%
+    add_row(climate_share_code = "Total\nspending",
+            n = sum(esif_tagged_sum$fin_vyuct_czv, na.rm = T)/1e9) %>%
+    add_row(climate_share_code = "Weighted\ncontribution",
+            n = weighted_contribution) %>%
+    mutate(climate_share_code = as.factor(climate_share_code) %>%
+             fct_relevel("Total\nspending", "No tag", "Full (100%)", "Partial (40%)",
+                         "Weighted\ncontribution") %>% fct_rev())
+
+  ggplot(data, aes(n, climate_share_code, fill = climate_share_code)) +
+    geom_col() +
+    scale_x_continuous(expand = ptrr::flush_axis) +
+    scale_fill_manual(values = c(`Full (100%)` = "darkgreen",
+                                 `Partial (40%)` = "lightgreen",
+                                 None = "darkgrey",
+                                 `Total\nspending` = "black", `Weighted\ncontribution` = "darkblue"),
+                      name = NULL, guide = "none") +
+    theme_ptrr("x", legend.position = "none") +
+    geom_text(aes(label = round(n, 0)), hjust = 1.5,
+              colour = "white", family = "IBM Plex Sans") +
+    labs(title = "Key figures",
+         subtitle = "bn CZK, using official climate tags.",
+         caption = "Payment data for CZ-PL programme unavailable.")
+}
+
 make_plot_tagged_agri_detail <- function(agri_tagged) {
   agri_tagged %>%
     count(fond, typ_podpory, opatreni, climate_share, wt = fin_vyuct_czv/1e9) %>%
