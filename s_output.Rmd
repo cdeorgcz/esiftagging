@@ -49,10 +49,9 @@ targets::tar_read(plot_weighted_op)
 
 ### SZP vč. PRV
 
-```{r, out.width="100%"}
+```{r plot-szp, out.width="100%"}
 targets::tar_read(plot_tagged_agri)
 ```
-
 
 
 ## Dokumentace hlavního výstupu
