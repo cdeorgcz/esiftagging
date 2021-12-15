@@ -29,10 +29,14 @@ default:
   reg_table_agri_xlsx: "data-input/regulation-tables/reg-table_1_climate-categories_agri.xlsx"
   reg_table_agri_sheetname: "cz_priorities"
 
+  ## Manual
+  tags_manual_xlsx: "data-input/manual-tagging/export-tagging-all_COMPLETE_TJ.xlsx"
+  tags_manual_sheetname: "nonagri_detail"
+
   # IDs
   czso_pop_table_id: "130149"
 
-  # export location - macro
+  # export location
   export_dir: "data-export/export_202110"
 
   export_all_ops_xlsx: "sum_tagged_all_ops.xlsx"

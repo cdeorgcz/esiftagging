@@ -54,17 +54,17 @@ make_plot_weighted_all <- function(esif_tagged_sum) {
 
 }
 
-make_plot_all <- function(esif_tagged_sum) {
-
+prep_plot_all_data <- function(esif_tagged_sum, tag_var = climate_share) {
   weighted_contribution <- esif_tagged_sum %>%
-    count(wt = fin_vyuct_czv * climate_share / 1e9) %>%
+    count(wt = fin_vyuct_czv * {{tag_var}} / 1e9) %>%
     pull()
 
   data <- esif_tagged_sum %>%
-    mutate(climate_share_code = case_when(climate_share == 0 ~ "No tag",
-                                          climate_share == 0.4 ~ "Partial (40%)",
-                                          climate_share == 1 ~ "Full (100%)",
-                                          is.na(climate_share) ~ "Unknown")) %>%
+    mutate(climate_share_code = case_when({{tag_var}} == 0 ~ "No tag",
+                                          {{tag_var}} == 0.4 ~ "Partial (40%)",
+                                          {{tag_var}} == 1 ~ "Full (100%)",
+                                          {{tag_var}} == -1 ~ "Negative (-100%)",
+                                          is.na({{tag_var}}) ~ "Unknown")) %>%
     filter(climate_share_code != "Unknown") %>%
     count(climate_share_code, wt = fin_vyuct_czv / 1e9) %>%
     add_row(climate_share_code = "Total\nspending",
@@ -73,22 +73,53 @@ make_plot_all <- function(esif_tagged_sum) {
             n = weighted_contribution) %>%
     mutate(climate_share_code = as.factor(climate_share_code) %>%
              fct_relevel("Total\nspending", "No tag", "Full (100%)", "Partial (40%)",
+                         "Negative (-100%)",
                          "Weighted\ncontribution") %>% fct_rev())
 
-  ggplot(data, aes(n, climate_share_code, fill = climate_share_code)) +
+  return(data)
+}
+
+make_plot_all <- function(plot_all_data, tag_type = "official") {
+
+  ggplot(plot_all_data, aes(n, climate_share_code, fill = climate_share_code)) +
     geom_col() +
     scale_x_continuous(expand = ptrr::flush_axis) +
     scale_fill_manual(values = c(`Full (100%)` = "darkgreen",
                                  `Partial (40%)` = "lightgreen",
+                                 `Negative (-100%)` = "darkred",
                                  None = "darkgrey",
-                                 `Total\nspending` = "black", `Weighted\ncontribution` = "darkblue"),
+                                 `Total\nspending` = "black",
+                                 `Weighted\ncontribution` = "darkblue"),
                       name = NULL, guide = "none") +
     theme_ptrr("x", legend.position = "none") +
-    geom_text(aes(label = round(n, 0)), hjust = 1.5,
-              colour = "white", family = "IBM Plex Sans") +
+    geom_text(aes(label = round(n, 0)), hjust = 0, nudge_x = 10,
+              colour = "black", family = "IBM Plex Sans", fontface = "bold") +
     labs(title = "Key figures",
-         subtitle = "bn CZK, using official climate tags.",
+         subtitle = str_glue("bn CZK, using {tag_type} climate tags."),
          caption = "Payment data for CZ-PL programme unavailable.")
+}
+
+make_comparison_plot <- function(plot_all_data, plot_all_data_m) {
+
+  data_linerange <- full_join(plot_all_data,
+                              plot_all_data_m |> rename(n2 = n),
+                              by = "climate_share_code") |>
+    filter(climate_share_code != "Total\nspending") |>
+    mutate(climate_share_code = as.factor(climate_share_code) %>%
+             fct_relevel("Total\nspending", "No tag", "Full (100%)", "Partial (40%)",
+                         "Negative (-100%)",
+                         "Weighted\ncontribution") %>% fct_rev() |> fct_drop())
+
+  ggplot(data_linerange, aes(y = climate_share_code)) +
+    geom_linerange(aes(xmin = n, xmax = n2),
+                   colour = "grey80") +
+    geom_point(aes(x = n, colour = "Official"), size = 3) +
+    geom_point(aes(x = n2, colour = "Revised"), size = 3) +
+    scale_color_manual(values = c("darkgrey", "lightblue"), name = "Tag source") +
+    ptrr::theme_ptrr("x") +
+    labs(title = "Comparing tags: official vs. CDE revised",
+         subtitle = "bn. CZK (total eligible spending)")
+
 }
 
 make_plot_tagged_agri_detail <- function(agri_tagged) {

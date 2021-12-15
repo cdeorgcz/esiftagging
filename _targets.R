@@ -160,12 +160,24 @@ t_climacat_reg <- list(
                                  c_reg_table_agri_sheetname))
 )
 
+t_climacat_manual <- list(
+  tar_file(tags_manual_xlsx, c_tags_manual_xlsx),
+  tar_target(tags_manual,
+             read_excel(tags_manual_xlsx, c_tags_manual_sheetname) |>
+               select(oblast_intervence_kod, sc_id,
+                      oblast_intervence_nazev_en,
+                      climate_share_m = `ZÁVĚR KONTROLY (TAG)`)
+               )
+)
+
 
 ## Integrate climate tag ---------------------------------------------------
 
 t_climate_tag <- list(
   tar_target(efs_tagged, left_join(efs_compiled_fin, reg_table_nonagri,
                                    by = "oblast_intervence_kod")),
+  tar_target(efs_mtagged, left_join(efs_compiled_fin, tags_manual,
+                                   by = c("oblast_intervence_kod", "sc_id"))),
   tar_target(agri_tagged, tag_agri(agri_opendata, reg_table_agri))
 )
 
@@ -198,17 +210,52 @@ t_tagged_summarised <- list(
 
 )
 
+t_mtagged_summarised <- list(
+  tar_target(efs_mtagged_sum_prj,
+             summarise_tagged(efs_mtagged %>% add_op_labels(),
+                              prj_id, sc_id, sc_nazev, op_zkr, op_id,
+                              tag_var = climate_share_m) %>%
+               left_join(efs_prj %>% distinct(prj_id, prj_nazev,
+                                              vyzva_id, vyzva_nazev),
+                         by = "prj_id") %>%
+               left_join(ef_pub %>% distinct(prj_id, prj_shrnuti,
+                                             p_ic, p_forma, p_nazev),
+                         by = "prj_id")),
+  tar_target(efs_mtagged_sum_kat,
+             summarise_tagged(efs_mtagged,
+                              tag_var = climate_share_m)),
+  tar_target(efs_mtagged_sum_op_sc,
+             summarise_tagged(efs_mtagged %>% add_op_labels(),
+                              sc_id, sc_nazev, op_zkr, op_id,
+                              tag_var = climate_share_m)),
+  tar_target(efs_mtagged_sum_op,
+             summarise_tagged(efs_mtagged %>% add_op_labels(),
+                              op_zkr, op_id,
+                              tag_var = climate_share_m)),
+  tar_target(esif_mtagged_sum_op, bind_rows(efs_mtagged_sum_op, prv_tagged_sum))
+)
+
 
 t_tagged_compiled <- list(
   tar_target(esif_tagged_sum,
-             summarise_tagged_op_only(efs_tagged_sum_op_sc, prv_tagged_sum))
+             summarise_tagged_op_only(efs_tagged_sum_op_sc, prv_tagged_sum)),
+  tar_target(esif_mtagged_sum,
+             summarise_tagged_op_only(efs_mtagged_sum_op_sc, prv_tagged_sum,
+                                      tag_var = climate_share_m))
 )
 ## Plots of main outputs ---------------------------------------------------
 
 t_tagged_plots <- list(
   tar_target(plot_tagged_agri, make_plot_tagged_agri(agri_tagged)),
   tar_target(plot_tagged_op, make_plot_tagged_all(esif_tagged_sum)),
-  tar_target(plot_all, make_plot_all(esif_tagged_sum)),
+  tar_target(plot_all_data, prep_plot_all_data(esif_tagged_sum,
+                                               tag_var = climate_share)),
+  tar_target(plot_all_data_m, prep_plot_all_data(esif_mtagged_sum,
+                                                 tag_var = climate_share_m)),
+  tar_target(plot_all, make_plot_all(plot_all_data)),
+  tar_target(plot_all_m, make_plot_all(plot_all_data_m, tag_type = "revised")),
+  tar_target(plot_comparison,
+             make_comparison_plot(plot_all_data, plot_all_data_m)),
   tar_target(plot_weighted_op, make_plot_weighted_all(esif_tagged_sum))
 )
 
@@ -326,5 +373,6 @@ source("R/html_output.R")
 
 list(t_public_list, t_prv_priorities, t_geo_helpers, t_sestavy, t_op_compile, t_valid_zop_timing,
      t_esif_compile, t_export, t_codebook, t_html, t_agri_opendata,
-     t_climacat_reg, t_climate_tag, t_tagged_summarised, t_tagging_aid,
+     t_mtagged_summarised,
+     t_climacat_reg, t_climacat_manual, t_climate_tag, t_tagged_summarised, t_tagging_aid,
      t_tagged_compiled, t_tagged_plots)

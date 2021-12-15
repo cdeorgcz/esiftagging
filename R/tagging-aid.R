@@ -1,7 +1,7 @@
-summarise_tagged <- function(data, ...) {
+summarise_tagged <- function(data, ..., tag_var = climate_share) {
   data %>%
     group_by(oblast_intervence_nazev_en, oblast_intervence_kod,
-             climate_share) %>%
+             {{tag_var}}) %>%
     group_by(..., .add = TRUE) %>%
     # summarise(across(starts_with("fin_"), sum, na.rm = T)) %>%
     summarise(across(starts_with("fin_"), ~sum(.x * radek_podil, na.rm = TRUE)),
@@ -10,9 +10,9 @@ summarise_tagged <- function(data, ...) {
     arrange(oblast_intervence_kod, ...)
 }
 
-summarise_tagged_op_only <- function(data_nonagri, data_prv) {
+summarise_tagged_op_only <- function(data_nonagri, data_prv, tag_var = climate_share) {
   bind_rows(data_prv, data_nonagri) %>%
-    group_by(op_zkr, climate_share) %>%
+    group_by(op_zkr, {{tag_var}}) %>%
     summarise(across(starts_with("fin_"), ~sum(.x, na.rm = TRUE)),
               .groups = "drop")
 }
@@ -33,6 +33,10 @@ prep_tagged_for_plot <- function(efs_tagged_sum_op_sc) {
            `Spec. cíl` = sc_nazev,
            Klimatag = climate_share,
            `Výdaje (mld. Kč CZV)` = fin_vyuct_czv)
+}
+
+name <- function(variables) {
+
 }
 
 make_efs_plotly <- function(efs_tagged_for_plot) {
