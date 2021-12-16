@@ -63,6 +63,7 @@ prep_plot_all_data <- function(esif_tagged_sum, tag_var = climate_share) {
     mutate(climate_share_code = case_when({{tag_var}} == 0 ~ "No tag",
                                           {{tag_var}} == 0.4 ~ "Partial (40%)",
                                           {{tag_var}} == 1 ~ "Full (100%)",
+                                          {{tag_var}} == -0.4 ~ "Negative (-40%)",
                                           {{tag_var}} == -1 ~ "Negative (-100%)",
                                           is.na({{tag_var}}) ~ "Unknown")) %>%
     filter(climate_share_code != "Unknown") %>%
@@ -73,7 +74,7 @@ prep_plot_all_data <- function(esif_tagged_sum, tag_var = climate_share) {
             n = weighted_contribution) %>%
     mutate(climate_share_code = as.factor(climate_share_code) %>%
              fct_relevel("Total\nspending", "No tag", "Full (100%)", "Partial (40%)",
-                         "Negative (-100%)",
+                         "Negative (-40%)", "Negative (-100%)",
                          "Weighted\ncontribution") %>% fct_rev())
 
   return(data)
@@ -87,6 +88,7 @@ make_plot_all <- function(plot_all_data, tag_type = "official") {
     scale_fill_manual(values = c(`Full (100%)` = "darkgreen",
                                  `Partial (40%)` = "lightgreen",
                                  `Negative (-100%)` = "darkred",
+                                 `Negative (-40%)` = "orange",
                                  None = "darkgrey",
                                  `Total\nspending` = "black",
                                  `Weighted\ncontribution` = "darkblue"),
@@ -104,10 +106,11 @@ make_comparison_plot <- function(plot_all_data, plot_all_data_m) {
   data_linerange <- full_join(plot_all_data,
                               plot_all_data_m |> rename(n2 = n),
                               by = "climate_share_code") |>
+    replace_na(list(n = 0)) |>
     filter(climate_share_code != "Total\nspending") |>
     mutate(climate_share_code = as.factor(climate_share_code) %>%
              fct_relevel("Total\nspending", "No tag", "Full (100%)", "Partial (40%)",
-                         "Negative (-100%)",
+                         "Negative (-40%)", "Negative (-100%)",
                          "Weighted\ncontribution") %>% fct_rev() |> fct_drop())
 
   ggplot(data_linerange, aes(y = climate_share_code)) +
@@ -116,9 +119,9 @@ make_comparison_plot <- function(plot_all_data, plot_all_data_m) {
     geom_point(aes(x = n, colour = "Official"), size = 3) +
     geom_point(aes(x = n2, colour = "Revised"), size = 3) +
     scale_color_manual(values = c("darkgrey", "lightblue"), name = "Tag source") +
-    ptrr::theme_ptrr("x") +
+    ptrr::theme_ptrr("x", legend.position = "top") +
     labs(title = "Comparing tags: official vs. CDE revised",
-         subtitle = "bn. CZK (total eligible spending)")
+         subtitle = "bn. CZK, total eligible spending by climate tag")
 
 }
 
