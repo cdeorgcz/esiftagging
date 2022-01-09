@@ -1,6 +1,6 @@
 library(targets)
 library(tarchetypes)
-library(future)
+# library(future)
 
 # Config ------------------------------------------------------------------
 
@@ -25,7 +25,7 @@ options(crayon.enabled = TRUE,
         czso.dest_dir = "~/czso_data",
         yaml.eval.expr = TRUE)
 
-future::plan(multisession)
+# future::plan(multisession)
 
 source("R/utils.R")
 source("R/functions.R")
@@ -34,7 +34,7 @@ cnf <- config::get(config = "default")
 names(cnf) <- paste0("c_", names(cnf))
 list2env(cnf, envir = .GlobalEnv)
 
-# tar_renv(path = "packages.R")
+# tar_renv()
 
 ## Geo helpers -------------------------------------------------------------
 
