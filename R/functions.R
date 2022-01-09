@@ -8,4 +8,8 @@ source(here::here("R/agri.R"))
 source(here::here("R/regulation-categories.R"))
 source(here::here("R/tagging-aid.R"))
 source(here::here("R/tagged-plots.R"))
+source(here::here("R/validate-output.R"))
+source(here::here("R/sankey.R"))
+source(here::here("R/mtags-compare.R"))
+source(here::here("R/text-analysis.R"))
 

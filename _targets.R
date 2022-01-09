@@ -5,14 +5,16 @@ library(future)
 # Config ------------------------------------------------------------------
 
 # Set target-specific options such as packages.
-tar_option_set(packages = c("dplyr", "here", "readxl",
+tar_option_set(packages = c("dplyr", "here", "readxl", "readr",
                             "janitor", "curl", "httr", "stringr", "config",
                             "dplyr", "future", "arrow", "tidyr",
                             "ragg", "magrittr", "czso", "lubridate", "writexl",
                             "readr", "purrr", "pointblank", "tarchetypes",
                             "details", "forcats", "ggplot2",
                             "xml2", "tibble", "ptrr", "DT", "plotly",
-                            "summarywidget", "htmltools", "crosstalk"),
+                            "summarywidget", "htmltools", "crosstalk",
+                            "ggsankey", "coloratio", "widyr", "tidytext",
+                            "jsonlite", "ggraph", "igraph", "topicmodels"),
                # debug = "compiled_macro_sum_quarterly",
                # imports = c("purrrow"),
 )
@@ -232,7 +234,9 @@ t_mtagged_summarised <- list(
              summarise_tagged(efs_mtagged %>% add_op_labels(),
                               op_zkr, op_id,
                               tag_var = climate_share_m)),
-  tar_target(esif_mtagged_sum_op, bind_rows(efs_mtagged_sum_op, prv_tagged_sum))
+  tar_target(esif_mtagged_sum_op, bind_rows(efs_mtagged_sum_op, prv_tagged_sum)),
+  tar_target(efs_tags_compare, make_tags_comparison(efs_tagged_sum_prj,
+                                                    efs_mtagged_sum_prj))
 )
 
 
@@ -256,8 +260,9 @@ t_tagged_plots <- list(
   tar_target(plot_all_m, make_plot_all(plot_all_data_m, tag_type = "revised")),
   tar_target(plot_comparison,
              make_comparison_plot(plot_all_data, plot_all_data_m)),
-  tar_target(plot_weighted_op, make_plot_weighted_all(esif_tagged_sum))
-)
+  tar_target(plot_weighted_op, make_plot_weighted_all(esif_tagged_sum)),
+  tar_target(plot_sankey, make_tag_sankey(efs_tags_compare))
+  )
 
 ## Overview for manual tagging ----------------------------------------------
 
@@ -341,6 +346,46 @@ t_valid_zop_timing <- list(
 )
 
 
+### Text analysis ----------------------------------------------------------
+
+t_text_basics <- list(
+  tar_url(stopwords_cz_url, "https://raw.githubusercontent.com/stopwords-iso/stopwords-cs/master/stopwords-cs.txt"),
+  tar_target(stopwords_cz, read_lines(stopwords_cz_url)),
+  tar_target(stopwords_all_cz, c(stopwords_cz, noise_cz, stopwords_cz_additional)),
+  tar_target(tepl_texts, get_prj_texts(efs_tagged_sum_prj, sc_id == "01.3.15.3.5")),
+  tar_target(tepl_lem_title, lemmatize_esif(efs_tagged_sum_prj,
+                                            prj_nazev,
+                                            sc_id == "01.3.15.3.5")),
+  tar_target(tepl_lem_descr, lemmatize_esif(efs_tagged_sum_prj,
+                                            prj_shrnuti,
+                                            sc_id == "01.3.15.3.5")),
+  tar_target(tepl_tkn_trnsltr_title, make_token_translator(tepl_lem_title)),
+  tar_target(tepl_tkn_trnsltr_descr, make_token_translator(tepl_lem_descr)),
+  tar_target(plt_wordfreqs, plot_wordfreq(tepl_texts, prj_nazev,
+                                          tepl_tkn_trnsltr_title, 40,
+                                          stopwords_all_cz,
+                                          title = "Nejčastější slova v názvech")),
+  tar_target(plt_wordpairs, plot_wordcorrs(tepl_texts, prj_shrnuti,
+                                           tepl_tkn_trnsltr_title, 5,
+                                           stopwords_all_cz,
+                                           title = "Nejčastější společný výskyt slov v popisech projektů")),
+  tar_target(bigram_data, prep_ngrams(tepl_texts, tepl_tkn_trnsltr_descr,
+                                      prj_shrnuti, mess_cz = stopwords_all_cz,
+                                      lemma = T, n = 2)),
+  tar_target(bigram_data_nolemma, prep_ngrams(tepl_texts, tepl_tkn_trnsltr_descr,
+                                      prj_shrnuti, mess_cz = stopwords_all_cz,
+                                      lemma = F, n = 2)),
+  tar_target(plt_bigram_bars, plot_ngrams_bars(bigram_data_nolemma, 50,
+                                               title = "Nejčastější dvojslovná spojení v popisech projektů")),
+  tar_target(plt_bigram_network, plot_ngrams_network(bigram_data, 5,
+                                                     title = "Nejčastější dvojslovná spojení v popisech projektů")),
+  tar_target(plt_topics, plot_topics(tepl_texts, prj_shrnuti,
+                                     tepl_tkn_trnsltr_descr, 4, stopwords_all_cz,
+                                     title = "Seskupení projektů do 4 témat",
+                                     subtitle = "Relativně nejčastější slova v tématech"))
+)
+
+
 ## Build and export codebook -----------------------------------------------
 
 t_codebook <- list(
@@ -373,6 +418,6 @@ source("R/html_output.R")
 
 list(t_public_list, t_prv_priorities, t_geo_helpers, t_sestavy, t_op_compile, t_valid_zop_timing,
      t_esif_compile, t_export, t_codebook, t_html, t_agri_opendata,
-     t_mtagged_summarised,
+     t_mtagged_summarised, t_text_basics,
      t_climacat_reg, t_climacat_manual, t_climate_tag, t_tagged_summarised, t_tagging_aid,
      t_tagged_compiled, t_tagged_plots)
