@@ -1,6 +1,6 @@
 library(targets)
 library(tarchetypes)
-# library(future)
+library(future)
 
 # Config ------------------------------------------------------------------
 
@@ -9,7 +9,7 @@ tar_option_set(packages = c("dplyr", "here", "readxl", "readr",
                             "janitor", "curl", "httr", "stringr", "config",
                             "dplyr", "future", "arrow", "tidyr",
                             "ragg", "magrittr", "czso", "lubridate", "writexl",
-                            "readr", "purrr", "pointblank", "tarchetypes",
+                            "readr", "purrr", "tarchetypes",
                             "details", "forcats", "ggplot2",
                             "xml2", "tibble", "ptrr", "DT", "plotly",
                             "summarywidget", "htmltools", "crosstalk",
