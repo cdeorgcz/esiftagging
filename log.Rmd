@@ -7,6 +7,12 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Změny k 9. 1. 2022
+
+- vloženy upravené manuální tagy
+- srovnávací ["sankey" graf - záložka "Srovnání tagů"](s_output.html)
+- [textová analýza projektů v teplárenství - záložka "Témata"](s_output.html)
+
 ## Úpravy a doplnění 14. 10. 2021
 
 - v [exportech](https://github.com/cdeorgcz/esiftagging/tree/main/data-export/export_202110) doplněno:
