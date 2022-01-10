@@ -44,9 +44,14 @@ tar_read(plot_all_m)
 
 ### Srovnání tagů
 
+```{r plot-sankey, out.width="100%"}
+tar_read(plot_sankey)
+```
+
 ```{r plot-comparison, out.width="100%"}
 tar_read(plot_comparison)
 ```
+
 
 ### Všechny OP
 
@@ -138,33 +143,43 @@ sum(esif_tagged_sum$fin_vyuct_czv, na.rm = TRUE)/1e9
 sum(efs_tagged$fin_vyuct_czv*efs_tagged$radek_podil, na.rm = TRUE)/1e9
 ```
 
-## Témata
+## Témata {.tabset .tabset-pills}
+
+### Teplárenství
 
 Co je v balíku projektů k teplárenství?
 
-```{r}
-targets::tar_load(plt_wordfreqs)
-plt_wordfreqs
+- jde hlavně o distribuci, nebo i o zdroje?
+- jsou zde různé skupiny projektů?
+
+Tady jen trknou slova "elektrárna" a "Opatovice": je to klastr projektů, kde se rekonstruovala kogerenační infrastruktura - sada navazujících projektů pod názvy "Úspory energie v SZT Elektrárny Opatovice".
+
+Vysvětlivky:
+
+- SZT: systém zásobování teplem
+- SCZT: systém centrálního zásobování teplem
+- HV: horkovodní
+
+```{r plt-tepl-wordfreqs}
+targets::tar_read(plt_wordfreqs)
 ```
 
-```{r}
-targets::tar_load(plt_wordpairs)
-plt_wordpairs
+```{r plt-tepl-wordpairs}
+targets::tar_read(plt_wordpairs)
 ```
 
-```{r, fig.height=8, fig.asp = 1}
-targets::tar_load(plt_bigram_bars)
-plt_bigram_bars
+```{r plt-tepl-bigrams-bars, fig.height=8, fig.asp = 1}
+targets::tar_read(plt_bigram_bars)
 ```
 
-```{r, fig.height=8, fig.asp = 1}
-targets::tar_load(plt_bigram_network)
-plt_bigram_network
+```{r plt-tepl-bigrams-network, fig.height=8, fig.asp = 1}
+targets::tar_read(plt_bigram_network)
 ```
 
-```{r}
-targets::tar_load(plt_topics)
-plt_topics
+Na úplně jiné skupiny to nevypadá:
+
+```{r plt-tepl-topics}
+targets::tar_read(plt_topics)
 ```
 
 
