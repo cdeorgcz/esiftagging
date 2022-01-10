@@ -362,7 +362,7 @@ t_text_basics <- list(
   tar_target(tepl_tkn_trnsltr_title, make_token_translator(tepl_lem_title)),
   tar_target(tepl_tkn_trnsltr_descr, make_token_translator(tepl_lem_descr)),
   tar_target(plt_wordfreqs, plot_wordfreq(tepl_texts, prj_nazev,
-                                          tepl_tkn_trnsltr_title, 40,
+                                          tepl_tkn_trnsltr_title, 35,
                                           stopwords_all_cz,
                                           title = "Nejčastější slova v názvech")),
   tar_target(plt_wordpairs, plot_wordcorrs(tepl_texts, prj_shrnuti,
