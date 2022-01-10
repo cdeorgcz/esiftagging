@@ -42,11 +42,11 @@ lemmatize_esif <- function(data, column, ...) {
 noise_cz <- c(".", ",", "\"", "\"", "-", ")", "(", ":", "/")
 stopwords_cz_additional <- c("rámec", "včetně", "současný", "výstup",
                              "předmět", "cca", "nejen", "zejména", "nově",
-                             "spočívat", "x", "ii")
+                             "spočívat", "x", "ii", "c")
 stopwords_esif <- c("projekt", "ulice", "cíl", "přinést", "dojít", "rámec",
                     "součást", "výstup", "předmět", "oblast", "doba", "jednat",
                     "předpokládat", "hlavní", "versus", "realizace",
-                    "předkládaný",
+                    "předkládaný", "etapa",
                     "zaměřovat", "docházet", "dojít", "akce", "část", "řešit", "uvedený",
                     "zaměřit", "aktivita", "podpora", "realizovat")
 
