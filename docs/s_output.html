@@ -13,8 +13,8 @@
 
 <title>Výstup: dokumentace, validace</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -319,6 +319,7 @@ $(document).ready(function () {
 </div>
 <div id="srovnání-tagů" class="section level3">
 <h3>Srovnání tagů</h3>
+<p><img src="s_output_files/figure-html/plot-sankey-1.png" width="100%" /></p>
 <p><img src="s_output_files/figure-html/plot-comparison-1.png" width="100%" /></p>
 </div>
 <div id="všechny-op" class="section level3">
@@ -350,1207 +351,774 @@ $(document).ready(function () {
 <div id="projektová-úroveň" class="section level4">
 <h4>Projektová úroveň</h4>
 <p>Zapsáno v data-export/export_202110/codebook_prj.yaml</p>
-<div id="pb_information" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-html {
-  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
-}
+<pre><code>$tbl
+# A tibble: 139,892 × 27
+   oblast_intervenc… oblast_interven… climate_share prj_id sc_id sc_nazev op_zkr
+   &lt;chr&gt;             &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; 
+ 1 Research and inn… I.0.002                      0 CZ.01… 01.1… Zvýšit … OP PIK
+ 2 Research and inn… I.0.002                      0 CZ.01… 01.1… Zvýšit … OP PIK
+ 3 Research and inn… I.0.002                      0 CZ.01… 01.1… Zvýšit … OP PIK
+ 4 Research and inn… I.0.002                      0 CZ.01… 01.1… Zvýšit … OP PIK
+ 5 Research and inn… I.0.002                      0 CZ.01… 01.1… Zvýšit … OP PIK
+ 6 Research and inn… I.0.002                      0 CZ.01… 01.1… Zvýšit … OP PIK
+ 7 Research and inn… I.0.002                      0 CZ.01… 01.1… Zvýšit … OP PIK
+ 8 Research and inn… I.0.002                      0 CZ.01… 01.1… Zvýšit … OP PIK
+ 9 Research and inn… I.0.002                      0 CZ.01… 01.1… Zvýšit … OP PIK
+10 Research and inn… I.0.002                      0 CZ.01… 01.1… Zvýšit … OP PIK
+# … with 139,882 more rows, and 20 more variables: op_id &lt;chr&gt;,
+#   fin_vyuct_czv &lt;dbl&gt;, fin_vyuct_eu &lt;dbl&gt;, fin_vyuct_sr &lt;dbl&gt;,
+#   fin_vyuct_sf &lt;dbl&gt;, fin_vyuct_kraj &lt;dbl&gt;, fin_vyuct_obec &lt;dbl&gt;,
+#   fin_vyuct_jine_nar_ver &lt;dbl&gt;, fin_vyuct_soukr &lt;dbl&gt;,
+#   fin_vyuct_narodni_verejne &lt;dbl&gt;, fin_vyuct_narodni &lt;dbl&gt;,
+#   fin_vyuct_verejne &lt;dbl&gt;, n_prj &lt;int&gt;, prj_nazev &lt;chr&gt;, vyzva_id &lt;chr&gt;,
+#   vyzva_nazev &lt;chr&gt;, prj_shrnuti &lt;chr&gt;, p_nazev &lt;chr&gt;, p_ic &lt;chr&gt;, …
 
-#pb_information .gt_table {
-  display: table;
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 130%;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
+$read_fn
+NULL
 
-#pb_information .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
+$tbl_name
+[1] &quot;data&quot;
 
-#pb_information .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
+$info_label
+[1] &quot;Codebook hlavního výstupu&quot;
 
-#pb_information .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
+$meta_snippets
+list()
 
-#pb_information .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
+$lang
+[1] &quot;en&quot;
 
-#pb_information .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
+$locale
+[1] &quot;en&quot;
 
-#pb_information .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
+$metadata
+$metadata$table
+$metadata$table$name
+[1] &quot;data&quot;
 
-#pb_information .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
+$metadata$table$`_columns`
+[1] 27
 
-#pb_information .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
+$metadata$table$`_rows`
+[1] 139892
 
-#pb_information .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
+$metadata$table$`_type`
+[1] &quot;tbl_df&quot;
 
-#pb_information .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
+$metadata$table$Info
+[1] &quot;Tabulka se součty výdajů podle OP, klima tagu a kategorie určující klimatag&quot;
 
-#pb_information .gt_group_heading {
-  padding: 8px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-}
+$metadata$table$Rozsah
+[1] &quot;Z CAP/SZP zahruje jen PRV - projektová i plošná opatření&quot;
 
-#pb_information .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
+$metadata$table$Proměnné
+[1] &quot;kategorie určující klimatag je u PRV opatření, u ostatních OP je to oblast intervencí&quot;
 
-#pb_information .gt_from_md > :first-child {
-  margin-top: 0;
-}
+$metadata$table$Detail
+[1] &quot;Codebook obsahuje všechny proměnné obsažené v různých exportech&quot;
 
-#pb_information .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
+$metadata$table$`Celková struktura`
+[1] &quot;dlouhý formát: kategorie jsou v řádcích, metadata a jednotlivé zdroje financí jsou ve sloupcích&quot;
 
-#pb_information .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
+$metadata$table$`Názvy proměnných`
+[1] &quot;platí i pro ostatní datové sady v pipeline:\n- `dt_`: proměnné časového určení\n- `fin_`: finanční údaje&quot;
 
-#pb_information .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 12px;
-}
 
-#pb_information .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
+$metadata$columns
+$metadata$columns$oblast_intervence_nazev_en
+$metadata$columns$oblast_intervence_nazev_en$`_type`
+[1] &quot;character&quot;
 
-#pb_information .gt_first_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-}
+$metadata$columns$oblast_intervence_nazev_en$Typ
+[1] &quot;Oblast intervence (area of intervention)&quot;
 
-#pb_information .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
+$metadata$columns$oblast_intervence_nazev_en$Note
+[1] &quot;Nexistuje u výdajů CAP - zde jen nařízení&quot;
 
-#pb_information .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
+$metadata$columns$oblast_intervence_nazev_en$Detail
+[1] &quot;Kategorie určená v nařízení, na niž jsou v prováděcím nařízení navázány klima tagy&quot;
 
-#pb_information .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
 
-#pb_information .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
+$metadata$columns$oblast_intervence_kod
+$metadata$columns$oblast_intervence_kod$`_type`
+[1] &quot;character&quot;
 
-#pb_information .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
+$metadata$columns$oblast_intervence_kod$Typ
+[1] &quot;Oblast intervence (area of intervention)&quot;
 
-#pb_information .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding: 4px;
-}
+$metadata$columns$oblast_intervence_kod$Note
+[1] &quot;Nexistuje u výdajů CAP - zde jen nařízení&quot;
 
-#pb_information .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
+$metadata$columns$oblast_intervence_kod$Detail
+[1] &quot;Kategorie určená v nařízení, na niž jsou v prováděcím nařízení navázány klima tagy&quot;
 
-#pb_information .gt_sourcenote {
-  font-size: 90%;
-  padding: 4px;
-}
 
-#pb_information .gt_left {
-  text-align: left;
-}
+$metadata$columns$climate_share
+$metadata$columns$climate_share$`_type`
+[1] &quot;numeric&quot;
 
-#pb_information .gt_center {
-  text-align: center;
-}
+$metadata$columns$climate_share$Popis
+[1] &quot;Podíl přispění ke klimatu - podle prováděcího nařízení EK&quot;
 
-#pb_information .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
 
-#pb_information .gt_font_normal {
-  font-weight: normal;
-}
+$metadata$columns$prj_id
+$metadata$columns$prj_id$`_type`
+[1] &quot;character&quot;
 
-#pb_information .gt_font_bold {
-  font-weight: bold;
-}
+$metadata$columns$prj_id$Popis
+[1] &quot;Kód projektu Kód projektu&quot;
 
-#pb_information .gt_font_italic {
-  font-style: italic;
-}
+$metadata$columns$prj_id$Typ
+[1] &quot;Informace o projektu. Nedostupné u PRV&quot;
 
-#pb_information .gt_super {
-  font-size: 65%;
-}
 
-#pb_information .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
-  font-size: 65%;
-}
+$metadata$columns$sc_id
+$metadata$columns$sc_id$`_type`
+[1] &quot;character&quot;
 
-#pb_information {
-  -webkit-font-smoothing: antialiased;
-  letter-spacing: .15px;
-}
+$metadata$columns$sc_id$Typ
+[1] &quot;Identifikace specifického cíle podle OP&quot;
 
-#pb_information a {
-  color: #375F84;
-  text-decoration: none;
-}
 
-#pb_information a:hover {
-  color: #375F84;
-  text-decoration: underline;
-}
+$metadata$columns$sc_nazev
+$metadata$columns$sc_nazev$`_type`
+[1] &quot;character&quot;
 
-#pb_information p {
-  overflow: visible;
-  margin-top: 2px;
-  margin-left: 0;
-  margin-right: 0;
-  margin-bottom: 5px;
-}
+$metadata$columns$sc_nazev$Typ
+[1] &quot;Identifikace specifického cíle podle OP&quot;
 
-#pb_information ul {
-  list-style-type: square;
-  padding-left: 25px;
-  margin-top: -4px;
-  margin-bottom: 6px;
-}
 
-#pb_information li {
-  text-indent: -1px;
-}
+$metadata$columns$op_zkr
+$metadata$columns$op_zkr$`_type`
+[1] &quot;character&quot;
 
-#pb_information h4 {
-  font-weight: 500;
-  color: #444444;
-}
+$metadata$columns$op_zkr$Popis
+[1] &quot;Česká zkratka operačního programu&quot;
 
-#pb_information code {
-  font-family: 'IBM Plex Mono', monospace, courier;
-  font-size: 90%;
-  font-weight: 500;
-  color: #666666;
-  background-color: transparent;
-  padding: 0;
-}
 
-#pb_information .pb_date {
-  text-decoration-style: solid;
-  text-decoration-color: #9933CC;
-  text-decoration-line: underline;
-  text-underline-position: under;
-  font-variant-numeric: tabular-nums;
-  margin-right: 4px;
-}
+$metadata$columns$op_id
+$metadata$columns$op_id$`_type`
+[1] &quot;character&quot;
 
-#pb_information .pb_label {
-  border: solid 1px;
-  border-color: inherit;
-  padding: 0px 3px 0px 3px;
-}
+$metadata$columns$op_id$Popis
+[1] &quot;Kód operačního programu&quot;
 
-#pb_information .pb_label_rounded {
-  border: solid 1px;
-  border-color: inherit;
-  border-radius: 8px;
-  padding: 0px 8px 0px 8px;
-}
 
-#pb_information .pb_sub_label {
-  font-size: smaller;
-  color: #777777;
-}
+$metadata$columns$fin_vyuct_czv
+$metadata$columns$fin_vyuct_czv$`_type`
+[1] &quot;numeric&quot;
 
-#pb_information .pb_col_type {
-  font-size: 75%;
-}
+$metadata$columns$fin_vyuct_czv$Typ
+[1] &quot;Finance&quot;
 
-#pb_information .gt_sourcenote {
-  height: 35px;
-  font-size: 60%;
-  padding: 0;
-}
+$metadata$columns$fin_vyuct_czv$Jednotka
+[1] &quot;CZK&quot;
 
-#pb_information .gt_group_heading {
-  text-indent: -3px;
-}
-</style>
-<table class="gt_table" style="table-layout: fixed;; width: 0px">
-  <colgroup>
-    <col style="width:875px;"/>
-  </colgroup>
-  <thead class="gt_header">
-    <tr>
-      <th colspan="1" class="gt_heading gt_title gt_font_normal" style="color: #444444; font-size: 28px; text-align: left; font-weight: 500;">Pointblank Information</th>
-    </tr>
-    <tr>
-      <th colspan="1" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="font-size: 12px; text-align: left;"><span style="text-decoration-style:solid;text-decoration-color:#ADD8E6;text-decoration-line:underline;text-underline-position:under;color:#333333;font-variant-numeric:tabular-nums;padding-left:4px;margin-right:5px;padding-right:2px;">Codebook hlavního výstupu</span></p>
-<div style="height:25px;margin-top:10px;"><span style="background-color:#F1D35A;color:#222222;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 5px;font-weight:bold;border:solid 1px #F1D35A;padding:2px 15px 2px 15px;font-size:smaller;">tibble</span>
-<span style="background-color:none;color:#222222;padding:0.5em 0.5em;position:inherit;margin:5px 10px 5px -4px;font-weight:bold;border:solid 1px #F1D35A;padding:2px 15px 2px 15px;font-size:smaller;">data</span><span style="background-color:#eecbff;color:#333333;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 5px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">Rows</span>
-<span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">139,892</span>
-<span style="background-color:#BDE7B4;color:#333333;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 1px;font-weight:bold;border:solid 1px #BDE7B4;padding:2px 15px 2px 15px;font-size:smaller;">Columns</span>
-<span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #BDE7B4;padding:2px 15px 2px 15px;font-size:smaller;">27</span></div>
-</th>
-    </tr>
-  </thead>
-  
-  <tbody class="gt_table_body">
-    <tr class="gt_group_heading_row">
-      <td colspan="1" class="gt_group_heading" style="color: #444444; font-weight: 500; text-transform: uppercase; background-color: #FCFCFC; border-bottom-width: 1; border-bottom-style: solid; border-bottom-color: #EFEFEF;">Table</td>
-    </tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><h4 style="margin-bottom:5px;">INFO</h4>
-<p>Tabulka se součty výdajů podle OP, klima tagu a kategorie určující klimatag</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><h4 style="margin-bottom:5px;">ROZSAH</h4>
-<p>Z CAP/SZP zahruje jen PRV - projektová i plošná opatření</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><h4 style="margin-bottom:5px;">PROMĚNNÉ</h4>
-<p>kategorie určující klimatag je u PRV opatření, u ostatních OP je to oblast intervencí</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><h4 style="margin-bottom:5px;">DETAIL</h4>
-<p>Codebook obsahuje všechny proměnné obsažené v různých exportech</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><h4 style="margin-bottom:5px;">CELKOVÁ STRUKTURA</h4>
-<p>dlouhý formát: kategorie jsou v řádcích, metadata a jednotlivé zdroje financí jsou ve sloupcích</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><h4 style="margin-bottom:5px;">NÁZVY PROMĚNNÝCH</h4>
-<p>platí i pro ostatní datové sady v pipeline:</p>
-<ul>
-<li><code>dt_</code>: proměnné časového určení</li>
-<li><code>fin_</code>: finanční údaje</li>
-</ul>
-</div></td></tr>
-    <tr class="gt_group_heading_row">
-      <td colspan="1" class="gt_group_heading" style="color: #444444; font-weight: 500; text-transform: uppercase; background-color: #FCFCFC; border-bottom-width: 1; border-bottom-style: solid; border-bottom-color: #EFEFEF;">Columns</td>
-    </tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">oblast_intervence_nazev_en</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Oblast intervence (area of intervention)</p>
-<p><strong class="pb_sub_label">NOTE</strong> Nexistuje u výdajů CAP - zde jen nařízení</p>
-<p><strong class="pb_sub_label">DETAIL</strong> Kategorie určená v nařízení, na niž jsou v prováděcím nařízení navázány klima tagy</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">oblast_intervence_kod</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Oblast intervence (area of intervention)</p>
-<p><strong class="pb_sub_label">NOTE</strong> Nexistuje u výdajů CAP - zde jen nařízení</p>
-<p><strong class="pb_sub_label">DETAIL</strong> Kategorie určená v nařízení, na niž jsou v prováděcím nařízení navázány klima tagy</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">climate_share</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">POPIS</strong> Podíl přispění ke klimatu - podle prováděcího nařízení EK</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">prj_id</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">POPIS</strong> Kód projektu Kód projektu</p>
-<p><strong class="pb_sub_label">TYP</strong> Informace o projektu. Nedostupné u PRV</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">sc_id</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Identifikace specifického cíle podle OP</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">sc_nazev</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Identifikace specifického cíle podle OP</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">op_zkr</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">POPIS</strong> Česká zkratka operačního programu</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">op_id</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">POPIS</strong> Kód operačního programu</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_czv</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Celkové způsobilé výdaje</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_eu</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Příspěvek Unie</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_sr</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Státní rozpočet</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_sf</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Státní fondy</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_kraj</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Kraj</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_obec</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Obec</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_jine_nar_ver</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Soukromý</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_soukr</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Soukromý</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_narodni_verejne</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Národní</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_narodni</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Národní</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_verejne</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">n_prj</code>  <code class="pb_col_type">integer</code></p>
-<p><strong class="pb_sub_label"></strong></p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">prj_nazev</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Informace o projektu. Nedostupné u PRV</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">vyzva_id</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label"></strong></p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">vyzva_nazev</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label"></strong></p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">prj_shrnuti</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Informace o projektu. Nedostupné u PRV</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">p_nazev</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">POPIS</strong> Název příjemce</p>
-<p><strong class="pb_sub_label">TYP</strong> Informace o příjemci</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">p_ic</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Informace o příjemci</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">p_forma</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">POPIS</strong> Právní forma příjemce</p>
-<p><strong class="pb_sub_label">TYP</strong> Informace o příjemci</p>
-</div></td></tr>
-  </tbody>
-  <tfoot class="gt_sourcenotes">
-    <tr>
-      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2021-12-16 01:01:43 CET</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;margin:5px 1px 5px 0;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">&lt; 1 s</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2021-12-16 01:01:43 CET</span></td>
-    </tr>
-  </tfoot>
-  
-</table>
-</div>
+$metadata$columns$fin_vyuct_czv$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_czv$`Zdroj financí`
+[1] &quot;Celkové způsobilé výdaje&quot;
+
+
+$metadata$columns$fin_vyuct_eu
+$metadata$columns$fin_vyuct_eu$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_eu$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_eu$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_eu$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_eu$`Zdroj financí`
+[1] &quot;Příspěvek Unie&quot;
+
+
+$metadata$columns$fin_vyuct_sr
+$metadata$columns$fin_vyuct_sr$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_sr$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_sr$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_sr$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_sr$`Zdroj financí`
+[1] &quot;Státní rozpočet&quot;
+
+
+$metadata$columns$fin_vyuct_sf
+$metadata$columns$fin_vyuct_sf$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_sf$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_sf$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_sf$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_sf$`Zdroj financí`
+[1] &quot;Státní fondy&quot;
+
+
+$metadata$columns$fin_vyuct_kraj
+$metadata$columns$fin_vyuct_kraj$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_kraj$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_kraj$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_kraj$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_kraj$`Zdroj financí`
+[1] &quot;Kraj&quot;
+
+
+$metadata$columns$fin_vyuct_obec
+$metadata$columns$fin_vyuct_obec$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_obec$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_obec$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_obec$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_obec$`Zdroj financí`
+[1] &quot;Obec&quot;
+
+
+$metadata$columns$fin_vyuct_jine_nar_ver
+$metadata$columns$fin_vyuct_jine_nar_ver$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_jine_nar_ver$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_jine_nar_ver$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_jine_nar_ver$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_jine_nar_ver$`Zdroj financí`
+[1] &quot;Soukromý&quot;
+
+
+$metadata$columns$fin_vyuct_soukr
+$metadata$columns$fin_vyuct_soukr$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_soukr$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_soukr$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_soukr$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_soukr$`Zdroj financí`
+[1] &quot;Soukromý&quot;
+
+
+$metadata$columns$fin_vyuct_narodni_verejne
+$metadata$columns$fin_vyuct_narodni_verejne$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_narodni_verejne$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_narodni_verejne$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_narodni_verejne$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_narodni_verejne$`Zdroj financí`
+[1] &quot;Národní&quot;
+
+
+$metadata$columns$fin_vyuct_narodni
+$metadata$columns$fin_vyuct_narodni$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_narodni$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_narodni$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_narodni$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_narodni$`Zdroj financí`
+[1] &quot;Národní&quot;
+
+
+$metadata$columns$fin_vyuct_verejne
+$metadata$columns$fin_vyuct_verejne$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_verejne$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_verejne$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_verejne$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+
+$metadata$columns$n_prj
+$metadata$columns$n_prj$`_type`
+[1] &quot;integer&quot;
+
+
+$metadata$columns$prj_nazev
+$metadata$columns$prj_nazev$`_type`
+[1] &quot;character&quot;
+
+$metadata$columns$prj_nazev$Typ
+[1] &quot;Informace o projektu. Nedostupné u PRV&quot;
+
+
+$metadata$columns$vyzva_id
+$metadata$columns$vyzva_id$`_type`
+[1] &quot;character&quot;
+
+
+$metadata$columns$vyzva_nazev
+$metadata$columns$vyzva_nazev$`_type`
+[1] &quot;character&quot;
+
+
+$metadata$columns$prj_shrnuti
+$metadata$columns$prj_shrnuti$`_type`
+[1] &quot;character&quot;
+
+$metadata$columns$prj_shrnuti$Typ
+[1] &quot;Informace o projektu. Nedostupné u PRV&quot;
+
+
+$metadata$columns$p_nazev
+$metadata$columns$p_nazev$`_type`
+[1] &quot;character&quot;
+
+$metadata$columns$p_nazev$Popis
+[1] &quot;Název příjemce&quot;
+
+$metadata$columns$p_nazev$Typ
+[1] &quot;Informace o příjemci&quot;
+
+
+$metadata$columns$p_ic
+$metadata$columns$p_ic$`_type`
+[1] &quot;character&quot;
+
+$metadata$columns$p_ic$Typ
+[1] &quot;Informace o příjemci&quot;
+
+
+$metadata$columns$p_forma
+$metadata$columns$p_forma$`_type`
+[1] &quot;character&quot;
+
+$metadata$columns$p_forma$Popis
+[1] &quot;Právní forma příjemce&quot;
+
+$metadata$columns$p_forma$Typ
+[1] &quot;Informace o příjemci&quot;
+
+
+
+
+attr(,&quot;class&quot;)
+[1] &quot;ptblank_informant&quot;</code></pre>
 </div>
 <div id="součty" class="section level4">
 <h4>Součty</h4>
 <p>Zapsáno v data-export/export_202110/codebook_sum.yaml</p>
-<div id="pb_information" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-html {
-  font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
-}
+<pre><code>$tbl
+# A tibble: 196 × 21
+   oblast_intervence_… oblast_interven… climate_share op_zkr op_id fin_vyuct_czv
+   &lt;chr&gt;               &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt;
+ 1 Research and innov… I.0.002                    0   OP PIK 01      6552959890.
+ 2 Productive investm… I.0.003                    0.4 OP PIK 01       462812274.
+ 3 Productive investm… I.0.004                    0   OP PIK 01      1944195895.
+ 4 Electricity (stora… II.1.005                   0   OP PIK 01      5722555630.
+ 5 Renewable energy: … II.1.009                   1   OP PIK 01               0 
+ 6 Renewable energy: … II.1.010                   1   OP PIK 01               0 
+ 7 Renewable energy: … II.1.011                   1   OP PIK 01       571811250.
+ 8 Other renewable en… II.1.012                   1   OP PIK 01         8523347.
+ 9 Energy efficiency … II.1.013                   1   IROP   06               0 
+10 Energy efficiency … II.1.013                   1   OP D   04        35127845.
+# … with 186 more rows, and 15 more variables: fin_vyuct_eu &lt;dbl&gt;,
+#   fin_vyuct_sr &lt;dbl&gt;, fin_vyuct_sf &lt;dbl&gt;, fin_vyuct_kraj &lt;dbl&gt;,
+#   fin_vyuct_obec &lt;dbl&gt;, fin_vyuct_jine_nar_ver &lt;dbl&gt;, fin_vyuct_soukr &lt;dbl&gt;,
+#   fin_vyuct_narodni_verejne &lt;dbl&gt;, fin_vyuct_narodni &lt;dbl&gt;,
+#   fin_vyuct_verejne &lt;dbl&gt;, n_prj &lt;int&gt;, prv_opatreni_orig &lt;chr&gt;,
+#   prv_opatreni_id &lt;chr&gt;, prv_opatreni_typ &lt;chr&gt;, prv_opatreni_nazev &lt;chr&gt;
 
-#pb_information .gt_table {
-  display: table;
-  border-collapse: collapse;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 130%;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
+$read_fn
+NULL
 
-#pb_information .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
+$tbl_name
+[1] &quot;data&quot;
 
-#pb_information .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
+$info_label
+[1] &quot;Codebook hlavního výstupu&quot;
 
-#pb_information .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
+$meta_snippets
+list()
 
-#pb_information .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
+$lang
+[1] &quot;en&quot;
 
-#pb_information .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
+$locale
+[1] &quot;en&quot;
 
-#pb_information .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
+$metadata
+$metadata$table
+$metadata$table$name
+[1] &quot;data&quot;
 
-#pb_information .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
+$metadata$table$`_columns`
+[1] 21
 
-#pb_information .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
+$metadata$table$`_rows`
+[1] 196
 
-#pb_information .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
+$metadata$table$`_type`
+[1] &quot;tbl_df&quot;
 
-#pb_information .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
+$metadata$table$Info
+[1] &quot;Tabulka se součty výdajů podle OP, klima tagu a kategorie určující klimatag&quot;
 
-#pb_information .gt_group_heading {
-  padding: 8px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-}
+$metadata$table$Rozsah
+[1] &quot;Z CAP/SZP zahruje jen PRV - projektová i plošná opatření&quot;
 
-#pb_information .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
+$metadata$table$Proměnné
+[1] &quot;kategorie určující klimatag je u PRV opatření, u ostatních OP je to oblast intervencí&quot;
 
-#pb_information .gt_from_md > :first-child {
-  margin-top: 0;
-}
+$metadata$table$Detail
+[1] &quot;Codebook obsahuje všechny proměnné obsažené v různých exportech&quot;
 
-#pb_information .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
+$metadata$table$`Celková struktura`
+[1] &quot;dlouhý formát: kategorie jsou v řádcích, metadata a jednotlivé zdroje financí jsou ve sloupcích&quot;
 
-#pb_information .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
+$metadata$table$`Názvy proměnných`
+[1] &quot;platí i pro ostatní datové sady v pipeline:\n- `dt_`: proměnné časového určení\n- `fin_`: finanční údaje&quot;
 
-#pb_information .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 12px;
-}
 
-#pb_information .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
+$metadata$columns
+$metadata$columns$oblast_intervence_nazev_en
+$metadata$columns$oblast_intervence_nazev_en$`_type`
+[1] &quot;character&quot;
 
-#pb_information .gt_first_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-}
+$metadata$columns$oblast_intervence_nazev_en$Typ
+[1] &quot;Oblast intervence (area of intervention)&quot;
 
-#pb_information .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
+$metadata$columns$oblast_intervence_nazev_en$Note
+[1] &quot;Nexistuje u výdajů CAP - zde jen nařízení&quot;
 
-#pb_information .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
+$metadata$columns$oblast_intervence_nazev_en$Detail
+[1] &quot;Kategorie určená v nařízení, na niž jsou v prováděcím nařízení navázány klima tagy&quot;
 
-#pb_information .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
 
-#pb_information .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
+$metadata$columns$oblast_intervence_kod
+$metadata$columns$oblast_intervence_kod$`_type`
+[1] &quot;character&quot;
 
-#pb_information .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
+$metadata$columns$oblast_intervence_kod$Typ
+[1] &quot;Oblast intervence (area of intervention)&quot;
 
-#pb_information .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding: 4px;
-}
+$metadata$columns$oblast_intervence_kod$Note
+[1] &quot;Nexistuje u výdajů CAP - zde jen nařízení&quot;
 
-#pb_information .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
+$metadata$columns$oblast_intervence_kod$Detail
+[1] &quot;Kategorie určená v nařízení, na niž jsou v prováděcím nařízení navázány klima tagy&quot;
 
-#pb_information .gt_sourcenote {
-  font-size: 90%;
-  padding: 4px;
-}
 
-#pb_information .gt_left {
-  text-align: left;
-}
+$metadata$columns$climate_share
+$metadata$columns$climate_share$`_type`
+[1] &quot;numeric&quot;
 
-#pb_information .gt_center {
-  text-align: center;
-}
+$metadata$columns$climate_share$Popis
+[1] &quot;Podíl přispění ke klimatu - podle prováděcího nařízení EK&quot;
 
-#pb_information .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
 
-#pb_information .gt_font_normal {
-  font-weight: normal;
-}
+$metadata$columns$op_zkr
+$metadata$columns$op_zkr$`_type`
+[1] &quot;character&quot;
 
-#pb_information .gt_font_bold {
-  font-weight: bold;
-}
+$metadata$columns$op_zkr$Popis
+[1] &quot;Česká zkratka operačního programu&quot;
 
-#pb_information .gt_font_italic {
-  font-style: italic;
-}
 
-#pb_information .gt_super {
-  font-size: 65%;
-}
+$metadata$columns$op_id
+$metadata$columns$op_id$`_type`
+[1] &quot;character&quot;
 
-#pb_information .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
-  font-size: 65%;
-}
+$metadata$columns$op_id$Popis
+[1] &quot;Kód operačního programu&quot;
 
-#pb_information {
-  -webkit-font-smoothing: antialiased;
-  letter-spacing: .15px;
-}
 
-#pb_information a {
-  color: #375F84;
-  text-decoration: none;
-}
+$metadata$columns$fin_vyuct_czv
+$metadata$columns$fin_vyuct_czv$`_type`
+[1] &quot;numeric&quot;
 
-#pb_information a:hover {
-  color: #375F84;
-  text-decoration: underline;
-}
+$metadata$columns$fin_vyuct_czv$Typ
+[1] &quot;Finance&quot;
 
-#pb_information p {
-  overflow: visible;
-  margin-top: 2px;
-  margin-left: 0;
-  margin-right: 0;
-  margin-bottom: 5px;
-}
+$metadata$columns$fin_vyuct_czv$Jednotka
+[1] &quot;CZK&quot;
 
-#pb_information ul {
-  list-style-type: square;
-  padding-left: 25px;
-  margin-top: -4px;
-  margin-bottom: 6px;
-}
+$metadata$columns$fin_vyuct_czv$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
 
-#pb_information li {
-  text-indent: -1px;
-}
+$metadata$columns$fin_vyuct_czv$`Zdroj financí`
+[1] &quot;Celkové způsobilé výdaje&quot;
 
-#pb_information h4 {
-  font-weight: 500;
-  color: #444444;
-}
 
-#pb_information code {
-  font-family: 'IBM Plex Mono', monospace, courier;
-  font-size: 90%;
-  font-weight: 500;
-  color: #666666;
-  background-color: transparent;
-  padding: 0;
-}
+$metadata$columns$fin_vyuct_eu
+$metadata$columns$fin_vyuct_eu$`_type`
+[1] &quot;numeric&quot;
 
-#pb_information .pb_date {
-  text-decoration-style: solid;
-  text-decoration-color: #9933CC;
-  text-decoration-line: underline;
-  text-underline-position: under;
-  font-variant-numeric: tabular-nums;
-  margin-right: 4px;
-}
+$metadata$columns$fin_vyuct_eu$Typ
+[1] &quot;Finance&quot;
 
-#pb_information .pb_label {
-  border: solid 1px;
-  border-color: inherit;
-  padding: 0px 3px 0px 3px;
-}
+$metadata$columns$fin_vyuct_eu$Jednotka
+[1] &quot;CZK&quot;
 
-#pb_information .pb_label_rounded {
-  border: solid 1px;
-  border-color: inherit;
-  border-radius: 8px;
-  padding: 0px 8px 0px 8px;
-}
+$metadata$columns$fin_vyuct_eu$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
 
-#pb_information .pb_sub_label {
-  font-size: smaller;
-  color: #777777;
-}
+$metadata$columns$fin_vyuct_eu$`Zdroj financí`
+[1] &quot;Příspěvek Unie&quot;
 
-#pb_information .pb_col_type {
-  font-size: 75%;
-}
 
-#pb_information .gt_sourcenote {
-  height: 35px;
-  font-size: 60%;
-  padding: 0;
-}
+$metadata$columns$fin_vyuct_sr
+$metadata$columns$fin_vyuct_sr$`_type`
+[1] &quot;numeric&quot;
 
-#pb_information .gt_group_heading {
-  text-indent: -3px;
-}
-</style>
-<table class="gt_table" style="table-layout: fixed;; width: 0px">
-  <colgroup>
-    <col style="width:875px;"/>
-  </colgroup>
-  <thead class="gt_header">
-    <tr>
-      <th colspan="1" class="gt_heading gt_title gt_font_normal" style="color: #444444; font-size: 28px; text-align: left; font-weight: 500;">Pointblank Information</th>
-    </tr>
-    <tr>
-      <th colspan="1" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="font-size: 12px; text-align: left;"><span style="text-decoration-style:solid;text-decoration-color:#ADD8E6;text-decoration-line:underline;text-underline-position:under;color:#333333;font-variant-numeric:tabular-nums;padding-left:4px;margin-right:5px;padding-right:2px;">Codebook hlavního výstupu</span></p>
-<div style="height:25px;margin-top:10px;"><span style="background-color:#F1D35A;color:#222222;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 5px;font-weight:bold;border:solid 1px #F1D35A;padding:2px 15px 2px 15px;font-size:smaller;">tibble</span>
-<span style="background-color:none;color:#222222;padding:0.5em 0.5em;position:inherit;margin:5px 10px 5px -4px;font-weight:bold;border:solid 1px #F1D35A;padding:2px 15px 2px 15px;font-size:smaller;">data</span><span style="background-color:#eecbff;color:#333333;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 5px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">Rows</span>
-<span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">196</span>
-<span style="background-color:#BDE7B4;color:#333333;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 1px;font-weight:bold;border:solid 1px #BDE7B4;padding:2px 15px 2px 15px;font-size:smaller;">Columns</span>
-<span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #BDE7B4;padding:2px 15px 2px 15px;font-size:smaller;">21</span></div>
-</th>
-    </tr>
-  </thead>
-  
-  <tbody class="gt_table_body">
-    <tr class="gt_group_heading_row">
-      <td colspan="1" class="gt_group_heading" style="color: #444444; font-weight: 500; text-transform: uppercase; background-color: #FCFCFC; border-bottom-width: 1; border-bottom-style: solid; border-bottom-color: #EFEFEF;">Table</td>
-    </tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><h4 style="margin-bottom:5px;">INFO</h4>
-<p>Tabulka se součty výdajů podle OP, klima tagu a kategorie určující klimatag</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><h4 style="margin-bottom:5px;">ROZSAH</h4>
-<p>Z CAP/SZP zahruje jen PRV - projektová i plošná opatření</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><h4 style="margin-bottom:5px;">PROMĚNNÉ</h4>
-<p>kategorie určující klimatag je u PRV opatření, u ostatních OP je to oblast intervencí</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><h4 style="margin-bottom:5px;">DETAIL</h4>
-<p>Codebook obsahuje všechny proměnné obsažené v různých exportech</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><h4 style="margin-bottom:5px;">CELKOVÁ STRUKTURA</h4>
-<p>dlouhý formát: kategorie jsou v řádcích, metadata a jednotlivé zdroje financí jsou ve sloupcích</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><h4 style="margin-bottom:5px;">NÁZVY PROMĚNNÝCH</h4>
-<p>platí i pro ostatní datové sady v pipeline:</p>
-<ul>
-<li><code>dt_</code>: proměnné časového určení</li>
-<li><code>fin_</code>: finanční údaje</li>
-</ul>
-</div></td></tr>
-    <tr class="gt_group_heading_row">
-      <td colspan="1" class="gt_group_heading" style="color: #444444; font-weight: 500; text-transform: uppercase; background-color: #FCFCFC; border-bottom-width: 1; border-bottom-style: solid; border-bottom-color: #EFEFEF;">Columns</td>
-    </tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">oblast_intervence_nazev_en</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Oblast intervence (area of intervention)</p>
-<p><strong class="pb_sub_label">NOTE</strong> Nexistuje u výdajů CAP - zde jen nařízení</p>
-<p><strong class="pb_sub_label">DETAIL</strong> Kategorie určená v nařízení, na niž jsou v prováděcím nařízení navázány klima tagy</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">oblast_intervence_kod</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Oblast intervence (area of intervention)</p>
-<p><strong class="pb_sub_label">NOTE</strong> Nexistuje u výdajů CAP - zde jen nařízení</p>
-<p><strong class="pb_sub_label">DETAIL</strong> Kategorie určená v nařízení, na niž jsou v prováděcím nařízení navázány klima tagy</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">climate_share</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">POPIS</strong> Podíl přispění ke klimatu - podle prováděcího nařízení EK</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">op_zkr</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">POPIS</strong> Česká zkratka operačního programu</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">op_id</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">POPIS</strong> Kód operačního programu</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_czv</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Celkové způsobilé výdaje</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_eu</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Příspěvek Unie</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_sr</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Státní rozpočet</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_sf</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Státní fondy</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_kraj</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Kraj</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_obec</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Obec</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_jine_nar_ver</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Soukromý</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_soukr</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Soukromý</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_narodni_verejne</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Národní</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_narodni</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-<p><strong class="pb_sub_label">ZDROJ FINANCÍ</strong> Národní</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">fin_vyuct_verejne</code>  <code class="pb_col_type">numeric</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Finance</p>
-<p><strong class="pb_sub_label">JEDNOTKA</strong> CZK</p>
-<p><strong class="pb_sub_label">ZDROJ DAT</strong> ŽOP sečtené podle data proplacení</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">n_prj</code>  <code class="pb_col_type">integer</code></p>
-<p><strong class="pb_sub_label"></strong></p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">prv_opatreni_orig</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Opatření PRV/CAP</p>
-<p><strong class="pb_sub_label">NOTE</strong> Existuje jen u výdajů CAP</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">prv_opatreni_id</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Opatření PRV/CAP</p>
-<p><strong class="pb_sub_label">NOTE</strong> Existuje jen u výdajů CAP</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">prv_opatreni_typ</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Opatření PRV/CAP</p>
-<p><strong class="pb_sub_label">NOTE</strong> Existuje jen u výdajů CAP</p>
-</div></td></tr>
-    <tr><td class="gt_row gt_left" style="color: #666666; font-size: smaller; border-top-width: 1; border-top-style: solid; border-top-color: #EFEFEF;"><div class='gt_from_md'><p><code style="margin-bottom:5px;color:#555555;font-weight:500;line-height:2em;border:solid 1px #499FFE;padding:2px 8px 3px 8px;background-color:#FAFAFA;">prv_opatreni_nazev</code>  <code class="pb_col_type">character</code></p>
-<p><strong class="pb_sub_label">TYP</strong> Opatření PRV/CAP</p>
-<p><strong class="pb_sub_label">NOTE</strong> Existuje jen u výdajů CAP</p>
-</div></td></tr>
-  </tbody>
-  <tfoot class="gt_sourcenotes">
-    <tr>
-      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2021-12-16 01:01:44 CET</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;margin:5px 1px 5px 0;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">&lt; 1 s</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2021-12-16 01:01:44 CET</span></td>
-    </tr>
-  </tfoot>
-  
-</table>
-</div>
+$metadata$columns$fin_vyuct_sr$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_sr$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_sr$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_sr$`Zdroj financí`
+[1] &quot;Státní rozpočet&quot;
+
+
+$metadata$columns$fin_vyuct_sf
+$metadata$columns$fin_vyuct_sf$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_sf$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_sf$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_sf$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_sf$`Zdroj financí`
+[1] &quot;Státní fondy&quot;
+
+
+$metadata$columns$fin_vyuct_kraj
+$metadata$columns$fin_vyuct_kraj$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_kraj$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_kraj$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_kraj$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_kraj$`Zdroj financí`
+[1] &quot;Kraj&quot;
+
+
+$metadata$columns$fin_vyuct_obec
+$metadata$columns$fin_vyuct_obec$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_obec$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_obec$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_obec$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_obec$`Zdroj financí`
+[1] &quot;Obec&quot;
+
+
+$metadata$columns$fin_vyuct_jine_nar_ver
+$metadata$columns$fin_vyuct_jine_nar_ver$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_jine_nar_ver$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_jine_nar_ver$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_jine_nar_ver$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_jine_nar_ver$`Zdroj financí`
+[1] &quot;Soukromý&quot;
+
+
+$metadata$columns$fin_vyuct_soukr
+$metadata$columns$fin_vyuct_soukr$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_soukr$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_soukr$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_soukr$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_soukr$`Zdroj financí`
+[1] &quot;Soukromý&quot;
+
+
+$metadata$columns$fin_vyuct_narodni_verejne
+$metadata$columns$fin_vyuct_narodni_verejne$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_narodni_verejne$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_narodni_verejne$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_narodni_verejne$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_narodni_verejne$`Zdroj financí`
+[1] &quot;Národní&quot;
+
+
+$metadata$columns$fin_vyuct_narodni
+$metadata$columns$fin_vyuct_narodni$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_narodni$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_narodni$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_narodni$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+$metadata$columns$fin_vyuct_narodni$`Zdroj financí`
+[1] &quot;Národní&quot;
+
+
+$metadata$columns$fin_vyuct_verejne
+$metadata$columns$fin_vyuct_verejne$`_type`
+[1] &quot;numeric&quot;
+
+$metadata$columns$fin_vyuct_verejne$Typ
+[1] &quot;Finance&quot;
+
+$metadata$columns$fin_vyuct_verejne$Jednotka
+[1] &quot;CZK&quot;
+
+$metadata$columns$fin_vyuct_verejne$`Zdroj dat`
+[1] &quot;ŽOP sečtené podle data proplacení&quot;
+
+
+$metadata$columns$n_prj
+$metadata$columns$n_prj$`_type`
+[1] &quot;integer&quot;
+
+
+$metadata$columns$prv_opatreni_orig
+$metadata$columns$prv_opatreni_orig$`_type`
+[1] &quot;character&quot;
+
+$metadata$columns$prv_opatreni_orig$Typ
+[1] &quot;Opatření PRV/CAP&quot;
+
+$metadata$columns$prv_opatreni_orig$Note
+[1] &quot;Existuje jen u výdajů CAP&quot;
+
+
+$metadata$columns$prv_opatreni_id
+$metadata$columns$prv_opatreni_id$`_type`
+[1] &quot;character&quot;
+
+$metadata$columns$prv_opatreni_id$Typ
+[1] &quot;Opatření PRV/CAP&quot;
+
+$metadata$columns$prv_opatreni_id$Note
+[1] &quot;Existuje jen u výdajů CAP&quot;
+
+
+$metadata$columns$prv_opatreni_typ
+$metadata$columns$prv_opatreni_typ$`_type`
+[1] &quot;character&quot;
+
+$metadata$columns$prv_opatreni_typ$Typ
+[1] &quot;Opatření PRV/CAP&quot;
+
+$metadata$columns$prv_opatreni_typ$Note
+[1] &quot;Existuje jen u výdajů CAP&quot;
+
+
+$metadata$columns$prv_opatreni_nazev
+$metadata$columns$prv_opatreni_nazev$`_type`
+[1] &quot;character&quot;
+
+$metadata$columns$prv_opatreni_nazev$Typ
+[1] &quot;Opatření PRV/CAP&quot;
+
+$metadata$columns$prv_opatreni_nazev$Note
+[1] &quot;Existuje jen u výdajů CAP&quot;
+
+
+
+
+attr(,&quot;class&quot;)
+[1] &quot;ptblank_informant&quot;</code></pre>
 </div>
 </div>
 </div>
@@ -1620,6 +1188,30 @@ $ prv_opatreni_nazev         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,
 <pre><code>[1] 447.962</code></pre>
 <pre><code>[1] 503.3822</code></pre>
 <pre><code>[1] 448.0228</code></pre>
+</div>
+<div id="témata" class="section level2 tabset tabset-pills">
+<h2 class="tabset tabset-pills">Témata</h2>
+<div id="teplárenství" class="section level3">
+<h3>Teplárenství</h3>
+<p>Co je v balíku projektů k teplárenství?</p>
+<ul>
+<li>jde hlavně o distribuci, nebo i o zdroje?</li>
+<li>jsou zde různé skupiny projektů?</li>
+</ul>
+<p>Tady jen trknou slova “elektrárna” a “Opatovice”: je to klastr projektů, kde se rekonstruovala kogerenační infrastruktura - sada navazujících projektů pod názvy “Úspory energie v SZT Elektrárny Opatovice”.</p>
+<p>Vysvětlivky:</p>
+<ul>
+<li>SZT: systém zásobování teplem</li>
+<li>SCZT: systém centrálního zásobování teplem</li>
+<li>HV: horkovodní</li>
+</ul>
+<p><img src="s_output_files/figure-html/plt-tepl-wordfreqs-1.png" width="100%" /></p>
+<p><img src="s_output_files/figure-html/plt-tepl-wordpairs-1.png" width="100%" /></p>
+<p><img src="s_output_files/figure-html/plt-tepl-bigrams-bars-1.png" width="100%" /></p>
+<p><img src="s_output_files/figure-html/plt-tepl-bigrams-network-1.png" width="100%" /></p>
+<p>Na úplně jiné skupiny to nevypadá:</p>
+<p><img src="s_output_files/figure-html/plt-tepl-topics-1.png" width="100%" /></p>
+</div>
 </div>
 </div>
 
