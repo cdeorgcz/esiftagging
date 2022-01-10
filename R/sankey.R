@@ -20,6 +20,8 @@ make_tag_sankey <- function(data) {
                      type = "sankey",
                      size = 3, fill = "gray40") +
     theme_sankey(base_size = 18) +
+    theme(axis.title.x = element_blank()) +
+    scale_x_discrete(labels = c("Official", "Manual")) +
     scale_fill_manual(values = c(`Full (100%)` = "darkgreen",
                                  `Partial (40%)` = "#009E73",
                                  `Negative (-100%)` = "#D55E00",
