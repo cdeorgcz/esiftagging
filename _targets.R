@@ -1,6 +1,10 @@
+
 library(targets)
 library(tarchetypes)
 library(future)
+
+options(conflicts.policy = list(warn = FALSE))
+options(clustermq.scheduler = "LOCAL")
 
 # Config ------------------------------------------------------------------
 
