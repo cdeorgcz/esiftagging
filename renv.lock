@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.1.0",
+    "Version": "4.1.2",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -11,10 +11,10 @@
   "Packages": {
     "BH": {
       "Package": "BH",
-      "Version": "1.78.0-0",
+      "Version": "1.75.0-0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "4e348572ffcaa2fb1e610e7a941f6f3a",
+      "Hash": "e4c04affc2cac20c8fec18385cd14691",
       "Requirements": []
     },
     "DBI": {
@@ -27,10 +27,10 @@
     },
     "DT": {
       "Package": "DT",
-      "Version": "0.20",
+      "Version": "0.19",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "0163cd2ce6c7995005a0fc363d570963",
+      "Hash": "6df7d86466f183ab0edcd8e6050b38e1",
       "Requirements": [
         "crosstalk",
         "htmltools",
@@ -140,10 +140,10 @@
     },
     "arrow": {
       "Package": "arrow",
-      "Version": "6.0.1",
+      "Version": "6.0.0.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "da21509f51b9ad1386ca293e1042abf5",
+      "Hash": "49d65e164690a10399c73122af1ba14e",
       "Requirements": [
         "R6",
         "assertthat",
@@ -279,16 +279,15 @@
     },
     "broom": {
       "Package": "broom",
-      "Version": "0.7.11",
+      "Version": "0.7.7",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "e4487657db580ae1fe0f85237a88ff1f",
+      "Hash": "2368dde18d8ef1ca933e7e2eea3ece57",
       "Requirements": [
         "backports",
         "dplyr",
         "ellipsis",
         "generics",
-        "ggplot2",
         "glue",
         "purrr",
         "rlang",
@@ -467,10 +466,10 @@
     },
     "crosstalk": {
       "Package": "crosstalk",
-      "Version": "1.2.0",
+      "Version": "1.1.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "6aa54f69598c32177e920eb3402e8293",
+      "Hash": "2b06f9e415a62b6762e4b8098d2aecbc",
       "Requirements": [
         "R6",
         "htmltools",
@@ -489,9 +488,14 @@
     "czso": {
       "Package": "czso",
       "Version": "0.3.7",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "467b14133b960a32f6129a6d96bae8ff",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "czso",
+      "RemoteUsername": "petrbouchal",
+      "RemoteRef": "monterey-ssl-fix",
+      "RemoteSha": "82551e12cf77ab1d369a3d4487287c101d7ee1c4",
+      "Hash": "a8ceb903068c7ad910a1b8ab6a6e1b24",
       "Requirements": [
         "curl",
         "dplyr",
@@ -600,20 +604,12 @@
         "vctrs"
       ]
     },
-    "drat": {
-      "Package": "drat",
-      "Version": "0.2.2",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "1fdf9057af4b07b62f2f58d953c953ec",
-      "Requirements": []
-    },
     "dtplyr": {
       "Package": "dtplyr",
-      "Version": "1.2.0",
+      "Version": "1.1.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "f62678f8c708f10ee8f419862b9b008e",
+      "Hash": "1e14e4c5b2814de5225312394bc316da",
       "Requirements": [
         "data.table",
         "dplyr",
@@ -665,10 +661,10 @@
     },
     "fansi": {
       "Package": "fansi",
-      "Version": "0.5.0",
+      "Version": "1.0.2",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "d447b40982c576a72b779f0a3b3da227",
+      "Hash": "f28149c2d7a1342a834b314e95e67260",
       "Requirements": []
     },
     "farver": {
@@ -689,10 +685,10 @@
     },
     "fontawesome": {
       "Package": "fontawesome",
-      "Version": "0.2.2",
+      "Version": "0.2.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "55624ed409e46c5f358b2c060be87f67",
+      "Hash": "c3910e7cc0ead78538b569d4552c1d16",
       "Requirements": [
         "htmltools",
         "rlang"
@@ -757,10 +753,10 @@
     },
     "gargle": {
       "Package": "gargle",
-      "Version": "1.2.0",
+      "Version": "1.1.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "9d234e6a87a6f8181792de6dc4a00e39",
+      "Hash": "bc3bc77ea458de0a6efe94e8e7e9c641",
       "Requirements": [
         "cli",
         "fs",
@@ -794,10 +790,10 @@
     },
     "gert": {
       "Package": "gert",
-      "Version": "1.5.0",
+      "Version": "1.4.3",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "8fddce7cbd59467106266a6e93e253b4",
+      "Hash": "3a3f29a74f8bd85ed8d53ab039b18bcd",
       "Requirements": [
         "askpass",
         "credentials",
@@ -957,10 +953,10 @@
     },
     "git2r": {
       "Package": "git2r",
-      "Version": "0.29.0",
+      "Version": "0.28.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "b114135c4749076bd5ef74a5827b6f62",
+      "Hash": "f64fd34026f6025de71a4354800e6d79",
       "Requirements": []
     },
     "gitcreds": {
@@ -991,42 +987,38 @@
     },
     "googledrive": {
       "Package": "googledrive",
-      "Version": "2.0.0",
+      "Version": "1.0.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "c3a25adbbfbb03f12e6f88c5fb1f3024",
+      "Hash": "79ba5d18133290a69b7c135dc3dfef1a",
       "Requirements": [
-        "cli",
+        "curl",
         "gargle",
         "glue",
         "httr",
         "jsonlite",
-        "lifecycle",
         "magrittr",
-        "pillar",
         "purrr",
         "rlang",
         "tibble",
-        "uuid",
-        "vctrs",
-        "withr"
+        "uuid"
       ]
     },
     "googlesheets4": {
       "Package": "googlesheets4",
-      "Version": "1.0.0",
+      "Version": "0.3.0",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "9a6564184dc4a81daea4f1d7ce357c6a",
+      "Hash": "fd028aa45f6785d7e83c0ed896b45904",
       "Requirements": [
         "cellranger",
-        "cli",
         "curl",
         "gargle",
         "glue",
         "googledrive",
         "httr",
         "ids",
+        "lifecycle",
         "magrittr",
         "purrr",
         "rematch2",
@@ -1109,10 +1101,10 @@
     },
     "haven": {
       "Package": "haven",
-      "Version": "2.4.3",
+      "Version": "2.4.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "10bec8a8264f3eb59531e8c4c0303f96",
+      "Hash": "9ace652bffef34af558eb5d70903ac2f",
       "Requirements": [
         "cpp11",
         "forcats",
@@ -1202,10 +1194,10 @@
     },
     "httpuv": {
       "Package": "httpuv",
-      "Version": "1.6.5",
+      "Version": "1.6.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "97fe71f0a4a1c9890e6c2128afa04bc0",
+      "Hash": "54344a78aae37bc6ef39b1240969df8e",
       "Requirements": [
         "R6",
         "Rcpp",
@@ -1401,12 +1393,12 @@
     },
     "lubridate": {
       "Package": "lubridate",
-      "Version": "1.8.0",
+      "Version": "1.7.10",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "2ff5eedb6ee38fb1b81205c73be1be5a",
+      "Hash": "1ebfdc8a3cfe8fe19184f5481972b092",
       "Requirements": [
-        "cpp11",
+        "Rcpp",
         "generics"
       ]
     },
@@ -1671,10 +1663,15 @@
     },
     "pointblank": {
       "Package": "pointblank",
-      "Version": "0.9.0",
-      "Source": "Repository",
-      "Repository": "CRAN",
-      "Hash": "7486e4dea341651aaa8888bd9cbf4e1e",
+      "Version": "0.10.0.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "rich-iannone",
+      "RemoteRepo": "pointblank",
+      "RemoteRef": "main",
+      "RemoteSha": "17418029a79ae1f3f2451416c640a408ad1d4a01",
+      "Hash": "71f2dea64bef4f357a88867609a21c7d",
       "Requirements": [
         "DBI",
         "base64enc",
@@ -1773,15 +1770,13 @@
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "petrbouchal",
       "RemoteRepo": "ptrr",
-      "RemoteRef": "master",
-      "RemoteSha": "feae74dcf742dd9f9fe6086201110995c4eef736",
-      "Hash": "b96f29d641037b5c769534b69bf36fe7",
+      "RemoteUsername": "petrbouchal",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "328339d4222faa965c04a2abc9321889a72dd421",
+      "Hash": "ef0abae77084eaaffaa40b83e474c822",
       "Requirements": [
         "callr",
-        "drat",
-        "extrafont",
         "ggplot2",
         "ggtext",
         "git2r",
