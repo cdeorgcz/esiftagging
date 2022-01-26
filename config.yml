@@ -30,7 +30,7 @@ default:
   reg_table_agri_sheetname: "cz_priorities"
 
   ## Manual
-  tags_manual_xlsx: "data-input/manual-tagging/export-tagging-all_COMPLETE_TJ2.xlsx"
+  tags_manual_xlsx: "data-input/manual-tagging/export-tagging-all_retagged.xlsx"
   tags_manual_sheetname: "nonagri_detail"
 
   # IDs
