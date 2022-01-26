@@ -18,8 +18,9 @@ make_tag_sankey <- function(data) {
     geom_sankey_text(aes(label = node,
                          colour = after_scale(cr_choose_bw(fill))),
                      type = "sankey",
+                     family = "IBM Plex Sans",
                      size = 3, fill = "gray40") +
-    theme_sankey(base_size = 18) +
+    theme_sankey(base_size = 18, base_family = "IBM Plex Sans") +
     theme(axis.title.x = element_blank()) +
     scale_x_discrete(labels = c("Official", "Manual")) +
     scale_fill_manual(values = c(`Full (100%)` = "darkgreen",
