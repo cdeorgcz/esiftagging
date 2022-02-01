@@ -17,17 +17,19 @@ read_pubxls <- function(path) {
            across(contains("datum"), ~as.Date(.x, format = "%d.%m.%Y")),
            across(starts_with("financni"), as.numeric)) %>%
     rename(nazev_prijemce = nazev_zadatele_prijemce_neuvadet_jmena_fyzickych_osob_misto_jmen_budou_krizky_xxx) %>%
-    rename_with(~str_replace(.x, "financni_prostredky_vyuctovane_v_zadostech_o_platbu_", "fin_vyuct_")) %>%
-    rename_with(~str_replace(.x, "celkove_zpusobile_vydaje_pridelene_na_operaci_", "fin_pravniakt_czv_")) %>%
-    rename_with(~str_replace(.x, "_ze_strany_unie", "_eu")) %>%
-    rename_with(~str_replace(.x, "soukrome_zdroje_czk", "czk")) %>%
-    rename_with(~str_replace(.x, "celkove_zpusobile_vydaje", "czv")) %>%
-    rename_with(~str_replace(.x, "_verejne_cr", "_narodni_verejne")) %>%
-    rename_with(~str_replace(.x, "_narodni_soukrome", "_soukr")) %>%
-    rename_with(~str_replace(.x, "_prispevek_unie", "_eu")) %>%
-    rename_with(~str_remove(.x, "_zdroje")) %>%
-    rename_with(~str_remove(.x, "_czk$")) %>%
+    rename_with(~str_replace_all(.x, "financni_prostredky_vyuctovane_v_zadostech_o_platbu_", "fin_vyuct_")) %>%
+    rename_with(~str_replace_all(.x, "celkove_zpusobile_vydaje_pridelene_na_operaci_", "fin_pravniakt_czv_")) %>%
+    rename_with(~str_replace_all(.x, "_ze_strany_unie", "_eu")) %>%
+    rename_with(~str_replace_all(.x, "soukrome_zdroje_czk", "czk")) %>%
+    rename_with(~str_replace_all(.x, "celkove_zpusobile_vydaje", "czv")) %>%
+    rename_with(~str_replace_all(.x, "_narodni_soukrome", "_soukr")) %>%
+    rename_with(~str_replace_all(.x, "_prispevek_unie", "_eu")) %>%
+    rename_with(~str_remove_all(.x, "_zdroje")) %>%
+    rename_with(~str_remove_all(.x, "_czk$")) %>%
+    rename_with(~str_replace_all(.x, "_verejne_cr", "_narodni_verejne")) %>%
+    rename_with(~str_remove_all(.x, "czv_")) %>%
     rename(prj_id = registracni_cislo_projektu_operace,
+           dt_pravniakt = projekt_s_pravnim_aktem_o_poskytnuti_prevodu_podpor,
            op_zkr = program,
            pomer_eu = mira_spolufinancovani_eu,
            prj_nazev = nazev_projektu_nazev_operace,
@@ -47,6 +49,9 @@ read_pubxls <- function(path) {
            real_stav = stav_realizace
            ) %>%
     mutate(op_zkr = recode(op_zkr, `OP ŽP` = "OP ZP"),
+           fin_vyuct_verejne = fin_vyuct_eu + fin_vyuct_narodni_verejne,
+           fin_vyuct_soukr = fin_vyuct_czv - fin_vyuct_verejne,
+           fin_vyuct_narodni = fin_vyuct_czv - fin_vyuct_eu
            ) %>%
     add_op_labels()
   return(esif)

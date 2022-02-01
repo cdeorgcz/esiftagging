@@ -2,7 +2,8 @@ default:
 
   # URL for getting project data
   # ef_pubxls_url: "https://dotaceeu.cz/getmedia/009dba87-d944-4f66-9bd4-2eb166e2ef92/2021_07_30_Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls"
-  ef_pubxls_url: "https://dotaceeu.cz/getmedia/6297d56b-0b57-418d-ad25-dd16bd687479/2021_06-Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls"
+  # ef_pubxls_url: "https://dotaceeu.cz/getmedia/6297d56b-0b57-418d-ad25-dd16bd687479/2021_06-Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls"
+  ef_pubxls_url: "https://dotaceeu.cz/getattachment/Statistiky-a-analyzy/Seznamy-prijemcu/Dokumenty/Seznam-operaci-(List-of-Operations)-01-01-2022/2022_01_01_Seznam-operaci_List-of-operations.xlsx.aspx?lang=cs-CZ&ext=.xlsx"
 
   # PRV data-input
 

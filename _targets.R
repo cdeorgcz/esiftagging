@@ -82,7 +82,7 @@ t_agri_opendata <- list(
 
 t_public_list <- list(
   tar_download(ef_pubxls, c_ef_pubxls_url,
-               here::here("data-input/ef_publish.xls")),
+               here::here("data-input/ef_public.xlsx")),
   tar_target(ef_pub, read_pubxls(ef_pubxls))
 )
 
