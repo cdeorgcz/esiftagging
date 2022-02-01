@@ -84,7 +84,8 @@ make_plot_all <- function(plot_all_data, tag_type = "official") {
 
   ggplot(plot_all_data, aes(n, climate_share_code, fill = climate_share_code)) +
     geom_col() +
-    scale_x_continuous(expand = ptrr::flush_axis) +
+    scale_x_continuous(expand = expansion(mult = 0, add = c(0, 50)),
+                       n.breaks = 6) +
     scale_fill_manual(values = c(`Full (100%)` = "darkgreen",
                                  `Partial (40%)` = "lightgreen",
                                  `Negative (-100%)` = "darkred",
