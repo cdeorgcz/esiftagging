@@ -12,4 +12,6 @@ source(here::here("R/validate-output.R"))
 source(here::here("R/sankey.R"))
 source(here::here("R/mtags-compare.R"))
 source(here::here("R/text-analysis.R"))
+source(here::here("R/mssf_open_data.R"))
+source(here::here("R/compile-from-opendata.R"))
 

@@ -78,6 +78,19 @@ t_agri_opendata <- list(
              pattern = map(agri_opendata_zipfiles))
 )
 
+
+## Open data ---------------------------------------------------------------
+
+t_opendata <- list(
+  tar_download(od_meta_xml, c_ef_open_metadata_url, c_ef_open_metadata_path,
+               cue = tar_cue(mode = if(c_refresh_open_metadata) "thorough" else "never")),
+  tar_download(od_data_xml, c_ef_open_data_url, c_ef_open_data_path,
+               cue = tar_cue(mode = if(c_refresh_open_data) "thorough" else "never")),
+  tar_target(od_prj_list, extract_prj_list(od_data_xml)),
+  tar_target(od_sc_codelist, extract_sc_codelist(od_meta_xml)),
+  tar_target(od_prj_sc, extract_prj_sc(od_prj_list, od_sc_codelist))
+)
+
 ## Public project data -----------------------------------------------------
 
 t_public_list <- list(
@@ -146,6 +159,19 @@ t_esif_compile <- list(
                             quarterly = TRUE, regional = FALSE))
 )
 
+t_esif_compile_withopendata <- list(
+  tar_target(ef_compiled_fin,
+             compile_from_od(ef_pub, efs_obl, efs_prj_sc, od_prj_sc))
+)
+
+t_switch <- list(
+  if (c_use_public_data) {
+    tar_target(data_for_tagging, ef_compiled_fin)
+  }  else {
+    tar_target(data_for_tagging, efs_compiled_fin)
+  }
+)
+
 ## Compile by OP -----------------------------------------------------------
 
 t_op_compile <- list(
@@ -181,9 +207,9 @@ t_climacat_manual <- list(
 ## Integrate climate tag ---------------------------------------------------
 
 t_climate_tag <- list(
-  tar_target(efs_tagged, left_join(efs_compiled_fin, reg_table_nonagri,
+  tar_target(efs_tagged, left_join(data_for_tagging, reg_table_nonagri,
                                    by = "oblast_intervence_kod")),
-  tar_target(efs_mtagged, left_join(efs_compiled_fin, tags_manual,
+  tar_target(efs_mtagged, left_join(data_for_tagging, tags_manual,
                                    by = c("oblast_intervence_kod", "sc_id"))),
   tar_target(agri_tagged, tag_agri(agri_opendata, reg_table_agri))
 )
@@ -422,7 +448,8 @@ source("R/html_output.R")
 # Compile targets lists ---------------------------------------------------
 
 list(t_public_list, t_prv_priorities, t_geo_helpers, t_sestavy, t_op_compile, t_valid_zop_timing,
-     t_esif_compile, t_export, t_codebook, t_html, t_agri_opendata,
+     t_esif_compile, t_export, t_codebook, t_html, t_agri_opendata, t_opendata,
+     t_esif_compile_withopendata, t_switch,
      t_mtagged_summarised, t_text_basics,
      t_climacat_reg, t_climacat_manual, t_climate_tag, t_tagged_summarised, t_tagging_aid,
      t_tagged_compiled, t_tagged_plots)
