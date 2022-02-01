@@ -423,8 +423,9 @@ t_codebook <- list(
   tar_target(sum_codebook,
              make_codebook(esif_tagged_sum_op)),
   tar_file(sum_codebook_yaml,
-           {pointblank::yaml_write(informant = sum_codebook %>%
-                                     pointblank::set_read_fn(read_fn = ~esif_tagged_sum_op),
+           {informant_edit <- sum_codebook
+            informant_edit$read_fn <- "data"
+            pointblank::yaml_write(informant = informant_edit,
                                    path = c_export_dir,
                                    filename = c_export_cdbk_sum)
              file.path(c_export_dir, c_export_cdbk_sum)
@@ -432,8 +433,9 @@ t_codebook <- list(
   tar_target(prj_codebook,
              make_codebook(efs_tagged_sum_prj)),
   tar_file(prj_codebook_yaml,
-           {pointblank::yaml_write(informant = sum_codebook %>%
-                                     pointblank::set_read_fn(read_fn = ~efs_tagged_sum_prj),
+           {informant_edit <- prj_codebook
+            informant_edit$read_fn <- "data"
+            pointblank::yaml_write(informant = informant_edit,
                                    path = c_export_dir,
                                    filename = c_export_cdbk_prj)
              file.path(c_export_dir, c_export_cdbk_prj)

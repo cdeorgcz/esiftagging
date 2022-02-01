@@ -1,8 +1,7 @@
 make_codebook <- function(data) {
 
-  library(pointblank)
-
   create_informant(tbl = data,
+                   tbl_name = "data",
                    label = "Codebook hlavního výstupu") %>%
     info_tabular(Info = "Tabulka se součty výdajů podle OP, klima tagu a kategorie určující klimatag",
                  Rozsah = "Z CAP/SZP zahruje jen PRV - projektová i plošná opatření",
