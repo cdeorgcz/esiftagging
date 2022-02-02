@@ -1,13 +1,13 @@
 type: informant
-read_fn: ~efs_tagged_sum_prj
+tbl: data
 tbl_name: data
 info_label: Codebook hlavního výstupu
 lang: en
 locale: en
 table:
   name: data
-  _columns: 21
-  _rows: 196.0
+  _columns: 26
+  _rows: 119278.0
   _type: tbl_df
   Info: Tabulka se součty výdajů podle OP, klima tagu a kategorie určující klimatag
   Rozsah: Z CAP/SZP zahruje jen PRV - projektová i plošná opatření
@@ -36,12 +36,46 @@ columns:
   climate_share:
     _type: numeric
     Popis: Podíl přispění ke klimatu - podle prováděcího nařízení EK
+  prj_id:
+    _type: character
+    Popis: Kód projektu Kód projektu
+    Typ: Informace o projektu. Nedostupné u PRV
+  sc_id:
+    _type: character
+    Typ: Identifikace specifického cíle podle OP
+  sc_nazev:
+    _type: character
+    Typ: Identifikace specifického cíle podle OP
   op_zkr:
     _type: character
     Popis: Česká zkratka operačního programu
   op_id:
     _type: character
     Popis: Kód operačního programu
+  fin_pravniakt_czv:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Celkové způsobilé výdaje
+  fin_pravniakt_eu:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Příspěvek Unie
+  fin_pravniakt_narodni_verejne:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Národní
+  fin_pravniakt_soukr:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Soukromý
   fin_vyuct_czv:
     _type: numeric
     Typ: Finance
@@ -54,49 +88,7 @@ columns:
     Jednotka: CZK
     Zdroj dat: ŽOP sečtené podle data proplacení
     Zdroj financí: Příspěvek Unie
-  fin_vyuct_sr:
-    _type: numeric
-    Typ: Finance
-    Jednotka: CZK
-    Zdroj dat: ŽOP sečtené podle data proplacení
-    Zdroj financí: Státní rozpočet
-  fin_vyuct_sf:
-    _type: numeric
-    Typ: Finance
-    Jednotka: CZK
-    Zdroj dat: ŽOP sečtené podle data proplacení
-    Zdroj financí: Státní fondy
-  fin_vyuct_kraj:
-    _type: numeric
-    Typ: Finance
-    Jednotka: CZK
-    Zdroj dat: ŽOP sečtené podle data proplacení
-    Zdroj financí: Kraj
-  fin_vyuct_obec:
-    _type: numeric
-    Typ: Finance
-    Jednotka: CZK
-    Zdroj dat: ŽOP sečtené podle data proplacení
-    Zdroj financí: Obec
-  fin_vyuct_jine_nar_ver:
-    _type: numeric
-    Typ: Finance
-    Jednotka: CZK
-    Zdroj dat: ŽOP sečtené podle data proplacení
-    Zdroj financí: Soukromý
-  fin_vyuct_soukr:
-    _type: numeric
-    Typ: Finance
-    Jednotka: CZK
-    Zdroj dat: ŽOP sečtené podle data proplacení
-    Zdroj financí: Soukromý
   fin_vyuct_narodni_verejne:
-    _type: numeric
-    Typ: Finance
-    Jednotka: CZK
-    Zdroj dat: ŽOP sečtené podle data proplacení
-    Zdroj financí: Národní
-  fin_vyuct_narodni:
     _type: numeric
     Typ: Finance
     Jednotka: CZK
@@ -107,21 +99,38 @@ columns:
     Typ: Finance
     Jednotka: CZK
     Zdroj dat: ŽOP sečtené podle data proplacení
+  fin_vyuct_soukr:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Soukromý
+  fin_vyuct_narodni:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Národní
   n_prj:
     _type: integer
-  prv_opatreni_orig:
+  prj_nazev:
     _type: character
-    Typ: Opatření PRV/CAP
-    Note: Existuje jen u výdajů CAP
-  prv_opatreni_id:
+    Typ: Informace o projektu. Nedostupné u PRV
+  vyzva_id:
     _type: character
-    Typ: Opatření PRV/CAP
-    Note: Existuje jen u výdajů CAP
-  prv_opatreni_typ:
+  vyzva_nazev:
     _type: character
-    Typ: Opatření PRV/CAP
-    Note: Existuje jen u výdajů CAP
-  prv_opatreni_nazev:
+  prj_shrnuti:
     _type: character
-    Typ: Opatření PRV/CAP
-    Note: Existuje jen u výdajů CAP
+    Typ: Informace o projektu. Nedostupné u PRV
+  p_nazev:
+    _type: character
+    Popis: Název příjemce
+    Typ: Informace o příjemci
+  p_ic:
+    _type: character
+    Typ: Informace o příjemci
+  p_forma:
+    _type: character
+    Popis: Právní forma příjemce
+    Typ: Informace o příjemci
