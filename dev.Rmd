@@ -14,9 +14,9 @@ knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 - Na vstupu je 
   - kupa excel souborů - sestav od MMR
   - online excelová tabulka projektů od MMR
+  - online open data pro přiřazení projektů z veřejné tabulky ke specickým cílům
   - online XML data SZIF o platbách
-  - jeden Arrow dataset
-  - konfigurace cest. URL a parametrů v `config.yml`
+  - konfigurace cest, URL a parametrů v `config.yml`
 - Na výstupu je
   - kupa excel a CSV souborů
   - webová dokumentace
@@ -38,12 +38,51 @@ Dokumentace se generuje ze vstupních RMarkdown souborů do adresáře `/docs`, 
 ## Jak to znovu pustit
 
 1. pustit `renv::restore()` - tím se do projektu načtou správné verze Rkových balíků
-1. vložit aktualizované vstupní sestavy do `data-input/sestavy [datum]`
+1. [pokud lze] vložit aktualizované vstupní sestavy do `data-input/sestavy [datum]`
 1. Zanést cestu do patřičného parametru v `config.yml`
 1. Zopakovat s daty PRV v `data-input/prv`
 1. Analogicky lze aktualizovat i excelové soubory
-1. V `config.yml` aktualizovat cestu k veřejnému seznamu operací na webu dotaceeu.cz
+1. V `config.yml` v případě potřeby aktualizovat cestu k veřejnému seznamu operací na webu dotaceeu.cz (k tomu viz níže Zdroje)
 1. Pustit `targets::tar_make()`, popř. spustit skript `build.R` nebo použít tlačítko `Build` na záložce `Build`.
+
+## Zdroje dat
+
+Kombinujeme několik zdrojů dat tak, abychom měli data co nejčerstvější (tj. nejvíce odpovídající stavu čerpání) a zároveň co nejpřesnější. Data v neveřejných sestavách umožňují větší přesnost, ale jejich dostupnost není zaručená a poslední sestavy jsou více než půl roku staré.
+
+### Neveřejné seznamy
+
+Používáme několik sestav typu E z MSEU. Tím získáváme
+
+- procentuelní rozpad projektů na specifické cíle
+- procentuelní rozpad projektů na oblasti intervence
+
+Nepoužíváme sestavy se ŽoP ani financemi, příjemci ani místem realizace.
+
+### Seznam příjemců
+
+Ve výchozím nastavení si systém sám bere nejaktuálnější export z https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu.
+
+Veřejná data se aktualizují automaticky, tj. při každém spuštění se použijí nejnovější dostupná. Pokud by tato automatika selhala nebo by bylo třeba "zmrazit" data k nějakému datu, do parametru `ef_pubxls_url` v souboru `config.yml` lze vložit odkaz přímo na požadovaný veřejný seznam příjemců podle https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu.
+
+Odsud také pochází všechna finanční data o projektech.
+
+### Open data MSEU
+
+V datech z veřejného seznamu projektů nejsou specifické cíle - ty doplňujeme z [open dat](https://data.gov.cz/datov%C3%A1-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2F66002222%2F4b59efc04aae0acd97761bf5b7330b87) informaci o specifickém cíli, kterou potřebujeme pro manuální retagging.
+
+### Open data SZIF
+
+Bereme automaticky z webu SZIF, viz URL v `config.yml`. Zatím tam nejsou data za rok 2021, ta bude potřeba zapracovat podobnou logikou. Pozor, starší data z webu mizí, je potřeba si uchovat kopii.
+
+## Kategorizace
+
+Soubor s kategoriemi SZP vznikl ručně; pro srovnání máme kategorizaci výdajů PRV od MMR/MZe, ale nepoužíváme ji.
+
+### Kompilace dat
+
+- u projektů, kde máme rozpad na SC a oblasti intervence v neveřejné sestavě od MMR (která je ale starší), použijeme tyto rozpady, protože jsou přesnější
+- pokud je nemáme, dělíme projekt rovnoměrně do všech SC a OI, které jsou u něj uvedeny
+- finanční údaje pochází z veřejného seznamu
 
 ## Dokumentace pro reprodukovatelnost
 
