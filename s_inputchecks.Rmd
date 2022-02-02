@@ -17,7 +17,6 @@ source("R/utils.R")
 targets::tar_load(ef_pub)
 targets::tar_load(efs_obl)
 targets::tar_load(efs_compiled_fin)
-targets::tar_load(efs_prv)
 targets::tar_load(efs_fin)
 targets::tar_load(efs_zop)
 targets::tar_load(efs_prj)
@@ -232,13 +231,6 @@ efs_fin %>%
   summarise(across(c(starts_with("fin_vyuct"),
                      starts_with("fin_ukonc")), ~round(sum(.x, na.rm = T)/1e9, 1))) %>% 
   select(op_nazev, matches("czv|eu|sr|soukrome|pomer"))
-```
-
-## PRV
-
-```{r, echo=TRUE}
-targets::tar_load(efs_prv)
-all(efs_prv %>% count(prj_id) %>% pull() == 1)
 ```
 
 ## Veřejný seznam projektů

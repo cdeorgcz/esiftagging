@@ -15,8 +15,6 @@ list2env(cnf, envir = .GlobalEnv)
 
 ```{r load targets}
 targets::tar_load(ef_pub)
-targets::tar_load(efs_prv)
-targets::tar_load(efs_zop)
 targets::tar_load(efs_fin)
 targets::tar_load(sum_codebook)
 targets::tar_load(prj_codebook)
@@ -142,6 +140,14 @@ sum(efs_fin$fin_vyuct_czv, na.rm = TRUE)/1e9
 sum(esif_tagged_sum$fin_vyuct_czv, na.rm = TRUE)/1e9
 sum(efs_tagged$fin_vyuct_czv*efs_tagged$radek_podil, na.rm = TRUE)/1e9
 ```
+
+## Zdroje
+
+```{r}
+targets::tar_load(ef_source)
+```
+
+Používáme veřejná data z `r ef_source$date` stažená z [této adresy](`r ef_source$url`).
 
 ## Témata {.tabset .tabset-pills}
 

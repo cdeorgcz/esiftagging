@@ -41,26 +41,15 @@ list2env(cnf, envir = .GlobalEnv)
 
 # tar_renv()
 
-## Geo helpers -------------------------------------------------------------
-
-t_geo_helpers <- list(
-  # vazby ZÚJ a obcí, abychom mohli ZÚJ v datech
-  # převést na obce
-  tar_target(zuj_obec, get_zuj_obec()),
-  # číselník krajů pro vložení kódu kraje v PRV
-  tar_target(cis_kraj, czso::czso_get_codelist("cis100")),
-  # populace obcí pro vážení projektů mezi kraji
-  tar_target(pop_obce, get_stats_pop_obce(c_czso_pop_table_id))
-)
-
-
 # ESIF data ---------------------------------------------------------------
 
-## PRV list of priorities
+## PRV list of priorities -------------------------------------------------
 
 t_prv_priorities <- list(
   tar_target(prv_priorities, load_priority_list_prv(c_priority_prv_xls))
 )
+
+## PRV open data -------------------------------------------------
 
 t_agri_opendata <- list(
   tar_target(agri_opendata_urls, c_agri_opendata_urls),
@@ -79,7 +68,7 @@ t_agri_opendata <- list(
 )
 
 
-## Open data ---------------------------------------------------------------
+## MS open data ---------------------------------------------------------------
 
 t_opendata <- list(
   tar_download(od_meta_xml, c_ef_open_metadata_url, c_ef_open_metadata_path,
@@ -136,13 +125,7 @@ t_sestavy <- list(
   # sečíst ŽOP za každý projekt po letech
   tar_target(efs_zop_annual, summarise_zop(efs_zop, quarterly = FALSE)),
   # a po čtvrtletích
-  tar_target(efs_zop_quarterly, summarise_zop(efs_zop, quarterly = TRUE)),
-  # načíst PRV
-  tar_target(efs_prv, load_prv(c_prv_data_path, cis_kraj)),
-  # posčítat platby PRV za projekt po letech
-  tar_target(efs_prv_annual, summarise_prv(efs_prv, quarterly = FALSE)),
-  # a PRV po čtvrtletích
-  tar_target(efs_prv_quarterly, summarise_prv(efs_prv, quarterly = TRUE))
+  tar_target(efs_zop_quarterly, summarise_zop(efs_zop, quarterly = TRUE))
 )
 
 ## Compile  ----------------------------------------------------------------
@@ -152,17 +135,7 @@ t_esif_compile <- list(
   tar_target(efs_compiled, efs_compile(efs_prj_kat, efs_obl, efs_prj_sc)),
   # přidat platby po kvartálech
   tar_target(efs_compiled_fin,
-             efs_add_financials(efs_compiled, efs_zop_quarterly)),
-  # spojit PRV a ostatní, sečíst po letech, bez regionu
-  tar_target(sum_annual,
-             esif_summarise(efs_compiled_fin,
-                            efs_prv_annual,
-                            quarterly = FALSE, regional = FALSE)),
-  # spojit PRV a ostatní, sečíst po kvartálech, bez regionu
-  tar_target(sum_quarterly,
-             esif_summarise(efs_compiled_fin,
-                            efs_prv_quarterly,
-                            quarterly = TRUE, regional = FALSE))
+             efs_add_financials(efs_compiled, efs_zop_quarterly))
 )
 
 t_esif_compile_withopendata <- list(
@@ -178,16 +151,9 @@ t_switch <- list(
   }
 )
 
-## Compile by OP -----------------------------------------------------------
+# Climate categorisations --------------------------------------------
 
-t_op_compile <- list(
-  tar_target(compiled_op_sum,
-             summarise_by_op(efs_zop_quarterly, efs_prv_quarterly)))
-
-
-## Load climate categorisations --------------------------------------------
-
-### From regulation --------------------------------------------------------
+## From regulation --------------------------------------------------------
 
 t_climacat_reg <- list(
   tar_file(reg_table_nonagri_xlsx, c_reg_table_nonagri_xlsx),
@@ -198,6 +164,8 @@ t_climacat_reg <- list(
              read_reg_table_agri(reg_table_agri_xlsx,
                                  c_reg_table_agri_sheetname))
 )
+
+## Manual -----------------------------------------------------------------
 
 t_climacat_manual <- list(
   tar_file(tags_manual_xlsx, c_tags_manual_xlsx),
@@ -210,7 +178,7 @@ t_climacat_manual <- list(
 )
 
 
-## Integrate climate tag ---------------------------------------------------
+# Integrate climate tag ---------------------------------------------------
 
 t_climate_tag <- list(
   tar_target(efs_tagged, left_join(data_for_tagging, reg_table_nonagri,
@@ -221,7 +189,7 @@ t_climate_tag <- list(
 )
 
 
-## Summarise and compile tagged data ---------------------------------------
+# Summarise and compile tagged data ---------------------------------------
 
 
 t_tagged_summarised <- list(
@@ -284,7 +252,8 @@ t_tagged_compiled <- list(
              summarise_tagged_op_only(efs_mtagged_sum_op_sc, prv_tagged_sum,
                                       tag_var = climate_share_m))
 )
-## Plots of main outputs ---------------------------------------------------
+
+# Plots of main outputs ---------------------------------------------------
 
 t_tagged_plots <- list(
   tar_target(plot_tagged_agri, make_plot_tagged_agri(agri_tagged)),
@@ -301,7 +270,7 @@ t_tagged_plots <- list(
   tar_target(plot_sankey, make_tag_sankey(efs_tags_compare))
   )
 
-## Overview for manual tagging ----------------------------------------------
+# Overview for manual tagging ----------------------------------------------
 
 t_tagging_aid <- list(
   tar_target(efs_tagged_for_plot,
@@ -320,7 +289,7 @@ t_tagging_aid <- list(
            c_export_tagging_xlsx))
 )
 
-## Export summaries of tagged data --------------------------------------------
+# Export summaries of tagged data --------------------------------------------
 
 t_export <- list(
   tar_file(export_all_ops_xlsx,
@@ -375,15 +344,9 @@ t_export <- list(
 )
 
 
-## Validation and exploration ----------------------------------------------
+# Validation and exploration ----------------------------------------------
 
-t_valid_zop_timing <- list(
-  tar_target(zop_timing_df, build_efs_timing(efs_prj, efs_zop, ef_pub)),
-  tar_target(zop_timing_plot, make_zop_timing_plot(zop_timing_df))
-)
-
-
-### Text analysis ----------------------------------------------------------
+## Text analysis ----------------------------------------------------------
 
 t_text_basics <- list(
   tar_url(stopwords_cz_url, "https://raw.githubusercontent.com/stopwords-iso/stopwords-cs/master/stopwords-cs.txt"),
@@ -423,7 +386,7 @@ t_text_basics <- list(
 )
 
 
-## Build and export codebook -----------------------------------------------
+# Build and export codebook -----------------------------------------------
 
 t_codebook <- list(
   tar_target(sum_codebook,
@@ -452,12 +415,10 @@ t_codebook <- list(
 
 source("R/html_output.R")
 
-
 # Compile targets lists ---------------------------------------------------
 
-list(t_public_list, t_prv_priorities, t_geo_helpers, t_sestavy, t_op_compile, t_valid_zop_timing,
-     t_esif_compile, t_export, t_codebook, t_html, t_agri_opendata, t_opendata,
-     t_esif_compile_withopendata, t_switch,
-     t_mtagged_summarised, t_text_basics,
-     t_climacat_reg, t_climacat_manual, t_climate_tag, t_tagged_summarised, t_tagging_aid,
-     t_tagged_compiled, t_tagged_plots)
+list(t_public_list, t_sestavy, t_esif_compile, t_export, t_codebook, t_html,
+     t_agri_opendata, t_opendata, t_esif_compile_withopendata, t_switch,
+     t_mtagged_summarised, t_text_basics, t_climacat_reg, t_climacat_manual,
+     t_climate_tag, t_tagged_summarised, t_tagging_aid, t_tagged_compiled,
+     t_tagged_plots, t_prv_priorities)

@@ -11,7 +11,6 @@ knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 library(gt)
 targets::tar_load(efs_compiled)
-targets::tar_load(efs_prv)
 targets::tar_load(prv_priorities)
 ```
 
@@ -104,19 +103,6 @@ prv_priorities %>%
   arrange(prv_operace_kod) %>% 
   gt()
 ```
-
-##### V sestavě MMR
-
-```{r}
-efs_prv %>% 
-  count(priorita, opatreni, operace, prv_operace_kod, 
-        wt = fin_vyuct_czv/1e9, name = "Celkem CZV vyúčováno (mld. Kč)") %>% 
-  mutate(`Celkem CZV vyúčováno (mld. Kč)` = round(`Celkem CZV vyúčováno (mld. Kč)`, 2)) %>% 
-  DT::datatable()
-```
-
-
-##### Z open dat (TO DO)
 
 #### Jak tedy na kategorizace u PRV
 
