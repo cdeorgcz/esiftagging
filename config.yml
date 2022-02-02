@@ -1,18 +1,25 @@
 default:
 
   # URL for getting project data
+  # listed at https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu
   # ef_pubxls_url: "https://dotaceeu.cz/getmedia/009dba87-d944-4f66-9bd4-2eb166e2ef92/2021_07_30_Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls"
   # ef_pubxls_url: "https://dotaceeu.cz/getmedia/6297d56b-0b57-418d-ad25-dd16bd687479/2021_06-Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls"
-  ef_pubxls_url: "https://mmr.cz/getmedia/b7e30c74-1b37-4f96-8faf-0c1f9c92bb9d/2022_02_Seznam-operaci_List-of-operations.xlsx.aspx?ext=.xlsx"
+  # ef_pubxls_url: "https://mmr.cz/getmedia/b7e30c74-1b37-4f96-8faf-0c1f9c92bb9d/2022_02_Seznam-operaci_List-of-operations.xlsx.aspx?ext=.xlsx"
+
+  ef_pubxls_url: ~ # leave as ~ for automatic retrieval of latest data
 
   ef_open_data_url: https://ms14opendata.mssf.cz/SeznamProjektu.xml
   ef_open_metadata_url: https://ms14opendata.mssf.cz/MatDat.xml
   ef_open_data_path: data-input/opendata-mssf/SeznamProjektu.xml
   ef_open_metadata_path: data-input/opendata-mssf/MatDat.xml
 
+  # whether to supplement non-public data with more recent public data
+  # you get more recent data but less accuracy about categorisation of projects in the recent projects
   use_public_data: yes
-  refresh_open_data: no
-  refresh_open_metadata: no
+
+  # whether to use the latest open data from the above URLs
+  refresh_open_data: yes
+  refresh_open_metadata: yes
 
   # PRV data-input
 
@@ -33,7 +40,7 @@ default:
   sest_xlsx_obl: "E005 Kategorizace_oblast.xlsx"
 
 
-  # Quest/Hermin categorisations
+  # PRV categorisations
   priority_prv_xls: "data-input/Navrh - KATEGORIZACE - Operace PRV + priority.xlsx"
 
   # Climate categoristions
@@ -47,7 +54,7 @@ default:
   tags_manual_xlsx: "data-input/manual-tagging/export-tagging-all_retagged.xlsx"
   tags_manual_sheetname: "nonagri_detail"
 
-  # IDs
+  # CZSO dataset IDs
   czso_pop_table_id: "130149"
 
   # export location

@@ -14,12 +14,12 @@ tar_option_set(packages = c("dplyr", "here", "readxl", "readr",
                             "dplyr", "future", "arrow", "tidyr",
                             "ragg", "magrittr", "czso", "lubridate", "writexl",
                             "readr", "purrr", "tarchetypes",
-                            "pointblank",
+                            "pointblank", "rvest",
                             "details", "forcats", "ggplot2",
                             "xml2", "tibble", "ptrr", "DT", "plotly",
                             "summarywidget", "htmltools", "crosstalk",
                             "ggsankey", "coloratio", "widyr", "tidytext",
-                            "jsonlite", "ggraph", "igraph", "topicmodels"),
+                            "jsonlite", "ggraph", "igraph", "topicmodels")
                # debug = "compiled_macro_sum_quarterly",
                # imports = c("purrrow"),
 )
@@ -94,8 +94,14 @@ t_opendata <- list(
 ## Public project data -----------------------------------------------------
 
 t_public_list <- list(
-  tar_download(ef_pubxls, c_ef_pubxls_url,
-               here::here("data-input/ef_public.xlsx")),
+  tar_target(ef_source,
+             if(is.null(c_ef_pubxls_url)) {
+               esif_get_table_entry()
+             } else {date_from_url(c_ef_pubxls_url)}),
+  tar_target(ef_url, ef_source |> pull(url), format = "url"),
+  tar_target(ef_pubxls,
+             curl::curl_download(ef_url,
+                                 here::here("data-input/ef_public.xlsx"))),
   tar_target(ef_pub, read_pubxls(ef_pubxls))
 )
 

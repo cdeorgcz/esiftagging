@@ -16,7 +16,7 @@ Aktualizace celého postupu, abychom využívali nejnovější možná data a p�
 - u projektů, kde máme rozpad na SC a oblasti intervence v neveřejné sestavě od MMR (která je ale starší), použijeme tyto rozpady, protože jsou přesnější
 - pokud je nemáme, dělíme projekt rovnoměrně do všech SC a OI, které jsou u něj uvedeny
 
-Momentálně máme data do konce ledna 2022; novější data lze načíst tak, že se v souboru `config.yml` aktualizuje URL k souboru uvedenému na https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu.
+Veřejná data se aktualizují automaticky, tj. při každém spuštění se použijí nejnovější dostupná. Pokud by tato automatika selhala nebo by bylo třeba "zmrazit" data k nějakému datu, do parametru `ef_pubxls_url` v souboru `config.yml` lze vložit odkaz přímo na požadovaný veřejný seznam příjemců podle https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu.
 
 ## Změny k 9. 1. 2022
 
