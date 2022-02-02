@@ -7,6 +7,17 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Změny k 31. 1. 2022
+
+Aktualizace celého postupu, abychom využívali nejnovější možná data a přitom minimalizovali nepřesnost. Funguje to teď následovně:
+
+- včechna finanční data o projektech bereme z veřejně dostupné tabulky na https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu
+- k tomu doplňujeme z [open dat](https://data.gov.cz/datov%C3%A1-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2F66002222%2F4b59efc04aae0acd97761bf5b7330b87) informaci o specifickém cíli, kterou potřebujeme pro manuální retagging
+- u projektů, kde máme rozpad na SC a oblasti intervence v neveřejné sestavě od MMR (která je ale starší), použijeme tyto rozpady, protože jsou přesnější
+- pokud je nemáme, dělíme projekt rovnoměrně do všech SC a OI, které jsou u něj uvedeny
+
+Momentálně máme data do konce ledna 2022; novější data lze načíst tak, že se v souboru `config.yml` aktualizuje URL k souboru uvedenému na https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu.
+
 ## Změny k 9. 1. 2022
 
 - vloženy upravené manuální tagy

@@ -3,7 +3,7 @@ default:
   # URL for getting project data
   # ef_pubxls_url: "https://dotaceeu.cz/getmedia/009dba87-d944-4f66-9bd4-2eb166e2ef92/2021_07_30_Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls"
   # ef_pubxls_url: "https://dotaceeu.cz/getmedia/6297d56b-0b57-418d-ad25-dd16bd687479/2021_06-Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls"
-  ef_pubxls_url: "https://dotaceeu.cz/getattachment/Statistiky-a-analyzy/Seznamy-prijemcu/Dokumenty/Seznam-operaci-(List-of-Operations)-01-01-2022/2022_01_01_Seznam-operaci_List-of-operations.xlsx.aspx?lang=cs-CZ&ext=.xlsx"
+  ef_pubxls_url: "https://mmr.cz/getmedia/b7e30c74-1b37-4f96-8faf-0c1f9c92bb9d/2022_02_Seznam-operaci_List-of-operations.xlsx.aspx?ext=.xlsx"
 
   ef_open_data_url: https://ms14opendata.mssf.cz/SeznamProjektu.xml
   ef_open_metadata_url: https://ms14opendata.mssf.cz/MatDat.xml

@@ -814,12 +814,24 @@ default:
 
   # URL for getting project data
   # ef_pubxls_url: &quot;https://dotaceeu.cz/getmedia/009dba87-d944-4f66-9bd4-2eb166e2ef92/2021_07_30_Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls&quot;
-  ef_pubxls_url: &quot;https://dotaceeu.cz/getmedia/6297d56b-0b57-418d-ad25-dd16bd687479/2021_06-Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls&quot;
+  # ef_pubxls_url: &quot;https://dotaceeu.cz/getmedia/6297d56b-0b57-418d-ad25-dd16bd687479/2021_06-Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls&quot;
+  ef_pubxls_url: &quot;https://dotaceeu.cz/getattachment/Statistiky-a-analyzy/Seznamy-prijemcu/Dokumenty/Seznam-operaci-(List-of-Operations)-01-01-2022/2022_01_01_Seznam-operaci_List-of-operations.xlsx.aspx?lang=cs-CZ&amp;ext=.xlsx&quot;
+  ef_open_data_url: https://ms14opendata.mssf.cz/SeznamProjektu.xml
+  ef_open_metadata_url: https://ms14opendata.mssf.cz/MatDat.xml
+  ef_open_data_path: data-input/opendata-mssf/SeznamProjektu.xml
+  ef_open_metadata_path: data-input/opendata-mssf/MatDat.xml
+  use_public_data: yes
+  refresh_open_data: no
+  refresh_open_metadata: no
 
   # PRV data-input
 
-  agri_opendata_zipxml: [&quot;agri_prijemci_2017.zip&quot;, &quot;agri_prijemci_2018.zip&quot;, &quot;agri_prijemci_2019.zip&quot;, &quot;agri_prijemci_2020.zip&quot;]
-  agri_opendata_urls: [&quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197147275.zip&quot;, &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197121858.zip&quot;, &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1590753721920.zip&quot;, &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1622192829773.zip&quot;]
+  agri_opendata_zipxml: [&quot;agri_prijemci_2017.zip&quot;, &quot;agri_prijemci_2018.zip&quot;,
+                         &quot;agri_prijemci_2019.zip&quot;, &quot;agri_prijemci_2020.zip&quot;]
+  agri_opendata_urls: [&quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197147275.zip&quot;,
+                       &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197121858.zip&quot;,
+                       &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1590753721920.zip&quot;,
+                       &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1622192829773.zip&quot;]
   agri_opendata_dir: &quot;data-input/opendata-szif&quot;
   prv_data_path: &quot;data-input/sestavy-prv_2020-12/PRV 2014-20 k XII. 2020.XLSX&quot;
 
@@ -842,7 +854,7 @@ default:
   reg_table_agri_sheetname: &quot;cz_priorities&quot;
 
   ## Manual
-  tags_manual_xlsx: &quot;data-input/manual-tagging/export-tagging-all_COMPLETE_TJ2.xlsx&quot;
+  tags_manual_xlsx: &quot;data-input/manual-tagging/export-tagging-all_retagged.xlsx&quot;
   tags_manual_sheetname: &quot;nonagri_detail&quot;
 
   # IDs

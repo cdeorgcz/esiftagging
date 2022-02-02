@@ -363,12 +363,24 @@ default:
 
   # URL for getting project data
   # ef_pubxls_url: &quot;https://dotaceeu.cz/getmedia/009dba87-d944-4f66-9bd4-2eb166e2ef92/2021_07_30_Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls&quot;
-  ef_pubxls_url: &quot;https://dotaceeu.cz/getmedia/6297d56b-0b57-418d-ad25-dd16bd687479/2021_06-Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls&quot;
+  # ef_pubxls_url: &quot;https://dotaceeu.cz/getmedia/6297d56b-0b57-418d-ad25-dd16bd687479/2021_06-Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls&quot;
+  ef_pubxls_url: &quot;https://dotaceeu.cz/getattachment/Statistiky-a-analyzy/Seznamy-prijemcu/Dokumenty/Seznam-operaci-(List-of-Operations)-01-01-2022/2022_01_01_Seznam-operaci_List-of-operations.xlsx.aspx?lang=cs-CZ&amp;ext=.xlsx&quot;
+  ef_open_data_url: https://ms14opendata.mssf.cz/SeznamProjektu.xml
+  ef_open_metadata_url: https://ms14opendata.mssf.cz/MatDat.xml
+  ef_open_data_path: data-input/opendata-mssf/SeznamProjektu.xml
+  ef_open_metadata_path: data-input/opendata-mssf/MatDat.xml
+  use_public_data: yes
+  refresh_open_data: no
+  refresh_open_metadata: no
 
   # PRV data-input
 
-  agri_opendata_zipxml: [&quot;agri_prijemci_2017.zip&quot;, &quot;agri_prijemci_2018.zip&quot;, &quot;agri_prijemci_2019.zip&quot;, &quot;agri_prijemci_2020.zip&quot;]
-  agri_opendata_urls: [&quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197147275.zip&quot;, &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197121858.zip&quot;, &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1590753721920.zip&quot;, &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1622192829773.zip&quot;]
+  agri_opendata_zipxml: [&quot;agri_prijemci_2017.zip&quot;, &quot;agri_prijemci_2018.zip&quot;,
+                         &quot;agri_prijemci_2019.zip&quot;, &quot;agri_prijemci_2020.zip&quot;]
+  agri_opendata_urls: [&quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197147275.zip&quot;,
+                       &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197121858.zip&quot;,
+                       &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1590753721920.zip&quot;,
+                       &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1622192829773.zip&quot;]
   agri_opendata_dir: &quot;data-input/opendata-szif&quot;
   prv_data_path: &quot;data-input/sestavy-prv_2020-12/PRV 2014-20 k XII. 2020.XLSX&quot;
 
@@ -391,7 +403,7 @@ default:
   reg_table_agri_sheetname: &quot;cz_priorities&quot;
 
   ## Manual
-  tags_manual_xlsx: &quot;data-input/manual-tagging/export-tagging-all_COMPLETE_TJ2.xlsx&quot;
+  tags_manual_xlsx: &quot;data-input/manual-tagging/export-tagging-all_retagged.xlsx&quot;
   tags_manual_sheetname: &quot;nonagri_detail&quot;
 
   # IDs
@@ -436,12 +448,12 @@ default:
 <pre class="details"><code>sessionInfo()</code></pre>
 <details closed>
 <pre class="r"><code>
-R version 4.1.0 (2021-05-18)
+R version 4.1.2 (2021-11-01)
 Platform: x86_64-apple-darwin17.0 (64-bit)
 Running under: macOS Big Sur 10.16
 
 Matrix products: default
-BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.dylib
+BLAS:   /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRblas.0.dylib
 LAPACK: /Library/Frameworks/R.framework/Versions/4.1/Resources/lib/libRlapack.dylib
 
 locale:
@@ -457,42 +469,42 @@ other attached packages:
 [10] shinyWidgets_0.6.2       shinybusy_0.2.2          shiny_1.7.1             
 [13] rstudioapi_0.13          readxl_1.3.1             readr_2.1.1             
 [16] ragg_1.1.3               purrr_0.3.4              ptrr_0.2.0.9000         
-[19] pointblank_0.9.0         plotly_4.10.0            pingr_2.0.1             
-[22] markdown_1.1             lubridate_1.8.0          jsonlite_1.7.2          
+[19] pointblank_0.10.0.9000   plotly_4.10.0            pingr_2.0.1             
+[22] markdown_1.1             lubridate_1.7.10         jsonlite_1.7.2          
 [25] janitor_2.1.0            igraph_1.2.11            httr_1.4.2              
 [28] htmltools_0.5.2          here_1.0.1               gt_0.3.1                
 [31] ggsankey_0.0.99999       ggraph_2.0.5             ggplot2_3.3.5           
-[34] forcats_0.5.1            DT_0.20                  details_0.2.1           
-[37] czso_0.3.7               curl_4.3.2               crosstalk_1.2.0         
+[34] forcats_0.5.1            DT_0.19                  details_0.2.1           
+[37] czso_0.3.7               curl_4.3.2               crosstalk_1.1.1         
 [40] config_0.3.1             coloratio_0.0.0.9004     clustermq_0.8.95.2      
-[43] bs4Dash_2.0.3            arrow_6.0.1              stringr_1.4.0           
+[43] bs4Dash_2.0.3            arrow_6.0.0.2            stringr_1.4.0           
 [46] dplyr_1.0.7              magrittr_2.0.1           future_1.23.0           
 [49] tarchetypes_0.4.1        targets_0.10.0          
 
 loaded via a namespace (and not attached):
  [1] backports_1.4.1    systemfonts_1.0.2  lazyeval_0.2.2     listenv_0.8.0     
- [5] SnowballC_0.7.0    digest_0.6.29      viridis_0.6.2      fansi_0.5.0       
+ [5] SnowballC_0.7.0    digest_0.6.29      viridis_0.6.2      fansi_1.0.2       
  [9] base64url_1.4      tm_0.7-8           tzdb_0.2.0         globals_0.14.0    
 [13] graphlayouts_0.8.0 extrafont_0.17     extrafontdb_1.0    colorspace_2.0-2  
 [17] ggrepel_0.9.1      textshaping_0.3.6  xfun_0.29          callr_3.7.0       
 [21] crayon_1.4.2       glue_1.6.0         polyclip_1.10-0    gtable_0.3.0      
 [25] clipr_0.7.1        Rttf2pt1_1.3.9     scales_1.1.1       DBI_1.1.2         
 [29] Rcpp_1.0.7         viridisLite_0.4.0  xtable_1.8-4       bit_4.0.4         
-[33] stats4_4.1.0       htmlwidgets_1.5.4  modeltools_0.2-23  ellipsis_0.3.2    
+[33] stats4_4.1.2       htmlwidgets_1.5.4  modeltools_0.2-23  ellipsis_0.3.2    
 [37] pkgconfig_2.0.3    farver_2.1.0       sass_0.4.0         utf8_1.2.2        
 [41] tidyselect_1.1.1   rlang_0.4.12       later_1.3.0        munsell_0.5.0     
-[45] blastula_0.3.2     cellranger_1.1.0   tools_4.1.0        cli_3.1.0         
-[49] generics_0.1.1     broom_0.7.11       evaluate_0.14      fastmap_1.1.0     
+[45] blastula_0.3.2     cellranger_1.1.0   tools_4.1.2        cli_3.1.0         
+[49] generics_0.1.1     broom_0.7.7        evaluate_0.14      fastmap_1.1.0     
 [53] yaml_2.2.1         processx_3.5.2     knitr_1.37         bit64_4.0.5       
 [57] fs_1.5.2           tidygraph_1.2.0    mime_0.12          slam_0.1-50       
-[61] tokenizers_0.2.1   compiler_4.1.0     png_0.1-7          tweenr_1.0.2      
+[61] tokenizers_0.2.1   compiler_4.1.2     png_0.1-7          tweenr_1.0.2      
 [65] bslib_0.3.1        stringi_1.7.6      ps_1.6.0           desc_1.4.0        
 [69] gdtools_0.2.3      hrbrthemes_0.8.0   lattice_0.20-45    Matrix_1.4-0      
 [73] vctrs_0.3.8        pillar_1.6.4       lifecycle_1.0.1    jquerylib_0.1.4   
-[77] data.table_1.14.2  httpuv_1.6.5       R6_2.5.1           promises_1.2.0.1  
+[77] data.table_1.14.2  httpuv_1.6.1       R6_2.5.1           promises_1.2.0.1  
 [81] renv_0.15.0        gridExtra_2.3      janeaustenr_0.1.5  parallelly_1.30.0 
 [85] codetools_0.2-18   MASS_7.3-54        assertthat_0.2.1   rprojroot_2.0.2   
-[89] withr_2.4.3        parallel_4.1.0     hms_1.1.1          grid_4.1.0        
+[89] withr_2.4.3        parallel_4.1.2     hms_1.1.1          grid_4.1.2        
 [93] rmarkdown_2.11     snakecase_0.11.0   ggforce_0.3.3      NLP_0.2-1         
 </code></pre>
 </details>
@@ -505,7 +517,7 @@ loaded via a namespace (and not attached):
 <pre class="r"><code>
 {
   &quot;R&quot;: {
-    &quot;Version&quot;: &quot;4.1.0&quot;,
+    &quot;Version&quot;: &quot;4.1.2&quot;,
     &quot;Repositories&quot;: [
       {
         &quot;Name&quot;: &quot;CRAN&quot;,
@@ -516,10 +528,10 @@ loaded via a namespace (and not attached):
   &quot;Packages&quot;: {
     &quot;BH&quot;: {
       &quot;Package&quot;: &quot;BH&quot;,
-      &quot;Version&quot;: &quot;1.78.0-0&quot;,
+      &quot;Version&quot;: &quot;1.75.0-0&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;4e348572ffcaa2fb1e610e7a941f6f3a&quot;,
+      &quot;Hash&quot;: &quot;e4c04affc2cac20c8fec18385cd14691&quot;,
       &quot;Requirements&quot;: []
     },
     &quot;DBI&quot;: {
@@ -532,10 +544,10 @@ loaded via a namespace (and not attached):
     },
     &quot;DT&quot;: {
       &quot;Package&quot;: &quot;DT&quot;,
-      &quot;Version&quot;: &quot;0.20&quot;,
+      &quot;Version&quot;: &quot;0.19&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;0163cd2ce6c7995005a0fc363d570963&quot;,
+      &quot;Hash&quot;: &quot;6df7d86466f183ab0edcd8e6050b38e1&quot;,
       &quot;Requirements&quot;: [
         &quot;crosstalk&quot;,
         &quot;htmltools&quot;,
@@ -645,10 +657,10 @@ loaded via a namespace (and not attached):
     },
     &quot;arrow&quot;: {
       &quot;Package&quot;: &quot;arrow&quot;,
-      &quot;Version&quot;: &quot;6.0.1&quot;,
+      &quot;Version&quot;: &quot;6.0.0.2&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;da21509f51b9ad1386ca293e1042abf5&quot;,
+      &quot;Hash&quot;: &quot;49d65e164690a10399c73122af1ba14e&quot;,
       &quot;Requirements&quot;: [
         &quot;R6&quot;,
         &quot;assertthat&quot;,
@@ -784,16 +796,15 @@ loaded via a namespace (and not attached):
     },
     &quot;broom&quot;: {
       &quot;Package&quot;: &quot;broom&quot;,
-      &quot;Version&quot;: &quot;0.7.11&quot;,
+      &quot;Version&quot;: &quot;0.7.7&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;e4487657db580ae1fe0f85237a88ff1f&quot;,
+      &quot;Hash&quot;: &quot;2368dde18d8ef1ca933e7e2eea3ece57&quot;,
       &quot;Requirements&quot;: [
         &quot;backports&quot;,
         &quot;dplyr&quot;,
         &quot;ellipsis&quot;,
         &quot;generics&quot;,
-        &quot;ggplot2&quot;,
         &quot;glue&quot;,
         &quot;purrr&quot;,
         &quot;rlang&quot;,
@@ -972,10 +983,10 @@ loaded via a namespace (and not attached):
     },
     &quot;crosstalk&quot;: {
       &quot;Package&quot;: &quot;crosstalk&quot;,
-      &quot;Version&quot;: &quot;1.2.0&quot;,
+      &quot;Version&quot;: &quot;1.1.1&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;6aa54f69598c32177e920eb3402e8293&quot;,
+      &quot;Hash&quot;: &quot;2b06f9e415a62b6762e4b8098d2aecbc&quot;,
       &quot;Requirements&quot;: [
         &quot;R6&quot;,
         &quot;htmltools&quot;,
@@ -994,9 +1005,14 @@ loaded via a namespace (and not attached):
     &quot;czso&quot;: {
       &quot;Package&quot;: &quot;czso&quot;,
       &quot;Version&quot;: &quot;0.3.7&quot;,
-      &quot;Source&quot;: &quot;Repository&quot;,
-      &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;467b14133b960a32f6129a6d96bae8ff&quot;,
+      &quot;Source&quot;: &quot;GitHub&quot;,
+      &quot;RemoteType&quot;: &quot;github&quot;,
+      &quot;RemoteHost&quot;: &quot;api.github.com&quot;,
+      &quot;RemoteRepo&quot;: &quot;czso&quot;,
+      &quot;RemoteUsername&quot;: &quot;petrbouchal&quot;,
+      &quot;RemoteRef&quot;: &quot;monterey-ssl-fix&quot;,
+      &quot;RemoteSha&quot;: &quot;82551e12cf77ab1d369a3d4487287c101d7ee1c4&quot;,
+      &quot;Hash&quot;: &quot;a8ceb903068c7ad910a1b8ab6a6e1b24&quot;,
       &quot;Requirements&quot;: [
         &quot;curl&quot;,
         &quot;dplyr&quot;,
@@ -1105,20 +1121,12 @@ loaded via a namespace (and not attached):
         &quot;vctrs&quot;
       ]
     },
-    &quot;drat&quot;: {
-      &quot;Package&quot;: &quot;drat&quot;,
-      &quot;Version&quot;: &quot;0.2.2&quot;,
-      &quot;Source&quot;: &quot;Repository&quot;,
-      &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;1fdf9057af4b07b62f2f58d953c953ec&quot;,
-      &quot;Requirements&quot;: []
-    },
     &quot;dtplyr&quot;: {
       &quot;Package&quot;: &quot;dtplyr&quot;,
-      &quot;Version&quot;: &quot;1.2.0&quot;,
+      &quot;Version&quot;: &quot;1.1.0&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;f62678f8c708f10ee8f419862b9b008e&quot;,
+      &quot;Hash&quot;: &quot;1e14e4c5b2814de5225312394bc316da&quot;,
       &quot;Requirements&quot;: [
         &quot;data.table&quot;,
         &quot;dplyr&quot;,
@@ -1170,10 +1178,10 @@ loaded via a namespace (and not attached):
     },
     &quot;fansi&quot;: {
       &quot;Package&quot;: &quot;fansi&quot;,
-      &quot;Version&quot;: &quot;0.5.0&quot;,
+      &quot;Version&quot;: &quot;1.0.2&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;d447b40982c576a72b779f0a3b3da227&quot;,
+      &quot;Hash&quot;: &quot;f28149c2d7a1342a834b314e95e67260&quot;,
       &quot;Requirements&quot;: []
     },
     &quot;farver&quot;: {
@@ -1194,10 +1202,10 @@ loaded via a namespace (and not attached):
     },
     &quot;fontawesome&quot;: {
       &quot;Package&quot;: &quot;fontawesome&quot;,
-      &quot;Version&quot;: &quot;0.2.2&quot;,
+      &quot;Version&quot;: &quot;0.2.1&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;55624ed409e46c5f358b2c060be87f67&quot;,
+      &quot;Hash&quot;: &quot;c3910e7cc0ead78538b569d4552c1d16&quot;,
       &quot;Requirements&quot;: [
         &quot;htmltools&quot;,
         &quot;rlang&quot;
@@ -1262,10 +1270,10 @@ loaded via a namespace (and not attached):
     },
     &quot;gargle&quot;: {
       &quot;Package&quot;: &quot;gargle&quot;,
-      &quot;Version&quot;: &quot;1.2.0&quot;,
+      &quot;Version&quot;: &quot;1.1.0&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;9d234e6a87a6f8181792de6dc4a00e39&quot;,
+      &quot;Hash&quot;: &quot;bc3bc77ea458de0a6efe94e8e7e9c641&quot;,
       &quot;Requirements&quot;: [
         &quot;cli&quot;,
         &quot;fs&quot;,
@@ -1299,10 +1307,10 @@ loaded via a namespace (and not attached):
     },
     &quot;gert&quot;: {
       &quot;Package&quot;: &quot;gert&quot;,
-      &quot;Version&quot;: &quot;1.5.0&quot;,
+      &quot;Version&quot;: &quot;1.4.3&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;8fddce7cbd59467106266a6e93e253b4&quot;,
+      &quot;Hash&quot;: &quot;3a3f29a74f8bd85ed8d53ab039b18bcd&quot;,
       &quot;Requirements&quot;: [
         &quot;askpass&quot;,
         &quot;credentials&quot;,
@@ -1462,10 +1470,10 @@ loaded via a namespace (and not attached):
     },
     &quot;git2r&quot;: {
       &quot;Package&quot;: &quot;git2r&quot;,
-      &quot;Version&quot;: &quot;0.29.0&quot;,
+      &quot;Version&quot;: &quot;0.28.0&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;b114135c4749076bd5ef74a5827b6f62&quot;,
+      &quot;Hash&quot;: &quot;f64fd34026f6025de71a4354800e6d79&quot;,
       &quot;Requirements&quot;: []
     },
     &quot;gitcreds&quot;: {
@@ -1496,42 +1504,38 @@ loaded via a namespace (and not attached):
     },
     &quot;googledrive&quot;: {
       &quot;Package&quot;: &quot;googledrive&quot;,
-      &quot;Version&quot;: &quot;2.0.0&quot;,
+      &quot;Version&quot;: &quot;1.0.1&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;c3a25adbbfbb03f12e6f88c5fb1f3024&quot;,
+      &quot;Hash&quot;: &quot;79ba5d18133290a69b7c135dc3dfef1a&quot;,
       &quot;Requirements&quot;: [
-        &quot;cli&quot;,
+        &quot;curl&quot;,
         &quot;gargle&quot;,
         &quot;glue&quot;,
         &quot;httr&quot;,
         &quot;jsonlite&quot;,
-        &quot;lifecycle&quot;,
         &quot;magrittr&quot;,
-        &quot;pillar&quot;,
         &quot;purrr&quot;,
         &quot;rlang&quot;,
         &quot;tibble&quot;,
-        &quot;uuid&quot;,
-        &quot;vctrs&quot;,
-        &quot;withr&quot;
+        &quot;uuid&quot;
       ]
     },
     &quot;googlesheets4&quot;: {
       &quot;Package&quot;: &quot;googlesheets4&quot;,
-      &quot;Version&quot;: &quot;1.0.0&quot;,
+      &quot;Version&quot;: &quot;0.3.0&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;9a6564184dc4a81daea4f1d7ce357c6a&quot;,
+      &quot;Hash&quot;: &quot;fd028aa45f6785d7e83c0ed896b45904&quot;,
       &quot;Requirements&quot;: [
         &quot;cellranger&quot;,
-        &quot;cli&quot;,
         &quot;curl&quot;,
         &quot;gargle&quot;,
         &quot;glue&quot;,
         &quot;googledrive&quot;,
         &quot;httr&quot;,
         &quot;ids&quot;,
+        &quot;lifecycle&quot;,
         &quot;magrittr&quot;,
         &quot;purrr&quot;,
         &quot;rematch2&quot;,
@@ -1614,10 +1618,10 @@ loaded via a namespace (and not attached):
     },
     &quot;haven&quot;: {
       &quot;Package&quot;: &quot;haven&quot;,
-      &quot;Version&quot;: &quot;2.4.3&quot;,
+      &quot;Version&quot;: &quot;2.4.1&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;10bec8a8264f3eb59531e8c4c0303f96&quot;,
+      &quot;Hash&quot;: &quot;9ace652bffef34af558eb5d70903ac2f&quot;,
       &quot;Requirements&quot;: [
         &quot;cpp11&quot;,
         &quot;forcats&quot;,
@@ -1707,10 +1711,10 @@ loaded via a namespace (and not attached):
     },
     &quot;httpuv&quot;: {
       &quot;Package&quot;: &quot;httpuv&quot;,
-      &quot;Version&quot;: &quot;1.6.5&quot;,
+      &quot;Version&quot;: &quot;1.6.1&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;97fe71f0a4a1c9890e6c2128afa04bc0&quot;,
+      &quot;Hash&quot;: &quot;54344a78aae37bc6ef39b1240969df8e&quot;,
       &quot;Requirements&quot;: [
         &quot;R6&quot;,
         &quot;Rcpp&quot;,
@@ -1906,12 +1910,12 @@ loaded via a namespace (and not attached):
     },
     &quot;lubridate&quot;: {
       &quot;Package&quot;: &quot;lubridate&quot;,
-      &quot;Version&quot;: &quot;1.8.0&quot;,
+      &quot;Version&quot;: &quot;1.7.10&quot;,
       &quot;Source&quot;: &quot;Repository&quot;,
       &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;2ff5eedb6ee38fb1b81205c73be1be5a&quot;,
+      &quot;Hash&quot;: &quot;1ebfdc8a3cfe8fe19184f5481972b092&quot;,
       &quot;Requirements&quot;: [
-        &quot;cpp11&quot;,
+        &quot;Rcpp&quot;,
         &quot;generics&quot;
       ]
     },
@@ -2176,10 +2180,15 @@ loaded via a namespace (and not attached):
     },
     &quot;pointblank&quot;: {
       &quot;Package&quot;: &quot;pointblank&quot;,
-      &quot;Version&quot;: &quot;0.9.0&quot;,
-      &quot;Source&quot;: &quot;Repository&quot;,
-      &quot;Repository&quot;: &quot;CRAN&quot;,
-      &quot;Hash&quot;: &quot;7486e4dea341651aaa8888bd9cbf4e1e&quot;,
+      &quot;Version&quot;: &quot;0.10.0.9000&quot;,
+      &quot;Source&quot;: &quot;GitHub&quot;,
+      &quot;RemoteType&quot;: &quot;github&quot;,
+      &quot;RemoteHost&quot;: &quot;api.github.com&quot;,
+      &quot;RemoteUsername&quot;: &quot;rich-iannone&quot;,
+      &quot;RemoteRepo&quot;: &quot;pointblank&quot;,
+      &quot;RemoteRef&quot;: &quot;main&quot;,
+      &quot;RemoteSha&quot;: &quot;17418029a79ae1f3f2451416c640a408ad1d4a01&quot;,
+      &quot;Hash&quot;: &quot;71f2dea64bef4f357a88867609a21c7d&quot;,
       &quot;Requirements&quot;: [
         &quot;DBI&quot;,
         &quot;base64enc&quot;,
@@ -2278,15 +2287,13 @@ loaded via a namespace (and not attached):
       &quot;Source&quot;: &quot;GitHub&quot;,
       &quot;RemoteType&quot;: &quot;github&quot;,
       &quot;RemoteHost&quot;: &quot;api.github.com&quot;,
-      &quot;RemoteUsername&quot;: &quot;petrbouchal&quot;,
       &quot;RemoteRepo&quot;: &quot;ptrr&quot;,
-      &quot;RemoteRef&quot;: &quot;master&quot;,
-      &quot;RemoteSha&quot;: &quot;feae74dcf742dd9f9fe6086201110995c4eef736&quot;,
-      &quot;Hash&quot;: &quot;b96f29d641037b5c769534b69bf36fe7&quot;,
+      &quot;RemoteUsername&quot;: &quot;petrbouchal&quot;,
+      &quot;RemoteRef&quot;: &quot;HEAD&quot;,
+      &quot;RemoteSha&quot;: &quot;328339d4222faa965c04a2abc9321889a72dd421&quot;,
+      &quot;Hash&quot;: &quot;ef0abae77084eaaffaa40b83e474c822&quot;,
       &quot;Requirements&quot;: [
         &quot;callr&quot;,
-        &quot;drat&quot;,
-        &quot;extrafont&quot;,
         &quot;ggplot2&quot;,
         &quot;ggtext&quot;,
         &quot;git2r&quot;,
@@ -3243,199 +3250,14 @@ loaded via a namespace (and not attached):
 <div id="targets-zobrazení-pipeline" class="section level3">
 <h3>targets: zobrazení pipeline</h3>
 <pre class="r"><code>targets::tar_visnetwork()</code></pre>
-<pre><code>## [31m
-## Attaching package: ‘dplyr’
-## 
-## [39m[31mThe following objects are masked from ‘package:stats’:
-## 
-##     filter, lag
-## 
-## The following objects are masked from ‘package:base’:
-## 
-##     intersect, setdiff, setequal, union
-## 
-## [39m[31m
-## Attaching package: ‘arrow’
-## 
-## [39m[31mThe following object is masked from ‘package:magrittr’:
-## 
-##     is_in
-## 
-## The following object is masked from ‘package:utils’:
-## 
-##     timestamp
-## 
-## [39m[31m
-## Attaching package: ‘bs4Dash’
-## 
-## [39m[31mThe following object is masked from ‘package:graphics’:
-## 
-##     box
-## 
-## [39m[31m* Option &#39;clustermq.scheduler&#39; not set, defaulting to ‘LOCAL’
-## --- see: https://mschubert.github.io/clustermq/articles/userguide.html#configuration
-## [39m[31m
-## Attaching package: ‘config’
-## 
-## [39m[31mThe following objects are masked from ‘package:base’:
-## 
-##     get, merge
-## 
-## [39m[31mUsing libcurl 7.64.1 with LibreSSL/2.8.3
+<pre><code>## [31mSee arrow_info() for available features
+## [39m[31mUsing libcurl 7.64.1 with SecureTransport 
 ## [39m[31mhere() starts at /Users/petr/cwork/esiftagging
-## [39m[31m
-## Attaching package: ‘httr’
-## 
-## The following object is masked from ‘package:curl’:
-## 
-##     handle_reset
-## 
-## [39m[31m
-## Attaching package: ‘igraph’
-## 
-## [39m[31mThe following objects are masked from ‘package:dplyr’:
-## 
-##     as_data_frame, groups, union
-## 
-## The following objects are masked from ‘package:future’:
-## 
-##     %-&gt;%, %&lt;-%
-## 
-## [39m[31mThe following objects are masked from ‘package:stats’:
-## 
-##     decompose, spectrum
-## 
-## The following object is masked from ‘package:base’:
-## 
-##     union
-## 
-## [39m[31m
-## Attaching package: ‘janitor’
-## 
-## [39m[31mThe following objects are masked from ‘package:stats’:
-## 
-##     chisq.test, fisher.test
-## 
-## [39m[31m
-## Attaching package: ‘lubridate’
-## 
-## [39m[31mThe following objects are masked from ‘package:igraph’:
-## 
-##     %--%, union
-## 
-## The following objects are masked from ‘package:base’:
-## 
-##     date, intersect, setdiff, union
-## 
-## [39m[31m
-## Attaching package: ‘pingr’
-## 
-## [39m[31mThe following object is masked from ‘package:utils’:
-## 
-##     nsl
-## 
-## [39m[31m
-## Attaching package: ‘plotly’
-## 
-## [39m[31mThe following object is masked from ‘package:igraph’:
-## 
-##     groups
-## 
-## The following object is masked from ‘package:httr’:
-## 
-##     config
-## 
-## The following object is masked from ‘package:ggplot2’:
-## 
-##     last_plot
-## 
-## The following object is masked from ‘package:arrow’:
-## 
-##     schema
-## 
-## [39m[31mThe following object is masked from ‘package:stats’:
-## 
-##     filter
-## 
-## The following object is masked from ‘package:graphics’:
-## 
-##     layout
-## 
-## [39m[31mNOTE: Roboto and Roboto Condensed fonts are required for the default setting of theme_ptrr() to work.
-##       Please use ptrr::import_fonts() to install Roboto and Roboto Condensed
-## [39m[31m
-## Attaching package: ‘purrr’
-## 
-## The following object is masked from ‘package:jsonlite’:
-## 
-##     flatten
-## 
-## [39m[31mThe following objects are masked from ‘package:igraph’:
-## 
-##     compose, simplify
-## 
-## The following object is masked from ‘package:magrittr’:
-## 
-##     set_names
-## 
-## [39m[31m
-## Attaching package: ‘readr’
-## 
-## [39m[31mThe following object is masked from ‘package:curl’:
-## 
-##     parse_date
-## 
-## [39m[31m
-## Attaching package: ‘shiny’
-## 
-## [39m[31mThe following object is masked from ‘package:jsonlite’:
-## 
-##     validate
-## 
-## The following objects are masked from ‘package:DT’:
-## 
-##     dataTableOutput, renderDataTable
-## 
-## [39m[31mThe following object is masked from ‘package:crosstalk’:
-## 
-##     getDefaultReactiveDomain
-## 
-## The following objects are masked from ‘package:bs4Dash’:
-## 
-##     actionButton, column, insertTab, tabsetPanel
-## 
-## [39m[31m
-## Attaching package: ‘shinyWidgets’
-## 
-## [39m[31mThe following object is masked from ‘package:bs4Dash’:
-## 
-##     progressBar
-## 
-## [39m[31m
-## Attaching package: ‘tibble’
-## 
-## [39m[31mThe following object is masked from ‘package:igraph’:
-## 
-##     as_data_frame
-## 
-## [39m[31m
-## Attaching package: ‘tidyr’
-## 
-## [39m[31mThe following object is masked from ‘package:igraph’:
-## 
-##     crossing
-## 
-## The following object is masked from ‘package:magrittr’:
-## 
-##     extract
-## 
-## [39m[31mWarning messages:
-## 1: package ‘targets’ was built under R version 4.1.2 
-## 2: package ‘tarchetypes’ was built under R version 4.1.2 
-## 3: package ‘igraph’ was built under R version 4.1.2 
+## [39m[31mWarning message:
+## Targets and globals must have unique names. Ignoring global objects that conflict with target names: efs_obl, ef_pub, efs_prj_sc, od_prj_sc. Warnings like this one are important, but if you must suppress them, you can do so with Sys.setenv(TAR_WARN = &quot;false&quot;). 
 ## [39m</code></pre>
-<div id="htmlwidget-cda61ed5e53a8b08b341" style="width:576px;height:384px;" class="visNetwork html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cda61ed5e53a8b08b341">{"x":{"nodes":{"name":["agri_opendata","agri_opendata_paths","agri_opendata_urls","agri_opendata_zipfiles","agri_plotly","agri_tagged","agri_tagged_sum","bigram_data","bigram_data_nolemma","cis_kraj","compiled_op_sum","ef_pub","ef_pubxls","ef_pubxls_url","efs_compiled","efs_compiled_fin","efs_fin","efs_mtagged","efs_mtagged_sum_kat","efs_mtagged_sum_op","efs_mtagged_sum_op_sc","efs_mtagged_sum_prj","efs_obl","efs_plotly","efs_prj","efs_prj_basic","efs_prj_kat","efs_prj_sc","efs_prv","efs_prv_annual","efs_prv_quarterly","efs_tagged","efs_tagged_for_plot","efs_tagged_sum_kat","efs_tagged_sum_op","efs_tagged_sum_op_sc","efs_tagged_sum_prj","efs_tags_compare","efs_zop","efs_zop_annual","efs_zop_quarterly","esif_mtagged_sum","esif_mtagged_sum_op","esif_tagged_sum","esif_tagged_sum_op","export_agri_detail_csv","export_agri_detail_xlsx","export_all_ops_csv","export_all_ops_detail_csv","export_all_ops_detail_xlsx","export_all_ops_xlsx","export_for_tagging","export_nonagri_detail_csv","export_nonagri_detail_xlsx","export_nonagri_projekty_parquet","export_nonagri_projekty_xlsx","export_prv_detail_csv","export_prv_detail_xlsx","log2","plot_all","plot_all_data","plot_all_data_m","plot_all_m","plot_comparison","plot_sankey","plot_tagged_agri","plot_tagged_op","plot_weighted_op","plt_bigram_bars","plt_bigram_network","plt_topics","plt_wordfreqs","plt_wordpairs","pop_obce","prj_codebook","prj_codebook_yaml","prv_priorities","prv_tagged","prv_tagged_sum","reg_table_agri","reg_table_agri_xlsx","reg_table_nonagri","reg_table_nonagri_xlsx","s_dev_rmd","s_doc_rmd","s_inputchecks_rmd","s_listing_html","s_listing_rmd","s_log_rmd","s_output_rmd","s_readme_rmd","s_research_rmd","siteconf","sitefiles","stopwords_all_cz","stopwords_cz","stopwords_cz_url","sum_annual","sum_codebook","sum_codebook_yaml","sum_quarterly","tags_manual","tags_manual_xlsx","tepl_lem_descr","tepl_lem_title","tepl_texts","tepl_tkn_trnsltr_descr","tepl_tkn_trnsltr_title","zop_timing_df","zop_timing_plot","zuj_obec","s_log_html","s_research_html","s_output_html","s_dev_html","s_inputchecks_html","s_doc_html","s_index_html","readme_md","lemmatize_esif","t_climacat_reg","get_zuj_obec","c_priority_prv_xls","c_export_csv_a","t_codebook","subset_prv_tagged","c_tags_manual_xlsx","c_repo_remote","get_stats_pop_obce","c_export_agri_detail_csv","c_prv_data_path","t_sestavy","load_efs_obl","c_export_xlsx_a","make_plot_all","c_sest_dir","c_agri_opendata_urls","c_export_agri_detail_xlsx","c_export_prv_detail_xlsx","c_export_nonagri_projekty_parquet","t_tagging_aid","c_export_csv_q","t_climacat_manual","c_agri_opendata_zipxml","name","c_agri_opendata_dir","c_export_dir","make_zop_timing_plot","summarise_prv","nm","c_reg_table_nonagri_xlsx","t_public_list","bn","summarise_prv_tagged","c_reg_table_agri_xlsx","stopwords_esif","make_plot_weighted_all","make_tag_sankey","t_op_compile","c_export_all_ops_xlsx","summarise_zop","extract_agri_payments_year","c_sest_xlsx_prj","esif_summarise","make_plot_tagged_all","make_token_translator","cnf","c_export_nonagri_detail_csv","c_export_all_ops_detail_csv","prep_plot_all_data","pc","load_efs_zop","plot_ngrams_bars","efs_add_financials","t_geo_helpers","c_czso_pop_table_id","c_export_xlsx_q","summarise_tagged_op_only","make_plot_tagged_agri_detail","c_ef_pubxls_url","validate_esif_tagged","t_climate_tag","c_reg_table_agri_sheetname","tag_agri","make_codebook","t_valid_zop_timing","op_labels","c_export_tagging_xlsx","stopwords_cz_additional","c_export_nonagri_detail_xlsx","t_mtagged_summarised","make_efs_plotly","c_sest_xlsx_obl","export_table","t_tagged_summarised","load_prv","c_export_cdbk_sum","t_html","t_agri_opendata","efs_compile","make_agri_plotly","make_tags_comparison","summarise_agri_tagged","c_export_prv_detail_csv","t_esif_compile","t_tagged_plots","get_prj_texts","c_export_all_ops_detail_xlsx","c_export_all_ops_csv","c_sest_xlsx_fin","make_comparison_plot","t_prv_priorities","t_export","c_export_cdbk_prj","prep_tagged_for_plot","load_priority_list_prv","process_reg_table_nonagri","t_tagged_compiled","summarise_tagged","noise_cz","c_tags_manual_sheetname","make_plot_tagged_agri","read_reg_table_agri","c_sest_xlsx_zop","t_text_basics","c_export_nonagri_projekty_xlsx","plot_ngrams_network","load_efs_fin","plot_topics","plot_wordcorrs","plot_wordfreq","add_op_labels","prep_ngrams","build_efs_timing","read_pubxls","load_efs_prj","summarise_by_op"],"type":["pattern","stem","stem","pattern","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","function","object","function","object","object","object","function","object","object","function","object","object","object","function","object","function","object","object","object","object","object","object","object","object","object","function","object","object","function","function","function","object","object","function","function","object","object","function","function","object","object","function","function","object","function","function","function","object","object","object","function","function","function","function","function","object","object","object","function","function","object","function","object","object","function","function","object","object","object","object","object","object","function","object","function","object","function","object","object","object","function","function","function","function","object","object","object","function","object","object","object","function","object","object","object","function","function","function","object","function","object","object","function","function","object","object","object","function","function","function","function","function","function","function","function","function","function","function"],"status":["uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","outdated","outdated","outdated","started","outdated","outdated","outdated","outdated","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate"],"seconds":[8887.332,0.001,0.001,5.629,0.821,1.259,0.607,0.37,2630.768,0.415,0.722,5.963,6.973,0.008,0.682,0.448,6.013,0.11,0.6,1.462,0.788,3211.572,170.872,0.368,17.902,0.167,1.841,0.014,0.808,0.181,0.284,0.058,0.082,0.393,0.432,0.369,13.387,0.351,3.786,122.956,390.404,0.041,0.002,0.03,0.001,0.106,0.013,0.009,0.21,0.015,0.008,11.958,0.017,0.029,0.933,12.433,0.008,0.01,7.856,0.012,0.071,0.04,0.08,0.132,0.122,0.357,0.13,0.059,0.092,0.138,1.731,0.129,0.305,3.194,0.09,0.004,0.141,0.051,0.131,0.024,0.001,0.225,0.001,0.006,0.001,0.001,9.223,0.001,0.002,0.002,0.001,0.001,0.001,0.002,0.001,0.355,0.002,0.461,0.207,0.005,1.14,0.044,0.001,0.921,0.314,0.008,0.029,0.034,0.97,0.09,0.117,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"bytes":[6585017,107,187,13964621,7222647,7031004,5322,8724,10616,854,3367,13596201,70269952,0,1418856,4837460,5309230,5061031,8615,10505,19148,11341298,1228511,224081,3009188,2594594,926256,499426,670140,213911,222350,5061660,5588,8301,10304,19133,11341295,877,2999878,1874629,2417956,1402,12910,1436,12674,15268,12774,4137,39522,28507,7454,26117815,107418,42182,18676773,26040951,6462,8679,6085288,81674,310,334,82782,51688,63867,7118607,83353,73413,81193,108358,239250,110669,180024,39920,11342743,3821,2985,2666880,2496,580,13687,4861,17928,2514,7054,7821,201813,6663,2284,3541,1749,9003,1190,26133086,1794,1688,0,879,13730,3821,2411,4984,94399,44251,11795,17457,12729,5190,4483272,9053057,38160,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"branches":[4,null,null,4,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"id":["agri_opendata","agri_opendata_paths","agri_opendata_urls","agri_opendata_zipfiles","agri_plotly","agri_tagged","agri_tagged_sum","bigram_data","bigram_data_nolemma","cis_kraj","compiled_op_sum","ef_pub","ef_pubxls","ef_pubxls_url","efs_compiled","efs_compiled_fin","efs_fin","efs_mtagged","efs_mtagged_sum_kat","efs_mtagged_sum_op","efs_mtagged_sum_op_sc","efs_mtagged_sum_prj","efs_obl","efs_plotly","efs_prj","efs_prj_basic","efs_prj_kat","efs_prj_sc","efs_prv","efs_prv_annual","efs_prv_quarterly","efs_tagged","efs_tagged_for_plot","efs_tagged_sum_kat","efs_tagged_sum_op","efs_tagged_sum_op_sc","efs_tagged_sum_prj","efs_tags_compare","efs_zop","efs_zop_annual","efs_zop_quarterly","esif_mtagged_sum","esif_mtagged_sum_op","esif_tagged_sum","esif_tagged_sum_op","export_agri_detail_csv","export_agri_detail_xlsx","export_all_ops_csv","export_all_ops_detail_csv","export_all_ops_detail_xlsx","export_all_ops_xlsx","export_for_tagging","export_nonagri_detail_csv","export_nonagri_detail_xlsx","export_nonagri_projekty_parquet","export_nonagri_projekty_xlsx","export_prv_detail_csv","export_prv_detail_xlsx","log2","plot_all","plot_all_data","plot_all_data_m","plot_all_m","plot_comparison","plot_sankey","plot_tagged_agri","plot_tagged_op","plot_weighted_op","plt_bigram_bars","plt_bigram_network","plt_topics","plt_wordfreqs","plt_wordpairs","pop_obce","prj_codebook","prj_codebook_yaml","prv_priorities","prv_tagged","prv_tagged_sum","reg_table_agri","reg_table_agri_xlsx","reg_table_nonagri","reg_table_nonagri_xlsx","s_dev_rmd","s_doc_rmd","s_inputchecks_rmd","s_listing_html","s_listing_rmd","s_log_rmd","s_output_rmd","s_readme_rmd","s_research_rmd","siteconf","sitefiles","stopwords_all_cz","stopwords_cz","stopwords_cz_url","sum_annual","sum_codebook","sum_codebook_yaml","sum_quarterly","tags_manual","tags_manual_xlsx","tepl_lem_descr","tepl_lem_title","tepl_texts","tepl_tkn_trnsltr_descr","tepl_tkn_trnsltr_title","zop_timing_df","zop_timing_plot","zuj_obec","s_log_html","s_research_html","s_output_html","s_dev_html","s_inputchecks_html","s_doc_html","s_index_html","readme_md","lemmatize_esif","t_climacat_reg","get_zuj_obec","c_priority_prv_xls","c_export_csv_a","t_codebook","subset_prv_tagged","c_tags_manual_xlsx","c_repo_remote","get_stats_pop_obce","c_export_agri_detail_csv","c_prv_data_path","t_sestavy","load_efs_obl","c_export_xlsx_a","make_plot_all","c_sest_dir","c_agri_opendata_urls","c_export_agri_detail_xlsx","c_export_prv_detail_xlsx","c_export_nonagri_projekty_parquet","t_tagging_aid","c_export_csv_q","t_climacat_manual","c_agri_opendata_zipxml","name","c_agri_opendata_dir","c_export_dir","make_zop_timing_plot","summarise_prv","nm","c_reg_table_nonagri_xlsx","t_public_list","bn","summarise_prv_tagged","c_reg_table_agri_xlsx","stopwords_esif","make_plot_weighted_all","make_tag_sankey","t_op_compile","c_export_all_ops_xlsx","summarise_zop","extract_agri_payments_year","c_sest_xlsx_prj","esif_summarise","make_plot_tagged_all","make_token_translator","cnf","c_export_nonagri_detail_csv","c_export_all_ops_detail_csv","prep_plot_all_data","pc","load_efs_zop","plot_ngrams_bars","efs_add_financials","t_geo_helpers","c_czso_pop_table_id","c_export_xlsx_q","summarise_tagged_op_only","make_plot_tagged_agri_detail","c_ef_pubxls_url","validate_esif_tagged","t_climate_tag","c_reg_table_agri_sheetname","tag_agri","make_codebook","t_valid_zop_timing","op_labels","c_export_tagging_xlsx","stopwords_cz_additional","c_export_nonagri_detail_xlsx","t_mtagged_summarised","make_efs_plotly","c_sest_xlsx_obl","export_table","t_tagged_summarised","load_prv","c_export_cdbk_sum","t_html","t_agri_opendata","efs_compile","make_agri_plotly","make_tags_comparison","summarise_agri_tagged","c_export_prv_detail_csv","t_esif_compile","t_tagged_plots","get_prj_texts","c_export_all_ops_detail_xlsx","c_export_all_ops_csv","c_sest_xlsx_fin","make_comparison_plot","t_prv_priorities","t_export","c_export_cdbk_prj","prep_tagged_for_plot","load_priority_list_prv","process_reg_table_nonagri","t_tagged_compiled","summarise_tagged","noise_cz","c_tags_manual_sheetname","make_plot_tagged_agri","read_reg_table_agri","c_sest_xlsx_zop","t_text_basics","c_export_nonagri_projekty_xlsx","plot_ngrams_network","load_efs_fin","plot_topics","plot_wordcorrs","plot_wordfreq","add_op_labels","prep_ngrams","build_efs_timing","read_pubxls","load_efs_prj","summarise_by_op"],"label":["agri_opendata","agri_opendata_paths","agri_opendata_urls","agri_opendata_zipfiles","agri_plotly","agri_tagged","agri_tagged_sum","bigram_data","bigram_data_nolemma","cis_kraj","compiled_op_sum","ef_pub","ef_pubxls","ef_pubxls_url","efs_compiled","efs_compiled_fin","efs_fin","efs_mtagged","efs_mtagged_sum_kat","efs_mtagged_sum_op","efs_mtagged_sum_op_sc","efs_mtagged_sum_prj","efs_obl","efs_plotly","efs_prj","efs_prj_basic","efs_prj_kat","efs_prj_sc","efs_prv","efs_prv_annual","efs_prv_quarterly","efs_tagged","efs_tagged_for_plot","efs_tagged_sum_kat","efs_tagged_sum_op","efs_tagged_sum_op_sc","efs_tagged_sum_prj","efs_tags_compare","efs_zop","efs_zop_annual","efs_zop_quarterly","esif_mtagged_sum","esif_mtagged_sum_op","esif_tagged_sum","esif_tagged_sum_op","export_agri_detail_csv","export_agri_detail_xlsx","export_all_ops_csv","export_all_ops_detail_csv","export_all_ops_detail_xlsx","export_all_ops_xlsx","export_for_tagging","export_nonagri_detail_csv","export_nonagri_detail_xlsx","export_nonagri_projekty_parquet","export_nonagri_projekty_xlsx","export_prv_detail_csv","export_prv_detail_xlsx","log2","plot_all","plot_all_data","plot_all_data_m","plot_all_m","plot_comparison","plot_sankey","plot_tagged_agri","plot_tagged_op","plot_weighted_op","plt_bigram_bars","plt_bigram_network","plt_topics","plt_wordfreqs","plt_wordpairs","pop_obce","prj_codebook","prj_codebook_yaml","prv_priorities","prv_tagged","prv_tagged_sum","reg_table_agri","reg_table_agri_xlsx","reg_table_nonagri","reg_table_nonagri_xlsx","s_dev_rmd","s_doc_rmd","s_inputchecks_rmd","s_listing_html","s_listing_rmd","s_log_rmd","s_output_rmd","s_readme_rmd","s_research_rmd","siteconf","sitefiles","stopwords_all_cz","stopwords_cz","stopwords_cz_url","sum_annual","sum_codebook","sum_codebook_yaml","sum_quarterly","tags_manual","tags_manual_xlsx","tepl_lem_descr","tepl_lem_title","tepl_texts","tepl_tkn_trnsltr_descr","tepl_tkn_trnsltr_title","zop_timing_df","zop_timing_plot","zuj_obec","s_log_html","s_research_html","s_output_html","s_dev_html","s_inputchecks_html","s_doc_html","s_index_html","readme_md","lemmatize_esif","t_climacat_reg","get_zuj_obec","c_priority_prv_xls","c_export_csv_a","t_codebook","subset_prv_tagged","c_tags_manual_xlsx","c_repo_remote","get_stats_pop_obce","c_export_agri_detail_csv","c_prv_data_path","t_sestavy","load_efs_obl","c_export_xlsx_a","make_plot_all","c_sest_dir","c_agri_opendata_urls","c_export_agri_detail_xlsx","c_export_prv_detail_xlsx","c_export_nonagri_projekty_parquet","t_tagging_aid","c_export_csv_q","t_climacat_manual","c_agri_opendata_zipxml","name","c_agri_opendata_dir","c_export_dir","make_zop_timing_plot","summarise_prv","nm","c_reg_table_nonagri_xlsx","t_public_list","bn","summarise_prv_tagged","c_reg_table_agri_xlsx","stopwords_esif","make_plot_weighted_all","make_tag_sankey","t_op_compile","c_export_all_ops_xlsx","summarise_zop","extract_agri_payments_year","c_sest_xlsx_prj","esif_summarise","make_plot_tagged_all","make_token_translator","cnf","c_export_nonagri_detail_csv","c_export_all_ops_detail_csv","prep_plot_all_data","pc","load_efs_zop","plot_ngrams_bars","efs_add_financials","t_geo_helpers","c_czso_pop_table_id","c_export_xlsx_q","summarise_tagged_op_only","make_plot_tagged_agri_detail","c_ef_pubxls_url","validate_esif_tagged","t_climate_tag","c_reg_table_agri_sheetname","tag_agri","make_codebook","t_valid_zop_timing","op_labels","c_export_tagging_xlsx","stopwords_cz_additional","c_export_nonagri_detail_xlsx","t_mtagged_summarised","make_efs_plotly","c_sest_xlsx_obl","export_table","t_tagged_summarised","load_prv","c_export_cdbk_sum","t_html","t_agri_opendata","efs_compile","make_agri_plotly","make_tags_comparison","summarise_agri_tagged","c_export_prv_detail_csv","t_esif_compile","t_tagged_plots","get_prj_texts","c_export_all_ops_detail_xlsx","c_export_all_ops_csv","c_sest_xlsx_fin","make_comparison_plot","t_prv_priorities","t_export","c_export_cdbk_prj","prep_tagged_for_plot","load_priority_list_prv","process_reg_table_nonagri","t_tagged_compiled","summarise_tagged","noise_cz","c_tags_manual_sheetname","make_plot_tagged_agri","read_reg_table_agri","c_sest_xlsx_zop","t_text_basics","c_export_nonagri_projekty_xlsx","plot_ngrams_network","load_efs_fin","plot_topics","plot_wordcorrs","plot_wordfreq","add_op_labels","prep_ngrams","build_efs_timing","read_pubxls","load_efs_prj","summarise_by_op"],"level":[4,2,2,3,6,5,6,12,12,1,4,4,2,1,6,7,3,8,9,9,9,9,2,11,4,5,5,5,2,3,3,8,10,9,9,9,9,10,2,3,3,10,10,10,10,7,7,11,11,11,11,11,10,10,10,10,8,8,0,12,11,11,12,12,11,6,11,11,13,13,12,12,12,2,10,12,2,6,7,3,2,3,2,1,1,1,2,1,1,1,1,1,1,1,3,2,1,8,11,12,8,3,2,10,10,10,11,11,5,6,2,2,2,2,2,2,2,2,2,1,0,1,1,0,0,1,1,0,1,1,1,0,1,0,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,0,1,0,0,1,1,1,1,1,0,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,0,1,0,1,0,0,0,0,1,1,1,0,1,1,1,1,0,1,1,1,0,1,1,0,0,1,1,1,1,1,0,0,1,1,1,1,1,0,0,1,1,1,1,0,1,1,1,1,1,1,0,1,2,2,2,2,2,2,2,3,3,3,3],"color":["#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#78B7C5","#78B7C5","#78B7C5","#DC863B","#78B7C5","#78B7C5","#78B7C5","#78B7C5","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823"],"shape":["square","dot","dot","square","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","triangle","triangleDown","triangle","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangleDown","triangle","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangle","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangleDown","triangle","triangle","triangle","triangleDown","triangleDown","triangle","triangle","triangleDown","triangleDown","triangle","triangle","triangleDown","triangleDown","triangle","triangle","triangleDown","triangle","triangle","triangle","triangleDown","triangleDown","triangleDown","triangle","triangle","triangle","triangle","triangle","triangleDown","triangleDown","triangleDown","triangle","triangle","triangleDown","triangle","triangleDown","triangleDown","triangle","triangle","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangle","triangleDown","triangle","triangleDown","triangleDown","triangleDown","triangle","triangle","triangle","triangle","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangleDown","triangleDown","triangle","triangle","triangle","triangleDown","triangle","triangleDown","triangleDown","triangle","triangle","triangleDown","triangleDown","triangleDown","triangle","triangle","triangle","triangle","triangle","triangle","triangle","triangle","triangle","triangle","triangle"]},"edges":{"from":["add_op_labels","add_op_labels","add_op_labels","add_op_labels","name","name","name","stopwords_esif","stopwords_esif","stopwords_esif","stopwords_esif","op_labels","stopwords_cz_additional","c_prv_data_path","cis_kraj","load_prv","prep_ngrams","stopwords_all_cz","tepl_texts","tepl_tkn_trnsltr_descr","s_listing_rmd","siteconf","sitefiles","s_dev_rmd","siteconf","sitefiles","efs_tagged_for_plot","make_efs_plotly","efs_zop","summarise_zop","s_doc_rmd","siteconf","sitefiles","c_export_dir","c_export_nonagri_detail_csv","efs_tagged_sum_op_sc","export_table","s_research_rmd","siteconf","sitefiles","efs_mtagged","summarise_tagged","s_log_rmd","siteconf","sitefiles","efs_tagged_sum_prj","lemmatize_esif","efs_compile","efs_obl","efs_prj_kat","efs_prj_sc","make_plot_all","plot_all_data","s_readme_rmd","add_op_labels","ef_pub","efs_prj","efs_tagged","summarise_tagged","agri_opendata_paths","agri_opendata_urls","esif_tagged_sum_op","make_codebook","add_op_labels","efs_mtagged","summarise_tagged","esif_tagged_sum","make_plot_weighted_all","efs_prj","plot_topics","stopwords_all_cz","tepl_texts","tepl_tkn_trnsltr_descr","c_export_dir","c_export_nonagri_detail_xlsx","efs_tagged_sum_op_sc","export_table","make_plot_all","plot_all_data_m","agri_tagged","summarise_agri_tagged","efs_compiled_fin","efs_prv_quarterly","esif_summarise","s_inputchecks_rmd","siteconf","sitefiles","c_reg_table_agri_sheetname","read_reg_table_agri","reg_table_agri_xlsx","bigram_data_nolemma","plot_ngrams_bars","c_reg_table_agri_xlsx","c_agri_opendata_dir","c_agri_opendata_zipxml","c_tags_manual_xlsx","plot_wordfreq","stopwords_all_cz","tepl_texts","tepl_tkn_trnsltr_title","agri_opendata_zipfiles","extract_agri_payments_year","efs_mtagged_sum_op","prv_tagged_sum","c_sest_dir","c_sest_xlsx_zop","load_efs_zop","agri_tagged","make_plot_tagged_agri","noise_cz","stopwords_cz","stopwords_cz_additional","agri_tagged","subset_prv_tagged","c_export_all_ops_detail_xlsx","c_export_dir","esif_tagged_sum_op","export_table","c_sest_dir","c_sest_xlsx_obl","load_efs_obl","c_export_all_ops_csv","c_export_dir","esif_tagged_sum","export_table","ef_pubxls","read_pubxls","agri_tagged_sum","c_export_agri_detail_csv","c_export_dir","export_table","efs_mtagged_sum_op_sc","prv_tagged_sum","summarise_tagged_op_only","esif_tagged_sum","make_plot_tagged_all","efs_mtagged_sum_prj","efs_tagged_sum_prj","make_tags_comparison","efs_tagged_sum_op_sc","prep_tagged_for_plot","get_zuj_obec","make_token_translator","tepl_lem_title","add_op_labels","efs_mtagged","summarise_tagged","add_op_labels","efs_tagged","summarise_tagged","c_export_dir","c_export_prv_detail_csv","export_table","prv_tagged_sum","efs_tagged_sum_prj","make_codebook","c_tags_manual_sheetname","tags_manual_xlsx","efs_prv","summarise_prv","efs_prj","efs_tagged_sum_prj","get_prj_texts","agri_tagged_sum","c_export_agri_detail_xlsx","c_export_dir","export_table","c_czso_pop_table_id","get_stats_pop_obce","agri_tagged","make_agri_plotly","c_export_dir","c_export_nonagri_projekty_xlsx","efs_tagged_sum_prj","export_table","c_agri_opendata_urls","c_priority_prv_xls","load_priority_list_prv","efs_tagged_sum_op","prv_tagged_sum","agri_opendata","reg_table_agri","tag_agri","c_sest_dir","c_sest_xlsx_fin","load_efs_fin","efs_tagged_sum_op_sc","prv_tagged_sum","summarise_tagged_op_only","s_readme_rmd","siteconf","sitefiles","c_reg_table_nonagri_xlsx","efs_add_financials","efs_compiled","efs_zop_quarterly","efs_prv","summarise_prv","c_export_all_ops_detail_csv","c_export_dir","esif_tagged_sum_op","export_table","s_output_rmd","siteconf","sitefiles","efs_zop","summarise_zop","prep_ngrams","stopwords_all_cz","tepl_texts","tepl_tkn_trnsltr_descr","make_zop_timing_plot","zop_timing_df","efs_compiled_fin","tags_manual","c_export_dir","c_export_nonagri_projekty_parquet","efs_tagged_sum_prj","export_table","efs_compiled_fin","efs_prv_annual","esif_summarise","make_token_translator","tepl_lem_descr","efs_compiled_fin","reg_table_nonagri","esif_tagged_sum","prep_plot_all_data","prv_tagged","summarise_prv_tagged","efs_prv_quarterly","efs_zop_quarterly","summarise_by_op","c_export_cdbk_sum","c_export_dir","esif_tagged_sum_op","sum_codebook","add_op_labels","efs_tagged","summarise_tagged","ef_pubxls_url","make_comparison_plot","plot_all_data","plot_all_data_m","efs_tags_compare","make_tag_sankey","process_reg_table_nonagri","reg_table_nonagri_xlsx","efs_prj","agri_tagged_sum","c_export_tagging_xlsx","efs_tagged_sum_op_sc","efs_tagged_sum_prj","esif_tagged_sum","esif_tagged_sum_op","prv_tagged_sum","build_efs_timing","ef_pub","efs_prj","efs_zop","esif_mtagged_sum","prep_plot_all_data","stopwords_cz_url","c_sest_dir","c_sest_xlsx_prj","load_efs_prj","plot_wordcorrs","stopwords_all_cz","tepl_texts","tepl_tkn_trnsltr_title","c_export_dir","c_export_prv_detail_xlsx","export_table","prv_tagged_sum","bigram_data","plot_ngrams_network","c_export_all_ops_xlsx","c_export_dir","esif_tagged_sum","export_table","c_export_cdbk_prj","c_export_dir","efs_tagged_sum_prj","sum_codebook","add_op_labels","ef_pub","efs_mtagged","efs_prj","summarise_tagged","efs_tagged_sum_prj","lemmatize_esif","efs_tagged","summarise_tagged"],"to":["build_efs_timing","read_pubxls","load_efs_prj","summarise_by_op","plot_ngrams_network","load_efs_fin","plot_wordcorrs","plot_topics","plot_wordcorrs","prep_ngrams","plot_wordfreq","add_op_labels","prep_ngrams","efs_prv","efs_prv","efs_prv","bigram_data","bigram_data","bigram_data","bigram_data","s_listing_html","s_listing_html","s_listing_html","s_dev_html","s_dev_html","s_dev_html","efs_plotly","efs_plotly","efs_zop_quarterly","efs_zop_quarterly","s_doc_html","s_doc_html","s_doc_html","export_nonagri_detail_csv","export_nonagri_detail_csv","export_nonagri_detail_csv","export_nonagri_detail_csv","s_research_html","s_research_html","s_research_html","efs_mtagged_sum_kat","efs_mtagged_sum_kat","s_log_html","s_log_html","s_log_html","tepl_lem_title","tepl_lem_title","efs_compiled","efs_compiled","efs_compiled","efs_compiled","plot_all","plot_all","readme_md","efs_tagged_sum_prj","efs_tagged_sum_prj","efs_tagged_sum_prj","efs_tagged_sum_prj","efs_tagged_sum_prj","agri_opendata_zipfiles","agri_opendata_zipfiles","sum_codebook","sum_codebook","efs_mtagged_sum_op_sc","efs_mtagged_sum_op_sc","efs_mtagged_sum_op_sc","plot_weighted_op","plot_weighted_op","efs_prj_sc","plt_topics","plt_topics","plt_topics","plt_topics","export_nonagri_detail_xlsx","export_nonagri_detail_xlsx","export_nonagri_detail_xlsx","export_nonagri_detail_xlsx","plot_all_m","plot_all_m","agri_tagged_sum","agri_tagged_sum","sum_quarterly","sum_quarterly","sum_quarterly","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","reg_table_agri","reg_table_agri","reg_table_agri","plt_bigram_bars","plt_bigram_bars","reg_table_agri_xlsx","agri_opendata_paths","agri_opendata_paths","tags_manual_xlsx","plt_wordfreqs","plt_wordfreqs","plt_wordfreqs","plt_wordfreqs","agri_opendata","agri_opendata","esif_mtagged_sum_op","esif_mtagged_sum_op","efs_zop","efs_zop","efs_zop","plot_tagged_agri","plot_tagged_agri","stopwords_all_cz","stopwords_all_cz","stopwords_all_cz","prv_tagged","prv_tagged","export_all_ops_detail_xlsx","export_all_ops_detail_xlsx","export_all_ops_detail_xlsx","export_all_ops_detail_xlsx","efs_obl","efs_obl","efs_obl","export_all_ops_csv","export_all_ops_csv","export_all_ops_csv","export_all_ops_csv","ef_pub","ef_pub","export_agri_detail_csv","export_agri_detail_csv","export_agri_detail_csv","export_agri_detail_csv","esif_mtagged_sum","esif_mtagged_sum","esif_mtagged_sum","plot_tagged_op","plot_tagged_op","efs_tags_compare","efs_tags_compare","efs_tags_compare","efs_tagged_for_plot","efs_tagged_for_plot","zuj_obec","tepl_tkn_trnsltr_title","tepl_tkn_trnsltr_title","efs_mtagged_sum_op","efs_mtagged_sum_op","efs_mtagged_sum_op","efs_tagged_sum_op_sc","efs_tagged_sum_op_sc","efs_tagged_sum_op_sc","export_prv_detail_csv","export_prv_detail_csv","export_prv_detail_csv","export_prv_detail_csv","prj_codebook","prj_codebook","tags_manual","tags_manual","efs_prv_quarterly","efs_prv_quarterly","efs_prj_basic","tepl_texts","tepl_texts","export_agri_detail_xlsx","export_agri_detail_xlsx","export_agri_detail_xlsx","export_agri_detail_xlsx","pop_obce","pop_obce","agri_plotly","agri_plotly","export_nonagri_projekty_xlsx","export_nonagri_projekty_xlsx","export_nonagri_projekty_xlsx","export_nonagri_projekty_xlsx","agri_opendata_urls","prv_priorities","prv_priorities","esif_tagged_sum_op","esif_tagged_sum_op","agri_tagged","agri_tagged","agri_tagged","efs_fin","efs_fin","efs_fin","esif_tagged_sum","esif_tagged_sum","esif_tagged_sum","s_index_html","s_index_html","s_index_html","reg_table_nonagri_xlsx","efs_compiled_fin","efs_compiled_fin","efs_compiled_fin","efs_prv_annual","efs_prv_annual","export_all_ops_detail_csv","export_all_ops_detail_csv","export_all_ops_detail_csv","export_all_ops_detail_csv","s_output_html","s_output_html","s_output_html","efs_zop_annual","efs_zop_annual","bigram_data_nolemma","bigram_data_nolemma","bigram_data_nolemma","bigram_data_nolemma","zop_timing_plot","zop_timing_plot","efs_mtagged","efs_mtagged","export_nonagri_projekty_parquet","export_nonagri_projekty_parquet","export_nonagri_projekty_parquet","export_nonagri_projekty_parquet","sum_annual","sum_annual","sum_annual","tepl_tkn_trnsltr_descr","tepl_tkn_trnsltr_descr","efs_tagged","efs_tagged","plot_all_data","plot_all_data","prv_tagged_sum","prv_tagged_sum","compiled_op_sum","compiled_op_sum","compiled_op_sum","sum_codebook_yaml","sum_codebook_yaml","sum_codebook_yaml","sum_codebook_yaml","efs_tagged_sum_op","efs_tagged_sum_op","efs_tagged_sum_op","ef_pubxls","plot_comparison","plot_comparison","plot_comparison","plot_sankey","plot_sankey","reg_table_nonagri","reg_table_nonagri","efs_prj_kat","export_for_tagging","export_for_tagging","export_for_tagging","export_for_tagging","export_for_tagging","export_for_tagging","export_for_tagging","zop_timing_df","zop_timing_df","zop_timing_df","zop_timing_df","plot_all_data_m","plot_all_data_m","stopwords_cz","efs_prj","efs_prj","efs_prj","plt_wordpairs","plt_wordpairs","plt_wordpairs","plt_wordpairs","export_prv_detail_xlsx","export_prv_detail_xlsx","export_prv_detail_xlsx","export_prv_detail_xlsx","plt_bigram_network","plt_bigram_network","export_all_ops_xlsx","export_all_ops_xlsx","export_all_ops_xlsx","export_all_ops_xlsx","prj_codebook_yaml","prj_codebook_yaml","prj_codebook_yaml","prj_codebook_yaml","efs_mtagged_sum_prj","efs_mtagged_sum_prj","efs_mtagged_sum_prj","efs_mtagged_sum_prj","efs_mtagged_sum_prj","tepl_lem_descr","tepl_lem_descr","efs_tagged_sum_kat","efs_tagged_sum_kat"],"arrows":["to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":{"type":"cubicBezier","forceDirection":"horizontal"}},"physics":{"stabilization":false},"layout":{"hierarchical":{"enabled":true,"direction":"LR"}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":{"text":"","style":"font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"},"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":{"from":1,"to":1},"algorithm":"hierarchical","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":true,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"legend":{"width":0.2,"useGroups":false,"position":"right","ncol":1,"stepX":100,"stepY":100,"zoom":true,"nodes":{"label":["Up to date","Outdated","Started","Pattern","Stem","Function","Object"],"color":["#354823","#78B7C5","#DC863B","#899DA4","#899DA4","#899DA4","#899DA4"],"shape":["dot","dot","dot","square","dot","triangle","triangleDown"]},"nodesToDataframe":true}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-29f33bc0837365441b27" style="width:576px;height:384px;" class="visNetwork html-widget"></div>
+<script type="application/json" data-for="htmlwidget-29f33bc0837365441b27">{"x":{"nodes":{"name":["agri_opendata","agri_opendata_paths","agri_opendata_urls","agri_opendata_zipfiles","agri_plotly","agri_tagged","agri_tagged_sum","bigram_data","bigram_data_nolemma","cis_kraj","compiled_op_sum","data_for_tagging","ef_compiled_fin","ef_pub","ef_pubxls","ef_pubxls_url","efs_compiled","efs_compiled_fin","efs_fin","efs_mtagged","efs_mtagged_sum_kat","efs_mtagged_sum_op","efs_mtagged_sum_op_sc","efs_mtagged_sum_prj","efs_obl","efs_plotly","efs_prj","efs_prj_basic","efs_prj_kat","efs_prj_sc","efs_prv","efs_prv_annual","efs_prv_quarterly","efs_tagged","efs_tagged_for_plot","efs_tagged_sum_kat","efs_tagged_sum_op","efs_tagged_sum_op_sc","efs_tagged_sum_prj","efs_tags_compare","efs_zop","efs_zop_annual","efs_zop_quarterly","esif_mtagged_sum","esif_mtagged_sum_op","esif_tagged_sum","esif_tagged_sum_op","export_agri_detail_csv","export_agri_detail_xlsx","export_all_ops_csv","export_all_ops_detail_csv","export_all_ops_detail_xlsx","export_all_ops_xlsx","export_for_tagging","export_nonagri_detail_csv","export_nonagri_detail_xlsx","export_nonagri_projekty_parquet","export_nonagri_projekty_xlsx","export_prv_detail_csv","export_prv_detail_xlsx","od_data_xml","od_data_xml_url","od_meta_xml","od_meta_xml_url","od_prj_list","od_prj_sc","od_sc_codelist","plot_all","plot_all_data","plot_all_data_m","plot_all_m","plot_comparison","plot_sankey","plot_tagged_agri","plot_tagged_op","plot_weighted_op","plt_bigram_bars","plt_bigram_network","plt_topics","plt_wordfreqs","plt_wordpairs","pop_obce","prj_codebook","prj_codebook_yaml","prv_priorities","prv_tagged","prv_tagged_sum","readme_md","reg_table_agri","reg_table_agri_xlsx","reg_table_nonagri","reg_table_nonagri_xlsx","s_dev_html","s_dev_rmd","s_doc_html","s_doc_rmd","s_index_html","s_inputchecks_html","s_inputchecks_rmd","s_listing_html","s_listing_rmd","s_log_html","s_log_rmd","s_output_html","s_output_rmd","s_readme_rmd","s_research_html","s_research_rmd","siteconf","sitefiles","stopwords_all_cz","stopwords_cz","stopwords_cz_url","sum_annual","sum_codebook","sum_codebook_yaml","sum_quarterly","tags_manual","tags_manual_xlsx","tepl_lem_descr","tepl_lem_title","tepl_texts","tepl_tkn_trnsltr_descr","tepl_tkn_trnsltr_title","zop_timing_df","zop_timing_plot","zuj_obec","c_export_xlsx_q","t_tagged_plots","t_text_basics","c_ef_open_metadata_url","summarise_od","t_tagging_aid","name","nm","t_climate_tag","c_export_tagging_xlsx","make_plot_tagged_agri_detail","load_efs_zop","make_plot_all","t_esif_compile_withopendata","c_export_cdbk_sum","get_stats_pop_obce","c_repo_remote","summarise_prv","t_mtagged_summarised","summarise_zop","t_switch","t_climacat_manual","c_ef_open_metadata_path","t_codebook","c_export_nonagri_projekty_xlsx","tag_agri","process_reg_table_nonagri","load_priority_list_prv","c_sest_xlsx_fin","pc","validate_esif_tagged","make_agri_plotly","c_refresh_open_metadata","c_export_csv_a","c_export_all_ops_detail_csv","make_token_translator","c_sest_xlsx_obl","make_plot_weighted_all","summarise_tagged_op_only","c_use_public_data","summarise_tagged","prep_tagged_for_plot","c_czso_pop_table_id","c_export_prv_detail_xlsx","c_export_all_ops_csv","plot_ngrams_bars","get_zuj_obec","c_export_prv_detail_csv","c_agri_opendata_dir","t_geo_helpers","esif_summarise","c_export_csv_q","bn","get_prj_texts","c_agri_opendata_urls","c_export_nonagri_projekty_parquet","prep_plot_all_data","make_tag_sankey","c_export_nonagri_detail_csv","make_codebook","c_prv_data_path","t_esif_compile","cnf","t_export","make_plot_tagged_all","t_public_list","export_table","c_export_cdbk_prj","c_export_dir","compile_from_od","c_export_all_ops_xlsx","c_reg_table_agri_xlsx","c_reg_table_nonagri_xlsx","t_op_compile","c_export_xlsx_a","c_ef_open_data_url","c_export_nonagri_detail_xlsx","t_sestavy","make_tags_comparison","t_valid_zop_timing","summarise_agri_tagged","c_ef_open_data_path","c_export_agri_detail_xlsx","t_agri_opendata","c_sest_dir","stopwords_esif","t_tagged_summarised","make_plot_tagged_agri","make_efs_plotly","c_reg_table_agri_sheetname","noise_cz","c_sest_xlsx_zop","c_export_all_ops_detail_xlsx","summarise_prv_tagged","make_zop_timing_plot","subset_prv_tagged","read_reg_table_agri","c_export_agri_detail_csv","make_comparison_plot","c_refresh_open_data","extract_agri_payments_year","stopwords_cz_additional","c_agri_opendata_zipxml","load_efs_obl","t_climacat_reg","extract_sc_codelist","c_tags_manual_sheetname","efs_compile","t_opendata","extract_prj_sc","t_prv_priorities","op_labels","c_sest_xlsx_prj","c_priority_prv_xls","c_tags_manual_xlsx","t_tagged_compiled","load_prv","c_ef_pubxls_url","extract_prj_list","t_html","lemmatize_esif","efs_add_financials","load_efs_fin","plot_ngrams_network","plot_wordcorrs","plot_topics","plot_wordfreq","prep_ngrams","add_op_labels","build_efs_timing","summarise_by_op","load_efs_prj","read_pubxls"],"type":["pattern","stem","stem","pattern","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","stem","object","object","object","object","function","object","function","function","object","object","function","function","function","object","object","function","object","function","object","function","object","object","object","object","object","function","function","function","object","function","function","function","object","object","object","function","object","function","function","object","function","function","object","object","object","function","function","object","object","object","function","object","function","function","object","object","function","function","object","function","object","object","object","object","function","object","function","object","object","function","object","object","object","object","object","object","object","object","function","object","function","object","object","object","object","object","object","function","function","object","object","object","object","function","function","function","function","object","function","object","function","object","object","function","object","function","object","function","object","function","object","object","object","object","object","object","function","object","function","object","function","function","function","function","function","function","function","function","function","function","function","function","function"],"status":["uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","outdated","uptodate","uptodate","outdated","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","started","uptodate","outdated","uptodate","uptodate","outdated","uptodate","outdated","uptodate","outdated","uptodate","outdated","uptodate","uptodate","outdated","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate","uptodate"],"seconds":[8887.332,0.001,0.001,5.629,0.821,1.259,0.607,0.261,0.317,0.415,0.722,0.001,0.719,5.864,2.483,0.002,0.682,0.448,6.013,0.068,0.149,0.185,0.154,12.827,170.872,0.42,17.902,0.167,1.841,0.014,0.808,0.181,0.284,0.581,0.077,0.092,0.174,0.741,11.166,0.308,3.786,122.956,390.404,0.037,0.001,0.127,0.001,0.106,0.013,0.186,0.014,0.017,0.007,13.031,0.019,0.027,1.176,14.487,0.008,0.01,45.677,0.001,0.952,0.003,618.915,11.68,0.99,0.024,0.062,0.077,0.034,0.08,0.131,0.357,0.115,0.056,0.031,0.096,0.795,0.179,0.205,3.194,0.13,0.006,0.141,0.051,0.131,0.488,0.024,0.001,0.225,0.001,16.245,0.006,3.241,0.001,1.973,55.52,0.001,11.087,0.001,3.472,0.001,22.669,0.001,0.001,6.365,0.001,0.001,0.001,0.001,0.355,0.001,0.461,0.076,0.005,1.14,0.058,0.003,1.279,0.182,0.089,0.016,0.036,0.906,0.2,0.117,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"bytes":[6585017,107,187,13964621,7222647,7031004,5322,10094,12466,854,3367,9994727,9994727,15015382,24895789,0,1418856,4837460,5309230,10447195,10856,13608,23833,14246016,1228511,226409,3009188,2594594,926256,499426,670140,213911,222350,10452232,5627,9926,12777,23752,14245575,1148,2999878,1874629,2417956,1889,16034,1870,15140,15268,12774,5525,43270,31246,8082,27532810,119204,49774,23300495,27444988,6462,8679,224040795,0,276287,0,55169952,772257,8935,81680,311,335,82775,51687,67175,7118607,83901,73917,83089,110554,259326,113202,180622,39920,14246934,4040,2985,2666880,2496,1702,580,13687,4861,17928,159834,2514,30187,7054,10072,6168404,7821,208634,6663,11539,2412,75096,4139,1749,117463,9003,1190,27548081,1795,1688,0,879,16177,3691,2411,4990,89721,52225,9881,18701,14439,4512,4459743,9009027,38160,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"branches":[4,null,null,4,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],"id":["agri_opendata","agri_opendata_paths","agri_opendata_urls","agri_opendata_zipfiles","agri_plotly","agri_tagged","agri_tagged_sum","bigram_data","bigram_data_nolemma","cis_kraj","compiled_op_sum","data_for_tagging","ef_compiled_fin","ef_pub","ef_pubxls","ef_pubxls_url","efs_compiled","efs_compiled_fin","efs_fin","efs_mtagged","efs_mtagged_sum_kat","efs_mtagged_sum_op","efs_mtagged_sum_op_sc","efs_mtagged_sum_prj","efs_obl","efs_plotly","efs_prj","efs_prj_basic","efs_prj_kat","efs_prj_sc","efs_prv","efs_prv_annual","efs_prv_quarterly","efs_tagged","efs_tagged_for_plot","efs_tagged_sum_kat","efs_tagged_sum_op","efs_tagged_sum_op_sc","efs_tagged_sum_prj","efs_tags_compare","efs_zop","efs_zop_annual","efs_zop_quarterly","esif_mtagged_sum","esif_mtagged_sum_op","esif_tagged_sum","esif_tagged_sum_op","export_agri_detail_csv","export_agri_detail_xlsx","export_all_ops_csv","export_all_ops_detail_csv","export_all_ops_detail_xlsx","export_all_ops_xlsx","export_for_tagging","export_nonagri_detail_csv","export_nonagri_detail_xlsx","export_nonagri_projekty_parquet","export_nonagri_projekty_xlsx","export_prv_detail_csv","export_prv_detail_xlsx","od_data_xml","od_data_xml_url","od_meta_xml","od_meta_xml_url","od_prj_list","od_prj_sc","od_sc_codelist","plot_all","plot_all_data","plot_all_data_m","plot_all_m","plot_comparison","plot_sankey","plot_tagged_agri","plot_tagged_op","plot_weighted_op","plt_bigram_bars","plt_bigram_network","plt_topics","plt_wordfreqs","plt_wordpairs","pop_obce","prj_codebook","prj_codebook_yaml","prv_priorities","prv_tagged","prv_tagged_sum","readme_md","reg_table_agri","reg_table_agri_xlsx","reg_table_nonagri","reg_table_nonagri_xlsx","s_dev_html","s_dev_rmd","s_doc_html","s_doc_rmd","s_index_html","s_inputchecks_html","s_inputchecks_rmd","s_listing_html","s_listing_rmd","s_log_html","s_log_rmd","s_output_html","s_output_rmd","s_readme_rmd","s_research_html","s_research_rmd","siteconf","sitefiles","stopwords_all_cz","stopwords_cz","stopwords_cz_url","sum_annual","sum_codebook","sum_codebook_yaml","sum_quarterly","tags_manual","tags_manual_xlsx","tepl_lem_descr","tepl_lem_title","tepl_texts","tepl_tkn_trnsltr_descr","tepl_tkn_trnsltr_title","zop_timing_df","zop_timing_plot","zuj_obec","c_export_xlsx_q","t_tagged_plots","t_text_basics","c_ef_open_metadata_url","summarise_od","t_tagging_aid","name","nm","t_climate_tag","c_export_tagging_xlsx","make_plot_tagged_agri_detail","load_efs_zop","make_plot_all","t_esif_compile_withopendata","c_export_cdbk_sum","get_stats_pop_obce","c_repo_remote","summarise_prv","t_mtagged_summarised","summarise_zop","t_switch","t_climacat_manual","c_ef_open_metadata_path","t_codebook","c_export_nonagri_projekty_xlsx","tag_agri","process_reg_table_nonagri","load_priority_list_prv","c_sest_xlsx_fin","pc","validate_esif_tagged","make_agri_plotly","c_refresh_open_metadata","c_export_csv_a","c_export_all_ops_detail_csv","make_token_translator","c_sest_xlsx_obl","make_plot_weighted_all","summarise_tagged_op_only","c_use_public_data","summarise_tagged","prep_tagged_for_plot","c_czso_pop_table_id","c_export_prv_detail_xlsx","c_export_all_ops_csv","plot_ngrams_bars","get_zuj_obec","c_export_prv_detail_csv","c_agri_opendata_dir","t_geo_helpers","esif_summarise","c_export_csv_q","bn","get_prj_texts","c_agri_opendata_urls","c_export_nonagri_projekty_parquet","prep_plot_all_data","make_tag_sankey","c_export_nonagri_detail_csv","make_codebook","c_prv_data_path","t_esif_compile","cnf","t_export","make_plot_tagged_all","t_public_list","export_table","c_export_cdbk_prj","c_export_dir","compile_from_od","c_export_all_ops_xlsx","c_reg_table_agri_xlsx","c_reg_table_nonagri_xlsx","t_op_compile","c_export_xlsx_a","c_ef_open_data_url","c_export_nonagri_detail_xlsx","t_sestavy","make_tags_comparison","t_valid_zop_timing","summarise_agri_tagged","c_ef_open_data_path","c_export_agri_detail_xlsx","t_agri_opendata","c_sest_dir","stopwords_esif","t_tagged_summarised","make_plot_tagged_agri","make_efs_plotly","c_reg_table_agri_sheetname","noise_cz","c_sest_xlsx_zop","c_export_all_ops_detail_xlsx","summarise_prv_tagged","make_zop_timing_plot","subset_prv_tagged","read_reg_table_agri","c_export_agri_detail_csv","make_comparison_plot","c_refresh_open_data","extract_agri_payments_year","stopwords_cz_additional","c_agri_opendata_zipxml","load_efs_obl","t_climacat_reg","extract_sc_codelist","c_tags_manual_sheetname","efs_compile","t_opendata","extract_prj_sc","t_prv_priorities","op_labels","c_sest_xlsx_prj","c_priority_prv_xls","c_tags_manual_xlsx","t_tagged_compiled","load_prv","c_ef_pubxls_url","extract_prj_list","t_html","lemmatize_esif","efs_add_financials","load_efs_fin","plot_ngrams_network","plot_wordcorrs","plot_topics","plot_wordfreq","prep_ngrams","add_op_labels","build_efs_timing","summarise_by_op","load_efs_prj","read_pubxls"],"label":["agri_opendata","agri_opendata_paths","agri_opendata_urls","agri_opendata_zipfiles","agri_plotly","agri_tagged","agri_tagged_sum","bigram_data","bigram_data_nolemma","cis_kraj","compiled_op_sum","data_for_tagging","ef_compiled_fin","ef_pub","ef_pubxls","ef_pubxls_url","efs_compiled","efs_compiled_fin","efs_fin","efs_mtagged","efs_mtagged_sum_kat","efs_mtagged_sum_op","efs_mtagged_sum_op_sc","efs_mtagged_sum_prj","efs_obl","efs_plotly","efs_prj","efs_prj_basic","efs_prj_kat","efs_prj_sc","efs_prv","efs_prv_annual","efs_prv_quarterly","efs_tagged","efs_tagged_for_plot","efs_tagged_sum_kat","efs_tagged_sum_op","efs_tagged_sum_op_sc","efs_tagged_sum_prj","efs_tags_compare","efs_zop","efs_zop_annual","efs_zop_quarterly","esif_mtagged_sum","esif_mtagged_sum_op","esif_tagged_sum","esif_tagged_sum_op","export_agri_detail_csv","export_agri_detail_xlsx","export_all_ops_csv","export_all_ops_detail_csv","export_all_ops_detail_xlsx","export_all_ops_xlsx","export_for_tagging","export_nonagri_detail_csv","export_nonagri_detail_xlsx","export_nonagri_projekty_parquet","export_nonagri_projekty_xlsx","export_prv_detail_csv","export_prv_detail_xlsx","od_data_xml","od_data_xml_url","od_meta_xml","od_meta_xml_url","od_prj_list","od_prj_sc","od_sc_codelist","plot_all","plot_all_data","plot_all_data_m","plot_all_m","plot_comparison","plot_sankey","plot_tagged_agri","plot_tagged_op","plot_weighted_op","plt_bigram_bars","plt_bigram_network","plt_topics","plt_wordfreqs","plt_wordpairs","pop_obce","prj_codebook","prj_codebook_yaml","prv_priorities","prv_tagged","prv_tagged_sum","readme_md","reg_table_agri","reg_table_agri_xlsx","reg_table_nonagri","reg_table_nonagri_xlsx","s_dev_html","s_dev_rmd","s_doc_html","s_doc_rmd","s_index_html","s_inputchecks_html","s_inputchecks_rmd","s_listing_html","s_listing_rmd","s_log_html","s_log_rmd","s_output_html","s_output_rmd","s_readme_rmd","s_research_html","s_research_rmd","siteconf","sitefiles","stopwords_all_cz","stopwords_cz","stopwords_cz_url","sum_annual","sum_codebook","sum_codebook_yaml","sum_quarterly","tags_manual","tags_manual_xlsx","tepl_lem_descr","tepl_lem_title","tepl_texts","tepl_tkn_trnsltr_descr","tepl_tkn_trnsltr_title","zop_timing_df","zop_timing_plot","zuj_obec","c_export_xlsx_q","t_tagged_plots","t_text_basics","c_ef_open_metadata_url","summarise_od","t_tagging_aid","name","nm","t_climate_tag","c_export_tagging_xlsx","make_plot_tagged_agri_detail","load_efs_zop","make_plot_all","t_esif_compile_withopendata","c_export_cdbk_sum","get_stats_pop_obce","c_repo_remote","summarise_prv","t_mtagged_summarised","summarise_zop","t_switch","t_climacat_manual","c_ef_open_metadata_path","t_codebook","c_export_nonagri_projekty_xlsx","tag_agri","process_reg_table_nonagri","load_priority_list_prv","c_sest_xlsx_fin","pc","validate_esif_tagged","make_agri_plotly","c_refresh_open_metadata","c_export_csv_a","c_export_all_ops_detail_csv","make_token_translator","c_sest_xlsx_obl","make_plot_weighted_all","summarise_tagged_op_only","c_use_public_data","summarise_tagged","prep_tagged_for_plot","c_czso_pop_table_id","c_export_prv_detail_xlsx","c_export_all_ops_csv","plot_ngrams_bars","get_zuj_obec","c_export_prv_detail_csv","c_agri_opendata_dir","t_geo_helpers","esif_summarise","c_export_csv_q","bn","get_prj_texts","c_agri_opendata_urls","c_export_nonagri_projekty_parquet","prep_plot_all_data","make_tag_sankey","c_export_nonagri_detail_csv","make_codebook","c_prv_data_path","t_esif_compile","cnf","t_export","make_plot_tagged_all","t_public_list","export_table","c_export_cdbk_prj","c_export_dir","compile_from_od","c_export_all_ops_xlsx","c_reg_table_agri_xlsx","c_reg_table_nonagri_xlsx","t_op_compile","c_export_xlsx_a","c_ef_open_data_url","c_export_nonagri_detail_xlsx","t_sestavy","make_tags_comparison","t_valid_zop_timing","summarise_agri_tagged","c_ef_open_data_path","c_export_agri_detail_xlsx","t_agri_opendata","c_sest_dir","stopwords_esif","t_tagged_summarised","make_plot_tagged_agri","make_efs_plotly","c_reg_table_agri_sheetname","noise_cz","c_sest_xlsx_zop","c_export_all_ops_detail_xlsx","summarise_prv_tagged","make_zop_timing_plot","subset_prv_tagged","read_reg_table_agri","c_export_agri_detail_csv","make_comparison_plot","c_refresh_open_data","extract_agri_payments_year","stopwords_cz_additional","c_agri_opendata_zipxml","load_efs_obl","t_climacat_reg","extract_sc_codelist","c_tags_manual_sheetname","efs_compile","t_opendata","extract_prj_sc","t_prv_priorities","op_labels","c_sest_xlsx_prj","c_priority_prv_xls","c_tags_manual_xlsx","t_tagged_compiled","load_prv","c_ef_pubxls_url","extract_prj_list","t_html","lemmatize_esif","efs_add_financials","load_efs_fin","plot_ngrams_network","plot_wordcorrs","plot_topics","plot_wordfreq","prep_ngrams","add_op_labels","build_efs_timing","summarise_by_op","load_efs_prj","read_pubxls"],"level":[4,2,2,3,6,5,6,13,13,1,4,8,6,4,2,1,6,7,3,9,10,10,10,10,2,12,4,5,5,5,2,3,3,9,11,10,10,10,10,11,2,3,3,11,11,11,11,7,7,12,12,12,12,12,11,11,11,11,8,8,2,1,2,1,3,4,3,13,12,12,13,13,12,6,12,12,14,14,13,13,13,2,11,12,2,6,7,2,3,2,3,2,2,1,4,1,2,8,1,13,1,2,1,15,1,1,7,1,1,1,3,2,1,8,12,13,8,3,2,11,11,11,12,12,5,6,2,0,0,0,0,0,0,1,0,0,1,0,1,1,0,1,1,0,1,0,1,0,0,0,0,1,1,1,1,1,0,0,1,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,0,0,1,1,1,1,1,1,1,1,0,0,0,1,0,1,1,1,1,1,1,1,0,0,0,1,0,1,0,1,0,1,0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,0,1,0,1,1,1,1,0,1,0,1,0,1,1,2,2,2,2,2,2,2,3,3,3,3],"color":["#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#78B7C5","#354823","#354823","#78B7C5","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#DC863B","#354823","#78B7C5","#354823","#354823","#78B7C5","#354823","#78B7C5","#354823","#78B7C5","#354823","#78B7C5","#354823","#354823","#78B7C5","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823","#354823"],"shape":["square","dot","dot","square","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","dot","triangleDown","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangle","triangle","triangleDown","triangleDown","triangle","triangle","triangle","triangleDown","triangleDown","triangle","triangleDown","triangle","triangleDown","triangle","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangle","triangle","triangle","triangleDown","triangle","triangle","triangle","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangle","triangle","triangleDown","triangle","triangle","triangleDown","triangleDown","triangleDown","triangle","triangle","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangle","triangle","triangleDown","triangleDown","triangle","triangle","triangleDown","triangle","triangleDown","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangle","triangleDown","triangleDown","triangle","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangle","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangle","triangle","triangleDown","triangleDown","triangleDown","triangleDown","triangle","triangle","triangle","triangle","triangleDown","triangle","triangleDown","triangle","triangleDown","triangleDown","triangle","triangleDown","triangle","triangleDown","triangle","triangleDown","triangle","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangleDown","triangle","triangleDown","triangle","triangleDown","triangle","triangle","triangle","triangle","triangle","triangle","triangle","triangle","triangle","triangle","triangle","triangle","triangle"]},"edges":{"from":["name","name","name","add_op_labels","add_op_labels","add_op_labels","add_op_labels","stopwords_esif","stopwords_esif","stopwords_esif","stopwords_esif","stopwords_cz_additional","op_labels","agri_opendata_paths","agri_opendata_urls","add_op_labels","efs_tagged","summarise_tagged","make_plot_all","plot_all_data","data_for_tagging","tags_manual","efs_tagged_sum_prj","get_prj_texts","bigram_data_nolemma","plot_ngrams_bars","efs_tagged_sum_op_sc","prep_tagged_for_plot","c_export_cdbk_prj","c_export_dir","prj_codebook","efs_prv","summarise_prv","c_export_all_ops_detail_csv","c_export_dir","esif_tagged_sum_op","export_table","c_tags_manual_xlsx","efs_tags_compare","make_tag_sankey","agri_tagged","make_plot_tagged_agri","prep_ngrams","stopwords_all_cz","tepl_texts","tepl_tkn_trnsltr_descr","make_token_translator","tepl_lem_descr","od_meta_xml_url","c_export_dir","c_export_nonagri_projekty_parquet","efs_tagged_sum_prj","export_table","efs_zop","summarise_zop","make_plot_all","plot_all_data_m","esif_mtagged_sum","prep_plot_all_data","c_czso_pop_table_id","get_stats_pop_obce","efs_tagged_sum_prj","lemmatize_esif","efs_mtagged_sum_prj","efs_tagged_sum_prj","make_tags_comparison","c_export_all_ops_csv","c_export_dir","esif_tagged_sum","export_table","c_export_dir","c_export_prv_detail_xlsx","export_table","prv_tagged_sum","c_sest_dir","c_sest_xlsx_zop","load_efs_zop","efs_prv","summarise_prv","s_readme_rmd","siteconf","sitefiles","efs_tagged","summarise_tagged","extract_prj_list","od_data_xml","prv_tagged","summarise_prv_tagged","make_comparison_plot","plot_all_data","plot_all_data_m","c_use_public_data","ef_compiled_fin","efs_compiled_fin","add_op_labels","efs_tagged","summarise_tagged","s_dev_rmd","siteconf","sitefiles","build_efs_timing","ef_pub","efs_prj","efs_zop","c_reg_table_agri_sheetname","read_reg_table_agri","reg_table_agri_xlsx","extract_prj_sc","od_prj_list","od_sc_codelist","c_agri_opendata_urls","ef_pub","efs_compiled_fin","efs_fin","efs_obl","efs_prj","efs_prj_basic","efs_prj_kat","efs_prj_sc","efs_prv","efs_zop","s_inputchecks_rmd","siteconf","sitefiles","efs_tagged_sum_op","prv_tagged_sum","efs_zop","summarise_zop","efs_prj","efs_compiled_fin","efs_prv_annual","esif_summarise","od_data_xml_url","esif_tagged_sum","make_plot_weighted_all","c_export_dir","c_export_nonagri_detail_xlsx","efs_tagged_sum_op_sc","export_table","add_op_labels","ef_pub","efs_prj","efs_tagged","summarise_tagged","c_export_cdbk_sum","c_export_dir","sum_codebook","c_export_dir","c_export_prv_detail_csv","export_table","prv_tagged_sum","c_reg_table_agri_xlsx","stopwords_cz_url","noise_cz","stopwords_cz","stopwords_cz_additional","c_agri_opendata_dir","c_agri_opendata_zipxml","c_sest_dir","c_sest_xlsx_obl","load_efs_obl","agri_opendata","reg_table_agri","tag_agri","compile_from_od","ef_pub","efs_obl","efs_prj_sc","od_prj_sc","c_export_dir","c_export_nonagri_detail_csv","efs_tagged_sum_op_sc","export_table","efs_prj","ef_pub","efs_fin","efs_prv","efs_tagged","efs_tagged_sum_prj","efs_zop","esif_tagged_sum","esif_tagged_sum_op","plot_all","plot_all_m","plot_comparison","plot_sankey","plot_tagged_agri","plot_tagged_op","plot_weighted_op","plt_bigram_bars","plt_bigram_network","plt_topics","plt_wordfreqs","plt_wordpairs","prj_codebook","s_output_rmd","siteconf","sitefiles","sum_codebook","extract_sc_codelist","od_meta_xml","agri_tagged_sum","c_export_agri_detail_csv","c_export_dir","export_table","esif_tagged_sum","prep_plot_all_data","add_op_labels","efs_mtagged","summarise_tagged","plot_topics","stopwords_all_cz","tepl_texts","tepl_tkn_trnsltr_descr","esif_tagged_sum_op","make_codebook","efs_mtagged_sum_op","prv_tagged_sum","c_reg_table_nonagri_xlsx","efs_compiled_fin","efs_prv_quarterly","esif_summarise","efs_prj","reg_table_agri","s_doc_rmd","siteconf","sitefiles","make_zop_timing_plot","zop_timing_df","c_tags_manual_sheetname","tags_manual_xlsx","c_export_all_ops_detail_xlsx","c_export_dir","esif_tagged_sum_op","export_table","c_priority_prv_xls","load_priority_list_prv","plot_wordfreq","stopwords_all_cz","tepl_texts","tepl_tkn_trnsltr_title","bigram_data","plot_ngrams_network","plot_wordcorrs","stopwords_all_cz","tepl_texts","tepl_tkn_trnsltr_title","agri_tagged","subset_prv_tagged","agri_plotly","agri_tagged_sum","efs_plotly","efs_tagged","efs_tagged_for_plot","efs_tagged_sum_kat","efs_tagged_sum_op","efs_tagged_sum_op_sc","efs_tagged_sum_prj","s_listing_rmd","siteconf","sitefiles","esif_tagged_sum","make_plot_tagged_all","c_export_dir","c_export_nonagri_projekty_xlsx","efs_tagged_sum_prj","export_table","add_op_labels","ef_pub","efs_mtagged","efs_prj","summarise_tagged","get_zuj_obec","make_token_translator","tepl_lem_title","agri_tagged_sum","c_export_tagging_xlsx","efs_tagged_sum_op_sc","efs_tagged_sum_prj","esif_tagged_sum","esif_tagged_sum_op","prv_tagged_sum","agri_tagged_sum","c_export_agri_detail_xlsx","c_export_dir","export_table","agri_opendata_zipfiles","extract_agri_payments_year","ef_pubxls","read_pubxls","ef_pubxls_url","efs_tagged_sum_prj","make_codebook","data_for_tagging","reg_table_nonagri","efs_compile","efs_obl","efs_prj_kat","efs_prj_sc","efs_compiled","efs_prv","prv_priorities","s_research_rmd","siteconf","sitefiles","efs_tagged_sum_op_sc","prv_tagged_sum","summarise_tagged_op_only","c_sest_dir","c_sest_xlsx_fin","load_efs_fin","efs_add_financials","efs_compiled","efs_zop_quarterly","add_op_labels","efs_mtagged","summarise_tagged","c_export_all_ops_xlsx","c_export_dir","esif_tagged_sum","export_table","efs_tagged_for_plot","make_efs_plotly","c_sest_dir","c_sest_xlsx_prj","load_efs_prj","s_readme_rmd","s_log_rmd","siteconf","sitefiles","efs_mtagged_sum_op_sc","prv_tagged_sum","summarise_tagged_op_only","efs_prv_quarterly","efs_zop_quarterly","summarise_by_op","efs_tagged_sum_prj","lemmatize_esif","agri_tagged","make_agri_plotly","process_reg_table_nonagri","reg_table_nonagri_xlsx","prep_ngrams","stopwords_all_cz","tepl_texts","tepl_tkn_trnsltr_descr","efs_mtagged","summarise_tagged","agri_tagged","summarise_agri_tagged","c_prv_data_path","cis_kraj","load_prv"],"to":["load_efs_fin","plot_ngrams_network","plot_wordcorrs","build_efs_timing","summarise_by_op","load_efs_prj","read_pubxls","plot_wordcorrs","plot_topics","plot_wordfreq","prep_ngrams","prep_ngrams","add_op_labels","agri_opendata_zipfiles","agri_opendata_zipfiles","efs_tagged_sum_op_sc","efs_tagged_sum_op_sc","efs_tagged_sum_op_sc","plot_all","plot_all","efs_mtagged","efs_mtagged","tepl_texts","tepl_texts","plt_bigram_bars","plt_bigram_bars","efs_tagged_for_plot","efs_tagged_for_plot","prj_codebook_yaml","prj_codebook_yaml","prj_codebook_yaml","efs_prv_annual","efs_prv_annual","export_all_ops_detail_csv","export_all_ops_detail_csv","export_all_ops_detail_csv","export_all_ops_detail_csv","tags_manual_xlsx","plot_sankey","plot_sankey","plot_tagged_agri","plot_tagged_agri","bigram_data","bigram_data","bigram_data","bigram_data","tepl_tkn_trnsltr_descr","tepl_tkn_trnsltr_descr","od_meta_xml","export_nonagri_projekty_parquet","export_nonagri_projekty_parquet","export_nonagri_projekty_parquet","export_nonagri_projekty_parquet","efs_zop_annual","efs_zop_annual","plot_all_m","plot_all_m","plot_all_data_m","plot_all_data_m","pop_obce","pop_obce","tepl_lem_descr","tepl_lem_descr","efs_tags_compare","efs_tags_compare","efs_tags_compare","export_all_ops_csv","export_all_ops_csv","export_all_ops_csv","export_all_ops_csv","export_prv_detail_xlsx","export_prv_detail_xlsx","export_prv_detail_xlsx","export_prv_detail_xlsx","efs_zop","efs_zop","efs_zop","efs_prv_quarterly","efs_prv_quarterly","s_index_html","s_index_html","s_index_html","efs_tagged_sum_kat","efs_tagged_sum_kat","od_prj_list","od_prj_list","prv_tagged_sum","prv_tagged_sum","plot_comparison","plot_comparison","plot_comparison","data_for_tagging","data_for_tagging","data_for_tagging","efs_tagged_sum_op","efs_tagged_sum_op","efs_tagged_sum_op","s_dev_html","s_dev_html","s_dev_html","zop_timing_df","zop_timing_df","zop_timing_df","zop_timing_df","reg_table_agri","reg_table_agri","reg_table_agri","od_prj_sc","od_prj_sc","od_prj_sc","agri_opendata_urls","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","s_inputchecks_html","esif_tagged_sum_op","esif_tagged_sum_op","efs_zop_quarterly","efs_zop_quarterly","efs_prj_basic","sum_annual","sum_annual","sum_annual","od_data_xml","plot_weighted_op","plot_weighted_op","export_nonagri_detail_xlsx","export_nonagri_detail_xlsx","export_nonagri_detail_xlsx","export_nonagri_detail_xlsx","efs_tagged_sum_prj","efs_tagged_sum_prj","efs_tagged_sum_prj","efs_tagged_sum_prj","efs_tagged_sum_prj","sum_codebook_yaml","sum_codebook_yaml","sum_codebook_yaml","export_prv_detail_csv","export_prv_detail_csv","export_prv_detail_csv","export_prv_detail_csv","reg_table_agri_xlsx","stopwords_cz","stopwords_all_cz","stopwords_all_cz","stopwords_all_cz","agri_opendata_paths","agri_opendata_paths","efs_obl","efs_obl","efs_obl","agri_tagged","agri_tagged","agri_tagged","ef_compiled_fin","ef_compiled_fin","ef_compiled_fin","ef_compiled_fin","ef_compiled_fin","export_nonagri_detail_csv","export_nonagri_detail_csv","export_nonagri_detail_csv","export_nonagri_detail_csv","efs_prj_kat","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","s_output_html","od_sc_codelist","od_sc_codelist","export_agri_detail_csv","export_agri_detail_csv","export_agri_detail_csv","export_agri_detail_csv","plot_all_data","plot_all_data","efs_mtagged_sum_op_sc","efs_mtagged_sum_op_sc","efs_mtagged_sum_op_sc","plt_topics","plt_topics","plt_topics","plt_topics","sum_codebook","sum_codebook","esif_mtagged_sum_op","esif_mtagged_sum_op","reg_table_nonagri_xlsx","sum_quarterly","sum_quarterly","sum_quarterly","efs_prj_sc","s_doc_html","s_doc_html","s_doc_html","s_doc_html","zop_timing_plot","zop_timing_plot","tags_manual","tags_manual","export_all_ops_detail_xlsx","export_all_ops_detail_xlsx","export_all_ops_detail_xlsx","export_all_ops_detail_xlsx","prv_priorities","prv_priorities","plt_wordfreqs","plt_wordfreqs","plt_wordfreqs","plt_wordfreqs","plt_bigram_network","plt_bigram_network","plt_wordpairs","plt_wordpairs","plt_wordpairs","plt_wordpairs","prv_tagged","prv_tagged","s_listing_html","s_listing_html","s_listing_html","s_listing_html","s_listing_html","s_listing_html","s_listing_html","s_listing_html","s_listing_html","s_listing_html","s_listing_html","s_listing_html","plot_tagged_op","plot_tagged_op","export_nonagri_projekty_xlsx","export_nonagri_projekty_xlsx","export_nonagri_projekty_xlsx","export_nonagri_projekty_xlsx","efs_mtagged_sum_prj","efs_mtagged_sum_prj","efs_mtagged_sum_prj","efs_mtagged_sum_prj","efs_mtagged_sum_prj","zuj_obec","tepl_tkn_trnsltr_title","tepl_tkn_trnsltr_title","export_for_tagging","export_for_tagging","export_for_tagging","export_for_tagging","export_for_tagging","export_for_tagging","export_for_tagging","export_agri_detail_xlsx","export_agri_detail_xlsx","export_agri_detail_xlsx","export_agri_detail_xlsx","agri_opendata","agri_opendata","ef_pub","ef_pub","ef_pubxls","prj_codebook","prj_codebook","efs_tagged","efs_tagged","efs_compiled","efs_compiled","efs_compiled","efs_compiled","s_research_html","s_research_html","s_research_html","s_research_html","s_research_html","s_research_html","esif_tagged_sum","esif_tagged_sum","esif_tagged_sum","efs_fin","efs_fin","efs_fin","efs_compiled_fin","efs_compiled_fin","efs_compiled_fin","efs_mtagged_sum_op","efs_mtagged_sum_op","efs_mtagged_sum_op","export_all_ops_xlsx","export_all_ops_xlsx","export_all_ops_xlsx","export_all_ops_xlsx","efs_plotly","efs_plotly","efs_prj","efs_prj","efs_prj","readme_md","s_log_html","s_log_html","s_log_html","esif_mtagged_sum","esif_mtagged_sum","esif_mtagged_sum","compiled_op_sum","compiled_op_sum","compiled_op_sum","tepl_lem_title","tepl_lem_title","agri_plotly","agri_plotly","reg_table_nonagri","reg_table_nonagri","bigram_data_nolemma","bigram_data_nolemma","bigram_data_nolemma","bigram_data_nolemma","efs_mtagged_sum_kat","efs_mtagged_sum_kat","agri_tagged_sum","agri_tagged_sum","efs_prv","efs_prv","efs_prv"],"arrows":["to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to","to"]},"nodesToDataframe":true,"edgesToDataframe":true,"options":{"width":"100%","height":"100%","nodes":{"shape":"dot","physics":false},"manipulation":{"enabled":false},"edges":{"smooth":{"type":"cubicBezier","forceDirection":"horizontal"}},"physics":{"stabilization":false},"layout":{"hierarchical":{"enabled":true,"direction":"LR"}}},"groups":null,"width":null,"height":null,"idselection":{"enabled":false,"style":"width: 150px; height: 26px","useLabels":true,"main":"Select by id"},"byselection":{"enabled":false,"style":"width: 150px; height: 26px","multiple":false,"hideColor":"rgba(200,200,200,0.5)","highlight":false},"main":{"text":"","style":"font-family:Georgia, Times New Roman, Times, serif;font-weight:bold;font-size:20px;text-align:center;"},"submain":null,"footer":null,"background":"rgba(0, 0, 0, 0)","highlight":{"enabled":true,"hoverNearest":false,"degree":{"from":1,"to":1},"algorithm":"hierarchical","hideColor":"rgba(200,200,200,0.5)","labelOnly":true},"collapse":{"enabled":true,"fit":false,"resetHighlight":true,"clusterOptions":null,"keepCoord":true,"labelSuffix":"(cluster)"},"legend":{"width":0.2,"useGroups":false,"position":"right","ncol":1,"stepX":100,"stepY":100,"zoom":true,"nodes":{"label":["Up to date","Outdated","Started","Pattern","Stem","Object","Function"],"color":["#354823","#78B7C5","#DC863B","#899DA4","#899DA4","#899DA4","#899DA4"],"shape":["dot","dot","dot","square","dot","triangleDown","triangle"]},"nodesToDataframe":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
