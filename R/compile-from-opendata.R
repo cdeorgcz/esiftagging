@@ -1,7 +1,3 @@
-targets::tar_load(ef_pub)
-targets::tar_load(efs_obl)
-targets::tar_load(efs_prj_sc)
-targets::tar_load(od_prj_sc)
 source("_targets_packages.R")
 
 compile_from_od <- function(ef_pub, efs_obl, efs_prj_sc, od_prj_sc) {
