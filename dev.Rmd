@@ -40,8 +40,7 @@ Dokumentace se generuje ze vstupních RMarkdown souborů do adresáře `/docs`, 
 1. pustit `renv::restore()` - tím se do projektu načtou správné verze Rkových balíků
 1. [pokud lze] vložit aktualizované vstupní sestavy do `data-input/sestavy [datum]`
 1. Zanést cestu do patřičného parametru v `config.yml`
-1. Zopakovat s daty PRV v `data-input/prv`
-1. Analogicky lze aktualizovat i excelové soubory
+1. Analogicky lze aktualizovat i excelové soubory s kategorizacemi/tagy
 1. V `config.yml` v případě potřeby aktualizovat cestu k veřejnému seznamu operací na webu dotaceeu.cz (k tomu viz níže Zdroje)
 1. Pustit `targets::tar_make()`, popř. spustit skript `build.R` nebo použít tlačítko `Build` na záložce `Build`.
 
@@ -49,7 +48,7 @@ Dokumentace se generuje ze vstupních RMarkdown souborů do adresáře `/docs`, 
 
 Kombinujeme několik zdrojů dat tak, abychom měli data co nejčerstvější (tj. nejvíce odpovídající stavu čerpání) a zároveň co nejpřesnější. Data v neveřejných sestavách umožňují větší přesnost, ale jejich dostupnost není zaručená a poslední sestavy jsou více než půl roku staré.
 
-### Neveřejné seznamy
+### Neveřejné sestavy
 
 Používáme několik sestav typu E z MSEU. Tím získáváme
 
@@ -60,7 +59,11 @@ Nepoužíváme sestavy se ŽoP ani financemi, příjemci ani místem realizace.
 
 ### Seznam příjemců
 
-Ve výchozím nastavení si systém sám bere nejaktuálnější export z https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu.
+```{r}
+targets::tar_load(ef_source)
+```
+
+Ve výchozím nastavení si systém sám bere nejaktuálnější export z https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu. Aktuálně máme data z `r ef_source$date`.
 
 Veřejná data se aktualizují automaticky, tj. při každém spuštění se použijí nejnovější dostupná. Pokud by tato automatika selhala nebo by bylo třeba "zmrazit" data k nějakému datu, do parametru `ef_pubxls_url` v souboru `config.yml` lze vložit odkaz přímo na požadovaný veřejný seznam příjemců podle https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu.
 

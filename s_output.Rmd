@@ -149,6 +149,8 @@ targets::tar_load(ef_source)
 
 Používáme veřejná data z `r ef_source$date` stažená z [této adresy](`r ef_source$url`).
 
+Detaily v [technické dokumentaci](dev.html).
+
 ## Témata {.tabset .tabset-pills}
 
 ### Teplárenství
