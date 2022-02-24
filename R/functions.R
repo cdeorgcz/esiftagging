@@ -15,4 +15,5 @@ source(here::here("R/text-analysis.R"))
 source(here::here("R/mssf_open_data.R"))
 source(here::here("R/compile-from-opendata.R"))
 source(here::here("R/get_esiftable_url.R"))
+source(here::here("R/compare-tags-projects.R"))
 

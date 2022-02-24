@@ -289,6 +289,15 @@ t_tagging_aid <- list(
            c_export_tagging_xlsx))
 )
 
+
+# Sample projects which were retagged -------------------------------------
+
+t_sample <- list(
+  tar_target(prj_tagcomparison, make_prj_comparison(efs_tagged, efs_mtagged)),
+  tar_target(prj_retagged, get_retagged_prj(prj_tagcomparison, ef_pub)),
+  tar_target(prj_retagged_sample, sample_retagged(prj_retagged))
+)
+
 # Export summaries of tagged data --------------------------------------------
 
 t_export <- list(
@@ -421,4 +430,4 @@ list(t_public_list, t_sestavy, t_esif_compile, t_export, t_codebook, t_html,
      t_agri_opendata, t_opendata, t_esif_compile_withopendata, t_switch,
      t_mtagged_summarised, t_text_basics, t_climacat_reg, t_climacat_manual,
      t_climate_tag, t_tagged_summarised, t_tagging_aid, t_tagged_compiled,
-     t_tagged_plots, t_prv_priorities)
+     t_tagged_plots, t_prv_priorities, t_sample)

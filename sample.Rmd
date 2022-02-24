@@ -1,0 +1,70 @@
+---
+title: "Příklady překlasifikovaných projektů"
+output:
+  html_document
+---
+
+<style type="text/css">
+.main-container {
+max-width: 1800px;
+margin-left: auto;
+margin-right: auto;
+}
+</style>
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(bs4cards)
+source("_targets_packages.R")
+```
+
+```{r}
+targets::tar_load(prj_retagged_sample)
+```
+
+```{r}
+sdf <- crosstalk::SharedData$new(prj_retagged_sample |> 
+                                   select(-prj_id, -fin_pravniakt_czv, -starts_with("climate")) |> 
+                                   ungroup() |> 
+                                   mutate(fin_vyuct_czv = round(fin_vyuct_czv),
+                                          across(c(retag, typ, op_zkr), .fns = as.factor)) |> 
+                                   relocate(retag, op_zkr, typ) |> 
+                                   relocate(fin_vyuct_czv, .after = typ))
+```
+
+
+```{r}
+bscols(
+  htmltools::div(crosstalk::filter_checkbox('op', 'OP', sdf, ~op_zkr, inline = TRUE),
+  crosstalk::filter_checkbox('typ', 'Typ příkladu', sdf, ~typ, inline = TRUE)),
+  crosstalk::filter_checkbox('tagchange', 'Změna tagu', sdf, ~retag, inline = FALSE, columns = 3),
+  crosstalk::filter_slider('fin', 'Proplacené výdaje projektu', sdf, ~fin_vyuct_czv)
+)
+
+```
+
+```{r}
+bscols(htmltools::div(list("Výdaje ve vybraných projektech (mil. Kč, neváženo):",
+                           summarywidget(sdf, "sum", "fin_vyuct_czv"))),
+       htmltools::div(list("Vybraných projektů:",
+                           summarywidget(sdf, "count"))))
+```
+
+<br />
+
+```{r}
+DT::datatable(sdf,
+              style = "bootstrap4",
+              # filter = "top", 
+              rownames = FALSE, 
+              colnames = c("mil. Kč" = "fin_vyuct_czv", Příjemce = "p_nazev",
+                           Projekt = "prj_nazev", Anotace = "prj_shrnuti",
+                           OP = "op_zkr"),
+              selection = list(mode = "multiple"),
+              extensions = "Buttons",
+              options = list(
+                # dom = 'pBrti',
+                buttons = c('copy', 'csv', 'excel')), width = 1800)
+```
+
