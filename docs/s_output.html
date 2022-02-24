@@ -256,8 +256,20 @@ $(document).ready(function () {
 <li>
   <a href="research.html">Rešerše</a>
 </li>
-<li>
-  <a href="s_listing.html">Pomůcka pro ruční tagging</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Náhledy
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="sample.html">Příklady reklasifikovaných projektů</a>
+    </li>
+    <li>
+      <a href="s_listing.html">Pomůcka pro ruční tagging</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="s_output.html">Dokumentace výstupů</a>
@@ -307,7 +319,8 @@ $(document).ready(function () {
 
 <div id="section" class="section level1 tabset">
 <h1 class="tabset"></h1>
-<div id="náhled-hlavního-výstupu" class="section level2 tabset tabset-pills">
+<div id="náhled-hlavního-výstupu"
+class="section level2 tabset tabset-pills">
 <h2 class="tabset tabset-pills">Náhled hlavního výstupu</h2>
 <div id="celkem---ek" class="section level3">
 <h3>Celkem - EK</h3>
@@ -336,15 +349,27 @@ $(document).ready(function () {
 <h2>Dokumentace hlavního výstupu</h2>
 <div id="soubory" class="section level3">
 <h3>Soubory</h3>
-<p>Vše v <code>data-export/export_202110</code> (<a href="https://github.com/cdeorgcz/esiftagging/tree/master/data-export/export_202110">Github</a>)</p>
+<p>Vše v <code>data-export/export_202110</code> (<a
+href="https://github.com/cdeorgcz/esiftagging/tree/master/data-export/export_202110">Github</a>)</p>
 <ul>
-<li>OP + klimatag: <code>sum_tagged_all_ops.xlsx</code> / <code>sum_tagged_all_ops.csv</code></li>
-<li>totéž + kategorie, z níž je odvozen klimatag: <code>sum_tagged_all_ops_detail.xlsx</code> / <code>sum_tagged_all_ops_detail.csv</code></li>
-<li>totéž + kategorie, z níž je odvozen klimatag + spec. cíl; vše mimo PRV: <code>sum_tagged_nonagri_detail.xlsx</code> / <code>sum_tagged_nonagri_detail.csv</code></li>
-<li>totéž + kategorie, z níž je odvozen klimatag + spec. cíl + projekt; vše mimo PRV: <code>sum_tagged_nonagri_projekty.xlsx</code> / <code>sum_tagged_nonagri_projekty.parquet</code> - velký soubor, export je ve formátu Parquet</li>
-<li>celé CAP výdaje s klimatagy a opatřeními determinujícími klimatag: <code>sum_tagged_agri_detail.xlsx</code> / <code>sum_tagged_agri_detail.csv</code></li>
+<li>OP + klimatag: <code>sum_tagged_all_ops.xlsx</code> /
+<code>sum_tagged_all_ops.csv</code></li>
+<li>totéž + kategorie, z níž je odvozen klimatag:
+<code>sum_tagged_all_ops_detail.xlsx</code> /
+<code>sum_tagged_all_ops_detail.csv</code></li>
+<li>totéž + kategorie, z níž je odvozen klimatag + spec. cíl; vše mimo
+PRV: <code>sum_tagged_nonagri_detail.xlsx</code> /
+<code>sum_tagged_nonagri_detail.csv</code></li>
+<li>totéž + kategorie, z níž je odvozen klimatag + spec. cíl + projekt;
+vše mimo PRV: <code>sum_tagged_nonagri_projekty.xlsx</code> /
+<code>sum_tagged_nonagri_projekty.parquet</code> - velký soubor, export
+je ve formátu Parquet</li>
+<li>celé CAP výdaje s klimatagy a opatřeními determinujícími klimatag:
+<code>sum_tagged_agri_detail.xlsx</code> /
+<code>sum_tagged_agri_detail.csv</code></li>
 </ul>
-<p>CSV soubory uzpůsobeny pro Excel (úprava konce řádků) a CEE region (odděleno středníky, desetinná čárka).</p>
+<p>CSV soubory uzpůsobeny pro Excel (úprava konce řádků) a CEE region
+(odděleno středníky, desetinná čárka).</p>
 </div>
 <div id="codebook" class="section level3 tabset tabset-pills">
 <h3 class="tabset tabset-pills">Codebook</h3>
@@ -791,7 +816,7 @@ html {
       <th colspan="1" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="font-size: 12px; text-align: left;"><span style="text-decoration-style:solid;text-decoration-color:#ADD8E6;text-decoration-line:underline;text-underline-position:under;color:#333333;font-variant-numeric:tabular-nums;padding-left:4px;margin-right:5px;padding-right:2px;">Codebook hlavního výstupu</span></p>
 <div style="height:25px;margin-top:10px;"><span style="background-color:#F1D35A;color:#222222;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 5px;font-weight:bold;border:solid 1px #F1D35A;padding:2px 15px 2px 15px;font-size:smaller;">tibble</span>
 <span style="background-color:none;color:#222222;padding:0.5em 0.5em;position:inherit;margin:5px 10px 5px -4px;font-weight:bold;border:solid 1px #F1D35A;padding:2px 15px 2px 15px;font-size:smaller;">data</span><span style="background-color:#eecbff;color:#333333;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 5px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">Rows</span>
-<span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">119,278</span>
+<span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">119,356</span>
 <span style="background-color:#BDE7B4;color:#333333;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 1px;font-weight:bold;border:solid 1px #BDE7B4;padding:2px 15px 2px 15px;font-size:smaller;">Columns</span>
 <span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #BDE7B4;padding:2px 15px 2px 15px;font-size:smaller;">26</span></div>
 </th>
@@ -944,9 +969,9 @@ html {
   </tbody>
   <tfoot class="gt_sourcenotes">
     <tr>
-      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-02-03 01:23:37 CET</span>
+      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-02-24 02:14:05 CET</span>
 <span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;margin:5px 1px 5px 0;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">&lt; 1 s</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-02-03 01:23:38 CET</span></td>
+<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-02-24 02:14:05 CET</span></td>
     </tr>
   </tfoot>
   
@@ -1532,9 +1557,9 @@ html {
   </tbody>
   <tfoot class="gt_sourcenotes">
     <tr>
-      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-02-03 01:23:38 CET</span>
+      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-02-24 02:14:05 CET</span>
 <span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;margin:5px 1px 5px 0;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">&lt; 1 s</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-02-03 01:23:39 CET</span></td>
+<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-02-24 02:14:05 CET</span></td>
     </tr>
   </tfoot>
   
@@ -1547,7 +1572,7 @@ html {
 <h2 class="tabset tabset-pills">Náhled proměnných</h2>
 <div id="projektová-úroveň-1" class="section level3">
 <h3>Projektová úroveň</h3>
-<pre><code>Rows: 119,278
+<pre><code>Rows: 119,356
 Columns: 26
 $ oblast_intervence_nazev_en    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ oblast_intervence_kod         &lt;chr&gt; &quot; III.0.055&quot;, &quot; III.0.055&quot;, &quot; III.0.055&quot;…
@@ -1585,9 +1610,9 @@ $ oblast_intervence_kod         &lt;chr&gt; &quot; III.0.055&quot;, &quot; IV.1.
 $ climate_share                 &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ op_zkr                        &lt;chr&gt; &quot;IROP&quot;, &quot;OP PIK&quot;, &quot;OP PIK&quot;, &quot;OP PIK&quot;, &quot;O…
 $ op_id                         &lt;chr&gt; &quot;06&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;06&quot;, &quot;08&quot;…
-$ fin_pravniakt_czv             &lt;dbl&gt; 2895764.4, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,…
-$ fin_pravniakt_eu              &lt;dbl&gt; 2461399.8, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,…
-$ fin_pravniakt_narodni_verejne &lt;dbl&gt; 434364.7, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, …
+$ fin_pravniakt_czv             &lt;dbl&gt; 2895764.4, 0.0, 0.0, 0.0, 0.0, 0.0, 3086…
+$ fin_pravniakt_eu              &lt;dbl&gt; 2461399.8, 0.0, 0.0, 0.0, 0.0, 0.0, 2623…
+$ fin_pravniakt_narodni_verejne &lt;dbl&gt; 434364.67, 0.00, 0.00, 0.00, 0.00, 0.00,…
 $ fin_pravniakt_soukr           &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4…
 $ fin_vyuct_czv                 &lt;dbl&gt; 2891365.587, 0.000, 0.000, 0.000, 0.000,…
 $ fin_vyuct_eu                  &lt;dbl&gt; 2457660.748, 0.000, 0.000, 0.000, 0.000,…
@@ -1610,7 +1635,9 @@ $ prv_opatreni_nazev            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 </div>
 <div id="zdroje" class="section level2">
 <h2>Zdroje</h2>
-<p>Používáme veřejná data z 2022-02-01 stažená z <a href="https://mmr.cz/getmedia/b7e30c74-1b37-4f96-8faf-0c1f9c92bb9d/2022_02_Seznam-operaci_List-of-operations.xlsx.aspx?ext=.xlsx">této adresy</a>.</p>
+<p>Používáme veřejná data z 2022-02-01 stažená z <a
+href="https://mmr.cz/getmedia/b7e30c74-1b37-4f96-8faf-0c1f9c92bb9d/2022_02_Seznam-operaci_List-of-operations.xlsx.aspx?ext=.xlsx">této
+adresy</a>.</p>
 <p>Detaily v <a href="dev.html">technické dokumentaci</a>.</p>
 </div>
 <div id="témata" class="section level2 tabset tabset-pills">
@@ -1622,7 +1649,10 @@ $ prv_opatreni_nazev            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 <li>jde hlavně o distribuci, nebo i o zdroje?</li>
 <li>jsou zde různé skupiny projektů?</li>
 </ul>
-<p>Tady jen trknou slova “elektrárna” a “Opatovice”: je to klastr projektů, kde se rekonstruovala kogerenační infrastruktura - sada navazujících projektů pod názvy “Úspory energie v SZT Elektrárny Opatovice”.</p>
+<p>Tady jen trknou slova “elektrárna” a “Opatovice”: je to klastr
+projektů, kde se rekonstruovala kogerenační infrastruktura - sada
+navazujících projektů pod názvy “Úspory energie v SZT Elektrárny
+Opatovice”.</p>
 <p>Vysvětlivky:</p>
 <ul>
 <li>SZT: systém zásobování teplem</li>

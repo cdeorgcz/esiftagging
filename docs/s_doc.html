@@ -256,8 +256,20 @@ $(document).ready(function () {
 <li>
   <a href="research.html">Rešerše</a>
 </li>
-<li>
-  <a href="s_listing.html">Pomůcka pro ruční tagging</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Náhledy
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="sample.html">Příklady reklasifikovaných projektů</a>
+    </li>
+    <li>
+      <a href="s_listing.html">Pomůcka pro ruční tagging</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="s_output.html">Dokumentace výstupů</a>
@@ -307,7 +319,12 @@ $(document).ready(function () {
 
 <div id="celková-analytická-logika-systému" class="section level2">
 <h2>Celková analytická logika systému</h2>
-<p>Ze sestav o výdajích na ESIF a otevřených dat SZIF o výdajích na SZP sestavujeme dataset. Výdaje tagujeme klimatickými kategoriemi z evropské legislativy. Výsledkem jsou podíly a součty výdajů ESIF vč. PRV v jednotlivých kategoriích dopadu na klima. V souladu s klima tagy evropské legislativy používáme pouze pozitivní tagy (100 % a 40 %), popř. 0 % nebo “nic”.</p>
+<p>Ze sestav o výdajích na ESIF a otevřených dat SZIF o výdajích na SZP
+sestavujeme dataset. Výdaje tagujeme klimatickými kategoriemi z evropské
+legislativy. Výsledkem jsou podíly a součty výdajů ESIF vč. PRV v
+jednotlivých kategoriích dopadu na klima. V souladu s klima tagy
+evropské legislativy používáme pouze pozitivní tagy (100 % a 40 %),
+popř. 0 % nebo “nic”.</p>
 </div>
 <div id="data-a-rozhodnutí" class="section level2">
 <h2>Data a rozhodnutí</h2>
@@ -316,51 +333,80 @@ $(document).ready(function () {
 <div id="zdroje-jaká-data-máme" class="section level4">
 <h4>Zdroje: jaká data máme</h4>
 <ul>
-<li>data ke všem OP kromě PRV pochází ze sestav <code>data-input/sestavy_2021-05-28</code>. Nejsou zde data o příhraniční spolupráci (o projektech ano, ale ne o platbách). Název adresáře obsahuje datum, ke kterému jsou v sestavách aktuální data
+<li>data ke všem OP kromě PRV pochází ze sestav
+<code>data-input/sestavy_2021-05-28</code>. Nejsou zde data o
+příhraniční spolupráci (o projektech ano, ale ne o platbách). Název
+adresáře obsahuje datum, ke kterému jsou v sestavách aktuální data
 <ul>
-<li>E001 Identifikace projektu: rozpad projektu na SC a ekonomické kategorie intervence</li>
+<li>E001 Identifikace projektu: rozpad projektu na SC a ekonomické
+kategorie intervence</li>
 <li>E005 Kategorizace_oblast: oblasti intervence podle nařízení</li>
 <li>E003 Finance celkem: více finančních řezů, co řádek, to projekt</li>
 <li>E004 Žádosti o platbu: co řádek, to platba s datem</li>
-<li>tato data umožňují kromě kategorií atd. agregaci i do čtvrtletí/let</li>
+<li>tato data umožňují kromě kategorií atd. agregaci i do
+čtvrtletí/let</li>
 <li>podobná čísla dává i veřejný export seznamu příjemců</li>
 </ul></li>
 <li>lokalizace projektů běžných OP:
 <ul>
-<li>využíváme výstup předchozího projektu MMR - <code>Arrow</code> dataset v adresáři <code></code></li>
+<li>využíváme výstup předchozího projektu MMR - <code>Arrow</code>
+dataset v adresáři <code></code></li>
 </ul></li>
 <li>data k PRV pochází od MZe a jsou výrazně jednodušší:
 <ul>
 <li>data poskytnutá na vyžádání přes MMR - jen projektová opatření PRV:
 <ul>
 <li>jediná tabulka, data do 12/2020</li>
-<li>co řádek, to projekt, včetně financí a NUTS3 (každý projekt má jen jednu NUTS3)</li>
+<li>co řádek, to projekt, včetně financí a NUTS3 (každý projekt má jen
+jednu NUTS3)</li>
 </ul></li>
 <li>open data SZIF za celou CAP v ČR
 <ul>
-<li>načteno ze stažených XML souborů, co rok, to soubor, 2017-2020 (URL jsou v <code>config.yml</code>)</li>
+<li>načteno ze stažených XML souborů, co rok, to soubor, 2017-2020 (URL
+jsou v <code>config.yml</code>)</li>
 <li>uloženo v <code>data-input/opendata-szif</code></li>
-<li>nepracujeme s identifikací příjemce; pracujeme s platbami, nikoli jednotlivými operacemi</li>
-<li>obsahuje projektové i plošné operace PRV + všechny operace financované ze EZZF/EAGF</li>
-<li>názvy opatření neodpovídají přesně názvům v custom sestavě ani názvům v OP ani ve <a href="https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fprv2014%2Fzakladni_informace%2F1436519577270.pdf">schématu</a></li>
+<li>nepracujeme s identifikací příjemce; pracujeme s platbami, nikoli
+jednotlivými operacemi</li>
+<li>obsahuje projektové i plošné operace PRV + všechny operace
+financované ze EZZF/EAGF</li>
+<li>názvy opatření neodpovídají přesně názvům v custom sestavě ani
+názvům v OP ani ve <a
+href="https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fprv2014%2Fzakladni_informace%2F1436519577270.pdf">schématu</a></li>
 </ul></li>
 </ul></li>
 </ul>
-<p>Nepoužíváme žádná data o finančních nástrojích - vše jsou pouze dotace.</p>
+<p>Nepoužíváme žádná data o finančních nástrojích - vše jsou pouze
+dotace.</p>
 </div>
 <div id="jaká-data-využíváme" class="section level4">
 <h4>Jaká data využíváme</h4>
 <ul>
-<li>v současném stavu hlavní datový pipeline bere data ze sestav MS a z otevřených XML dat SZIF</li>
-<li>dostáváme tedy přesnější rozpady projektů ESIF mimo PRV na kategorie</li>
-<li>u agri dat můžeme pracovat i s neprojektovými opatřeními PRV a pro kontext vidíme objemy celé CAP (i ostatní pilíře), aktualizace pak nezávisí na vyžádání dat z MZe</li>
-<li>u ne-agri dat není problém upravit pipeline tak, aby využíval otevřená data - pokud by např. byla potřeba aktualizace a nebylo snadné získat aktualizovaná data; alternativně lze vyžádat jen nefinanční sestavy (přesné procentuelní rozpady projektů na SC a kategorie intervencí, ale proplacené částky vzít z veřejného seznamu, čímž by se obrousila případná obava MMR o předávání detailních dat o platbách)</li>
-<li>v konečných výstupech nepracujeme s místem (regionální rozpad) ani časem (roky/čtvrtletí), ale většina dat v předcházejících krocích pipeline je na to připravena (výjimkou je členění výdajů v čase z veřejného seznamu projektů mimo PRV - to by vyžadovalo zpracovat zveřejněné seznamy za jednotlivá období a změny výdajů v čase dovodit porovnáním těchto seznamů z různých časových období)</li>
+<li>v současném stavu hlavní datový pipeline bere data ze sestav MS a z
+otevřených XML dat SZIF</li>
+<li>dostáváme tedy přesnější rozpady projektů ESIF mimo PRV na
+kategorie</li>
+<li>u agri dat můžeme pracovat i s neprojektovými opatřeními PRV a pro
+kontext vidíme objemy celé CAP (i ostatní pilíře), aktualizace pak
+nezávisí na vyžádání dat z MZe</li>
+<li>u ne-agri dat není problém upravit pipeline tak, aby využíval
+otevřená data - pokud by např. byla potřeba aktualizace a nebylo snadné
+získat aktualizovaná data; alternativně lze vyžádat jen nefinanční
+sestavy (přesné procentuelní rozpady projektů na SC a kategorie
+intervencí, ale proplacené částky vzít z veřejného seznamu, čímž by se
+obrousila případná obava MMR o předávání detailních dat o platbách)</li>
+<li>v konečných výstupech nepracujeme s místem (regionální rozpad) ani
+časem (roky/čtvrtletí), ale většina dat v předcházejících krocích
+pipeline je na to připravena (výjimkou je členění výdajů v čase z
+veřejného seznamu projektů mimo PRV - to by vyžadovalo zpracovat
+zveřejněné seznamy za jednotlivá období a změny výdajů v čase dovodit
+porovnáním těchto seznamů z různých časových období)</li>
 </ul>
 <div id="technické-zádrhele-u-vstupních-sestav" class="section level5">
 <h5>Technické zádrhele u vstupních sestav</h5>
 <ul>
-<li>v XLSX s oblastmi intervencí zřejmě chybí sloupce s rozpadem na SC, přičemž ale projekty jsou na SC rozpadlé do řádek, proto součty peněz v jednom projektu přesahují 100 %.</li>
+<li>v XLSX s oblastmi intervencí zřejmě chybí sloupce s rozpadem na SC,
+přičemž ale projekty jsou na SC rozpadlé do řádek, proto součty peněz v
+jednom projektu přesahují 100 %.</li>
 </ul>
 </div>
 </div>
@@ -368,25 +414,56 @@ $(document).ready(function () {
 <div id="časování-plateb" class="section level3">
 <h3>Časování plateb</h3>
 <ul>
-<li>u části žádostí o platbu chyběla data proplacení žádosti, ale z čísla žádosti lze dovodit rok podání žádosti. U těchto žádostí rozkládáme datum proplacení rovnoměrně do všech kvartálů daného roku</li>
+<li>u části žádostí o platbu chyběla data proplacení žádosti, ale z
+čísla žádosti lze dovodit rok podání žádosti. U těchto žádostí
+rozkládáme datum proplacení rovnoměrně do všech kvartálů daného
+roku</li>
 <li>nepracujeme tedy se začátkem a koncem realizace projektů</li>
 <li>stejně tak nerozlišujeme platby ANTE a POST</li>
-<li>pro lepší přesnost by bylo vhodné tyto platby ještě posunout o cca 100 dnů (1 kvartál) dále v čase (odhadovaná prodleva mezi 30. 6. - coby očekávaná střední doba podání ŽOP v roce - a proplacením)</li>
+<li>pro lepší přesnost by bylo vhodné tyto platby ještě posunout o cca
+100 dnů (1 kvartál) dále v čase (odhadovaná prodleva mezi 30. 6. - coby
+očekávaná střední doba podání ŽOP v roce - a proplacením)</li>
 </ul>
 </div>
 <div id="zdroje-peněz" class="section level3">
 <h3>Zdroje peněz</h3>
-<p>Ve všech dostupných datech se vykazují tzv. <em>celkové způsobilé výdaje</em>, tj. všechny peníze, které příjemce vydal při realizaci podpořeného projektu. Ty sestávají z evropských peněz, národních veřejných peněz z různých zdrojů (státní rozpočet, kraj, obec aj.) a soukromých peněz příjemce.</p>
-<p>V grafech a tabulkách pracujeme vždy s celkovými způsobilými výdaji.</p>
-<p>V exportech je obsažen i rozpad na všechny dostupné zdroje. (U SZP jde rozlišit jen EU a národní, u ostatních programů vidíme rozpady na všechny zdroje uvedené výše.)</p>
+<p>Ve všech dostupných datech se vykazují tzv. <em>celkové způsobilé
+výdaje</em>, tj. všechny peníze, které příjemce vydal při realizaci
+podpořeného projektu. Ty sestávají z evropských peněz, národních
+veřejných peněz z různých zdrojů (státní rozpočet, kraj, obec aj.) a
+soukromých peněz příjemce.</p>
+<p>V grafech a tabulkách pracujeme vždy s celkovými způsobilými
+výdaji.</p>
+<p>V exportech je obsažen i rozpad na všechny dostupné zdroje. (U SZP
+jde rozlišit jen EU a národní, u ostatních programů vidíme rozpady na
+všechny zdroje uvedené výše.)</p>
 </div>
 <div id="jak-děláme-climate-tagging" class="section level3">
 <h3>Jak děláme climate tagging</h3>
 <ul>
-<li>automatický tagging vychází z climate tagů pro kategorie intervencí zveřejněných v příloze II <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0215&amp;from=EN#d1e32-81-1">implementačního nařízení EK</a></li>
-<li>tabulky pro ESIF a PRV jsou ručně přeneseny do excelových souborů v <code>data-input/regulation-tables/reg-table_1_climate-categories_agri.xlsx</code> a <code>data-input/regulation-tables/reg-table_1_climate-categories_nonagri.xlsx</code></li>
-<li>u agri dat jsou k jednotlivým kategoriím z nařízení (5 hlavních priorit) doplněny na základě textu programového dokumentu PRV názvy opatření PRV, o kterých MZe říká, že přispívají k dané prioritě EAFRD (např. M01). Z open dat pak identifikujeme opatření, která podle názvu odpovídají danému opatření - k tomu pomáhá <a href="https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fprv2014%2Fzakladni_informace%2F1436519577270.pdf">schéma podpor od SZIF</a>. Tato logika propojení je zanesena do excelového souboru a využita v datové pipeline pro rozřazení jednotlivých plateb do kategorií</li>
-<li>u ESF se nepodařilo zjistit, jestli některá část výdajů spadá do “sekundárních kategorií” zmíněných v prováděcím nařízení (kde jsou k těmto kategoriím i tagy) - v programovém dokumentu OP Z žádný náznak není, až na několik vágních klauzulí, že u některých výdajů lze předpokládat pozitivní dopad na klima, pokud se odehrají v podnicích zaměřených na nízkouhlíkovou ekonomiku atd.</li>
+<li>automatický tagging vychází z climate tagů pro kategorie intervencí
+zveřejněných v příloze II <a
+href="https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32014R0215&amp;from=EN#d1e32-81-1">implementačního
+nařízení EK</a></li>
+<li>tabulky pro ESIF a PRV jsou ručně přeneseny do excelových souborů v
+<code>data-input/regulation-tables/reg-table_1_climate-categories_agri.xlsx</code>
+a
+<code>data-input/regulation-tables/reg-table_1_climate-categories_nonagri.xlsx</code></li>
+<li>u agri dat jsou k jednotlivým kategoriím z nařízení (5 hlavních
+priorit) doplněny na základě textu programového dokumentu PRV názvy
+opatření PRV, o kterých MZe říká, že přispívají k dané prioritě EAFRD
+(např. M01). Z open dat pak identifikujeme opatření, která podle názvu
+odpovídají danému opatření - k tomu pomáhá <a
+href="https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fprv2014%2Fzakladni_informace%2F1436519577270.pdf">schéma
+podpor od SZIF</a>. Tato logika propojení je zanesena do excelového
+souboru a využita v datové pipeline pro rozřazení jednotlivých plateb do
+kategorií</li>
+<li>u ESF se nepodařilo zjistit, jestli některá část výdajů spadá do
+“sekundárních kategorií” zmíněných v prováděcím nařízení (kde jsou k
+těmto kategoriím i tagy) - v programovém dokumentu OP Z žádný náznak
+není, až na několik vágních klauzulí, že u některých výdajů lze
+předpokládat pozitivní dopad na klima, pokud se odehrají v podnicích
+zaměřených na nízkouhlíkovou ekonomiku atd.</li>
 </ul>
 <p><strong>Agri - kategorie s klima tagem</strong></p>
 <div id="mrqhavwqas" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
@@ -806,23 +883,32 @@ $(document).ready(function () {
 </div>
 </div>
 </div>
-<div id="hodnoty-konfiguračních-proměnných-v-souboru-config.yml" class="section level2">
-<h2>Hodnoty konfiguračních proměnných v souboru <code>config.yml</code></h2>
+<div id="hodnoty-konfiguračních-proměnných-v-souboru-config.yml"
+class="section level2">
+<h2>Hodnoty konfiguračních proměnných v souboru
+<code>config.yml</code></h2>
 <details closed>
 <pre class="r"><code>
 default:
 
   # URL for getting project data
+  # listed at https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu
   # ef_pubxls_url: &quot;https://dotaceeu.cz/getmedia/009dba87-d944-4f66-9bd4-2eb166e2ef92/2021_07_30_Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls&quot;
   # ef_pubxls_url: &quot;https://dotaceeu.cz/getmedia/6297d56b-0b57-418d-ad25-dd16bd687479/2021_06-Seznam-operaci-_-List-of-operations.xls.aspx?ext=.xls&quot;
-  ef_pubxls_url: &quot;https://mmr.cz/getmedia/b7e30c74-1b37-4f96-8faf-0c1f9c92bb9d/2022_02_Seznam-operaci_List-of-operations.xlsx.aspx?ext=.xlsx&quot;
+  # ef_pubxls_url: &quot;https://mmr.cz/getmedia/b7e30c74-1b37-4f96-8faf-0c1f9c92bb9d/2022_02_Seznam-operaci_List-of-operations.xlsx.aspx?ext=.xlsx&quot;
+
+  ef_pubxls_url: ~ # leave as ~ for automatic retrieval of latest data
 
   ef_open_data_url: https://ms14opendata.mssf.cz/SeznamProjektu.xml
   ef_open_metadata_url: https://ms14opendata.mssf.cz/MatDat.xml
   ef_open_data_path: data-input/opendata-mssf/SeznamProjektu.xml
   ef_open_metadata_path: data-input/opendata-mssf/MatDat.xml
 
+  # whether to supplement non-public data with more recent public data
+  # you get more recent data but less accuracy about categorisation of projects in the recent projects
   use_public_data: yes
+
+  # whether to use the latest open data from the above URLs
   refresh_open_data: yes
   refresh_open_metadata: yes
 
@@ -845,7 +931,7 @@ default:
   sest_xlsx_obl: &quot;E005 Kategorizace_oblast.xlsx&quot;
 
 
-  # Quest/Hermin categorisations
+  # PRV categorisations
   priority_prv_xls: &quot;data-input/Navrh - KATEGORIZACE - Operace PRV + priority.xlsx&quot;
 
   # Climate categoristions
@@ -859,7 +945,7 @@ default:
   tags_manual_xlsx: &quot;data-input/manual-tagging/export-tagging-all_retagged.xlsx&quot;
   tags_manual_sheetname: &quot;nonagri_detail&quot;
 
-  # IDs
+  # CZSO dataset IDs
   czso_pop_table_id: &quot;130149&quot;
 
   # export location

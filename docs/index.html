@@ -256,8 +256,20 @@ $(document).ready(function () {
 <li>
   <a href="research.html">Rešerše</a>
 </li>
-<li>
-  <a href="s_listing.html">Pomůcka pro ruční tagging</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Náhledy
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="sample.html">Příklady reklasifikovaných projektů</a>
+    </li>
+    <li>
+      <a href="s_listing.html">Pomůcka pro ruční tagging</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="s_output.html">Dokumentace výstupů</a>
@@ -309,11 +321,14 @@ $(document).ready(function () {
 <!-- badges: start -->
 <!-- badges: end -->
 <p>Climate tagging výdajů ESI fondů v ČR, 2014-20.</p>
-<p><strong>Vytvořeno pro Centrum pro dopravu a energetiku jako součást projektu LIFE <em>XXX</em> (CODE)</strong></p>
-<p>Detailnější dokumentace k pipelinu na přípravu a tagging dat o výdajích ESIF:</p>
+<p><strong>Vytvořeno pro Centrum pro dopravu a energetiku jako součást
+projektu LIFE <em>XXX</em> (CODE)</strong></p>
+<p>Detailnější dokumentace k pipelinu na přípravu a tagging dat o
+výdajích ESIF:</p>
 <ul>
 <li><p><a href="s_doc.html">obsahová dokumentace</a></p></li>
-<li><p><a href="s_output.html">dokumentace a validace výstupu</a></p></li>
+<li><p><a href="s_output.html">dokumentace a validace
+výstupu</a></p></li>
 <li><p><a href="s_listing.html">pomůcka pro ruční tagging</a></p></li>
 <li><p><a href="s_inputchecks.html">vstupní validace dat</a></p></li>
 <li><p><a href="dev.html">technická dokumentace</a></p></li>
@@ -322,18 +337,25 @@ $(document).ready(function () {
 <h2>Dokumentace souborů</h2>
 <ul>
 <li><code>esiftagging.Rproj</code>: konfigurace RStudio projektu</li>
-<li><code>_targets.R</code>: hlavní soubor definující datový pipeline</li>
-<li><code>_site.yml</code>: konfigurace webu generovaného uvnitř pipeline do složky <code>docs</code></li>
-<li><code>_interactive.R</code>: utilita - načítá objekty pro interaktivní vývoj</li>
-<li><code>build.R</code>: utilita - spouští pipeline, v RStudio projectu navázáno na Build command</li>
+<li><code>_targets.R</code>: hlavní soubor definující datový
+pipeline</li>
+<li><code>_site.yml</code>: konfigurace webu generovaného uvnitř
+pipeline do složky <code>docs</code></li>
+<li><code>_interactive.R</code>: utilita - načítá objekty pro
+interaktivní vývoj</li>
+<li><code>build.R</code>: utilita - spouští pipeline, v RStudio projectu
+navázáno na Build command</li>
 <li><code>*.Rmd</code>: zdroje webové dokumentace</li>
 <li><code>docs</code>: vygenerovaná webová dokumentace</li>
 <li><code>data-export</code>: exporty výstupních dat</li>
 <li><code>data-input</code>: vstupní data</li>
 <li><code>data-output</code>: výstupní data ve formátu pro R</li>
 <li><code>data-processed</code>: mezidata</li>
-<li><code>site</code>: adresář pro pomocné soubory webové dokumentace - jejich změna spustí rebuild stránek; celý adresář se publikuje spolu s webovou dokumentací</li>
-<li><code>renv</code>: skladiště systému renv pro reprodukovatelnost prostředí (needitovat ručně)</li>
+<li><code>site</code>: adresář pro pomocné soubory webové dokumentace -
+jejich změna spustí rebuild stránek; celý adresář se publikuje spolu s
+webovou dokumentací</li>
+<li><code>renv</code>: skladiště systému renv pro reprodukovatelnost
+prostředí (needitovat ručně)</li>
 <li><code>R</code>: kód funkcí, které dohromady vytváří pipeline</li>
 <li><code>scripts</code>: jiný kód mimo pipeline - odkladiště</li>
 </ul>

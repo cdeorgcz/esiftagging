@@ -256,8 +256,20 @@ $(document).ready(function () {
 <li>
   <a href="research.html">Rešerše</a>
 </li>
-<li>
-  <a href="s_listing.html">Pomůcka pro ruční tagging</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Náhledy
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="sample.html">Příklady reklasifikovaných projektů</a>
+    </li>
+    <li>
+      <a href="s_listing.html">Pomůcka pro ruční tagging</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="s_output.html">Dokumentace výstupů</a>
@@ -307,49 +319,76 @@ $(document).ready(function () {
 
 <div id="změny-k-31.-1.-2022" class="section level2">
 <h2>Změny k 31. 1. 2022</h2>
-<p>Aktualizace celého postupu, abychom využívali nejnovější možná data a přitom minimalizovali nepřesnost. Funguje to teď následovně:</p>
+<p>Aktualizace celého postupu, abychom využívali nejnovější možná data a
+přitom minimalizovali nepřesnost. Funguje to teď následovně:</p>
 <ul>
-<li>včechna finanční data o projektech bereme z veřejně dostupné tabulky na <a href="https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu" class="uri">https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu</a></li>
-<li>k tomu doplňujeme z <a href="https://data.gov.cz/datov%C3%A1-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2F66002222%2F4b59efc04aae0acd97761bf5b7330b87">open dat</a> informaci o specifickém cíli, kterou potřebujeme pro manuální retagging</li>
-<li>u projektů, kde máme rozpad na SC a oblasti intervence v neveřejné sestavě od MMR (která je ale starší), použijeme tyto rozpady, protože jsou přesnější</li>
-<li>pokud je nemáme, dělíme projekt rovnoměrně do všech SC a OI, které jsou u něj uvedeny</li>
+<li>včechna finanční data o projektech bereme z veřejně dostupné tabulky
+na <a
+href="https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu"
+class="uri">https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu</a></li>
+<li>k tomu doplňujeme z <a
+href="https://data.gov.cz/datov%C3%A1-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2F66002222%2F4b59efc04aae0acd97761bf5b7330b87">open
+dat</a> informaci o specifickém cíli, kterou potřebujeme pro manuální
+retagging</li>
+<li>u projektů, kde máme rozpad na SC a oblasti intervence v neveřejné
+sestavě od MMR (která je ale starší), použijeme tyto rozpady, protože
+jsou přesnější</li>
+<li>pokud je nemáme, dělíme projekt rovnoměrně do všech SC a OI, které
+jsou u něj uvedeny</li>
 </ul>
-<p>Veřejná data se aktualizují automaticky, tj. při každém spuštění se použijí nejnovější dostupná. Pokud by tato automatika selhala nebo by bylo třeba “zmrazit” data k nějakému datu, do parametru <code>ef_pubxls_url</code> v souboru <code>config.yml</code> lze vložit odkaz přímo na požadovaný veřejný seznam příjemců podle <a href="https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu" class="uri">https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu</a>.</p>
+<p>Veřejná data se aktualizují automaticky, tj. při každém spuštění se
+použijí nejnovější dostupná. Pokud by tato automatika selhala nebo by
+bylo třeba “zmrazit” data k nějakému datu, do parametru
+<code>ef_pubxls_url</code> v souboru <code>config.yml</code> lze vložit
+odkaz přímo na požadovaný veřejný seznam příjemců podle <a
+href="https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu"
+class="uri">https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu</a>.</p>
 </div>
 <div id="změny-k-9.-1.-2022" class="section level2">
 <h2>Změny k 9. 1. 2022</h2>
 <ul>
 <li>vloženy upravené manuální tagy</li>
-<li>srovnávací <a href="s_output.html">“sankey” graf - záložka “Srovnání tagů”</a></li>
-<li><a href="s_output.html">textová analýza projektů v teplárenství - záložka “Témata”</a></li>
+<li>srovnávací <a href="s_output.html">“sankey” graf - záložka “Srovnání
+tagů”</a></li>
+<li><a href="s_output.html">textová analýza projektů v teplárenství -
+záložka “Témata”</a></li>
 </ul>
 </div>
 <div id="úpravy-a-doplnění-14.-10.-2021" class="section level2">
 <h2>Úpravy a doplnění 14. 10. 2021</h2>
 <ul>
-<li>v <a href="https://github.com/cdeorgcz/esiftagging/tree/main/data-export/export_202110">exportech</a> doplněno:
+<li>v <a
+href="https://github.com/cdeorgcz/esiftagging/tree/main/data-export/export_202110">exportech</a>
+doplněno:
 <ul>
 <li>sloupec <code>fin_vyuct_verejne</code></li>
-<li>v exportech na úrovni projektů doplněny sloupce s IČO a názvem příjemce a s anotací projektu</li>
-<li>odstraněn export na projektové úrovni v CSV, ponechán jen excel - CSV byl příliš velký pro export na Github. Alternativně můžu dodat např. Parquet pro zpracování v Pythonu a R.</li>
+<li>v exportech na úrovni projektů doplněny sloupce s IČO a názvem
+příjemce a s anotací projektu</li>
+<li>odstraněn export na projektové úrovni v CSV, ponechán jen excel -
+CSV byl příliš velký pro export na Github. Alternativně můžu dodat např.
+Parquet pro zpracování v Pythonu a R.</li>
 </ul></li>
 <li>přepočteny součty v exportech - drobná oprava po validaci.</li>
 </ul>
-<p>Zbývající (ne)dodělávky trackuji v <a href="https://github.com/cdeorgcz/esiftagging/issues">Issues na Githubu</a>.</p>
+<p>Zbývající (ne)dodělávky trackuji v <a
+href="https://github.com/cdeorgcz/esiftagging/issues">Issues na
+Githubu</a>.</p>
 </div>
 <div id="update-30.-9.-2021" class="section level2">
 <h2>Update 30. 9. 2021</h2>
 <div id="nové" class="section level3">
 <h3>Nové</h3>
 <ul>
-<li><a href="s_listing.html">interaktivní náhledy kategorií pro ruční tagging</a></li>
+<li><a href="s_listing.html">interaktivní náhledy kategorií pro ruční
+tagging</a></li>
 </ul>
 </div>
 <div id="hotovo" class="section level3">
 <h3>Hotovo</h3>
 <ul>
 <li>načtení dat PRV z open dat</li>
-<li>napojení oficiálních klima kategorií na data o SZP/PRV - viz <a href="s_output.html">náhled výstupu</a></li>
+<li>napojení oficiálních klima kategorií na data o SZP/PRV - viz <a
+href="s_output.html">náhled výstupu</a></li>
 </ul>
 </div>
 <div id="doplněno" class="section level3">
@@ -378,8 +417,10 @@ $(document).ready(function () {
 <h3>Hotovo</h3>
 <ul>
 <li>sestavení projektu včetně přípravy na opakovatelný recept</li>
-<li><a href="https://github.com/cdeorgcz">Github profil CDE</a> + základní <a href="https://cdeoorgcz.github.io">web rozcestník</a></li>
-<li>základ <a href="https://cdeoorgcz.github.io/esiftagging">dokumentace projektu</a></li>
+<li><a href="https://github.com/cdeorgcz">Github profil CDE</a> +
+základní <a href="https://cdeoorgcz.github.io">web rozcestník</a></li>
+<li>základ <a href="https://cdeoorgcz.github.io/esiftagging">dokumentace
+projektu</a></li>
 <li><a href="s_output.html">načtení dat ESIF ze sestav MMR</a></li>
 <li><a href="s_output.html">načtení dat PRV ze sestavy MMR</a></li>
 </ul>
@@ -388,7 +429,8 @@ $(document).ready(function () {
 <h3>In progress</h3>
 <ul>
 <li>načtení dat PRV z open dat</li>
-<li><a href="research.html">rešerše kategorizací pro ESI fondy mimo PRV + PRV</a></li>
+<li><a href="research.html">rešerše kategorizací pro ESI fondy mimo PRV
++ PRV</a></li>
 </ul>
 </div>
 <div id="k-potvrzení-praktikálie" class="section level3">
@@ -402,9 +444,11 @@ $(document).ready(function () {
 <h3>K rozhodnutí (koncepční)</h3>
 <ul>
 <li>zdroj dat ESIF</li>
-<li>kategorizace ESIF pro klima semafor (viz <a href="research.html">rešerši</a>)</li>
+<li>kategorizace ESIF pro klima semafor (viz <a
+href="research.html">rešerši</a>)</li>
 <li>zdroj dat PRV</li>
-<li>zahrnutí plošných opatření PRV (viz <a href="research.html">rešerši</a>)</li>
+<li>zahrnutí plošných opatření PRV (viz <a
+href="research.html">rešerši</a>)</li>
 <li>zdroj kategorizací pro semafor z dat PRV</li>
 <li>možnost mezinárodního srovnání (výhledově)</li>
 </ul>
