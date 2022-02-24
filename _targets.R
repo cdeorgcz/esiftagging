@@ -30,7 +30,7 @@ options(crayon.enabled = TRUE,
         czso.dest_dir = "~/czso_data",
         yaml.eval.expr = TRUE)
 
-# future::plan(multisession)
+future::plan(multisession)
 
 source("R/utils.R")
 source("R/functions.R")
@@ -190,7 +190,6 @@ t_climate_tag <- list(
 
 
 # Summarise and compile tagged data ---------------------------------------
-
 
 t_tagged_summarised <- list(
   tar_target(efs_tagged_sum_prj,
