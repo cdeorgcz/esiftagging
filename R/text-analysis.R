@@ -6,7 +6,7 @@ get_prj_texts <- function(data, ...) {
     select(prj_id, prj_nazev, prj_shrnuti)
 }
 
-lemmatize_esif <- function(data, column, ...) {
+lemmatize_esif <- function(data, column, .sample = Inf, ...) {
   tepl_texts <- data |>
     # filter(sc_id == "01.3.15.3.5") |>
     filter(...) |>
@@ -16,6 +16,7 @@ lemmatize_esif <- function(data, column, ...) {
   tepl_string_descr <- tepl_texts |>
     # mutate(!!column := str_replace({{column}}, "prim\\.", "primární")) |>
     drop_na({{column}}) |>
+    slice_sample(n = .sample) |>
     pull({{column}}) |>
     unique() |>
     paste(collapse = " ")
@@ -46,9 +47,10 @@ stopwords_cz_additional <- c("rámec", "včetně", "současný", "výstup",
 stopwords_esif <- c("projekt", "ulice", "cíl", "přinést", "dojít", "rámec",
                     "součást", "výstup", "předmět", "oblast", "doba", "jednat",
                     "předpokládat", "hlavní", "versus", "realizace",
-                    "předkládaný", "etapa",
+                    "předkládaný", "etapa", "akciový", "společnost",
                     "zaměřovat", "docházet", "dojít", "akce", "část", "řešit", "uvedený",
-                    "zaměřit", "aktivita", "podpora", "realizovat")
+                    "zaměřit", "aktivita", "podpora", "realizovat",
+                    "číslo", "parcela", "parcelní", "katastr", "katastrální")
 
 make_token_translator <- function(data) {
   tokenizer_joiner_title <- data |>
@@ -83,8 +85,8 @@ plot_wordcorrs <- function(data, variable, tkn_trnsltr, threshold = 5, mess_cz,
     graph_from_data_frame() %>%
     ggraph(layout = "fr") +
     geom_edge_link(aes(edge_alpha = correlation, edge_width = correlation), edge_colour = "royalblue") +
-    geom_node_point(size = 5) +
-    geom_node_text(aes(label = name), repel = TRUE,
+    geom_node_point(size = 2) +
+    geom_node_text(aes(label = name), repel = TRUE, size = 1.5,
                    point.padding = unit(0.2, "lines")) +
     labs(title = title, subtitle = subtitle, caption = caption) +
     theme_void() +
@@ -192,6 +194,7 @@ prep_ngrams <- function(data, tkn_trnsltr, variable, mess_cz,
 plot_ngrams_network <- function(data, threshold = 5,
                                 title = NULL, subtitle = NULL, caption = NULL) {
   bigram_graph <- data |>
+    drop_na() |>
     filter(n > threshold) %>%
     graph_from_data_frame()
 
@@ -202,7 +205,7 @@ plot_ngrams_network <- function(data, threshold = 5,
     theme_ptrr("none", axis.text.x = element_blank(),
                axis.text.y = element_blank(),
                legend.position = "bottom") +
-    geom_node_label(aes(label = name), vjust = 1, hjust = 1)
+    geom_node_text(aes(label = name), vjust = 1, hjust = 1, size = 1.5)
 
 }
 

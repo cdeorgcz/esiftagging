@@ -11,6 +11,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Přibyly [grafy součtů podle tagů a OP v metologii CDE](s_output.html) (> Všechny OP - CDE)
 
+Přibyla [explorační vizualizace](s_output.html) textových popisů projektů OP PIK zaměřených na zvyšování energetické účinnosti podnikatelského sektoru. (Témata > Úspory ve firmách).
+
 ## Změny k 31. 1. 2022
 
 Aktualizace celého postupu, abychom využívali nejnovější možná data a přitom minimalizovali nepřesnost. Funguje to teď následovně:

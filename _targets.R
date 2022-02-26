@@ -358,18 +358,16 @@ t_export <- list(
 
 # Validation and exploration ----------------------------------------------
 
-## Text analysis ----------------------------------------------------------
+## Text analysis teplárenství ---------------------------------------------
 
-t_text_basics <- list(
+t_text_teplarny <- list(
   tar_url(stopwords_cz_url, "https://raw.githubusercontent.com/stopwords-iso/stopwords-cs/master/stopwords-cs.txt"),
   tar_target(stopwords_cz, read_lines(stopwords_cz_url)),
   tar_target(stopwords_all_cz, c(stopwords_cz, noise_cz, stopwords_cz_additional)),
   tar_target(tepl_texts, get_prj_texts(efs_tagged_sum_prj, sc_id == "01.3.15.3.5")),
-  tar_target(tepl_lem_title, lemmatize_esif(efs_tagged_sum_prj,
-                                            prj_nazev,
+  tar_target(tepl_lem_title, lemmatize_esif(efs_tagged_sum_prj, prj_nazev,.sample = Inf,
                                             sc_id == "01.3.15.3.5")),
-  tar_target(tepl_lem_descr, lemmatize_esif(efs_tagged_sum_prj,
-                                            prj_shrnuti,
+  tar_target(tepl_lem_descr, lemmatize_esif(efs_tagged_sum_prj, prj_shrnuti, .sample = Inf,
                                             sc_id == "01.3.15.3.5")),
   tar_target(tepl_tkn_trnsltr_title, make_token_translator(tepl_lem_title)),
   tar_target(tepl_tkn_trnsltr_descr, make_token_translator(tepl_lem_descr)),
@@ -385,8 +383,8 @@ t_text_basics <- list(
                                       prj_shrnuti, mess_cz = stopwords_all_cz,
                                       lemma = T, n = 2)),
   tar_target(bigram_data_nolemma, prep_ngrams(tepl_texts, tepl_tkn_trnsltr_descr,
-                                      prj_shrnuti, mess_cz = stopwords_all_cz,
-                                      lemma = F, n = 2)),
+                                              prj_shrnuti, mess_cz = stopwords_all_cz,
+                                              lemma = F, n = 2)),
   tar_target(plt_bigram_bars, plot_ngrams_bars(bigram_data_nolemma, 50,
                                                title = "Nejčastější dvojslovná spojení v popisech projektů")),
   tar_target(plt_bigram_network, plot_ngrams_network(bigram_data, 5,
@@ -395,6 +393,40 @@ t_text_basics <- list(
                                      tepl_tkn_trnsltr_descr, 4, stopwords_all_cz,
                                      title = "Seskupení projektů do 4 témat",
                                      subtitle = "Relativně nejčastější slova v tématech"))
+)
+
+## Text analysis firmy ---------------------------------------------
+
+t_text_firmy <- list(
+  tar_target(firmy_texts, get_prj_texts(efs_tagged_sum_prj, sc_id == "01.3.10.3.2")),
+  tar_target(firmy_lem_title, lemmatize_esif(efs_tagged_sum_prj, prj_nazev, .sample = Inf,
+                                             sc_id == "01.3.10.3.2")),
+  tar_target(firmy_lem_descr, lemmatize_esif(efs_tagged_sum_prj, prj_shrnuti, .sample = 2500,
+                                             sc_id == "01.3.10.3.2")),
+  tar_target(firmy_tkn_trnsltr_title, make_token_translator(firmy_lem_title)),
+  tar_target(firmy_tkn_trnsltr_descr, make_token_translator(firmy_lem_descr)),
+  tar_target(plt_wordfreqs_firmy, plot_wordfreq(firmy_texts, prj_nazev,
+                                                firmy_tkn_trnsltr_title, 35,
+                                                stopwords_all_cz,
+                                                title = "Nejčastější slova v názvech")),
+  tar_target(plt_wordpairs_firmy, plot_wordcorrs(firmy_texts, prj_shrnuti,
+                                                 firmy_tkn_trnsltr_title, 30,
+                                                 stopwords_all_cz,
+                                                 title = "Nejčastější společný výskyt slov v popisech projektů")),
+  tar_target(bigram_data_firmy, prep_ngrams(firmy_texts, firmy_tkn_trnsltr_descr,
+                                            prj_shrnuti, mess_cz = stopwords_all_cz,
+                                            lemma = T, n = 2)),
+  tar_target(bigram_data_nolemma_firmy, prep_ngrams(firmy_texts, firmy_tkn_trnsltr_descr,
+                                                    prj_shrnuti, mess_cz = stopwords_all_cz,
+                                                    lemma = F, n = 2)),
+  tar_target(plt_bigram_bars_firmy, plot_ngrams_bars(bigram_data_nolemma_firmy, 50,
+                                                     title = "Nejčastější dvojslovná spojení v popisech projektů")),
+  tar_target(plt_bigram_network_firmy, plot_ngrams_network(bigram_data_firmy, 50,
+                                                           title = "Nejčastější dvojslovná spojení v popisech projektů")),
+  tar_target(plt_topics_firmy, plot_topics(firmy_texts, prj_shrnuti,
+                                           firmy_tkn_trnsltr_descr, 3, stopwords_all_cz,
+                                           title = "Seskupení projektů do 8 témat",
+                                           subtitle = "Relativně nejčastější slova v tématech"))
 )
 
 
@@ -431,6 +463,7 @@ source("R/html_output.R")
 
 list(t_public_list, t_sestavy, t_esif_compile, t_export, t_codebook, t_html,
      t_agri_opendata, t_opendata, t_esif_compile_withopendata, t_switch,
-     t_mtagged_summarised, t_text_basics, t_climacat_reg, t_climacat_manual,
+     t_mtagged_summarised, t_text_teplarny, t_text_firmy,
+     t_climacat_reg, t_climacat_manual,
      t_climate_tag, t_tagged_summarised, t_tagging_aid, t_tagged_compiled,
      t_tagged_plots, t_prv_priorities, t_sample)

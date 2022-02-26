@@ -200,4 +200,26 @@ Na úplně jiné skupiny to nevypadá:
 targets::tar_read(plt_topics)
 ```
 
+### Úspory ve firmách
+
+```{r plt-firmy-wordfreqs}
+targets::tar_read(plt_wordfreqs_firmy)
+```
+
+```{r plt-firmy-wordpairs}
+targets::tar_read(plt_wordpairs_firmy)
+```
+
+```{r plt-firmy-bigrams-bars, fig.height=8, fig.asp = 1}
+targets::tar_read(plt_bigram_bars_firmy)
+```
+
+```{r plt-firmy-bigrams-network, fig.height=8, fig.asp = 1}
+targets::tar_read(plt_bigram_network_firmy)
+```
+
+```{r plt-firmy-topics}
+targets::tar_read(plt_topics_firmy)
+```
+
 
