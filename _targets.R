@@ -257,6 +257,8 @@ t_tagged_compiled <- list(
 t_tagged_plots <- list(
   tar_target(plot_tagged_agri, make_plot_tagged_agri(agri_tagged)),
   tar_target(plot_tagged_op, make_plot_tagged_all(esif_tagged_sum)),
+  tar_target(plot_tagged_op_m, make_plot_tagged_all(esif_mtagged_sum,
+                                                      tag_var = climate_share_m)),
   tar_target(plot_all_data, prep_plot_all_data(esif_tagged_sum,
                                                tag_var = climate_share)),
   tar_target(plot_all_data_m, prep_plot_all_data(esif_mtagged_sum,
@@ -266,6 +268,8 @@ t_tagged_plots <- list(
   tar_target(plot_comparison,
              make_comparison_plot(plot_all_data, plot_all_data_m)),
   tar_target(plot_weighted_op, make_plot_weighted_all(esif_tagged_sum)),
+  tar_target(plot_weighted_op_m, make_plot_weighted_all(esif_mtagged_sum,
+                                                          tag_var = climate_share_m)),
   tar_target(plot_sankey, make_tag_sankey(efs_tags_compare))
   )
 

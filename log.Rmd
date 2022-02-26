@@ -7,6 +7,10 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Změny k 26. 2. 2022
+
+Přibyly [grafy součtů podle tagů a OP v metologii CDE](s_output.html) (> Všechny OP - CDE)
+
 ## Změny k 31. 1. 2022
 
 Aktualizace celého postupu, abychom využívali nejnovější možná data a přitom minimalizovali nepřesnost. Funguje to teď následovně:

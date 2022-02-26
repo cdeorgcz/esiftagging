@@ -61,6 +61,16 @@ tar_read(plot_tagged_op)
 targets::tar_read(plot_weighted_op)
 ```
 
+### Všechny OP  - CDE
+
+```{r plot-all-op-cde, out.width="100%"}
+tar_read(plot_tagged_op_m)
+```
+
+```{r plot-weighted-op-cde, out.width="100%"}
+targets::tar_read(plot_weighted_op_m)
+```
+
 ### SZP vč. PRV
 
 ```{r plot-szp, out.width="100%"}

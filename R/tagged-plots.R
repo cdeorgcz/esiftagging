@@ -1,10 +1,12 @@
-make_plot_tagged_all <- function(esif_tagged_sum) {
+make_plot_tagged_all <- function(esif_tagged_sum, tag_var = climate_share) {
   data <- esif_tagged_sum %>%
+    rename(climate_share = {{tag_var}}) |>
     mutate(climate_share_code = case_when(climate_share == 0 ~ "No tag",
                                           climate_share == 0.4 ~ "Partial (40%)",
                                           climate_share == 1 ~ "Full (100%)",
+                                          climate_share == -0.4 ~ "Negative (-40%)",
                                           is.na(climate_share) ~ "Unknown") %>%
-             fct_relevel("Full (100%)", "Partial (40%)", "None", "Unknown") %>% fct_rev()) %>%
+             fct_relevel("Full (100%)", "Partial (40%)", "Negative (-40%)", "None", "Unknown") %>% fct_rev()) %>%
     group_by(climate_share_code) %>%
     count(op_zkr, wt = fin_vyuct_czv/1e9) %>%
     ungroup() %>%
@@ -21,8 +23,9 @@ make_plot_tagged_all <- function(esif_tagged_sum) {
     mutate(label_value = round(total, 0))
 
   ggplot(data, aes(y = op_zkr)) +
-    scale_fill_manual(values = c(`Full (100%)` = "darkgreen", `Partial (40%)` = "lightgreen",
-                                 `No tag` = "darkgrey", Unknown = "lightgrey"), name = NULL) +
+    scale_fill_manual(values = c(`Full (100%)` = "darkgreen", `Partial (40%)` = "#009E73",
+                                 `Negative (-40%)` = "#E69F00",
+                                 `No tag` = "grey30", Unknown = "lightgrey"), name = NULL) +
     geom_col(aes(x = n, fill = climate_share_code)) +
     scale_x_continuous(expand = ptrr::flush_axis) +
     theme_ptrr("x", legend.position = "bottom", legend.key.size = unit(10, "pt")) +
@@ -36,9 +39,9 @@ make_plot_tagged_all <- function(esif_tagged_sum) {
          caption = "Payment data for CZ-PL programme unavailable.")
 }
 
-make_plot_weighted_all <- function(esif_tagged_sum) {
+make_plot_weighted_all <- function(esif_tagged_sum, tag_var = climate_share) {
   data <- esif_tagged_sum %>%
-
+    rename(climate_share = {{tag_var}}) |>
     count(op_zkr, wt = fin_vyuct_czv * climate_share / 1e9) %>%
     mutate(op_zkr = as_factor(op_zkr) %>% fct_reorder(n))
 
@@ -87,10 +90,10 @@ make_plot_all <- function(plot_all_data, tag_type = "official") {
     scale_x_continuous(expand = expansion(mult = 0, add = c(0, 50)),
                        n.breaks = 6) +
     scale_fill_manual(values = c(`Full (100%)` = "darkgreen",
-                                 `Partial (40%)` = "lightgreen",
+                                 `Partial (40%)` = "#009E73",
                                  `Negative (-100%)` = "darkred",
-                                 `Negative (-40%)` = "orange",
-                                 None = "darkgrey",
+                                 `Negative (-40%)` = "#E69F00",
+                                 None = "grey30",
                                  `Total\nspending` = "black",
                                  `Weighted\ncontribution` = "darkblue"),
                       name = NULL, guide = "none") +
@@ -119,7 +122,7 @@ make_comparison_plot <- function(plot_all_data, plot_all_data_m) {
                    colour = "grey80") +
     geom_point(aes(x = n, colour = "Official"), size = 3) +
     geom_point(aes(x = n2, colour = "Revised"), size = 3) +
-    scale_color_manual(values = c("darkgrey", "lightblue"), name = "Tag source") +
+    scale_color_manual(values = c("grey30", "lightblue"), name = "Tag source") +
     ptrr::theme_ptrr("x", legend.position = "top") +
     labs(title = "Comparing tags: official vs. CDE revised",
          subtitle = "bn. CZK, total eligible spending by climate tag")
@@ -148,8 +151,8 @@ make_plot_tagged_agri <- function(agri_tagged) {
              fct_relevel("Full (100%)", "Partial (40%)", "No tag", "Unknown") %>% fct_rev()) %>%
     ggplot(aes(n, fond_typ, fill = climate_share_code)) +
     scale_x_continuous(expand = ptrr::flush_axis) +
-    scale_fill_manual(values = c(`Full (100%)` = "darkgreen", `Partial (40%)` = "lightgreen",
-                                 `No tag` = "darkgrey", Unknown = "lightgrey"), name = NULL) +
+    scale_fill_manual(values = c(`Full (100%)` = "darkgreen", `Partial (40%)` = "#009E73",
+                                 `No tag` = "grey30", Unknown = "lightgrey"), name = NULL) +
     geom_col() +
     theme_ptrr("x", legend.position = "bottom", legend.key.size = unit(10, "pt")) +
     labs(title = "CAP spending by climate tags",
