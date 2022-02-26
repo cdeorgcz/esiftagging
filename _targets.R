@@ -71,10 +71,12 @@ t_agri_opendata <- list(
 ## MS open data ---------------------------------------------------------------
 
 t_opendata <- list(
-  tar_download(od_meta_xml, c_ef_open_metadata_url, c_ef_open_metadata_path,
-               cue = tar_cue(mode = if(c_refresh_open_metadata) "thorough" else "never")),
-  tar_download(od_data_xml, c_ef_open_data_url, c_ef_open_data_path,
-               cue = tar_cue(mode = if(c_refresh_open_data) "thorough" else "never")),
+  # tar_download(od_meta_xml, c_ef_open_metadata_url, c_ef_open_metadata_path,
+  #              cue = tar_cue(mode = if(c_refresh_open_metadata) "thorough" else "never")),
+  # tar_download(od_data_xml, c_ef_open_data_url, c_ef_open_data_path,
+  #              cue = tar_cue(mode = if(c_refresh_open_data) "thorough" else "never")),
+  tar_file(od_meta_xml, c_ef_open_metadata_path),
+  tar_file(od_data_xml, c_ef_open_data_path),
   tar_target(od_prj_list, extract_prj_list(od_data_xml)),
   tar_target(od_sc_codelist, extract_sc_codelist(od_meta_xml)),
   tar_target(od_prj_sc, extract_prj_sc(od_prj_list, od_sc_codelist))
@@ -174,7 +176,7 @@ t_climacat_manual <- list(
                select(oblast_intervence_kod, sc_id,
                       oblast_intervence_nazev_en,
                       climate_share_m = `ZÁVĚR KONTROLY (TAG)`)
-               )
+  )
 )
 
 
@@ -184,7 +186,7 @@ t_climate_tag <- list(
   tar_target(efs_tagged, left_join(data_for_tagging, reg_table_nonagri,
                                    by = "oblast_intervence_kod")),
   tar_target(efs_mtagged, left_join(data_for_tagging, tags_manual,
-                                   by = c("oblast_intervence_kod", "sc_id"))),
+                                    by = c("oblast_intervence_kod", "sc_id"))),
   tar_target(agri_tagged, tag_agri(agri_opendata, reg_table_agri))
 )
 
@@ -271,7 +273,7 @@ t_tagged_plots <- list(
   tar_target(plot_weighted_op_m, make_plot_weighted_all(esif_mtagged_sum,
                                                           tag_var = climate_share_m)),
   tar_target(plot_sankey, make_tag_sankey(efs_tags_compare))
-  )
+)
 
 # Overview for manual tagging ----------------------------------------------
 
@@ -329,7 +331,7 @@ t_export <- list(
                         here::here(c_export_dir, c_export_nonagri_projekty_xlsx),
                         write_xlsx)),
 
-   tar_file(export_all_ops_csv,
+  tar_file(export_all_ops_csv,
            export_table(esif_tagged_sum,
                         here::here(c_export_dir, c_export_all_ops_csv),
                         write_excel_csv2)),
@@ -437,21 +439,21 @@ t_codebook <- list(
              make_codebook(esif_tagged_sum_op)),
   tar_file(sum_codebook_yaml,
            {informant_edit <- sum_codebook
-            informant_edit$read_fn <- "data"
-            pointblank::yaml_write(informant = informant_edit,
-                                   path = c_export_dir,
-                                   filename = c_export_cdbk_sum)
-             file.path(c_export_dir, c_export_cdbk_sum)
+           informant_edit$read_fn <- "data"
+           pointblank::yaml_write(informant = informant_edit,
+                                  path = c_export_dir,
+                                  filename = c_export_cdbk_sum)
+           file.path(c_export_dir, c_export_cdbk_sum)
            }),
   tar_target(prj_codebook,
              make_codebook(efs_tagged_sum_prj)),
   tar_file(prj_codebook_yaml,
            {informant_edit <- prj_codebook
-            informant_edit$read_fn <- "data"
-            pointblank::yaml_write(informant = informant_edit,
-                                   path = c_export_dir,
-                                   filename = c_export_cdbk_prj)
-             file.path(c_export_dir, c_export_cdbk_prj)
+           informant_edit$read_fn <- "data"
+           pointblank::yaml_write(informant = informant_edit,
+                                  path = c_export_dir,
+                                  filename = c_export_cdbk_prj)
+           file.path(c_export_dir, c_export_cdbk_prj)
            })
 )
 
