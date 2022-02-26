@@ -71,12 +71,12 @@ t_agri_opendata <- list(
 ## MS open data ---------------------------------------------------------------
 
 t_opendata <- list(
-  # tar_download(od_meta_xml, c_ef_open_metadata_url, c_ef_open_metadata_path,
-  #              cue = tar_cue(mode = if(c_refresh_open_metadata) "thorough" else "never")),
-  # tar_download(od_data_xml, c_ef_open_data_url, c_ef_open_data_path,
-  #              cue = tar_cue(mode = if(c_refresh_open_data) "thorough" else "never")),
-  tar_file(od_meta_xml, c_ef_open_metadata_path),
-  tar_file(od_data_xml, c_ef_open_data_path),
+  tar_download(od_meta_xml, c_ef_open_metadata_url, c_ef_open_metadata_path,
+               cue = tar_cue(mode = if(c_refresh_open_metadata) "thorough" else "never")),
+  tar_download(od_data_xml, c_ef_open_data_url, c_ef_open_data_path,
+               cue = tar_cue(mode = if(c_refresh_open_data) "thorough" else "never")),
+  # tar_file(od_meta_xml, c_ef_open_metadata_path),
+  # tar_file(od_data_xml, c_ef_open_data_path),
   tar_target(od_prj_list, extract_prj_list(od_data_xml)),
   tar_target(od_sc_codelist, extract_sc_codelist(od_meta_xml)),
   tar_target(od_prj_sc, extract_prj_sc(od_prj_list, od_sc_codelist))
