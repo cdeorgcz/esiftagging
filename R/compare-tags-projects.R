@@ -11,14 +11,16 @@ get_retagged_prj <- function(efs_tags_compare_prj, ef_pub) {
   efs_tags_compare_prj |>
     filter(fin_pravniakt_czv > 0) |>
     filter(climate_share != climate_share_m) |>
-    select(prj_id, fin_pravniakt_czv, fin_vyuct_czv, p_nazev, starts_with("climate")) |>
+    select(prj_id, fin_pravniakt_czv, fin_vyuct_czv, p_nazev, starts_with("climate"),
+           radek_podil) |>
     left_join(ef_pub |> select(prj_id, prj_nazev, prj_shrnuti, op_zkr)) |>
-    mutate(across(starts_with("fin"), ~./1e6)) |>
+    mutate(across(starts_with("fin"), ~./1e6 * radek_podil)) |>
     arrange(-fin_vyuct_czv) |>
     mutate(retag = paste(if_else(climate_share < climate_share_m, "↑", "↓"),
                          climate_share * 100,
                          "→",
-                         climate_share_m * 100))
+                         climate_share_m * 100)) |>
+    select(-radek_podil)
 }
 
 sample_retagged <- function(retagged_prj) {
