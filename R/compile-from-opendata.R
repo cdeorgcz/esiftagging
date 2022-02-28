@@ -28,8 +28,7 @@ compile_from_od <- function(ef_pub, efs_obl, efs_prj_sc, od_prj_sc) {
   rslt <- ef_base |>
     left_join(sc, by = "prj_id") |>
     left_join(obl, by = "prj_id") |>
-    mutate(radek_podil = oblast_intervence_podil * sc_podil,
-           across(starts_with("fin"), ~.x * radek_podil))
+    mutate(radek_podil = oblast_intervence_podil * sc_podil)
 
   return(rslt)
 
