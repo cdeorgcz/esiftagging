@@ -6,16 +6,18 @@ get_prj_texts <- function(data, ...) {
     select(prj_id, prj_nazev, prj_shrnuti)
 }
 
-lemmatize_esif <- function(data, column, .sample = Inf, ...) {
+lemmatize_esif <- function(data, column, .sample = NULL, ...) {
+
   tepl_texts <- data |>
     # filter(sc_id == "01.3.15.3.5") |>
-    filter(...) |>
-    select(prj_id, prj_nazev, prj_shrnuti)
+    dplyr::filter(...) |>
+    select(prj_id, prj_nazev, prj_shrnuti) |>
+    drop_na({{column}})
 
+  if(is.null(.sample)) .sample <- nrow(tepl_texts)
 
   tepl_string_descr <- tepl_texts |>
     # mutate(!!column := str_replace({{column}}, "prim\\.", "primární")) |>
-    drop_na({{column}}) |>
     slice_sample(n = .sample) |>
     pull({{column}}) |>
     unique() |>

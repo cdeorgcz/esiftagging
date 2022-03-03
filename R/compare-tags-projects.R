@@ -32,7 +32,8 @@ sample_retagged <- function(retagged_prj) {
     retagged_prj_random <- retagged_prj |>
       filter(!prj_id %in% retagged_prj_top$prj_id) |>
       group_by(retag, op_zkr) |>
-      slice_sample(n = 20) |>
+      slice_sample(n = 20, replace = TRUE) |>
+      distinct() |>
       mutate(typ = "náhodné")
 
     bind_rows(retagged_prj_top, retagged_prj_random)

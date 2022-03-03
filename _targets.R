@@ -367,9 +367,9 @@ t_text_teplarny <- list(
   tar_target(stopwords_cz, read_lines(stopwords_cz_url)),
   tar_target(stopwords_all_cz, c(stopwords_cz, noise_cz, stopwords_cz_additional)),
   tar_target(tepl_texts, get_prj_texts(efs_tagged_sum_prj, sc_id == "01.3.15.3.5")),
-  tar_target(tepl_lem_title, lemmatize_esif(efs_tagged_sum_prj, prj_nazev,.sample = Inf,
+  tar_target(tepl_lem_title, lemmatize_esif(efs_tagged_sum_prj, prj_nazev, .sample = NULL,
                                             sc_id == "01.3.15.3.5")),
-  tar_target(tepl_lem_descr, lemmatize_esif(efs_tagged_sum_prj, prj_shrnuti, .sample = Inf,
+  tar_target(tepl_lem_descr, lemmatize_esif(efs_tagged_sum_prj, prj_shrnuti, .sample = NULL,
                                             sc_id == "01.3.15.3.5")),
   tar_target(tepl_tkn_trnsltr_title, make_token_translator(tepl_lem_title)),
   tar_target(tepl_tkn_trnsltr_descr, make_token_translator(tepl_lem_descr)),
@@ -401,7 +401,7 @@ t_text_teplarny <- list(
 
 t_text_firmy <- list(
   tar_target(firmy_texts, get_prj_texts(efs_tagged_sum_prj, sc_id == "01.3.10.3.2")),
-  tar_target(firmy_lem_title, lemmatize_esif(efs_tagged_sum_prj, prj_nazev, .sample = Inf,
+  tar_target(firmy_lem_title, lemmatize_esif(efs_tagged_sum_prj, prj_nazev, .sample = NULL,
                                              sc_id == "01.3.10.3.2")),
   tar_target(firmy_lem_descr, lemmatize_esif(efs_tagged_sum_prj, prj_shrnuti, .sample = 2500,
                                              sc_id == "01.3.10.3.2")),
