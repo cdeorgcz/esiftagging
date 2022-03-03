@@ -10,19 +10,24 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Změny 3. 3. 2022
 
 
-- upraveny revidované tagy:
+### upraveny revidované tagy:
   - v OP PIK u SC 01.3.10.3.2 "Zvýšit energetickou účinnost podnikatelského sektoru" na 0,4 => výrazná změna výsledku, mj. OP PIK je v čistém vyjádření pozitivní - podle textové analýzy projektů jde hlavně o zateplení, částečně fotovoltaiku
   - v OP PPR u SC 07.2.13.2.3 "Rozvoj nízkoemisní mobility v oblasti městské dopravy v uličním provozu" na 1 - jsou tam jen projekty na nákup elektrobusů a trolejbusů (zatím neproplacené, ale reálné)
   - v OP D u SC 04.2.40.2.2 "Vytvoření podmínek pro širší využití vozidel na alternativní pohon na silniční síti" na 0,4 (plyn tam tvoří výraznou menšinu)
-- Zapracováno dodatečné pravidlo pro tagování podle implementačního nařízení [215/2014](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32014R0215#d1e165-65-1), čl. 1, odst 1 a: " 	
 
-> in relation to financial data reported against intervention field codes that have a coefficient of zero, where financial data is reported in the thematic objective dimension against codes 04 and 05 set out in Table 5 of Annex I to this Regulation, the data shall be weighted with a 40 % coefficient in terms of their contribution to climate change objectives."
+### Zapracováno dodatečné pravidlo 
 
-Tím přibylo cca 5 mld. Kč. v kategorii 40 % a tedy 2 mld. v čistém přínosu podle oficiální metodologie.
+pro tagování podle implementačního nařízení [215/2014](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32014R0215#d1e165-65-1), čl. 1, odst 1 a:  	
+
+> in relation to financial data reported against intervention field codes that have a coefficient of zero, where financial data is reported in the thematic objective dimension against codes 04 and 05 set out in Table 5 of Annex I to this Regulation, the data shall be weighted with a 40 % coefficient in terms of their contribution to climate change objectives.
+
+Tím přibylo cca 5 mld. Kč. v kategorii 40 % a tedy 2 mld. v čistém přínosu podle oficiální metodologie. NB ani EK toto pravidlo nereflektuje ve svém [stručném výstupu](https://cohesiondata.ec.europa.eu/stories/s/a8jn-38y8):
+
+> The provision allowing a 40% weighting to otherwise zero-weighted ERDF and CF intervention fields used in Thematic Objective 4: Low carbon economy  and Thematic Objective 5: Climate change and risk prevention is not included in the calculations made in this story or in the underlying data. That leads to a minor understatement in this story.
 
 Při manuálním tagování toto pravidlo ignorujeme - jde o tyto specifické cíle, které byly tímto pravidlem upgradovány na koeficient 0,4, ale my jsme je nerevidovali, protože v původní verzi měly koeficient nula:
 
-```{r}
+```{r, echo = FALSE}
 targets::tar_load(efs_tagged_sum_rule)
 efs_tagged_sum_rule |> 
   filter(to_rule) |> 
@@ -30,6 +35,7 @@ efs_tagged_sum_rule |>
   gt::gt()
 ```
 
+### Export dat
 
 [Export dat na Githubu](https://github.com/cdeorgcz/esiftagging/commits/main/data-export/export_202203) odráží tyto změny.
 

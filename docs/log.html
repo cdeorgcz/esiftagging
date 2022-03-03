@@ -319,8 +319,8 @@ $(document).ready(function () {
 
 <div id="změny-3.-3.-2022" class="section level2">
 <h2>Změny 3. 3. 2022</h2>
-<ul>
-<li>upraveny revidované tagy:
+<div id="upraveny-revidované-tagy" class="section level3">
+<h3>upraveny revidované tagy:</h3>
 <ul>
 <li>v OP PIK u SC 01.3.10.3.2 “Zvýšit energetickou účinnost
 podnikatelského sektoru” na 0,4 =&gt; výrazná změna výsledku, mj. OP PIK
@@ -332,31 +332,37 @@ elektrobusů a trolejbusů (zatím neproplacené, ale reálné)</li>
 <li>v OP D u SC 04.2.40.2.2 “Vytvoření podmínek pro širší využití
 vozidel na alternativní pohon na silniční síti” na 0,4 (plyn tam tvoří
 výraznou menšinu)</li>
-</ul></li>
-<li>Zapracováno dodatečné pravidlo pro tagování podle implementačního
-nařízení <a
-href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32014R0215#d1e165-65-1">215/2014</a>,
-čl. 1, odst 1 a: ”</li>
 </ul>
+</div>
+<div id="zapracováno-dodatečné-pravidlo" class="section level3">
+<h3>Zapracováno dodatečné pravidlo</h3>
+<p>pro tagování podle implementačního nařízení <a
+href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32014R0215#d1e165-65-1">215/2014</a>,
+čl. 1, odst 1 a:</p>
 <blockquote>
 <p>in relation to financial data reported against intervention field
 codes that have a coefficient of zero, where financial data is reported
 in the thematic objective dimension against codes 04 and 05 set out in
 Table 5 of Annex I to this Regulation, the data shall be weighted with a
 40 % coefficient in terms of their contribution to climate change
-objectives.”</p>
+objectives.</p>
 </blockquote>
 <p>Tím přibylo cca 5 mld. Kč. v kategorii 40 % a tedy 2 mld. v čistém
-přínosu podle oficiální metodologie.</p>
+přínosu podle oficiální metodologie. NB ani EK toto pravidlo
+nereflektuje ve svém <a
+href="https://cohesiondata.ec.europa.eu/stories/s/a8jn-38y8">stručném
+výstupu</a>:</p>
+<blockquote>
+<p>The provision allowing a 40% weighting to otherwise zero-weighted
+ERDF and CF intervention fields used in Thematic Objective 4: Low carbon
+economy and Thematic Objective 5: Climate change and risk prevention is
+not included in the calculations made in this story or in the underlying
+data. That leads to a minor understatement in this story.</p>
+</blockquote>
 <p>Při manuálním tagování toto pravidlo ignorujeme - jde o tyto
 specifické cíle, které byly tímto pravidlem upgradovány na koeficient
 0,4, ale my jsme je nerevidovali, protože v původní verzi měly
 koeficient nula:</p>
-<pre class="r"><code>targets::tar_load(efs_tagged_sum_rule)
-efs_tagged_sum_rule |&gt; 
-  filter(to_rule) |&gt; 
-  select(oblast_intervence_kod, sc_id, sc_nazev, op_zkr, fin_vyuct_czv) |&gt; 
-  gt::gt()</code></pre>
 <div id="vkplfxladm" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -737,9 +743,13 @@ efs_tagged_sum_rule |&gt;
   
 </table>
 </div>
+</div>
+<div id="export-dat" class="section level3">
+<h3>Export dat</h3>
 <p><a
 href="https://github.com/cdeorgcz/esiftagging/commits/main/data-export/export_202203">Export
 dat na Githubu</a> odráží tyto změny.</p>
+</div>
 </div>
 <div id="změny-k-28.-2.-2022" class="section level2">
 <h2>Změny k 28. 2. 2022</h2>
