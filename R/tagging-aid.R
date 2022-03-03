@@ -1,3 +1,18 @@
+tag_efs <- function(data_for_tagging, tagging_table, cile_dop_a_sc, retag ) {
+  dt <- left_join(data_for_tagging, tagging_table,
+                  by = if(retag) c("oblast_intervence_kod", "sc_id") else "oblast_intervence_kod")
+
+  if(!retag) {
+    dt <- dt |>
+      left_join(cile_dop_a_sc, by = "sc_id") |>
+      mutate(to_rule = tc_id %in% c("TC 04", "TC 05") & climate_share == 0,
+             climate_share = if_else(tc_id %in% c("TC 04", "TC 05") & climate_share == 0,
+                                   0.4, climate_share))
+  }
+
+   return(dt)
+}
+
 summarise_tagged <- function(data, ..., tag_var = climate_share) {
   data %>%
     group_by(oblast_intervence_nazev_en, oblast_intervence_kod,

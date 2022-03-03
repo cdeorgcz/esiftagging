@@ -54,6 +54,9 @@ default:
   tags_manual_xlsx: "data-input/manual-tagging/export-tagging-all_retagged.xlsx"
   tags_manual_sheetname: "nonagri_detail"
 
+  ## Link between DoP TC (PA TO) and SC
+  hier_xlsx: "data-input/hierarchie-cilu/Hierarchie_uprava_CSR_NPR-O27-uprava_20210125.xlsx"
+
   # CZSO dataset IDs
   czso_pop_table_id: "130149"
 

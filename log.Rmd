@@ -7,6 +7,21 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Změny 3. 3. 2022
+
+
+- Zapracováno dodatečné pravidlo pro tagování podle implementačního nařízení [215/2014](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32014R0215#d1e165-65-1), čl. 1, odst 1 a: " 	
+
+> in relation to financial data reported against intervention field codes that have a coefficient of zero, where financial data is reported in the thematic objective dimension against codes 04 and 05 set out in Table 5 of Annex I to this Regulation, the data shall be weighted with a 40 % coefficient in terms of their contribution to climate change objectives."
+
+Tím přibylo cca 5 mld. Kč. v kategorii 40 % a tedy 2 mld. v čistém přínosu podle oficiální metodologie.
+
+Při manuálním tagování toto pravidlo ignorujeme - lze dodatečně vytáhnout specifické cíle, kterých se to týkalo, a ověřit zase ručně.
+
+## Změny k 28. 2. 2022
+
+Provedena validace výpočtů => oprava celkového součtu v hlavním grafu (bez dopadu na vážený klimatický příspěvek)
+
 ## Změny k 26. 2. 2022
 
 Přibyly [grafy součtů podle tagů a OP v metologii CDE](s_output.html) (> Všechny OP - CDE)

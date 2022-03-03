@@ -167,6 +167,14 @@ t_climacat_reg <- list(
                                  c_reg_table_agri_sheetname))
 )
 
+t_hier <- list(
+  tarchetypes::tar_file_read(cile_dop_a_sc, c_hier_xlsx,
+                             read_excel(path = !!.x, sheet = "SC", skip = 2) |>
+                               select(tc_id = TC, sc_id = `spec cil kod`) |>
+                               drop_na() |>
+                               distinct())
+)
+
 ## Manual -----------------------------------------------------------------
 
 t_climacat_manual <- list(
@@ -183,10 +191,8 @@ t_climacat_manual <- list(
 # Integrate climate tag ---------------------------------------------------
 
 t_climate_tag <- list(
-  tar_target(efs_tagged, left_join(data_for_tagging, reg_table_nonagri,
-                                   by = "oblast_intervence_kod")),
-  tar_target(efs_mtagged, left_join(data_for_tagging, tags_manual,
-                                    by = c("oblast_intervence_kod", "sc_id"))),
+  tar_target(efs_tagged, tag_efs(data_for_tagging, reg_table_nonagri, cile_dop_a_sc, retag = FALSE)),
+  tar_target(efs_mtagged, tag_efs(data_for_tagging, tags_manual, cile_dop_a_sc, retag = TRUE)),
   tar_target(agri_tagged, tag_agri(agri_opendata, reg_table_agri))
 )
 
@@ -211,6 +217,9 @@ t_tagged_summarised <- list(
   tar_target(efs_tagged_sum_op,
              summarise_tagged(efs_tagged %>% add_op_labels(),
                               op_zkr, op_id)),
+  tar_target(efs_tagged_sum_rule,
+             summarise_tagged(efs_tagged %>% add_op_labels(),
+                              op_zkr, to_rule, sc_id, sc_nazev, tc_id, oblast_intervence_kod)),
   tar_target(esif_tagged_sum_op, bind_rows(efs_tagged_sum_op, prv_tagged_sum)),
   tar_target(prv_tagged, subset_prv_tagged(agri_tagged)),
   tar_target(prv_tagged_sum, summarise_prv_tagged(prv_tagged)),
@@ -466,6 +475,6 @@ source("R/html_output.R")
 list(t_public_list, t_sestavy, t_esif_compile, t_export, t_codebook, t_html,
      t_agri_opendata, t_opendata, t_esif_compile_withopendata, t_switch,
      t_mtagged_summarised, t_text_teplarny, t_text_firmy,
-     t_climacat_reg, t_climacat_manual,
+     t_climacat_reg, t_climacat_manual, t_hier,
      t_climate_tag, t_tagged_summarised, t_tagging_aid, t_tagged_compiled,
      t_tagged_plots, t_prv_priorities, t_sample)
