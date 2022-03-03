@@ -20,7 +20,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Tím přibylo cca 5 mld. Kč. v kategorii 40 % a tedy 2 mld. v čistém přínosu podle oficiální metodologie.
 
-Při manuálním tagování toto pravidlo ignorujeme - lze dodatečně vytáhnout specifické cíle, kterých se to týkalo, a ověřit zase ručně.
+Při manuálním tagování toto pravidlo ignorujeme - jde o tyto specifické cíle, které byly tímto pravidlem upgradovány na koeficient 0,4, ale my jsme je nerevidovali, protože v původní verzi měly koeficient nula:
+
+```{r}
+targets::tar_load(efs_tagged_sum_rule)
+efs_tagged_sum_rule |> 
+  filter(to_rule) |> 
+  select(oblast_intervence_kod, sc_id, sc_nazev, op_zkr, fin_vyuct_czv) |> 
+  gt::gt()
+```
+
 
 [Export dat na Githubu](https://github.com/cdeorgcz/esiftagging/commits/main/data-export/export_202203) odráží tyto změny.
 
