@@ -22,6 +22,8 @@ Tím přibylo cca 5 mld. Kč. v kategorii 40 % a tedy 2 mld. v čistém přínos
 
 Při manuálním tagování toto pravidlo ignorujeme - lze dodatečně vytáhnout specifické cíle, kterých se to týkalo, a ověřit zase ručně.
 
+[Export dat na Githubu](https://github.com/cdeorgcz/esiftagging/commits/main/data-export/export_202203) odráží tyto změny.
+
 ## Změny k 28. 2. 2022
 
 Provedena validace výpočtů => oprava celkového součtu v hlavním grafu (bez dopadu na vážený klimatický příspěvek)
