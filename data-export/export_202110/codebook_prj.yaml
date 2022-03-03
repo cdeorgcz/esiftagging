@@ -7,7 +7,7 @@ locale: en
 table:
   name: data
   _columns: 26
-  _rows: 119278.0
+  _rows: 119424.0
   _type: tbl_df
   Info: Tabulka se součty výdajů podle OP, klima tagu a kategorie určující klimatag
   Rozsah: Z CAP/SZP zahruje jen PRV - projektová i plošná opatření
