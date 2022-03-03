@@ -1,0 +1,136 @@
+type: informant
+tbl: data
+tbl_name: data
+info_label: Codebook hlavního výstupu
+lang: en
+locale: en
+table:
+  name: data
+  _columns: 26
+  _rows: 119424.0
+  _type: tbl_df
+  Info: Tabulka se součty výdajů podle OP, klima tagu a kategorie určující klimatag
+  Rozsah: Z CAP/SZP zahruje jen PRV - projektová i plošná opatření
+  Proměnné: kategorie určující klimatag je u PRV opatření, u ostatních OP je to oblast
+    intervencí
+  Detail: Codebook obsahuje všechny proměnné obsažené v různých exportech
+  Celková struktura: 'dlouhý formát: kategorie jsou v řádcích, metadata a jednotlivé
+    zdroje financí jsou ve sloupcích'
+  Názvy proměnných: |-
+    platí i pro ostatní datové sady v pipeline:
+    - `dt_`: proměnné časového určení
+    - `fin_`: finanční údaje
+columns:
+  oblast_intervence_nazev_en:
+    _type: character
+    Typ: Oblast intervence (area of intervention)
+    Note: Nexistuje u výdajů CAP - zde jen nařízení
+    Detail: Kategorie určená v nařízení, na niž jsou v prováděcím nařízení navázány
+      klima tagy
+  oblast_intervence_kod:
+    _type: character
+    Typ: Oblast intervence (area of intervention)
+    Note: Nexistuje u výdajů CAP - zde jen nařízení
+    Detail: Kategorie určená v nařízení, na niž jsou v prováděcím nařízení navázány
+      klima tagy
+  climate_share:
+    _type: numeric
+    Popis: Podíl přispění ke klimatu - podle prováděcího nařízení EK
+  prj_id:
+    _type: character
+    Popis: Kód projektu Kód projektu
+    Typ: Informace o projektu. Nedostupné u PRV
+  sc_id:
+    _type: character
+    Typ: Identifikace specifického cíle podle OP
+  sc_nazev:
+    _type: character
+    Typ: Identifikace specifického cíle podle OP
+  op_zkr:
+    _type: character
+    Popis: Česká zkratka operačního programu
+  op_id:
+    _type: character
+    Popis: Kód operačního programu
+  fin_pravniakt_czv:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Celkové způsobilé výdaje
+  fin_pravniakt_eu:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Příspěvek Unie
+  fin_pravniakt_narodni_verejne:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Národní
+  fin_pravniakt_soukr:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Soukromý
+  fin_vyuct_czv:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Celkové způsobilé výdaje
+  fin_vyuct_eu:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Příspěvek Unie
+  fin_vyuct_narodni_verejne:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Národní
+  fin_vyuct_verejne:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+  fin_vyuct_soukr:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Soukromý
+  fin_vyuct_narodni:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
+    Zdroj financí: Národní
+  n_prj:
+    _type: integer
+  prj_nazev:
+    _type: character
+    Typ: Informace o projektu. Nedostupné u PRV
+  vyzva_id:
+    _type: character
+  vyzva_nazev:
+    _type: character
+  prj_shrnuti:
+    _type: character
+    Typ: Informace o projektu. Nedostupné u PRV
+  p_nazev:
+    _type: character
+    Popis: Název příjemce
+    Typ: Informace o příjemci
+  p_ic:
+    _type: character
+    Typ: Informace o příjemci
+  p_forma:
+    _type: character
+    Popis: Právní forma příjemce
+    Typ: Informace o příjemci
