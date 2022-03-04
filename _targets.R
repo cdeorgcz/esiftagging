@@ -435,8 +435,8 @@ t_text_firmy <- list(
   tar_target(plt_bigram_network_firmy, plot_ngrams_network(bigram_data_firmy, 50,
                                                            title = "Nejčastější dvojslovná spojení v popisech projektů")),
   tar_target(plt_topics_firmy, plot_topics(firmy_texts, prj_shrnuti,
-                                           firmy_tkn_trnsltr_descr, 3, stopwords_all_cz,
-                                           title = "Seskupení projektů do 8 témat",
+                                           firmy_tkn_trnsltr_descr, 4, stopwords_all_cz,
+                                           title = "Seskupení projektů do 4 témat",
                                            subtitle = "Relativně nejčastější slova v tématech"))
 )
 

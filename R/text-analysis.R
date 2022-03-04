@@ -48,7 +48,7 @@ stopwords_cz_additional <- c("rámec", "včetně", "současný", "výstup",
                              "spočívat", "x", "ii", "c")
 stopwords_esif <- c("projekt", "ulice", "cíl", "přinést", "dojít", "rámec",
                     "součást", "výstup", "předmět", "oblast", "doba", "jednat",
-                    "předpokládat", "hlavní", "versus", "realizace",
+                    "předpokládat", "hlavní", "versus", "realizace", "žadatel",
                     "předkládaný", "etapa", "akciový", "společnost",
                     "zaměřovat", "docházet", "dojít", "akce", "část", "řešit", "uvedený",
                     "zaměřit", "aktivita", "podpora", "realizovat",
