@@ -40,8 +40,6 @@ esif_get_table_url <- function(tables_list, table_date = NULL, table_type = "gen
 }
 
 source("_targets_packages.R")
-esif_get_table_url()
-esif_get_table_entry()
 
 date_from_url <- function(url) {
   tibble(url = url,
