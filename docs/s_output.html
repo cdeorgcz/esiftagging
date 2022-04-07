@@ -13,7 +13,7 @@
 
 <title>Výstup: dokumentace, validace</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -62,6 +62,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="site/site.css" type="text/css" />
 
 
@@ -86,6 +87,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -238,7 +242,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -257,7 +261,7 @@ $(document).ready(function () {
   <a href="research.html">Rešerše</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Náhledy
      
     <span class="caret"></span>
@@ -275,7 +279,7 @@ $(document).ready(function () {
   <a href="s_output.html">Dokumentace výstupů</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Technická dokumentace
      
     <span class="caret"></span>
@@ -334,6 +338,7 @@ class="section level2 tabset tabset-pills">
 <h3>Srovnání tagů</h3>
 <p><img src="s_output_files/figure-html/plot-sankey-1.png" width="100%" /></p>
 <p><img src="s_output_files/figure-html/plot-comparison-1.png" width="100%" /></p>
+<p><img src="s_output_files/figure-html/plot-comparison-bycat-1.png" width="100%" /></p>
 </div>
 <div id="všechny-op" class="section level3">
 <h3>Všechny OP</h3>
@@ -821,7 +826,7 @@ html {
       <th colspan="1" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="font-size: 12px; text-align: left;"><span style="text-decoration-style:solid;text-decoration-color:#ADD8E6;text-decoration-line:underline;text-underline-position:under;color:#333333;font-variant-numeric:tabular-nums;padding-left:4px;margin-right:5px;padding-right:2px;">Codebook hlavního výstupu</span></p>
 <div style="height:25px;margin-top:10px;"><span style="background-color:#F1D35A;color:#222222;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 5px;font-weight:bold;border:solid 1px #F1D35A;padding:2px 15px 2px 15px;font-size:smaller;">tibble</span>
 <span style="background-color:none;color:#222222;padding:0.5em 0.5em;position:inherit;margin:5px 10px 5px -4px;font-weight:bold;border:solid 1px #F1D35A;padding:2px 15px 2px 15px;font-size:smaller;">data</span><span style="background-color:#eecbff;color:#333333;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 5px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">Rows</span>
-<span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">119,424</span>
+<span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">120,956</span>
 <span style="background-color:#BDE7B4;color:#333333;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 1px;font-weight:bold;border:solid 1px #BDE7B4;padding:2px 15px 2px 15px;font-size:smaller;">Columns</span>
 <span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #BDE7B4;padding:2px 15px 2px 15px;font-size:smaller;">26</span></div>
 </th>
@@ -974,9 +979,9 @@ html {
   </tbody>
   <tfoot class="gt_sourcenotes">
     <tr>
-      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-03-03 19:06:43 CET</span>
+      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-04-07 07:46:11 CEST</span>
 <span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;margin:5px 1px 5px 0;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">&lt; 1 s</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-03-03 19:06:43 CET</span></td>
+<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-04-07 07:46:11 CEST</span></td>
     </tr>
   </tfoot>
   
@@ -1426,7 +1431,7 @@ html {
       <th colspan="1" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="font-size: 12px; text-align: left;"><span style="text-decoration-style:solid;text-decoration-color:#ADD8E6;text-decoration-line:underline;text-underline-position:under;color:#333333;font-variant-numeric:tabular-nums;padding-left:4px;margin-right:5px;padding-right:2px;">Codebook hlavního výstupu</span></p>
 <div style="height:25px;margin-top:10px;"><span style="background-color:#F1D35A;color:#222222;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 5px;font-weight:bold;border:solid 1px #F1D35A;padding:2px 15px 2px 15px;font-size:smaller;">tibble</span>
 <span style="background-color:none;color:#222222;padding:0.5em 0.5em;position:inherit;margin:5px 10px 5px -4px;font-weight:bold;border:solid 1px #F1D35A;padding:2px 15px 2px 15px;font-size:smaller;">data</span><span style="background-color:#eecbff;color:#333333;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 5px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">Rows</span>
-<span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">194</span>
+<span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">195</span>
 <span style="background-color:#BDE7B4;color:#333333;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 1px;font-weight:bold;border:solid 1px #BDE7B4;padding:2px 15px 2px 15px;font-size:smaller;">Columns</span>
 <span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #BDE7B4;padding:2px 15px 2px 15px;font-size:smaller;">20</span></div>
 </th>
@@ -1562,9 +1567,9 @@ html {
   </tbody>
   <tfoot class="gt_sourcenotes">
     <tr>
-      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-03-03 19:06:43 CET</span>
+      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-04-07 07:46:12 CEST</span>
 <span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;margin:5px 1px 5px 0;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">&lt; 1 s</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-03-03 19:06:43 CET</span></td>
+<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-04-07 07:46:12 CEST</span></td>
     </tr>
   </tfoot>
   
@@ -1577,7 +1582,7 @@ html {
 <h2 class="tabset tabset-pills">Náhled proměnných</h2>
 <div id="projektová-úroveň-1" class="section level3">
 <h3>Projektová úroveň</h3>
-<pre><code>Rows: 119,424
+<pre><code>Rows: 120,956
 Columns: 26
 $ oblast_intervence_nazev_en    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ oblast_intervence_kod         &lt;chr&gt; &quot; III.0.055&quot;, &quot; III.0.055&quot;, &quot; III.0.055&quot;…
@@ -1591,12 +1596,12 @@ $ fin_pravniakt_czv             &lt;dbl&gt; 0, 5791529, 1885925, 0, 0, 0, 0, 0, 
 $ fin_pravniakt_eu              &lt;dbl&gt; 0, 4922800, 1603036, 0, 0, 0, 0, 0, 0, 0…
 $ fin_pravniakt_narodni_verejne &lt;dbl&gt; 0.0, 868729.3, 188592.5, 0.0, 0.0, 0.0, …
 $ fin_pravniakt_soukr           &lt;dbl&gt; 0.00, 0.00, 94296.25, 0.00, 0.00, 0.00, …
-$ fin_vyuct_czv                 &lt;dbl&gt; 0, 5782731, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ fin_vyuct_eu                  &lt;dbl&gt; 0, 4915321, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ fin_vyuct_narodni_verejne     &lt;dbl&gt; 0.0, 867409.7, 0.0, 0.0, 0.0, 0.0, 0.0, …
-$ fin_vyuct_verejne             &lt;dbl&gt; 0, 5782731, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ fin_vyuct_soukr               &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
-$ fin_vyuct_narodni             &lt;dbl&gt; 0.0, 867409.7, 0.0, 0.0, 0.0, 0.0, 0.0, …
+$ fin_vyuct_czv                 &lt;dbl&gt; 0, 5782731, 787830, 0, 0, 0, 0, 0, 0, 0,…
+$ fin_vyuct_eu                  &lt;dbl&gt; 0.0, 4915321.5, 669655.5, 0.0, 0.0, 0.0,…
+$ fin_vyuct_narodni_verejne     &lt;dbl&gt; 0.0, 867409.7, 78783.0, 0.0, 0.0, 0.0, 0…
+$ fin_vyuct_verejne             &lt;dbl&gt; 0.0, 5782731.2, 748438.5, 0.0, 0.0, 0.0,…
+$ fin_vyuct_soukr               &lt;dbl&gt; 0.0, 0.0, 39391.5, 0.0, 0.0, 0.0, 0.0, 0…
+$ fin_vyuct_narodni             &lt;dbl&gt; 0.0, 867409.7, 118174.5, 0.0, 0.0, 0.0, …
 $ n_prj                         &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1…
 $ prj_nazev                     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ vyzva_id                      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
@@ -1608,24 +1613,24 @@ $ p_forma                       &lt;chr&gt; &quot;Evidované církevní právnic
 </div>
 <div id="součty-1" class="section level3">
 <h3>Součty</h3>
-<pre><code>Rows: 194
+<pre><code>Rows: 195
 Columns: 20
 $ oblast_intervence_nazev_en    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ oblast_intervence_kod         &lt;chr&gt; &quot; III.0.055&quot;, &quot; IV.1.060&quot;, &quot; IV.1.061&quot;, …
 $ climate_share                 &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ op_zkr                        &lt;chr&gt; &quot;IROP&quot;, &quot;OP PIK&quot;, &quot;OP PIK&quot;, &quot;OP PIK&quot;, &quot;O…
 $ op_id                         &lt;chr&gt; &quot;06&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;01&quot;, &quot;06&quot;, &quot;08&quot;…
-$ fin_pravniakt_czv             &lt;dbl&gt; 7677454, 0, 0, 0, 0, 0, 6172500, 0, 0, 1…
-$ fin_pravniakt_eu              &lt;dbl&gt; 6525836, 0, 0, 0, 0, 0, 5246625, 0, 0, 1…
-$ fin_pravniakt_narodni_verejne &lt;dbl&gt; 1057321.8, 0.0, 0.0, 0.0, 0.0, 0.0, 9258…
+$ fin_pravniakt_czv             &lt;dbl&gt; 7677454, 0, 0, 0, 0, 0, 8439921, 0, 0, 1…
+$ fin_pravniakt_eu              &lt;dbl&gt; 6525836, 0, 0, 0, 0, 0, 7173933, 0, 0, 1…
+$ fin_pravniakt_narodni_verejne &lt;dbl&gt; 1057322, 0, 0, 0, 0, 0, 1265988, 0, 0, 2…
 $ fin_pravniakt_soukr           &lt;dbl&gt; 94296.25, 0.00, 0.00, 0.00, 0.00, 0.00, …
-$ fin_vyuct_czv                 &lt;dbl&gt; 5782731.17, 0.00, 0.00, 0.00, 0.00, 0.00…
-$ fin_vyuct_eu                  &lt;dbl&gt; 4915321.50, 0.00, 0.00, 0.00, 0.00, 0.00…
-$ fin_vyuct_narodni_verejne     &lt;dbl&gt; 867409.68, 0.00, 0.00, 0.00, 0.00, 0.00,…
-$ fin_vyuct_verejne             &lt;dbl&gt; 5782731.17, 0.00, 0.00, 0.00, 0.00, 0.00…
-$ fin_vyuct_soukr               &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4…
-$ fin_vyuct_narodni             &lt;dbl&gt; 867409.68, 0.00, 0.00, 0.00, 0.00, 0.00,…
-$ n_prj                         &lt;int&gt; 8, 1, 20, 50, 1, 15, 1, 2, 1, 1, 981, 3,…
+$ fin_vyuct_czv                 &lt;dbl&gt; 6570561.2, 0.0, 0.0, 0.0, 0.0, 0.0, 7418…
+$ fin_vyuct_eu                  &lt;dbl&gt; 5584977.00, 0.00, 0.00, 0.00, 0.00, 0.00…
+$ fin_vyuct_narodni_verejne     &lt;dbl&gt; 946192.68, 0.00, 0.00, 0.00, 0.00, 0.00,…
+$ fin_vyuct_verejne             &lt;dbl&gt; 6531169.7, 0.0, 0.0, 0.0, 0.0, 0.0, 7418…
+$ fin_vyuct_soukr               &lt;dbl&gt; 39391.5, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0…
+$ fin_vyuct_narodni             &lt;dbl&gt; 985584.18, 0.00, 0.00, 0.00, 0.00, 0.00,…
+$ n_prj                         &lt;int&gt; 11, 3, 33, 53, 1, 19, 2, 2, 1, 1, 981, 3…
 $ prv_opatreni_orig             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ prv_opatreni_id               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ prv_opatreni_typ              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
@@ -1635,13 +1640,13 @@ $ prv_opatreni_nazev            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 <div id="validace-výstupu" class="section level2">
 <h2>Validace výstupu</h2>
 <pre><code>[1] 447.962</code></pre>
-<pre><code>[1] 577.3274</code></pre>
-<pre><code>[1] 521.968</code></pre>
+<pre><code>[1] 596.046</code></pre>
+<pre><code>[1] 540.6866</code></pre>
 </div>
 <div id="zdroje" class="section level2">
 <h2>Zdroje</h2>
-<p>Používáme veřejná data z 2022-02-01 stažená z <a
-href="https://mmr.cz/getmedia/b7e30c74-1b37-4f96-8faf-0c1f9c92bb9d/2022_02_Seznam-operaci_List-of-operations.xlsx.aspx?ext=.xlsx">této
+<p>Používáme veřejná data z 2022-04-01 stažená z <a
+href="https://mmr.cz/getmedia/2aef779a-fa34-47ef-9a30-7eb19a1c5a2a/2022_04_Seznam-operaci_List-of-operations.xlsx.aspx?ext=.xlsx">této
 adresy</a>.</p>
 <p>Detaily v <a href="dev.html">technické dokumentaci</a>.</p>
 </div>
@@ -1678,6 +1683,31 @@ Opatovice”.</p>
 <p><img src="s_output_files/figure-html/plt-firmy-bigrams-bars-1.png" width="100%" /></p>
 <p><img src="s_output_files/figure-html/plt-firmy-bigrams-network-1.png" width="100%" /></p>
 <p><img src="s_output_files/figure-html/plt-firmy-topics-1.png" width="100%" /></p>
+</div>
+</div>
+<div id="příklady" class="section level2">
+<h2>Příklady</h2>
+<div id="typy-reklasifikací" class="section level3">
+<h3>Typy reklasifikací</h3>
+<p>příklad, kdy se jedna OI rozpadá do víc SC a s každým jsme zacházeli
+jinak: - Air Quality Measures (Opatření v oblasti kvality ovzduší):
+rozpadá se do - OP ŽP SC “Snížit emise z lokálního vytápění” - tzv.
+kotlíkové dotace. Tam jsme tag snížili na záporný kvůli carbon lock-inu
+dotovaných lokálních topenišť - OP ŽP SC “Snížit emise stacionárních
+zdrojů podílejících se na expozici” - snížili jsme tag na 0 kvůli
+klimatické nerelevanci daných opatření</p>
+<p>příklad, kdy se jeden SC rozpadá do více OI a s každou jsme zacházeli
+jinak: - IROP SC Zvýšení připravenosti k řešení a řízení rizik a
+katastrof se rozpadá na - Předcházení rizikům nesouvisejícím s klimatem:
+- Opatření pro přizpůsobení se změně klimatu:</p>
+<p>jedna k jedné: energetická učinnost a demonstrační projekty v malých
+a středních podnicích - celé v OP PIK SC “Zvýšit energetickou účinnost
+podnikatelského sektoru”: v SC jsou projekty, které téměř určitě nejsou
+ze 100 % klima pozitivní (běžné inovace s dílčími aktivitami zaměřenými
+na zvýšení energetické účinnosti; vývoj dílů pro EV)</p>
+</div>
+<div id="specifické-reklasifikace" class="section level3">
+<h3>Specifické reklasifikace</h3>
 </div>
 </div>
 </div>

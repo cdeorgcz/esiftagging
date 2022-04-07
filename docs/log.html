@@ -13,7 +13,7 @@
 
 <title>Záznam kroků a poznatků</title>
 
-<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -62,6 +62,7 @@ if (window.hljs) {
 
 
 
+
 <link rel="stylesheet" href="site/site.css" type="text/css" />
 
 
@@ -86,6 +87,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -238,7 +242,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -257,7 +261,7 @@ $(document).ready(function () {
   <a href="research.html">Rešerše</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Náhledy
      
     <span class="caret"></span>
@@ -275,7 +279,7 @@ $(document).ready(function () {
   <a href="s_output.html">Dokumentace výstupů</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Technická dokumentace
      
     <span class="caret"></span>
@@ -317,9 +321,36 @@ $(document).ready(function () {
 </div>
 
 
+<div id="změny-5.-4.-2022" class="section level2">
+<h2>Změny 5. 4. 2022</h2>
+<div id="upraveny-revidované-tagy" class="section level3">
+<h3>upraveny revidované tagy:</h3>
+<ul>
+<li>v OP PIK u oblasti intervence “Renewable energy: solar” zvýšen
+revidovaný tag na 0.4 v SC 01.3.10.3.2</li>
+</ul>
+</div>
+<div id="nové-výstupy" class="section level3">
+<h3>Nové výstupy</h3>
+<ul>
+<li>ve <a href="s_output.html">výstupech</a> přibyl graf přispění
+jednotlivých reklasifikací k celkovému rozdílu mezi výsledkem podle EK a
+podle CDE</li>
+</ul>
+</div>
+<div id="ostatní" class="section level3">
+<h3>Ostatní</h3>
+<ul>
+<li>načtena veřejná data do konce března 2022 =&gt; nárůst celkového
+objemu</li>
+<li>na <a href="s_output.html">stránce s výstupem</a> doplněny příklady
+/ osvětlení logiky reklasifikací</li>
+</ul>
+</div>
+</div>
 <div id="změny-3.-3.-2022" class="section level2">
 <h2>Změny 3. 3. 2022</h2>
-<div id="upraveny-revidované-tagy" class="section level3">
+<div id="upraveny-revidované-tagy-1" class="section level3">
 <h3>upraveny revidované tagy:</h3>
 <ul>
 <li>v OP PIK u SC 01.3.10.3.2 “Zvýšit energetickou účinnost
@@ -722,12 +753,17 @@ koeficient nula:</p>
 <td class="gt_row gt_left">05.1.24.1.3</td>
 <td class="gt_row gt_left">Zajistit povodňovou ochranu v intravilánu</td>
 <td class="gt_row gt_left">OP ŽP</td>
-<td class="gt_row gt_right">262374890</td></tr>
+<td class="gt_row gt_right">269395108</td></tr>
+    <tr><td class="gt_row gt_left">IV.4.088</td>
+<td class="gt_row gt_left">05.1.24.1.3</td>
+<td class="gt_row gt_left">Zajistit povodňovou ochranu v intravilánu </td>
+<td class="gt_row gt_left">OP ŽP</td>
+<td class="gt_row gt_right">0</td></tr>
     <tr><td class="gt_row gt_left">IV.4.088</td>
 <td class="gt_row gt_left">05.1.24.1.4</td>
 <td class="gt_row gt_left">Podpořit preventivní protipovodňová opatření</td>
 <td class="gt_row gt_left">OP ŽP</td>
-<td class="gt_row gt_right">2019757478</td></tr>
+<td class="gt_row gt_right">2080804007</td></tr>
     <tr><td class="gt_row gt_left">IV.4.088</td>
 <td class="gt_row gt_left">05.3.23.3.5</td>
 <td class="gt_row gt_left">Snížit environmentální rizika a rozvíjet systémy jejich řízení</td>
@@ -737,7 +773,7 @@ koeficient nula:</p>
 <td class="gt_row gt_left">05.3.24.3.4</td>
 <td class="gt_row gt_left">Dokončit inventarizaci a odstranit ekologické zátěže</td>
 <td class="gt_row gt_left">OP ŽP</td>
-<td class="gt_row gt_right">1878355235</td></tr>
+<td class="gt_row gt_right">1894794007</td></tr>
   </tbody>
   
   
