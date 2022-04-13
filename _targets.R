@@ -52,6 +52,10 @@ t_prv_priorities <- list(
 ## PRV open data -------------------------------------------------
 
 t_agri_opendata <- list(
+
+  # map over URLs and years in config.yml
+  #
+
   tar_target(agri_opendata_urls, c_agri_opendata_urls),
   tar_target(agri_opendata_paths, file.path(c_agri_opendata_dir,
                                             c_agri_opendata_zipxml)),
@@ -69,8 +73,10 @@ t_agri_opendata <- list(
 
 
 ## MS open data ---------------------------------------------------------------
-
 t_opendata <- list(
+
+  # public open data in XML - download data and open data and load
+
   tar_download(od_meta_xml, c_ef_open_metadata_url, c_ef_open_metadata_path,
                cue = tar_cue(mode = if(c_refresh_open_metadata) "thorough" else "never")),
   tar_download(od_data_xml, c_ef_open_data_url, c_ef_open_data_path,
@@ -85,14 +91,14 @@ t_opendata <- list(
 ## Public project data -----------------------------------------------------
 
 t_public_list <- list(
-  tar_target(ef_source,
+  tar_age(ef_source,
              if(is.null(c_ef_pubxls_url)) {
                esif_get_table_entry()
-             } else {date_from_url(c_ef_pubxls_url)}),
+             } else {date_from_url(c_ef_pubxls_url)},
+          age = as.difftime(30, units = "days")),
   tar_target(ef_url, ef_source |> pull(url), format = "url"),
-  tar_target(ef_pubxls,
-             curl::curl_download(ef_url,
-                                 here::here("data-input/ef_public.xlsx"))),
+  tar_file(ef_pubxls,
+           curl::curl_download(ef_url, here::here("data-input/ef_public.xlsx"))),
   tar_target(ef_pub, read_pubxls(ef_pubxls))
 )
 
