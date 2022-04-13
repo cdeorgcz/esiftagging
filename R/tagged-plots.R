@@ -158,3 +158,60 @@ make_plot_tagged_agri <- function(agri_tagged) {
     labs(title = "CAP spending by climate tags",
          subtitle = "bn CZK, all spending. Follows official climate tags.")
 }
+
+make_plot_retag_decomposition <- function(prj_retagged) {
+  prj_retagged |>
+    ungroup() |>
+    group_by(sc = sc_nazev, oi = oblast_intervence_nazev, op_zkr, retag) |>
+    summarise(beg = sum(fin_vyuct_czv * climate_share/1e3),
+              end = sum(fin_vyuct_czv * climate_share_m/1e3),
+              diff = end - beg, .groups = "drop") |>
+    filter(abs(diff) > .1) |>
+    mutate(lbl = paste0(op_zkr, ": ", str_trunc(sc, 60), "\n",
+                        str_trunc(oi, 60), " (", retag, ")") |>
+             fct_reorder(-diff)) |>
+    ggplot(aes(y = lbl)) +
+    geom_vline(xintercept = 0, linetype = "dotted") +
+    geom_linerange(aes(xmin = beg, xmax = end,
+                       colour = if_else(diff > 0, "zlepšení", "zhoršení")),
+                   key_glyph = draw_key_path,
+                   size = 1.5) +
+    geom_point(aes(x = beg, fill = "Nařízení"), shape = 21, size = 2, colour = "white") +
+    geom_point(aes(x = end, fill = "CDE"), shape = 21, size = 2, colour = "white") +
+    scale_colour_manual(values = c(zlepšení = "darkgreen", zhoršení = "darkred"), name = "Dopad reklasifikace") +
+    scale_fill_manual(values = c(Nařízení = "darkblue", CDE = "lightblue"), name = "Metodologie") +
+    ptrr::theme_ptrr("both", legend.position = "top", base_size = 8, legend.justification = 1, legend.box.just = "left") +
+    labs(title = "Příspěvek skupin reklasifikovaných projektů k rozdílu\nmezi klasifikací EK a CDE",
+         subtitle = "Zahrnuje pouze kategorie se změnou větší než 100 mil. Kč. Vše v mld. Kč CZV.") +
+    guides(fill = guide_legend(order = 1),
+           colour = guide_legend(order = 2, keyheight = unit(8, "pt"), keywidth = unit(8, "pt")))
+
+}
+
+make_plot_retag_decomposition_rough <- function(prj_retagged) {
+  prj_retagged |>
+    ungroup() |>
+    group_by(sc = sc_nazev, op_zkr, retag) |>
+    summarise(beg = sum(fin_vyuct_czv * climate_share/1e3),
+              end = sum(fin_vyuct_czv * climate_share_m/1e3),
+              diff = end - beg, .groups = "drop") |>
+    filter(abs(diff) > .1) |>
+    mutate(lbl = paste0(op_zkr, ": ", str_trunc(sc, 60), " (", retag, ")") |>
+             fct_reorder(-diff)) |>
+    ggplot(aes(y = lbl)) +
+    geom_vline(xintercept = 0, linetype = "dotted") +
+    geom_linerange(aes(xmin = beg, xmax = end,
+                       colour = if_else(diff > 0, "zlepšení", "zhoršení")),
+                   key_glyph = draw_key_path,
+                   size = 1.5) +
+    geom_point(aes(x = beg, fill = "Nařízení"), shape = 21, size = 2, colour = "white") +
+    geom_point(aes(x = end, fill = "CDE"), shape = 21, size = 2, colour = "white") +
+    scale_colour_manual(values = c(zlepšení = "darkgreen", zhoršení = "darkred"), name = "Dopad reklasifikace") +
+    scale_fill_manual(values = c(Nařízení = "darkblue", CDE = "lightblue"), name = "Metodologie") +
+    ptrr::theme_ptrr("both", legend.position = "top", base_size = 8, legend.justification = 1, legend.box.just = "left") +
+    labs(title = "Příspěvek skupin reklasifikovaných projektů k rozdílu\nmezi klasifikací EK a CDE",
+         subtitle = "Zahrnuje pouze kategorie se změnou větší než 100 mil. Kč. Vše v mld. Kč CZV.") +
+    guides(fill = guide_legend(order = 1),
+           colour = guide_legend(order = 2, keyheight = unit(8, "pt"), keywidth = unit(8, "pt")))
+
+}

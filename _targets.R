@@ -287,7 +287,9 @@ t_tagged_plots <- list(
   tar_target(plot_weighted_op, make_plot_weighted_all(esif_tagged_sum)),
   tar_target(plot_weighted_op_m, make_plot_weighted_all(esif_mtagged_sum,
                                                           tag_var = climate_share_m)),
-  tar_target(plot_sankey, make_tag_sankey(efs_tags_compare))
+  tar_target(plot_sankey, make_tag_sankey(efs_tags_compare)),
+  tar_target(plot_retag_decomposition, make_plot_retag_decomposition(prj_retagged)),
+  tar_target(plot_retag_decomposition_rough, make_plot_retag_decomposition_rough(prj_retagged))
 )
 
 # Overview for manual tagging ----------------------------------------------
