@@ -7,10 +7,32 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Změny 3. 3. 2022
+## Změny 13. 4. 2022
 
+- doplněny grafy rozdílů tagů na úrovni SC a OI, resp jen SC
+- upraveny revidované tagy po interní konzultaci CDE
+- doplněny exporty dat u každého grafu
+- grafy převedeny do SVG
+
+## Změny 5. 4. 2022
 
 ### upraveny revidované tagy:
+
+- v OP PIK u oblasti intervence "Renewable energy: solar" zvýšen revidovaný tag na 0.4 v SC 01.3.10.3.2
+
+### Nové výstupy
+
+- ve [výstupech](s_output.html) přibyl graf přispění jednotlivých reklasifikací k celkovému rozdílu mezi výsledkem podle EK a podle CDE
+
+### Ostatní
+
+- načtena veřejná data do konce března 2022 => nárůst celkového objemu
+- na [stránce s výstupem](s_output.html) doplněny příklady / osvětlení logiky reklasifikací
+
+## Změny 3. 3. 2022
+
+### upraveny revidované tagy:
+
   - v OP PIK u SC 01.3.10.3.2 "Zvýšit energetickou účinnost podnikatelského sektoru" na 0,4 => výrazná změna výsledku, mj. OP PIK je v čistém vyjádření pozitivní - podle textové analýzy projektů jde hlavně o zateplení, částečně fotovoltaiku
   - v OP PPR u SC 07.2.13.2.3 "Rozvoj nízkoemisní mobility v oblasti městské dopravy v uličním provozu" na 1 - jsou tam jen projekty na nákup elektrobusů a trolejbusů (zatím neproplacené, ale reálné)
   - v OP D u SC 04.2.40.2.2 "Vytvoření podmínek pro širší využití vozidel na alternativní pohon na silniční síti" na 0,4 (plyn tam tvoří výraznou menšinu)

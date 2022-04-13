@@ -39,7 +39,9 @@ bscols(
   htmltools::div(crosstalk::filter_checkbox('op', 'OP', sdf, ~op_zkr, inline = TRUE),
   crosstalk::filter_checkbox('typ', 'Typ příkladu', sdf, ~typ, inline = TRUE)),
   crosstalk::filter_checkbox('tagchange', 'Změna tagu', sdf, ~retag, inline = FALSE, columns = 3),
-  crosstalk::filter_slider('fin', 'Proplacené výdaje projektu', sdf, ~fin_vyuct_czv)
+  crosstalk::filter_slider('fin', 'Proplacené výdaje projektu', sdf, ~fin_vyuct_czv),
+  crosstalk::filter_select('obl', 'Oblast intervence', sdf, ~oblast_intervence_nazev_en),
+  crosstalk::filter_select('sc', 'SC', sdf, ~sc_nazev)
 )
 
 ```
@@ -57,7 +59,7 @@ bscols(htmltools::div(list("Výdaje ve vybraných projektech (mil. Kč, neváže
 DT::datatable(sdf,
               style = "bootstrap4",
               # filter = "top", 
-              rownames = FALSE, 
+              rownames = FALSE,
               colnames = c("mil. Kč" = "fin_vyuct_czv", Příjemce = "p_nazev",
                            Projekt = "prj_nazev", Anotace = "prj_shrnuti",
                            OP = "op_zkr"),
@@ -65,6 +67,7 @@ DT::datatable(sdf,
               extensions = "Buttons",
               options = list(
                 # dom = 'pBrti',
-                buttons = c('copy', 'csv', 'excel')), width = 1800)
+                columnDefs = list(list(visible = FALSE, targets = 5:12)),
+                buttons = c('copy', 'csv', 'excel')))
 ```
 
