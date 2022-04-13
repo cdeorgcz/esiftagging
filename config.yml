@@ -61,7 +61,7 @@ default:
   czso_pop_table_id: "130149"
 
   # export location
-  export_dir: "data-export/export_202203"
+  export_dir: "data-export/export_202204"
 
   export_all_ops_xlsx: "sum_tagged_all_ops.xlsx"
   export_all_ops_detail_xlsx: "sum_tagged_all_ops_detail.xlsx"
