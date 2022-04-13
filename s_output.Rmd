@@ -5,7 +5,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE,
-                      comment = "", out.width = "100%", fig.asp = .66)
+                      comment = "", out.width = "100%", fig.asp = .66, dev = "svglite")
 source("_targets_packages.R")
 options(crayon.enabled = FALSE)
 cnf <- config::get()
@@ -26,59 +26,129 @@ targets::tar_load(efs_tagged_sum_prj)
 
 # {.tabset}
 
-## Náhled hlavního výstupu {.tabset .tabset-pills}
+## Hlavní grafy {.tabset .tabset-pills}
 
 ### Celkem - EK
 
 ```{r plot-all, out.width="100%"}
-tar_read(plot_all)
+tar_load(plot_all)
+plot_all
 ```
+
+```{r}
+plot_all$data |> download_this(button_label = "Data v CSV")
+```
+
 
 ### Celkem - CDE
 
 ```{r plot-all-revised, out.width="100%"}
-tar_read(plot_all_m)
+tar_load(plot_all_m)
+plot_all_m
 ```
 
-### Srovnání tagů
+```{r}
+plot_all_m$data |> download_this(button_label = "Data v CSV")
+```
+
+
+### Srovnání tagů {.tabset .tabset-pills}
 
 ```{r plot-sankey, out.width="100%"}
-tar_read(plot_sankey)
+tar_load(plot_sankey)
+plot_sankey
 ```
 
-```{r plot-comparison, out.width="100%"}
-tar_read(plot_comparison)
+```{r}
+plot_sankey$data |> download_this(button_label = "Data v CSV")
+```
+```{r plot-comparison, out.width="100%", dev = "svglite"}
+tar_load(plot_comparison)
+plot_comparison
+```
+
+```{r}
+plot_comparison$data |> download_this(button_label = "Data v CSV")
+```
+
+```{r plot-comparison-data}
+targets::tar_load(prj_retagged)
+```
+
+```{r plot-comparison-bycat, fig.height=12, fig.asp=1}
+targets::tar_load(plot_retag_decomposition)
+plot_retag_decomposition
+```
+
+```{r}
+plot_retag_decomposition$data %>% download_this(button_label = "Data v CSV")
+```
+
+
+```{r plot-comparison-bysc, fig.height=7}
+targets::tar_load(plot_retag_decomposition_rough)
+plot_retag_decomposition_rough
+```
+
+
+```{r plot-comparison-bysc-data}
+plot_retag_decomposition_rough$data %>% download_this(button_label = "Data v CSV")
 ```
 
 
 ### Všechny OP
 
 ```{r plot-all-op, out.width="100%"}
-tar_read(plot_tagged_op)
+tar_load(plot_tagged_op)
+plot_tagged_op
 ```
+
+```{r}
+plot_tagged_op$data |> download_this(button_label = "Data v CSV")
+```
+
 
 ```{r plot-weighted-op, out.width="100%"}
-targets::tar_read(plot_weighted_op)
+targets::tar_load(plot_weighted_op)
+plot_weighted_op
 ```
 
-### Všechny OP  - CDE
+```{r}
+plot_weighted_op$data |> download_this(button_label = "Data v CSV")
+```
+
+### Všechny OP - CDE
 
 ```{r plot-all-op-cde, out.width="100%"}
-tar_read(plot_tagged_op_m)
+tar_load(plot_tagged_op_m)
+plot_tagged_op_m
+```
+
+```{r}
+plot_tagged_op_m$data |> download_this(button_label = "Data v CSV")
 ```
 
 ```{r plot-weighted-op-cde, out.width="100%"}
-targets::tar_read(plot_weighted_op_m)
+targets::tar_load(plot_weighted_op_m)
+plot_weighted_op_m
+```
+
+```{r}
+plot_weighted_op_m$data |> download_this(button_label = "Data v CSV")
 ```
 
 ### SZP vč. PRV
 
 ```{r plot-szp, out.width="100%"}
-targets::tar_read(plot_tagged_agri)
+targets::tar_load(plot_tagged_agri)
+plot_tagged_agri
 ```
 
+```{r}
+plot_tagged_agri$data |> download_this(button_label = "Data v CSV")
+```
 
-## Dokumentace hlavního výstupu
+## Dokumentace výstupu
 
 ### Soubory
 
@@ -221,5 +291,29 @@ targets::tar_read(plt_bigram_network_firmy)
 ```{r plt-firmy-topics}
 targets::tar_read(plt_topics_firmy)
 ```
+
+## Příklady
+
+### Typy reklasifikací
+
+příklad, kdy se jedna OI rozpadá do víc SC a s každým jsme zacházeli jinak: 
+
+- Air Quality Measures (Opatření v oblasti kvality ovzduší): rozpadá se do
+
+  - OP ŽP SC "Snížit emise z lokálního vytápění" - tzv. kotlíkové dotace. Tam jsme tag snížili na záporný kvůli carbon lock-inu dotovaných lokálních topenišť
+  - OP ŽP SC "Snížit emise stacionárních zdrojů podílejících se na expozici" - snížili jsme tag na 0 kvůli klimatické nerelevanci daných opatření
+
+příklad, kdy se jeden SC rozpadá do více OI a s každou jsme zacházeli jinak:
+
+- IROP SC Zvýšení připravenosti k řešení a řízení rizik a katastrof se rozpadá na
+
+  - Předcházení rizikům nesouvisejícím s klimatem: metodologie EK vede ke klimatagu 40 %, ale už z názvu oblasti intervence je patrné, že nejde o opatření s přispěním k cílům v oblasti klimatu
+  - Opatření pro přizpůsobení se změně klimatu: 
+
+jedna k jedné: energetická učinnost a demonstrační projekty v malých a středních podnicích
+- celé v OP PIK SC "Zvýšit energetickou účinnost podnikatelského sektoru": v SC jsou projekty, které téměř určitě nejsou ze 100 % klima pozitivní (běžné inovace s dílčími aktivitami zaměřenými na zvýšení energetické účinnosti; vývoj dílů pro EV)
+
+### Specifické reklasifikace
+
 
 
