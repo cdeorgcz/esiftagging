@@ -5,6 +5,7 @@ library(future)
 
 options(conflicts.policy = list(warn = FALSE))
 options(clustermq.scheduler = "LOCAL")
+options(timeout = 120) # for MMR open data file, which takes long to download
 
 # Config ------------------------------------------------------------------
 
