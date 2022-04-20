@@ -7,6 +7,10 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Změny 20. 4. 2022
+
+Na [Observable notebook s výpočty](https://observablehq.com/@petrbouchal/cohesion-climate) pro mezinárodní srovnání na živých datech od EK. Výtah viz [výstup](s_output.html).
+
 ## Změny 13. 4. 2022
 
 - doplněny grafy rozdílů tagů na úrovni SC a OI, resp jen SC

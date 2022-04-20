@@ -148,7 +148,31 @@ plot_tagged_agri
 plot_tagged_agri$data |> download_this(button_label = "Data v CSV")
 ```
 
-## Dokumentace výstupu
+
+## Srovnání států
+
+Built in [this Observable Notebook](https://observablehq.com/@petrbouchal/cohesion-climate) using [live EC Cohesion Open Data](https://cohesiondata.ec.europa.eu/2014-2020-Categorisation/ESIF-2014-2020-categorisation-ERDF-ESF-CF-planned-/3kkx-ekfq).
+
+### Contribution to climate objectives
+
+#### Climate-related spending as a share of total spending
+
+Actual declared spending cumulative to ${yr}, EU cofinancing only. Weighted contribution based on Rio tags; see [EC story](https://cohesiondata.ec.europa.eu/stories/s/a8jn-38y8) for details on the underlying data and methodology.
+
+
+<iframe width="100%" height="518" frameborder="0"
+  src="https://observablehq.com/embed/@petrbouchal/cohesion-climate?cells=viewof+yr%2Cbarplot2"></iframe>
+
+#### Progress towards planned ESIF spending on climate objectives
+
+Climate spending disbursed by the end of each year as % of planned climate spending, by Member state
+
+EU contribution only, climate contribution based on Rio marker weights
+
+<iframe width="100%" height="754" frameborder="0"
+  src="https://observablehq.com/embed/@petrbouchal/cohesion-climate?cells=viewof+mss%2Cbarplot3"></iframe>
+
+## Data {.tabset}
 
 ### Soubory
 
@@ -192,15 +216,15 @@ Zapsáno v `r file.path(c_export_dir, c_export_cdbk_sum)`
 sum_codebook
 ```
 
-## Náhled proměnných {.tabset .tabset-pills}
+### Náhled proměnných {.tabset .tabset-pills}
 
-### Projektová úroveň
+#### Projektová úroveň
 
 ```{r columns}
 glimpse(efs_tagged_sum_prj)
 ```
 
-### Součty
+#### Součty
 
 ```{r columns-sum}
 glimpse(esif_tagged_sum_op)

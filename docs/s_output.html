@@ -387,12 +387,43 @@ $(document).ready(function () {
 </a>
 </div>
 </div>
-<div id="dokumentace-výstupu" class="section level2">
-<h2>Dokumentace výstupu</h2>
+<div id="srovnání-států" class="section level2">
+<h2>Srovnání států</h2>
+<p>Built in <a
+href="https://observablehq.com/@petrbouchal/cohesion-climate">this
+Observable Notebook</a> using <a
+href="https://cohesiondata.ec.europa.eu/2014-2020-Categorisation/ESIF-2014-2020-categorisation-ERDF-ESF-CF-planned-/3kkx-ekfq">live
+EC Cohesion Open Data</a>.</p>
+<div id="contribution-to-climate-objectives" class="section level3">
+<h3>Contribution to climate objectives</h3>
+<div id="climate-related-spending-as-a-share-of-total-spending"
+class="section level4">
+<h4>Climate-related spending as a share of total spending</h4>
+<p>Actual declared spending cumulative to ${yr}, EU cofinancing only.
+Weighted contribution based on Rio tags; see <a
+href="https://cohesiondata.ec.europa.eu/stories/s/a8jn-38y8">EC
+story</a> for details on the underlying data and methodology.</p>
+<iframe width="100%" height="518" frameborder="0" src="https://observablehq.com/embed/@petrbouchal/cohesion-climate?cells=viewof+yr%2Cbarplot2">
+</iframe>
+</div>
+<div id="progress-towards-planned-esif-spending-on-climate-objectives"
+class="section level4">
+<h4>Progress towards planned ESIF spending on climate objectives</h4>
+<p>Climate spending disbursed by the end of each year as % of planned
+climate spending, by Member state</p>
+<p>EU contribution only, climate contribution based on Rio marker
+weights</p>
+<iframe width="100%" height="754" frameborder="0" src="https://observablehq.com/embed/@petrbouchal/cohesion-climate?cells=viewof+mss%2Cbarplot3">
+</iframe>
+</div>
+</div>
+</div>
+<div id="data" class="section level2 tabset">
+<h2 class="tabset">Data</h2>
 <div id="soubory" class="section level3">
 <h3>Soubory</h3>
-<p>Vše v <code>data-export/export_202203</code> (<a
-href="https://github.com/cdeorgcz/esiftagging/tree/master/data-export/export_202203">Github</a>)</p>
+<p>Vše v <code>data-export/export_202204</code> (<a
+href="https://github.com/cdeorgcz/esiftagging/tree/master/data-export/export_202204">Github</a>)</p>
 <ul>
 <li>OP + klimatag: <code>sum_tagged_all_ops.xlsx</code> /
 <code>sum_tagged_all_ops.csv</code></li>
@@ -417,7 +448,7 @@ je ve formátu Parquet</li>
 <h3 class="tabset tabset-pills">Codebook</h3>
 <div id="projektová-úroveň" class="section level4">
 <h4>Projektová úroveň</h4>
-<p>Zapsáno v data-export/export_202203/codebook_prj.yaml</p>
+<p>Zapsáno v data-export/export_202204/codebook_prj.yaml</p>
 <div id="pb_information" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
@@ -858,7 +889,7 @@ html {
       <th colspan="1" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border" style="font-size: 12px; text-align: left;"><span style="text-decoration-style:solid;text-decoration-color:#ADD8E6;text-decoration-line:underline;text-underline-position:under;color:#333333;font-variant-numeric:tabular-nums;padding-left:4px;margin-right:5px;padding-right:2px;">Codebook hlavního výstupu</span></p>
 <div style="height:25px;margin-top:10px;"><span style="background-color:#F1D35A;color:#222222;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 5px;font-weight:bold;border:solid 1px #F1D35A;padding:2px 15px 2px 15px;font-size:smaller;">tibble</span>
 <span style="background-color:none;color:#222222;padding:0.5em 0.5em;position:inherit;margin:5px 10px 5px -4px;font-weight:bold;border:solid 1px #F1D35A;padding:2px 15px 2px 15px;font-size:smaller;">data</span><span style="background-color:#eecbff;color:#333333;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 5px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">Rows</span>
-<span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">121,308</span>
+<span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #eecbff;padding:2px 15px 2px 15px;font-size:smaller;">121,532</span>
 <span style="background-color:#BDE7B4;color:#333333;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 0px 5px 1px;font-weight:bold;border:solid 1px #BDE7B4;padding:2px 15px 2px 15px;font-size:smaller;">Columns</span>
 <span style="background-color:none;color:#333333;padding:0.5em 0.5em;position:inherit;margin:5px 0px 5px -4px;font-weight:bold;border:solid 1px #BDE7B4;padding:2px 15px 2px 15px;font-size:smaller;">26</span></div>
 </th>
@@ -1011,9 +1042,9 @@ html {
   </tbody>
   <tfoot class="gt_sourcenotes">
     <tr>
-      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-04-13 00:02:16 CEST</span>
+      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-04-20 11:34:19 CEST</span>
 <span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;margin:5px 1px 5px 0;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">&lt; 1 s</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-04-13 00:02:16 CEST</span></td>
+<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-04-20 11:34:20 CEST</span></td>
     </tr>
   </tfoot>
   
@@ -1022,7 +1053,7 @@ html {
 </div>
 <div id="součty" class="section level4">
 <h4>Součty</h4>
-<p>Zapsáno v data-export/export_202203/codebook_sum.yaml</p>
+<p>Zapsáno v data-export/export_202204/codebook_sum.yaml</p>
 <div id="pb_information" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
@@ -1599,9 +1630,9 @@ html {
   </tbody>
   <tfoot class="gt_sourcenotes">
     <tr>
-      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-04-13 00:02:17 CEST</span>
+      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-04-20 11:34:20 CEST</span>
 <span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;margin:5px 1px 5px 0;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">&lt; 1 s</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-04-13 00:02:17 CEST</span></td>
+<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-04-20 11:34:20 CEST</span></td>
     </tr>
   </tfoot>
   
@@ -1609,12 +1640,11 @@ html {
 </div>
 </div>
 </div>
-</div>
-<div id="náhled-proměnných" class="section level2 tabset tabset-pills">
-<h2 class="tabset tabset-pills">Náhled proměnných</h2>
-<div id="projektová-úroveň-1" class="section level3">
-<h3>Projektová úroveň</h3>
-<pre><code>Rows: 121,308
+<div id="náhled-proměnných" class="section level3 tabset tabset-pills">
+<h3 class="tabset tabset-pills">Náhled proměnných</h3>
+<div id="projektová-úroveň-1" class="section level4">
+<h4>Projektová úroveň</h4>
+<pre><code>Rows: 121,532
 Columns: 26
 $ oblast_intervence_nazev_en    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ oblast_intervence_kod         &lt;chr&gt; &quot; III.0.055&quot;, &quot; III.0.055&quot;, &quot; III.0.055&quot;…
@@ -1643,8 +1673,8 @@ $ p_nazev                       &lt;chr&gt; &quot;Oblastní charita Náchod&quot
 $ p_ic                          &lt;chr&gt; &quot;46524282&quot;, &quot;70892822&quot;, &quot;22832386&quot;, &quot;606…
 $ p_forma                       &lt;chr&gt; &quot;Evidované církevní právnické osoby&quot;, &quot;K…</code></pre>
 </div>
-<div id="součty-1" class="section level3">
-<h3>Součty</h3>
+<div id="součty-1" class="section level4">
+<h4>Součty</h4>
 <pre><code>Rows: 195
 Columns: 20
 $ oblast_intervence_nazev_en    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
@@ -1667,6 +1697,7 @@ $ prv_opatreni_orig             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 $ prv_opatreni_id               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ prv_opatreni_typ              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
 $ prv_opatreni_nazev            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</code></pre>
+</div>
 </div>
 </div>
 <div id="validace-výstupu" class="section level2">
