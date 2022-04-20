@@ -30,19 +30,35 @@ targets::tar_load(efs_tagged_sum_prj)
 
 ### Celkem - EK
 
-```{r plot-all, out.width="100%"}
+#### Bez PRV
+
+```{r plot-all, out.width="80%", fig.height=3}
 tar_load(plot_all)
 plot_all
 ```
+
 
 ```{r}
 plot_all$data |> download_this(button_label = "Data v CSV")
 ```
 
+<br/><br/>
+
+#### S PRV
+
+```{r, fig.height=3, out.width="80%"}
+targets::tar_load(plot_all_with_agri)
+plot_all_with_agri
+```
+
+```{r}
+plot_all_with_agri$data |> download_this(button_label = "Data v CSV")
+```
+
 
 ### Celkem - CDE
 
-```{r plot-all-revised, out.width="100%"}
+```{r plot-all-revised, out.width="100%", fig.height=3}
 tar_load(plot_all_m)
 plot_all_m
 ```

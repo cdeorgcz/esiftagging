@@ -326,15 +326,26 @@ $(document).ready(function () {
 <h2 class="tabset tabset-pills">Hlavní grafy</h2>
 <div id="celkem---ek" class="section level3">
 <h3>Celkem - EK</h3>
-<p><img src="s_output_files/figure-html/plot-all-1.svg" width="100%" /></p>
-<a onclick="fetch(&#39;data:text/csv;base64,Y2xpbWF0ZV9zaGFyZV9jb2RlO24KRnVsbCAoMTAwJSk7ODQsNzQxOTMzNzUxODM2Ck5vIHRhZzs0MDksNTE4Mjc4MjcwOTIxClBhcnRpYWwgKDQwJSk7MTAxLDc2ODk2MDEyOTg4MAoiVG90YWwKc3BlbmRpbmciOzU5NiwwNDYwMDYxNjk5ODAKIldlaWdodGVkCmNvbnRyaWJ1dGlvbiI7MTI1LDQ0OTUxNzgwMzc4OAo=&#39;).then(res =&gt; res.blob()).then(blob =&gt; {&#10;      const downloadURL = window.URL.createObjectURL(blob);&#10;      const a = document.createElement(&#39;a&#39;);&#10;      document.body.appendChild(a);&#10;      a.href = downloadURL;&#10;      a.download = &#39;plot_all$data.csv&#39;; a.click();&#10;      window.URL.revokeObjectURL(downloadURL);&#10;      document.body.removeChild(a);&#10;    });">
+<div id="bez-prv" class="section level4">
+<h4>Bez PRV</h4>
+<p><img src="s_output_files/figure-html/plot-all-1.svg" width="80%" /></p>
+<a onclick="fetch(&#39;data:text/csv;base64,Y2xpbWF0ZV9zaGFyZV9jb2RlO24KRnVsbCAoMTAwJSk7NjEsNDk2OTkxOTYyNDE2Ck5vIHRhZzszODAsMTkwNTAxNjgzMDMxClBhcnRpYWwgKDQwJSk7OTgsOTgyMjgyMzI3OTgwCiJUb3RhbApzcGVuZGluZyI7NTQwLDY4NjYwOTk5MDc3MAoiV2VpZ2h0ZWQKY29udHJpYnV0aW9uIjsxMDEsMDg5OTA0ODkzNjA4Cg==&#39;).then(res =&gt; res.blob()).then(blob =&gt; {&#10;      const downloadURL = window.URL.createObjectURL(blob);&#10;      const a = document.createElement(&#39;a&#39;);&#10;      document.body.appendChild(a);&#10;      a.href = downloadURL;&#10;      a.download = &#39;plot_all$data.csv&#39;; a.click();&#10;      window.URL.revokeObjectURL(downloadURL);&#10;      document.body.removeChild(a);&#10;    });">
 <button class="btn btn-default"><i class="fa fa-save"></i> Data v CSV</button>
 </a>
+<p><br/><br/></p>
+</div>
+<div id="s-prv" class="section level4">
+<h4>S PRV</h4>
+<p><img src="s_output_files/figure-html/unnamed-chunk-2-1.svg" width="80%" /></p>
+<a onclick="fetch(&#39;data:text/csv;base64,Y2xpbWF0ZV9zaGFyZV9jb2RlO24KRnVsbCAoMTAwJSk7ODQsNzQxOTMzNzUxODM2Ck5vIHRhZzs0MDksNTE4Mjc4MjcwOTIxClBhcnRpYWwgKDQwJSk7MTAxLDc2ODk2MDEyOTg4MAoiVG90YWwKc3BlbmRpbmciOzU5NiwwNDYwMDYxNjk5ODAKIldlaWdodGVkCmNvbnRyaWJ1dGlvbiI7MTI1LDQ0OTUxNzgwMzc4OAo=&#39;).then(res =&gt; res.blob()).then(blob =&gt; {&#10;      const downloadURL = window.URL.createObjectURL(blob);&#10;      const a = document.createElement(&#39;a&#39;);&#10;      document.body.appendChild(a);&#10;      a.href = downloadURL;&#10;      a.download = &#39;plot_all_with_agri$data.csv&#39;; a.click();&#10;      window.URL.revokeObjectURL(downloadURL);&#10;      document.body.removeChild(a);&#10;    });">
+<button class="btn btn-default"><i class="fa fa-save"></i> Data v CSV</button>
+</a>
+</div>
 </div>
 <div id="celkem---cde" class="section level3">
 <h3>Celkem - CDE</h3>
 <p><img src="s_output_files/figure-html/plot-all-revised-1.svg" width="100%" /></p>
-<a onclick="fetch(&#39;data:text/csv;base64,Y2xpbWF0ZV9zaGFyZV9jb2RlO24KRnVsbCAoMTAwJSk7MjEsMTI5NzY1MDgxMzUwMApOZWdhdGl2ZSAoLTQwJSk7OSw0NzEwMjU0NjY3ODAwCk5vIHRhZzszODEsMjIzNDk5NDAwNTUxOQpQYXJ0aWFsICg0MCUpOzEyOCw4NDU0ODYwMjQ3NDQ2CiJUb3RhbApzcGVuZGluZyI7NTk2LDA0NjAwNjE2OTk3OTgKIldlaWdodGVkCmNvbnRyaWJ1dGlvbiI7NjgsODc5NTQ5MzA0NTM1OAo=&#39;).then(res =&gt; res.blob()).then(blob =&gt; {&#10;      const downloadURL = window.URL.createObjectURL(blob);&#10;      const a = document.createElement(&#39;a&#39;);&#10;      document.body.appendChild(a);&#10;      a.href = downloadURL;&#10;      a.download = &#39;plot_all_m$data.csv&#39;; a.click();&#10;      window.URL.revokeObjectURL(downloadURL);&#10;      document.body.removeChild(a);&#10;    });">
+<a onclick="fetch(&#39;data:text/csv;base64,Y2xpbWF0ZV9zaGFyZV9jb2RlO24KRnVsbCAoMTAwJSk7MjEsMTI5NzY1MDgxMzUwMApOZWdhdGl2ZSAoLTQwJSk7OSw0NzEwMjU0NjY3ODAwCk5vIHRhZzszODEsMjIzNDk5NDAwNTUyMQpQYXJ0aWFsICg0MCUpOzEyOCw4NDU0ODYwMjQ3NDQ2CiJUb3RhbApzcGVuZGluZyI7NTQwLDY4NjYwOTk5MDc3MDAKIldlaWdodGVkCmNvbnRyaWJ1dGlvbiI7NjgsODc5NTQ5MzA0NTM1OAo=&#39;).then(res =&gt; res.blob()).then(blob =&gt; {&#10;      const downloadURL = window.URL.createObjectURL(blob);&#10;      const a = document.createElement(&#39;a&#39;);&#10;      document.body.appendChild(a);&#10;      a.href = downloadURL;&#10;      a.download = &#39;plot_all_m$data.csv&#39;; a.click();&#10;      window.URL.revokeObjectURL(downloadURL);&#10;      document.body.removeChild(a);&#10;    });">
 <button class="btn btn-default"><i class="fa fa-save"></i> Data v CSV</button>
 </a>
 </div>
@@ -345,7 +356,7 @@ $(document).ready(function () {
 <button class="btn btn-default"><i class="fa fa-save"></i> Data v CSV</button>
 </a>
 <p><img src="s_output_files/figure-html/plot-comparison-1.svg" width="100%" /></p>
-<a onclick="fetch(&#39;data:text/csv;base64,Y2xpbWF0ZV9zaGFyZV9jb2RlO247bjIKRnVsbCAoMTAwJSk7ODQsNzQxOTMzNzUxODM2OzIxLDEyOTc2NTA4MTM1MDAKTm8gdGFnOzQwOSw1MTgyNzgyNzA5MjE7MzgxLDIyMzQ5OTQwMDU1MTkKUGFydGlhbCAoNDAlKTsxMDEsNzY4OTYwMTI5ODgwOzEyOCw4NDU0ODYwMjQ3NDQ2CiJXZWlnaHRlZApjb250cmlidXRpb24iOzEyNSw0NDk1MTc4MDM3ODg7NjgsODc5NTQ5MzA0NTM1OApOZWdhdGl2ZSAoLTQwJSk7MCwwMDAwMDAwMDAwMDA7OSw0NzEwMjU0NjY3ODAwCg==&#39;).then(res =&gt; res.blob()).then(blob =&gt; {&#10;      const downloadURL = window.URL.createObjectURL(blob);&#10;      const a = document.createElement(&#39;a&#39;);&#10;      document.body.appendChild(a);&#10;      a.href = downloadURL;&#10;      a.download = &#39;plot_comparison$data.csv&#39;; a.click();&#10;      window.URL.revokeObjectURL(downloadURL);&#10;      document.body.removeChild(a);&#10;    });">
+<a onclick="fetch(&#39;data:text/csv;base64,Y2xpbWF0ZV9zaGFyZV9jb2RlO247bjIKRnVsbCAoMTAwJSk7NjEsNDk2OTkxOTYyNDE2OzIxLDEyOTc2NTA4MTM1MDAKTm8gdGFnOzM4MCwxOTA1MDE2ODMwMzE7MzgxLDIyMzQ5OTQwMDU1MjEKUGFydGlhbCAoNDAlKTs5OCw5ODIyODIzMjc5ODA7MTI4LDg0NTQ4NjAyNDc0NDYKIldlaWdodGVkCmNvbnRyaWJ1dGlvbiI7MTAxLDA4OTkwNDg5MzYwODs2OCw4Nzk1NDkzMDQ1MzU4Ck5lZ2F0aXZlICgtNDAlKTswLDAwMDAwMDAwMDAwMDs5LDQ3MTAyNTQ2Njc4MDAK&#39;).then(res =&gt; res.blob()).then(blob =&gt; {&#10;      const downloadURL = window.URL.createObjectURL(blob);&#10;      const a = document.createElement(&#39;a&#39;);&#10;      document.body.appendChild(a);&#10;      a.href = downloadURL;&#10;      a.download = &#39;plot_comparison$data.csv&#39;; a.click();&#10;      window.URL.revokeObjectURL(downloadURL);&#10;      document.body.removeChild(a);&#10;    });">
 <button class="btn btn-default"><i class="fa fa-save"></i> Data v CSV</button>
 </a>
 <p><img src="s_output_files/figure-html/plot-comparison-bycat-1.svg" width="100%" /></p>
@@ -1042,9 +1053,9 @@ html {
   </tbody>
   <tfoot class="gt_sourcenotes">
     <tr>
-      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-04-20 12:21:33 CEST</span>
+      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-04-20 22:27:47 CEST</span>
 <span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;margin:5px 1px 5px 0;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">&lt; 1 s</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-04-20 12:21:34 CEST</span></td>
+<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-04-20 22:27:47 CEST</span></td>
     </tr>
   </tfoot>
   
@@ -1630,9 +1641,9 @@ html {
   </tbody>
   <tfoot class="gt_sourcenotes">
     <tr>
-      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-04-20 12:21:34 CEST</span>
+      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2022-04-20 22:27:47 CEST</span>
 <span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;margin:5px 1px 5px 0;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">&lt; 1 s</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-04-20 12:21:34 CEST</span></td>
+<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2022-04-20 22:27:47 CEST</span></td>
     </tr>
   </tfoot>
   

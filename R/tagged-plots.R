@@ -1,4 +1,4 @@
-make_plot_tagged_all <- function(esif_tagged_sum, tag_var = climate_share) {
+make_plot_tagged_all <- function(esif_tagged_sum, tag_var = climate_share, tag_type = "official") {
   data <- esif_tagged_sum %>%
     rename(climate_share = {{tag_var}}) |>
     mutate(climate_share_code = case_when(climate_share == 0 ~ "No tag",
@@ -35,11 +35,11 @@ make_plot_tagged_all <- function(esif_tagged_sum, tag_var = climate_share) {
               aes(label = label_value, x = total), hjust = 0, nudge_x = 2,
               colour = "grey10", family = "IBM Plex Sans") +
     labs(title = "Spending by climate tags",
-         subtitle = "bn CZK, all spending. Follows official climate tags.",
+         subtitle = str_glue("bn CZK, all spending. Follows {tag_type} climate tags."),
          caption = "Payment data for CZ-PL programme unavailable.")
 }
 
-make_plot_weighted_all <- function(esif_tagged_sum, tag_var = climate_share) {
+make_plot_weighted_all <- function(esif_tagged_sum, tag_var = climate_share, tag_type = "official") {
   data <- esif_tagged_sum %>%
     rename(climate_share = {{tag_var}}) |>
     count(op_zkr, wt = fin_vyuct_czv * climate_share / 1e9) %>%
@@ -52,7 +52,7 @@ make_plot_weighted_all <- function(esif_tagged_sum, tag_var = climate_share) {
     geom_text(aes(label = round(n, 0)), hjust = 1.5,
               colour = "white", family = "IBM Plex Sans") +
     labs(title = "Total contribution to climate",
-         subtitle = "bn CZK, all spending weighted by official climate tags.",
+         subtitle = str_glue("bn CZK, all spending weighted by {tag_type} climate tags."),
          caption = "Payment data for CZ-PL programme unavailable.")
 
 }
@@ -83,7 +83,9 @@ prep_plot_all_data <- function(esif_tagged_sum, tag_var = climate_share) {
   return(data)
 }
 
-make_plot_all <- function(plot_all_data, tag_type = "official") {
+make_plot_all <- function(plot_all_data, tag_type = "official", agri = TRUE) {
+
+  agri_text = if_else(agri, "Includes relevant CAP spend.", "Excludes CAP spend.")
 
   ggplot(plot_all_data, aes(n, climate_share_code, fill = climate_share_code)) +
     geom_col() +
@@ -101,7 +103,7 @@ make_plot_all <- function(plot_all_data, tag_type = "official") {
     geom_text(aes(label = round(n, 0)), hjust = 0, nudge_x = 10,
               colour = "black", family = "IBM Plex Sans", fontface = "bold") +
     labs(title = "Key figures",
-         subtitle = str_glue("bn CZK, using {tag_type} climate tags."),
+         subtitle = str_glue("bn CZK, using {tag_type} climate tags. {agri_text}"),
          caption = "Payment data for CZ-PL programme unavailable.")
 }
 
