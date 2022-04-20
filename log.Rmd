@@ -9,7 +9,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Změny 20. 4. 2022
 
-Na [Observable notebook s výpočty](https://observablehq.com/@petrbouchal/cohesion-climate) pro mezinárodní srovnání na živých datech od EK. Výtah viz [výstup](s_output.html).
+- Na [Observable notebook s výpočty](https://observablehq.com/@petrbouchal/cohesion-climate) pro mezinárodní srovnání na živých datech od EK. Výtah viz [výstup](s_output.html).
+- v Sankey grafu vyřazena nulová kategorie `Unknown`
 
 ## Změny 13. 4. 2022
 
