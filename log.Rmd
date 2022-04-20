@@ -9,6 +9,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Změny 20. 4. 2022
 
+- Opravy a doplnění hlavních grafů:
+  - opraven dumbell plot - v obou kategorizacích součty bez PRV, aby ladil se Sankey
+  - doplněn hlavní graf s a bez PRV
+
 - Na [Observable notebook s výpočty](https://observablehq.com/@petrbouchal/cohesion-climate) pro mezinárodní srovnání na živých datech od EK. Výtah viz [výstup](s_output.html).
 - v Sankey grafu vyřazena nulová kategorie `Unknown`
 
