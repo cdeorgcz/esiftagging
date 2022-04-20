@@ -23,7 +23,7 @@ make_tag_sankey <- function(data) {
                      size = 3, fill = "gray40", na.rm = TRUE) +
     theme_sankey(base_size = 18, base_family = "IBM Plex Sans") +
     theme(axis.title.x = element_blank()) +
-    scale_x_discrete(labels = c("Official", "Manual")) +
+    scale_x_discrete(labels = c("Official", "CDE revised")) +
     scale_fill_manual(values = c(`Full (100%)` = "darkgreen",
                                  `Partial (40%)` = "#009E73",
                                  `Negative (-100%)` = "#D55E00",
