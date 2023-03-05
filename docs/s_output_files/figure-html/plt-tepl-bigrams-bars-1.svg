@@ -2,6 +2,8 @@
 <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='432.00pt' height='432.00pt' viewBox='0 0 432.00 432.00'>
 <defs>
   <style type='text/css'><![CDATA[
+    @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap");
     .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
       fill: none;
       stroke: #000000;
@@ -23,124 +25,126 @@
 <g clip-path='url(#cpMC4wMHw0MzIuMDB8MC4wMHw0MzIuMDA=)'>
 </g>
 <defs>
-  <clipPath id='cpOTguOTN8NDI2LjAyfDI0LjY1fDQxNC45NQ=='>
-    <rect x='98.93' y='24.65' width='327.09' height='390.30' />
+  <clipPath id='cpOTguOTN8NDI2LjAyfDI0LjY0fDQxNC45NQ=='>
+    <rect x='98.93' y='24.64' width='327.09' height='390.31' />
   </clipPath>
 </defs>
-<g clip-path='url(#cpOTguOTN8NDI2LjAyfDI0LjY1fDQxNC45NQ==)'>
-<rect x='98.93' y='24.65' width='327.09' height='390.30' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
-<polyline points='98.93,414.95 98.93,24.65 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='165.21,414.95 165.21,24.65 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='231.49,414.95 231.49,24.65 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='297.77,414.95 297.77,24.65 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='364.05,414.95 364.05,24.65 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
-<rect x='98.93' y='25.82' width='311.52' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='33.59' width='198.84' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='41.37' width='192.21' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='64.69' width='172.33' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='56.92' width='172.33' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='49.14' width='172.33' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='95.79' width='165.70' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='88.02' width='165.70' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='80.24' width='165.70' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='72.47' width='165.70' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='126.89' width='159.07' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='119.12' width='159.07' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='111.34' width='159.07' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='103.57' width='159.07' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='150.22' width='152.44' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='142.44' width='152.44' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='134.67' width='152.44' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='157.99' width='139.19' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='165.76' width='119.30' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='189.09' width='106.05' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='181.31' width='106.05' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='173.54' width='106.05' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='204.64' width='99.42' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='196.86' width='99.42' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='212.41' width='92.79' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='251.29' width='86.16' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='243.51' width='86.16' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='235.74' width='86.16' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='227.96' width='86.16' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='220.19' width='86.16' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='274.61' width='79.54' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='266.84' width='79.54' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='259.06' width='79.54' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='305.71' width='72.91' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='297.94' width='72.91' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='290.16' width='72.91' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='282.39' width='72.91' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='399.01' width='66.28' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='391.24' width='66.28' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='383.46' width='66.28' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='375.69' width='66.28' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='367.91' width='66.28' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='360.14' width='66.28' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='352.36' width='66.28' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='344.59' width='66.28' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='336.81' width='66.28' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='329.04' width='66.28' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='321.26' width='66.28' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='313.49' width='66.28' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
-<rect x='98.93' y='406.79' width='59.65' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<g clip-path='url(#cpOTguOTN8NDI2LjAyfDI0LjY0fDQxNC45NQ==)'>
+<rect x='98.93' y='24.64' width='327.09' height='390.31' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
+<polyline points='98.93,414.95 98.93,24.64 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='163.83,414.95 163.83,24.64 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='228.73,414.95 228.73,24.64 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='293.63,414.95 293.63,24.64 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='358.53,414.95 358.53,24.64 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='423.43,414.95 423.43,24.64 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
+<rect x='98.93' y='25.81' width='311.52' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='33.58' width='194.70' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='41.36' width='188.21' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='64.69' width='168.74' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='56.91' width='168.74' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='49.13' width='168.74' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='95.79' width='162.25' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='88.01' width='162.25' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='80.24' width='162.25' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='72.46' width='162.25' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='126.89' width='155.76' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='119.11' width='155.76' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='111.34' width='155.76' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='103.56' width='155.76' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='150.21' width='149.27' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='142.44' width='149.27' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='134.66' width='149.27' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='157.99' width='136.29' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='165.76' width='116.82' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='173.54' width='110.33' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='204.64' width='103.84' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='196.86' width='103.84' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='189.09' width='103.84' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='181.31' width='103.84' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='220.19' width='97.35' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='212.41' width='97.35' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='266.84' width='84.37' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='259.06' width='84.37' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='251.29' width='84.37' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='243.51' width='84.37' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='235.74' width='84.37' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='227.96' width='84.37' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='282.39' width='77.88' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='274.61' width='77.88' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='313.49' width='71.39' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='305.71' width='71.39' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='297.94' width='71.39' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='290.16' width='71.39' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='406.79' width='64.90' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='399.01' width='64.90' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='391.24' width='64.90' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='383.46' width='64.90' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='375.69' width='64.90' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='367.91' width='64.90' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='360.14' width='64.90' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='352.36' width='64.90' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='344.59' width='64.90' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='336.81' width='64.90' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='329.04' width='64.90' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
+<rect x='98.93' y='321.26' width='64.90' height='7.00' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #595959;' />
 </g>
 <g clip-path='url(#cpMC4wMHw0MzIuMDB8MC4wMHw0MzIuMDA=)'>
-<text x='94.00' y='413.36' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='72.41px' lengthAdjust='spacingAndGlyphs'>navržených opatření</text>
-<text x='94.00' y='405.58' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='50.03px' lengthAdjust='spacingAndGlyphs'>dodávky tepla</text>
-<text x='94.00' y='397.81' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='53.94px' lengthAdjust='spacingAndGlyphs'>dosažení úspor</text>
-<text x='94.00' y='390.03' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='51.78px' lengthAdjust='spacingAndGlyphs'>ekol ukazatelů</text>
-<text x='94.00' y='382.26' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='43.41px' lengthAdjust='spacingAndGlyphs'>města plzeň</text>
-<text x='94.00' y='374.48' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='39.54px' lengthAdjust='spacingAndGlyphs'>prim paliva</text>
-<text x='94.00' y='366.71' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='75.55px' lengthAdjust='spacingAndGlyphs'>spolehlivosti provozu</text>
-<text x='94.00' y='358.93' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='49.89px' lengthAdjust='spacingAndGlyphs'>spotřeby prim</text>
-<text x='94.00' y='351.16' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='72.12px' lengthAdjust='spacingAndGlyphs'>systému zásobování</text>
-<text x='94.00' y='343.38' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='52.37px' lengthAdjust='spacingAndGlyphs'>úspor primární</text>
-<text x='94.00' y='335.61' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='74.01px' lengthAdjust='spacingAndGlyphs'>výměníkových stanic</text>
-<text x='94.00' y='327.83' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='44.42px' lengthAdjust='spacingAndGlyphs'>výrobu tepla</text>
-<text x='94.00' y='320.06' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='46.61px' lengthAdjust='spacingAndGlyphs'>zlepšení ekol</text>
-<text x='94.00' y='312.28' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='83.10px' lengthAdjust='spacingAndGlyphs'>ekologických ukazatelů</text>
-<text x='94.00' y='304.51' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='42.06px' lengthAdjust='spacingAndGlyphs'>tepelné sítě</text>
-<text x='94.00' y='296.73' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='77.92px' lengthAdjust='spacingAndGlyphs'>zlepšení ekologických</text>
-<text x='94.00' y='288.96' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='73.34px' lengthAdjust='spacingAndGlyphs'>zvýšení spolehlivosti</text>
-<text x='94.00' y='281.18' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='48.59px' lengthAdjust='spacingAndGlyphs'>rozvodů tepla</text>
-<text x='94.00' y='273.41' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='55.74px' lengthAdjust='spacingAndGlyphs'>tepelné energie</text>
-<text x='94.00' y='265.63' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='70.24px' lengthAdjust='spacingAndGlyphs'>výměníkové stanice</text>
-<text x='94.00' y='257.86' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='78.72px' lengthAdjust='spacingAndGlyphs'>dálkového zásobování</text>
-<text x='94.00' y='250.08' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='38.89px' lengthAdjust='spacingAndGlyphs'>km potrubí</text>
-<text x='94.00' y='242.31' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='47.42px' lengthAdjust='spacingAndGlyphs'>síť dálkového</text>
-<text x='94.00' y='234.53' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='73.44px' lengthAdjust='spacingAndGlyphs'>soustavy zásobování</text>
-<text x='94.00' y='226.76' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='40.14px' lengthAdjust='spacingAndGlyphs'>teplem čítá</text>
-<text x='94.00' y='218.98' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='66.72px' lengthAdjust='spacingAndGlyphs'>předávacích stanic</text>
-<text x='94.00' y='211.21' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='39.61px' lengthAdjust='spacingAndGlyphs'>parního czt</text>
-<text x='94.00' y='203.43' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='72.53px' lengthAdjust='spacingAndGlyphs'>spotřeby primárního</text>
-<text x='94.00' y='195.66' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='58.74px' lengthAdjust='spacingAndGlyphs'>primární energie</text>
-<text x='94.00' y='187.88' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='62.18px' lengthAdjust='spacingAndGlyphs'>primárního paliva</text>
-<text x='94.00' y='180.11' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='60.84px' lengthAdjust='spacingAndGlyphs'>zvýšení účinnosti</text>
-<text x='94.00' y='172.33' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='31.41px' lengthAdjust='spacingAndGlyphs'>sítích szt</text>
-<text x='94.00' y='164.56' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='60.44px' lengthAdjust='spacingAndGlyphs'>ukazatelů výroby</text>
+<text x='94.00' y='413.36' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='50.03px' lengthAdjust='spacingAndGlyphs'>dodávky tepla</text>
+<text x='94.00' y='405.58' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='53.94px' lengthAdjust='spacingAndGlyphs'>dosažení úspor</text>
+<text x='94.00' y='397.81' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='51.78px' lengthAdjust='spacingAndGlyphs'>ekol ukazatelů</text>
+<text x='94.00' y='390.03' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='39.54px' lengthAdjust='spacingAndGlyphs'>prim paliva</text>
+<text x='94.00' y='382.26' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='75.55px' lengthAdjust='spacingAndGlyphs'>spolehlivosti provozu</text>
+<text x='94.00' y='374.48' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='49.89px' lengthAdjust='spacingAndGlyphs'>spotřeby prim</text>
+<text x='94.00' y='366.71' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='72.12px' lengthAdjust='spacingAndGlyphs'>systému zásobování</text>
+<text x='94.00' y='358.93' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='53.63px' lengthAdjust='spacingAndGlyphs'>tepelných ztrát</text>
+<text x='94.00' y='351.16' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='52.37px' lengthAdjust='spacingAndGlyphs'>úspor primární</text>
+<text x='94.00' y='343.38' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='74.01px' lengthAdjust='spacingAndGlyphs'>výměníkových stanic</text>
+<text x='94.00' y='335.60' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='44.42px' lengthAdjust='spacingAndGlyphs'>výrobu tepla</text>
+<text x='94.00' y='327.83' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='46.61px' lengthAdjust='spacingAndGlyphs'>zlepšení ekol</text>
+<text x='94.00' y='320.05' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='83.10px' lengthAdjust='spacingAndGlyphs'>ekologických ukazatelů</text>
+<text x='94.00' y='312.28' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='42.06px' lengthAdjust='spacingAndGlyphs'>tepelné sítě</text>
+<text x='94.00' y='304.50' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='77.92px' lengthAdjust='spacingAndGlyphs'>zlepšení ekologických</text>
+<text x='94.00' y='296.73' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='73.34px' lengthAdjust='spacingAndGlyphs'>zvýšení spolehlivosti</text>
+<text x='94.00' y='288.95' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='48.59px' lengthAdjust='spacingAndGlyphs'>rozvodů tepla</text>
+<text x='94.00' y='281.18' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='55.74px' lengthAdjust='spacingAndGlyphs'>tepelné energie</text>
+<text x='94.00' y='273.40' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='78.72px' lengthAdjust='spacingAndGlyphs'>dálkového zásobování</text>
+<text x='94.00' y='265.63' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='38.89px' lengthAdjust='spacingAndGlyphs'>km potrubí</text>
+<text x='94.00' y='257.85' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='47.42px' lengthAdjust='spacingAndGlyphs'>síť dálkového</text>
+<text x='94.00' y='250.08' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='73.44px' lengthAdjust='spacingAndGlyphs'>soustavy zásobování</text>
+<text x='94.00' y='242.30' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='40.14px' lengthAdjust='spacingAndGlyphs'>teplem čítá</text>
+<text x='94.00' y='234.53' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='70.24px' lengthAdjust='spacingAndGlyphs'>výměníkové stanice</text>
+<text x='94.00' y='226.75' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='39.61px' lengthAdjust='spacingAndGlyphs'>parního czt</text>
+<text x='94.00' y='218.98' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='72.53px' lengthAdjust='spacingAndGlyphs'>spotřeby primárního</text>
+<text x='94.00' y='211.20' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='66.72px' lengthAdjust='spacingAndGlyphs'>předávacích stanic</text>
+<text x='94.00' y='203.43' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='62.18px' lengthAdjust='spacingAndGlyphs'>primárního paliva</text>
+<text x='94.00' y='195.65' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='87.08px' lengthAdjust='spacingAndGlyphs'>provozu prostřednictvím</text>
+<text x='94.00' y='187.88' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='60.84px' lengthAdjust='spacingAndGlyphs'>zvýšení účinnosti</text>
+<text x='94.00' y='180.10' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='58.74px' lengthAdjust='spacingAndGlyphs'>primární energie</text>
+<text x='94.00' y='172.33' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='72.41px' lengthAdjust='spacingAndGlyphs'>navržených opatření</text>
+<text x='94.00' y='164.55' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='60.44px' lengthAdjust='spacingAndGlyphs'>ukazatelů výroby</text>
 <text x='94.00' y='156.78' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='64.95px' lengthAdjust='spacingAndGlyphs'>přestavbu parního</text>
-<text x='94.00' y='149.01' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='63.22px' lengthAdjust='spacingAndGlyphs'>tepelným ztrátám</text>
+<text x='94.00' y='149.00' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='63.22px' lengthAdjust='spacingAndGlyphs'>tepelným ztrátám</text>
 <text x='94.00' y='141.23' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='67.44px' lengthAdjust='spacingAndGlyphs'>značným tepelným</text>
-<text x='94.00' y='133.46' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='73.71px' lengthAdjust='spacingAndGlyphs'>celkovému urychlení</text>
-<text x='94.00' y='125.69' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='50.18px' lengthAdjust='spacingAndGlyphs'>přestavby sítě</text>
-<text x='94.00' y='117.91' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='65.84px' lengthAdjust='spacingAndGlyphs'>procesu přestavby</text>
-<text x='94.00' y='110.14' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='63.53px' lengthAdjust='spacingAndGlyphs'>urychlení procesu</text>
-<text x='94.00' y='102.36' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='55.36px' lengthAdjust='spacingAndGlyphs'>provozu snížení</text>
-<text x='94.00' y='94.59' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='51.95px' lengthAdjust='spacingAndGlyphs'>vedení zvýšení</text>
-<text x='94.00' y='86.81' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='71.30px' lengthAdjust='spacingAndGlyphs'>výměna zastaralého</text>
-<text x='94.00' y='79.04' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='88.02px' lengthAdjust='spacingAndGlyphs'>zastaralého parovodního</text>
-<text x='94.00' y='71.26' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='63.40px' lengthAdjust='spacingAndGlyphs'>efektivity provozu</text>
-<text x='94.00' y='63.49' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='72.41px' lengthAdjust='spacingAndGlyphs'>parovodního potrubí</text>
-<text x='94.00' y='55.71' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='61.19px' lengthAdjust='spacingAndGlyphs'>zvýšení efektivity</text>
-<text x='94.00' y='47.94' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='43.30px' lengthAdjust='spacingAndGlyphs'>snížení ztrát</text>
-<text x='94.00' y='40.16' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='58.38px' lengthAdjust='spacingAndGlyphs'>snížení spotřeby</text>
-<text x='94.00' y='32.39' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='67.06px' lengthAdjust='spacingAndGlyphs'>zásobování teplem</text>
+<text x='94.00' y='133.45' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='73.71px' lengthAdjust='spacingAndGlyphs'>celkovému urychlení</text>
+<text x='94.00' y='125.68' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='50.18px' lengthAdjust='spacingAndGlyphs'>přestavby sítě</text>
+<text x='94.00' y='117.90' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='65.84px' lengthAdjust='spacingAndGlyphs'>procesu přestavby</text>
+<text x='94.00' y='110.13' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='63.53px' lengthAdjust='spacingAndGlyphs'>urychlení procesu</text>
+<text x='94.00' y='102.35' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='55.36px' lengthAdjust='spacingAndGlyphs'>provozu snížení</text>
+<text x='94.00' y='94.58' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='51.95px' lengthAdjust='spacingAndGlyphs'>vedení zvýšení</text>
+<text x='94.00' y='86.80' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='71.30px' lengthAdjust='spacingAndGlyphs'>výměna zastaralého</text>
+<text x='94.00' y='79.03' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='88.02px' lengthAdjust='spacingAndGlyphs'>zastaralého parovodního</text>
+<text x='94.00' y='71.25' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='63.40px' lengthAdjust='spacingAndGlyphs'>efektivity provozu</text>
+<text x='94.00' y='63.48' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='72.41px' lengthAdjust='spacingAndGlyphs'>parovodního potrubí</text>
+<text x='94.00' y='55.70' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='61.19px' lengthAdjust='spacingAndGlyphs'>zvýšení efektivity</text>
+<text x='94.00' y='47.93' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='43.30px' lengthAdjust='spacingAndGlyphs'>snížení ztrát</text>
+<text x='94.00' y='40.15' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='58.38px' lengthAdjust='spacingAndGlyphs'>snížení spotřeby</text>
+<text x='94.00' y='32.38' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='67.06px' lengthAdjust='spacingAndGlyphs'>zásobování teplem</text>
 <text x='98.93' y='426.02' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='4.75px' lengthAdjust='spacingAndGlyphs'>0</text>
-<text x='165.21' y='426.02' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='9.50px' lengthAdjust='spacingAndGlyphs'>10</text>
-<text x='231.49' y='426.02' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='9.50px' lengthAdjust='spacingAndGlyphs'>20</text>
-<text x='297.77' y='426.02' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='9.50px' lengthAdjust='spacingAndGlyphs'>30</text>
-<text x='364.05' y='426.02' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='9.50px' lengthAdjust='spacingAndGlyphs'>40</text>
-<text x='5.98' y='19.17' style='font-size: 13.20px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='311.31px' lengthAdjust='spacingAndGlyphs'>Nejčastější dvojslovná spojení v popisech projektů</text>
+<text x='163.83' y='426.02' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='9.50px' lengthAdjust='spacingAndGlyphs'>10</text>
+<text x='228.73' y='426.02' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='9.50px' lengthAdjust='spacingAndGlyphs'>20</text>
+<text x='293.63' y='426.02' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='9.50px' lengthAdjust='spacingAndGlyphs'>30</text>
+<text x='358.53' y='426.02' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='9.50px' lengthAdjust='spacingAndGlyphs'>40</text>
+<text x='423.43' y='426.02' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='9.50px' lengthAdjust='spacingAndGlyphs'>50</text>
+<text x='5.98' y='19.16' style='font-size: 13.20px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='311.26px' lengthAdjust='spacingAndGlyphs'>Nejčastější dvojslovná spojení v popisech projektů</text>
 </g>
 </svg>

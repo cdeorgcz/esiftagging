@@ -13,7 +13,7 @@
 
 <title>Přehled projektu</title>
 
-<script src="site_libs/header-attrs-2.13/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
@@ -62,7 +62,6 @@ if (window.hljs) {
 
 
 
-
 <link rel="stylesheet" href="site/site.css" type="text/css" />
 
 
@@ -87,9 +86,6 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
-}
-details > summary > p:only-child {
-  display: inline;
 }
 pre code {
   padding: 0;
@@ -242,7 +238,7 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -261,7 +257,7 @@ $(document).ready(function () {
   <a href="research.html">Rešerše</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Náhledy
      
     <span class="caret"></span>
@@ -279,7 +275,7 @@ $(document).ready(function () {
   <a href="s_output.html">Dokumentace výstupů</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     Technická dokumentace
      
     <span class="caret"></span>
@@ -919,11 +915,13 @@ default:
   # PRV data-input, from https://www.szif.cz/cs/seznam-prijemcu-dotaci
 
   agri_opendata_zipxml: [&quot;agri_prijemci_2017.zip&quot;, &quot;agri_prijemci_2018.zip&quot;,
-                         &quot;agri_prijemci_2019.zip&quot;, &quot;agri_prijemci_2020.zip&quot;]
+                         &quot;agri_prijemci_2019.zip&quot;, &quot;agri_prijemci_2020.zip&quot;,
+                         &quot;agri_prijemci_2021.xml&quot;]
   agri_opendata_urls: [&quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197147275.zip&quot;,
                        &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1563197121858.zip&quot;,
                        &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1590753721920.zip&quot;,
-                       &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1622192829773.zip&quot;]
+                       &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2F1622192829773.zip&quot;,
+                       &quot;https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fpkp%2Fspd%2Fopendata%2Fspd2021.xml&quot;]
   agri_opendata_dir: &quot;data-input/opendata-szif&quot;
   prv_data_path: &quot;data-input/sestavy-prv_2020-12/PRV 2014-20 k XII. 2020.XLSX&quot;
 

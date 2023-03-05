@@ -2,6 +2,8 @@
 <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' width='432.00pt' height='285.12pt' viewBox='0 0 432.00 285.12'>
 <defs>
   <style type='text/css'><![CDATA[
+    @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap");
     .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
       fill: none;
       stroke: #000000;
@@ -30,24 +32,25 @@
 <g clip-path='url(#cpNjkuNjF8NDI2LjAyfDM3LjgxfDI1Ni40NQ==)'>
 <rect x='69.61' y='37.81' width='356.41' height='218.64' style='stroke-width: 1.07; stroke: none; fill: #FFFFFF;' />
 <polyline points='69.61,256.45 69.61,37.81 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='128.94,256.45 128.94,37.81 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='188.28,256.45 188.28,37.81 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='247.61,256.45 247.61,37.81 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='306.95,256.45 306.95,37.81 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='366.28,256.45 366.28,37.81 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
-<polyline points='425.62,256.45 425.62,37.81 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
-<rect x='69.61' y='113.63' width='12.54' height='31.74' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #006400;' />
-<rect x='69.61' y='184.16' width='5.62' height='31.74' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #E69F00;' />
-<rect x='69.61' y='78.37' width='226.20' height='31.74' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #7F7F7F;' />
-<rect x='69.61' y='148.89' width='76.45' height='31.74' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #009E73;' />
-<rect x='69.61' y='43.10' width='320.81' height='31.74' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #000000;' />
-<rect x='69.61' y='219.42' width='40.87' height='31.74' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #00008B;' />
-<text x='88.08' y='133.35' style='font-size: 11.04px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='13.23px' lengthAdjust='spacingAndGlyphs'>21</text>
-<text x='81.16' y='203.87' style='font-size: 11.04px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='6.62px' lengthAdjust='spacingAndGlyphs'>9</text>
-<text x='301.74' y='98.08' style='font-size: 11.04px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='19.85px' lengthAdjust='spacingAndGlyphs'>381</text>
-<text x='151.99' y='168.61' style='font-size: 11.04px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='19.85px' lengthAdjust='spacingAndGlyphs'>129</text>
-<text x='396.36' y='62.82' style='font-size: 11.04px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='19.85px' lengthAdjust='spacingAndGlyphs'>541</text>
-<text x='116.41' y='239.14' style='font-size: 11.04px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='13.23px' lengthAdjust='spacingAndGlyphs'>69</text>
+<polyline points='120.51,256.45 120.51,37.81 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='171.41,256.45 171.41,37.81 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='222.31,256.45 222.31,37.81 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='273.21,256.45 273.21,37.81 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='324.11,256.45 324.11,37.81 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='375.01,256.45 375.01,37.81 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
+<polyline points='425.91,256.45 425.91,37.81 ' style='stroke-width: 0.64; stroke: #EBEBEB; stroke-linecap: butt;' />
+<rect x='69.61' y='113.63' width='13.92' height='31.74' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #006400;' />
+<rect x='69.61' y='184.16' width='5.11' height='31.74' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #E69F00;' />
+<rect x='69.61' y='78.36' width='229.58' height='31.74' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #7F7F7F;' />
+<rect x='69.61' y='148.89' width='76.34' height='31.74' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #009E73;' />
+<rect x='69.61' y='43.10' width='325.87' height='31.74' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #000000;' />
+<rect x='69.61' y='219.42' width='42.41' height='31.74' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #00008B;' />
+<text x='88.62' y='133.34' style='font-size: 11.04px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='13.23px' lengthAdjust='spacingAndGlyphs'>27</text>
+<text x='79.81' y='203.87' style='font-size: 11.04px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='13.23px' lengthAdjust='spacingAndGlyphs'>10</text>
+<text x='304.28' y='98.08' style='font-size: 11.04px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='19.85px' lengthAdjust='spacingAndGlyphs'>451</text>
+<text x='151.04' y='168.61' style='font-size: 11.04px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='19.85px' lengthAdjust='spacingAndGlyphs'>150</text>
+<text x='400.57' y='62.81' style='font-size: 11.04px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='19.85px' lengthAdjust='spacingAndGlyphs'>640</text>
+<text x='117.11' y='239.14' style='font-size: 11.04px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='13.23px' lengthAdjust='spacingAndGlyphs'>83</text>
 </g>
 <g clip-path='url(#cpMC4wMHw0MzIuMDB8MC4wMHwyODUuMTI=)'>
 <text x='64.68' y='233.61' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='33.95px' lengthAdjust='spacingAndGlyphs'>Weighted</text>
@@ -55,18 +58,19 @@
 <text x='64.68' y='203.10' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='58.70px' lengthAdjust='spacingAndGlyphs'>Negative (-40%)</text>
 <text x='64.68' y='167.83' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='47.28px' lengthAdjust='spacingAndGlyphs'>Partial (40%)</text>
 <text x='64.68' y='132.57' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='42.11px' lengthAdjust='spacingAndGlyphs'>Full (100%)</text>
-<text x='64.68' y='97.31' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='23.15px' lengthAdjust='spacingAndGlyphs'>No tag</text>
-<text x='64.68' y='57.29' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='18.20px' lengthAdjust='spacingAndGlyphs'>Total</text>
+<text x='64.68' y='97.30' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='23.15px' lengthAdjust='spacingAndGlyphs'>No tag</text>
+<text x='64.68' y='57.28' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='18.20px' lengthAdjust='spacingAndGlyphs'>Total</text>
 <text x='64.68' y='66.79' text-anchor='end' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='32.67px' lengthAdjust='spacingAndGlyphs'>spending</text>
 <text x='69.61' y='267.52' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='4.75px' lengthAdjust='spacingAndGlyphs'>0</text>
-<text x='128.94' y='267.52' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='14.26px' lengthAdjust='spacingAndGlyphs'>100</text>
-<text x='188.28' y='267.52' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='14.26px' lengthAdjust='spacingAndGlyphs'>200</text>
-<text x='247.61' y='267.52' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='14.26px' lengthAdjust='spacingAndGlyphs'>300</text>
-<text x='306.95' y='267.52' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='14.26px' lengthAdjust='spacingAndGlyphs'>400</text>
-<text x='366.28' y='267.52' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='14.26px' lengthAdjust='spacingAndGlyphs'>500</text>
-<text x='425.62' y='267.52' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='14.26px' lengthAdjust='spacingAndGlyphs'>600</text>
+<text x='120.51' y='267.52' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='14.26px' lengthAdjust='spacingAndGlyphs'>100</text>
+<text x='171.41' y='267.52' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='14.26px' lengthAdjust='spacingAndGlyphs'>200</text>
+<text x='222.31' y='267.52' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='14.26px' lengthAdjust='spacingAndGlyphs'>300</text>
+<text x='273.21' y='267.52' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='14.26px' lengthAdjust='spacingAndGlyphs'>400</text>
+<text x='324.11' y='267.52' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='14.26px' lengthAdjust='spacingAndGlyphs'>500</text>
+<text x='375.01' y='267.52' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='14.26px' lengthAdjust='spacingAndGlyphs'>600</text>
+<text x='425.91' y='267.52' text-anchor='middle' style='font-size: 8.80px;fill: #4D4D4D; font-family: "IBM Plex Sans Condensed";' textLength='14.26px' lengthAdjust='spacingAndGlyphs'>700</text>
 <text x='5.98' y='32.33' style='font-size: 11.00px; font-family: "IBM Plex Sans Condensed";' textLength='251.21px' lengthAdjust='spacingAndGlyphs'>bn CZK, using revised climate tags. Excludes CAP spend.</text>
-<text x='5.98' y='19.17' style='font-size: 13.20px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='69.81px' lengthAdjust='spacingAndGlyphs'>Key figures</text>
+<text x='5.98' y='19.16' style='font-size: 13.20px; font-weight: bold; font-family: "IBM Plex Sans";' textLength='69.80px' lengthAdjust='spacingAndGlyphs'>Key figures</text>
 <text x='426.02' y='279.14' text-anchor='end' style='font-size: 8.80px;fill: #999999; font-family: "IBM Plex Sans Condensed";' textLength='173.07px' lengthAdjust='spacingAndGlyphs'>Payment data for CZ-PL programme unavailable.</text>
 </g>
 </svg>
