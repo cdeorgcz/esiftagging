@@ -7,6 +7,15 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Změny 4. 3. 2023
+
+- doplněna data ESIF (MMR) do 2023-03
+- doplněna data SZIF za 2021
+
+Co z toho plyne: narostl objem utracených peněz o cca 100 mld., celkové vyznění se nezměnilo.
+
+- nefunguje datový feed DG REGIO EK s EU srovnáním utracených ESIF na klima; chybu jsem odreportoval správcům dat.
+
 ## Změny 20. 4. 2022
 
 - Opravy a doplnění hlavních grafů:
