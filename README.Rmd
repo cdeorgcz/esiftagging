@@ -19,14 +19,32 @@ Climate tagging výdajů ESI fondů v ČR, 2014-20.
 
 **Vytvořeno pro Centrum pro dopravu a energetiku jako součást projektu LIFE *XXX* (CODE)**
 
+Poznatky byly využity ve výstupech CDE a Fakt o klimatu v květnu 2022:
+
+- infografika [Fakta o klimatu](https://faktaoklimatu.cz/infografiky/fondy-eu-cde)
+- [Policy Brief](https://www.cde-org.cz/media/object/1972/revize_climate_taggingu_evropskych_fondu_v_ceske_republice.pdf)
+- [tisková zpráva CDE 26. 5. 2022](https://www.cde-org.cz/cs/blog/cesko-zaostava-v-podpore-zelenych-investic-odhaluje-nova-analyza-z-evropskych-fondu-financuje-i-projekty-s-prokazatelne-negativnim-dopadem-na-klima/1973): **Česko zaostává v podpoře zelených investic, odhaluje nová analýza. Z evropských fondů financuje i projekty s prokazatelně negativním dopadem na klima**
+
+```{r, include=FALSE}
+xx <- readLines(targets::tar_read(od_data_xml), n = 2)
+targets::tar_load(ef_url)
+dt_od <- stringr::str_extract(xx[2], "202[0-9]\\-[0-9]{2}\\-[0-9]{2}") |> lubridate::as_date()
+dt_pl <- stringr::str_extract(ef_url, "202[0-9]\\_[0-9]{2}") |> lubridate::parse_date_time("%Y_%m") |> lubridate::as_date()
+```
+
+Data aktualizována po datu publikace studie. Poslední data pochází z `r ptrr::format_date_human(dt_od)` ([otevřená data](https://data.gov.cz/datov%C3%A1-sada?iri=https://data.gov.cz/zdroj/datov%C3%A9-sady/66002222/af32ce8f398945f72b65a7215e2ec78e)), popř. `r ptrr::format_date_human(dt_pl)` (veřejný [seznam operací](https://dotaceeu.cz/cs/statistiky-a-analyzy/seznam-operaci-(prijemcu))).
+
 Detailnější dokumentace k pipelinu na přípravu a tagging dat o výdajích ESIF:
 
+- [metodologie](s_metodologie.html)
+- [vizualizace výstupu](s_output.html)
 - [obsahová dokumentace](s_doc.html)
-- [dokumentace a validace výstupu](s_output.html)
 - [pomůcka pro ruční tagging](s_listing.html)
 
 - [vstupní validace dat](s_inputchecks.html)
 - [technická dokumentace](dev.html)
+
+
 
 ## Dokumentace souborů
 

@@ -7,6 +7,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Update 15. 4. 2023
+
+- doplněna [metodologie](s_metodologie.html) kompilace dat
+- datový feed EK opět funguje
+
 ## Změny 4. 3. 2023
 
 - doplněna data ESIF (MMR) do 2023-03

@@ -20,6 +20,13 @@ t_html <- list(
     rmarkdown::render_site(s_doc_rmd)
     "docs/s_doc.html"}),
 
+  tar_file(s_met_md, "s_doc.Rmd"),
+  tar_file(s_met_html, command = {!! tar_knitr_deps_expr("s_metodologie.md")
+    siteconf
+    sitefiles
+    rmarkdown::render_site(s_doc_rmd)
+    "docs/s_doc.html"}),
+
   tar_file(s_inputchecks_rmd, "s_inputchecks.Rmd"),
   tar_file(s_inputchecks_html, command = {!! tar_knitr_deps_expr("s_inputchecks.Rmd")
     siteconf
