@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Petr Bouchal" />
+
+<meta name="date" content="2023-04-15" />
+
+<title>Metodologie využití dat</title>
+
+<script src="site_libs/header-attrs-2.21/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="site/site.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">ESIF tagging</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="s_doc.html">Dokumentace</a>
+</li>
+<li>
+  <a href="log.html">Postup práce</a>
+</li>
+<li>
+  <a href="research.html">Rešerše</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Náhledy
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="sample.html">Příklady reklasifikovaných projektů</a>
+    </li>
+    <li>
+      <a href="s_listing.html">Pomůcka pro ruční tagging</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="s_output.html">Dokumentace výstupů</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Technická dokumentace
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="s_inputchecks.html">Validace vstupů</a>
+    </li>
+    <li>
+      <a href="dev.html">Vývojářská dokumentace</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/cdeorgcz/esiftagging">
+    <span class="fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://petrbouchal.xyz">
+    <span class="fas fa-asterisk fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Metodologie využití dat</h1>
+<h4 class="author">Petr Bouchal</h4>
+<h4 class="date">2023-04-15</h4>
+
+</div>
+
+
+<div id="zdroje-a-využití-dat" class="section level2">
+<h2>Zdroje a využití dat</h2>
+<div id="čeho-se-potřebujeme-dobrat" class="section level3">
+<h3>Čeho se potřebujeme dobrat</h3>
+<p>Cílem je na z dat na úrovni projektů vyvodit podíly celkových
+vydaných částek ESI fondů v jednotlivých kategoriích tzv. klima tagů,
+tj. Rio markerů.</p>
+<p>Kategorizaci vynaložených financí do jednotlivých klima tagů určuje
+prováděcí nařízení 215/2014. Příloha I nařízení se týká ESI fondů mimo
+zemědělství (EAFRD / EFZRV) a v tabulce 1 určuje klima tag pro každou z
+125 oblastí intervence (v evropské legislativě oblast zásahu; angl.
+categories of intervention). Příloha II pak totéž dělá pro EFZRV, a to
+navázáním klima tagů na jednotlivé články nařízení 1305/2013 (společné
+nařízení ESIF), podle kterých se výdaje EFZRV člení.</p>
+</div>
+<div id="proč-to-není-přímočaré" class="section level3">
+<h3>Proč to není přímočaré</h3>
+<p>Veřejná projektová data ESIF a CAP vlastní informaci o alokaci výdajů
+jednotlivých projektů na klima tagy neobsahují; stejně tak neobsahují
+přímo informaci o alokaci výdajů projektů do oblastí intervencí nebo
+relevantních cílů CAP. Navíc jeden projekt ESIF mimo PRV může spadat do
+více oblastí intervence nebo do více tematických cílů, což oboje
+ovlivňuje přiřazení klima tagu.</p>
+<p>U ESF navíc platí, že ačkoli oblasti intervence, do kterých lze
+projekty alokovat, mají klima tag 0, může projekt zároveň patřit do
+specifického vedlejšího tématu “Podpora přechodu na nízkouhlíkové
+hospodářství, které účinně využívá zdroje” (tabulka 6 v příloze 1
+prováděcího nařízení), díky kterému by projektu byl přiřazen klima tag
+100 %. Takové přiřazení ale nelze u českých projektů ESF nijak
+dovodit.</p>
+<p>Systém alokace klimatagů navíc zahrnuje další pravidlo (čl. 1, odst.
+1 (b) prováděcího nařízení), které vyžaduje další napojení dat. Pro
+výdaje, které jsou v tematickém cíli 4 nebo 5 (TC je 11, je to hlavní
+obsahové členění cílů ESIF), lze počítat klima tag 40 %, i pokud spadá
+do oblasti intervence, pro kterou je stanoven klima tag 40 %. Opět ale z
+veřejných dat nelze přímo přiřadit projekt k tematickému cíli.</p>
+</div>
+<div id="jak-to-děláme" class="section level3">
+<h3>Jak to děláme</h3>
+<div id="postup-u-efrr-fs-a-esf" class="section level4">
+<h4>Postup u EFRR, FS a ESF</h4>
+<p>Proto postupujeme u ESIF mimo zemědělství následovně:</p>
+<ol style="list-style-type: decimal">
+<li>z <a
+href="https://dotaceeu.cz/cs/statistiky-a-analyzy/seznam-operaci-(prijemcu)">veřejných
+dat o výdajích ESIF</a> (zdroj A1) na dotaceEU.cz zjišťujeme aktuálně
+vyčerpané prostředky pro jednotlivé fondy</li>
+<li>z <a
+href="https://data.gov.cz/datov%C3%A1-sada?iri=https://data.gov.cz/zdroj/datov%C3%A9-sady/66002222/af32ce8f398945f72b65a7215e2ec78e">otevřených
+dat</a> (zdroj A2) ke každému projektu přiřazujeme specifické cíle</li>
+<li>z neveřejné sestavy poskytnuté od MMR (zdroj B - sestavy E005)
+dovozujeme (1) podíl výdajů každého projektu alokovaný do jednotlivých
+oblastí intervence a (2) podíl výdajů každého projektu na jednotlivé
+specifické cíle, do kterých projekt spadá - každý projekt tedy
+rozpadneme na části s velikostmi odpovídajími těmto poměrům. (Relativně
+málo projektů spadá do více oblastí intervence a velmi málo spadá do
+více specifických cílů).</li>
+<li>Pomocí matice vazeb cílů poskytnuté MMR (zdroj C) určíme, do jakého
+tematického cíle projekt patří - zde jde o to ze specifického cíle
+(jeden z cílů daného OP) dovodit tematický cíl (TC jsou průřezové napříč
+všemi fondy a operačními programy)</li>
+<li>Následně pomocí pravidel z prováděcího nařízení a klima tagů
+uvedených v jeho příloze dovozujeme pro každý balíček peněz jeho klima
+tag.</li>
+</ol>
+<p>Jakmile aktualizujeme zdroj A1 a A2, může se stát, že v aktuálních
+veřejných datech budou projekty, které nenajdeme ve zdroji B, který je
+náročnější aktualizovat (musí se o něj žádat). U těchto projektů ale
+díky veřejné tabulce víme alespoň výčet kategorií intervence, i když
+vlivem zastarání sestavy MMR nevíme přesné rozdělení výdajů mezi tyto
+kategorie. V takových případech tedy projekty rozdělíme rovnoměrně mezi
+uvedené kategorie. To pravděpodobně mírně nadhodnocuje výdaje alokované
+do minoritních kategorií, ale další zpřesňování (např. extrapolací z
+dřívějších projektů) by bylo neúměrně náročné a nepřineslo by velkou
+změnu výsledku.</p>
+</div>
+<div id="postup-u-efzrv" class="section level4">
+<h4>Postup u EFZRV</h4>
+<p>U EFZRV je postup složitější. Z dostupných otevřených dat totiž není
+patrné, jak kategorie projektů v datech uvedené navázat na cíle, ke
+kterým prováděcí nařízení uvádí klima tagy.</p>
+<p>U zemědělství postupujeme následovně:</p>
+<ol style="list-style-type: decimal">
+<li>Využíváme <a
+href="https://www.szif.cz/cs/seznam-prijemcu-dotaci">otevřená data
+SZIF</a> (zdroj D), pro kategorizaci pak položku opatření</li>
+<li>S pomocí <a
+href="https://www.szif.cz/cs/CmDocument?rid=%2Fapa_anon%2Fcs%2Fdokumenty_ke_stazeni%2Fprv2014%2Fzakladni_informace%2F1436519577270.pdf">schématu
+podpor SZIF</a> dovozujeme z kódu opatření v datech skutečný obsah
+opatření podle schématu; následně k jednotlivým opatřením podle jejich
+povahy přiřazujeme článek nařízení 1305/2013, podle kterého lze s pomocí
+prováděcího nařízení 215/2014 přiřadit klima tagy.</li>
+</ol>
+</div>
+</div>
+<div id="metodologická-poznámka-ke-cap-vs.-esif" class="section level3">
+<h3>Metodologická poznámka ke CAP vs. ESIF</h3>
+<p>Součástí ESIF jsou pouze tzv. projektová opatření v rámci PRV, tj.
+peníze, kde někdo dostane peníze na projekt s daným cílem.</p>
+<p>Tzv. plošná opatření, kde farmáři dostávají dotace na plochu, nejsou
+součástí ESIF, jsou součástí PRV, a mají přiřazený klima tag. Plošná
+opatření do celkového výpočtu klima přínosu ESIF nepočítáme.</p>
+<p>V datech SZIF jsou pak uvedeny i výdaje z EZZF (ty jsou součástí CAP,
+ale nikoli ESIF ani PRV) a některé národní dotace. Tyto položky do
+výpočtu klima příspěvku ESIF také nepočítáme, navíc ani nemají přiřazený
+klima tag.</p>
+<p>Vůbec se pak nezabýváme výdaji z EMFF, tj. v ČR programu OP
+Rybářství.</p>
+<blockquote>
+<p>V některých reportech EU (viz např. <a
+href="https://commission.europa.eu/system/files/2021-07/db2022_wd_1_programme_statements_web_0.pdf#page=15">Budget
+Working Document 2022 #1, s. 15</a>) se právě vysoký klima tag pro
+plošná opatření i EZZF používá jako způsob, jak zvýšit vykazovaný
+klimapříspěvek evropského rozpočtu. EZZF i EZFRV každý vykazují vyšší
+příspěvek ke klimatické akci než všechny ostatní ESI fondy (CF, ERDF,
+ESF).</p>
+</blockquote>
+</div>
+<div id="glosář-fondy-a-programy" class="section level3">
+<h3>Glosář: fondy a programy</h3>
+</div>
+<div id="glosář-informace-o-projektech" class="section level3">
+<h3>Glosář: informace o projektech</h3>
+<div id="erdf-cf-esf" class="section level4">
+<h4>ERDF, CF, ESF</h4>
+</div>
+<div id="prv" class="section level4">
+<h4>PRV</h4>
+</div>
+</div>
+<div id="zdroje-výdajů" class="section level3">
+<h3>Zdroje výdajů</h3>
+<p>U ESI fondů je vždy třeba rozlišit, o jakou část peněz podle zdroje
+se jedná.</p>
+<p>Výdaje ESIF se hrubě dělí na národní a evropské, národní pak na
+soukromé a veřejné. Evropské a národní veřejné zdroje pak dávají
+dohromady veřejné zdroje. Některé datová zdroje veřejné zdroje dále
+člení na státní rozpočet a zdroje z rozpočtů samospráv a další veřejné
+rozpočty.</p>
+<p>EU ráda říká evropskému příspěvku EU cofinancing, příjemci a ČR často
+slovem kofinancování naopak myslí národní veřejné nebo soukromé
+kofinancování projektů.</p>
+<p>V našich výstupech všude pracujeme s takzvanými celkovými způsobilými
+výdaji, tj. veřejnými i soukromými, evropskými i českými v jednom.</p>
+</div>
+</div>
+<div id="vztah-k-reportingu-ek" class="section level2">
+<h2>Vztah k reportingu EK</h2>
+<p>EK zveřejňuje <a
+href="https://cohesiondata.ec.europa.eu/2014-2020-Categorisation/ESIF-2014-2020-categorisation-ERDF-ESF-CF-planned-/3kkx-ekfq">datovou
+sadu</a> zahrnující výdaje na klima z jednotlivých operačních
+programů.</p>
+<p>Oproti zde uvedenému:</p>
+<ul>
+<li>jde pouze o evropský podíl výdajů, přitom podíly spolufinancování se
+liší mezi státy, programy a příjemci, tj. podíly klima tagů v celkových
+výdajích se mohou lišit</li>
+<li>data EK ignorují pravidlo čl. 1 odst 1. b. o přidělení klima tagu
+pro projekty v tematickém cíli 4 a 5</li>
+<li>jde pouze o výdaje řízení DG REGIO, tj. nejsou zde výdaje EZFRV tedy
+PRV</li>
+<li>vlivem předchozích dvou faktorů EK podhodnocuje příspěvek ESIF v ČR
+cca o 2 p.b. (tj. celkový příspěvek odpovídá 17 % celkových výdajů
+oproti 19 % v našich výpočtech), resp. 4 p.b. při započtení PRV v našich
+výpočtech</li>
+<li>jde o data do konce předchozího roku</li>
+<li>v datech EK je odhadovaný cílový příspěvek ke klimatu, dopočtený
+podle plánovaných alokací na jednotlivé specifické cíle a tedy oblasti
+intervencí</li>
+<li>v datech EK nejsou rozpady na operační programy ani žádné
+jemnější</li>
+</ul>
+<p>Ve vlastních <a
+href="https://cohesiondata.ec.europa.eu/stories/s/a8jn-38y8">výstupech k
+tématu</a> EK nikde neprezentuje podíl klima příspěvků na celku ani
+pokrok k odhadovaným cílovým hodnotám klimapříspěvku; toto z jejich dat
+dopočítáváme.</p>
+</div>
+<div id="jak-tato-čísla-vznikají-u-zdroje" class="section level2">
+<h2>Jak tato čísla vznikají u zdroje?</h2>
+<p>Stále zůstává otázka, jak vlastně vznikají kategorizace projektů, ze
+kterých složitě dovozujeme klima tagy.</p>
+<p>Takto: - specifický cíl OP je daný pro každou výzvu. Jedna výzva může
+zasahovat do více SC a tedy i více TC, ale to se děje relativně málo -
+tím pádem je daný i tematický cíl - s oblastmi intervencí je to
+složitější. - Každý OP indikativně stanovuje podíl výdajů OP na
+jednotlivé OI - Následně pro každou výzvu stanoví, do kterých OI budou
+její výdaje spadat, a to se buď napevno promítne do projektů, nebo
+žadatelé sami uvádějí, jaká číst výdajů projektu spadá do jednotlivých
+oblastí intervence dostupných ve výzvě; k tomu v některých případech
+dostávali návod</p>
+</div>
+<div id="metodologie-revizí-klimatagů" class="section level2">
+<h2>Metodologie revizí klimatagů</h2>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+</body>
+</html>
