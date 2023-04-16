@@ -7,7 +7,7 @@ locale: en
 table:
   name: data
   _columns: 26
-  _rows: 121532.0
+  _rows: 129349.0
   _type: tbl_df
   Info: Tabulka se součty výdajů podle OP, klima tagu a kategorie určující klimatag
   Rozsah: Z CAP/SZP zahruje jen PRV - projektová i plošná opatření
@@ -94,17 +94,17 @@ columns:
     Jednotka: CZK
     Zdroj dat: ŽOP sečtené podle data proplacení
     Zdroj financí: Národní
-  fin_vyuct_verejne:
-    _type: numeric
-    Typ: Finance
-    Jednotka: CZK
-    Zdroj dat: ŽOP sečtené podle data proplacení
   fin_vyuct_soukr:
     _type: numeric
     Typ: Finance
     Jednotka: CZK
     Zdroj dat: ŽOP sečtené podle data proplacení
     Zdroj financí: Soukromý
+  fin_vyuct_verejne:
+    _type: numeric
+    Typ: Finance
+    Jednotka: CZK
+    Zdroj dat: ŽOP sečtené podle data proplacení
   fin_vyuct_narodni:
     _type: numeric
     Typ: Finance
