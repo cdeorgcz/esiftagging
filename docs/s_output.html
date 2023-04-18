@@ -29,6 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -225,6 +228,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -232,6 +298,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -330,10 +406,8 @@ $(document).ready(function () {
 </div>
 
 
-<div id="section" class="section level1 tabset">
-<h1 class="tabset"></h1>
-<div id="hlavní-grafy" class="section level2 tabset tabset-pills">
-<h2 class="tabset tabset-pills">Hlavní grafy</h2>
+<div id="hlavní-grafy" class="section level2">
+<h2>Hlavní grafy</h2>
 <div id="celkem---ek" class="section level3">
 <h3>Celkem - EK</h3>
 <div id="bez-prv" class="section level4">
@@ -359,8 +433,8 @@ $(document).ready(function () {
 <button class="btn btn-default"><i class="fa fa-save"></i> Data v CSV</button>
 </a>
 </div>
-<div id="srovnání-tagů" class="section level3 tabset tabset-pills">
-<h3 class="tabset tabset-pills">Srovnání tagů</h3>
+<div id="srovnání-tagů" class="section level3">
+<h3>Srovnání tagů</h3>
 <p><img src="s_output_files/figure-html/plot-sankey-1.svg" width="100%" /></p>
 <a onclick="fetch(&#39;data:text/csv;base64,eDtub2RlO25leHRfeDtuZXh0X25vZGU7dmFsdWUKY2xpbWF0ZV9zaGFyZTtObyB0YWc7Y2xpbWF0ZV9zaGFyZV9tO05vIHRhZzs0NDY0NzczMzI4MzksMTc2MjcKY2xpbWF0ZV9zaGFyZV9tO05vIHRhZztOQTtOQTs0NDY0NzczMzI4MzksMTc2MjcKY2xpbWF0ZV9zaGFyZTtObyB0YWc7Y2xpbWF0ZV9zaGFyZV9tO1BhcnRpYWwgKDQwJSk7OTg2NzUwNDQyMCwzOTAwMApjbGltYXRlX3NoYXJlX207UGFydGlhbCAoNDAlKTtOQTtOQTs5ODY3NTA0NDIwLDM5MDAwCmNsaW1hdGVfc2hhcmU7Tm8gdGFnO2NsaW1hdGVfc2hhcmVfbTtVbmtub3duOzIwNDgwMjQsMTgwMDAKY2xpbWF0ZV9zaGFyZV9tO1Vua25vd247TkE7TkE7MjA0ODAyNCwxODAwMApjbGltYXRlX3NoYXJlO1BhcnRpYWwgKDQwJSk7Y2xpbWF0ZV9zaGFyZV9tO05lZ2F0aXZlICgtNDAlKTsxMDA3MDAyMDA4OSwzMjAwMApjbGltYXRlX3NoYXJlX207TmVnYXRpdmUgKC00MCUpO05BO05BOzEwMDcwMDIwMDg5LDMyMDAwCmNsaW1hdGVfc2hhcmU7UGFydGlhbCAoNDAlKTtjbGltYXRlX3NoYXJlX207Tm8gdGFnOzk4NDU4OTc5OTksOTEwMDAKY2xpbWF0ZV9zaGFyZV9tO05vIHRhZztOQTtOQTs5ODQ1ODk3OTk5LDkxMDAwCmNsaW1hdGVfc2hhcmU7UGFydGlhbCAoNDAlKTtjbGltYXRlX3NoYXJlX207UGFydGlhbCAoNDAlKTs4ODczNjE1NTYyMyw0MzAxMApjbGltYXRlX3NoYXJlX207UGFydGlhbCAoNDAlKTtOQTtOQTs4ODczNjE1NTYyMyw0MzAxMApjbGltYXRlX3NoYXJlO1BhcnRpYWwgKDQwJSk7Y2xpbWF0ZV9zaGFyZV9tO0Z1bGwgKDEwMCUpOzY0MDQ1NzgxMDcsMDUwMDAKY2xpbWF0ZV9zaGFyZV9tO0Z1bGwgKDEwMCUpO05BO05BOzY0MDQ1NzgxMDcsMDUwMDAKY2xpbWF0ZV9zaGFyZTtGdWxsICgxMDAlKTtjbGltYXRlX3NoYXJlX207Tm8gdGFnOzI5MzUxNzY1NzcsMjE1NDcKY2xpbWF0ZV9zaGFyZV9tO05vIHRhZztOQTtOQTsyOTM1MTc2NTc3LDIxNTQ3CmNsaW1hdGVfc2hhcmU7RnVsbCAoMTAwJSk7Y2xpbWF0ZV9zaGFyZV9tO1BhcnRpYWwgKDQwJSk7NTQxOTYzMDYyNDQsNTgzNzAKY2xpbWF0ZV9zaGFyZV9tO1BhcnRpYWwgKDQwJSk7TkE7TkE7NTQxOTYzMDYyNDQsNTgzNzAKY2xpbWF0ZV9zaGFyZTtGdWxsICgxMDAlKTtjbGltYXRlX3NoYXJlX207RnVsbCAoMTAwJSk7MjE3NTY1ODU0ODMsMDQwMDIKY2xpbWF0ZV9zaGFyZV9tO0Z1bGwgKDEwMCUpO05BO05BOzIxNzU2NTg1NDgzLDA0MDAyCg==&#39;).then(res =&gt; res.blob()).then(blob =&gt; {&#10;      const downloadURL = window.URL.createObjectURL(blob);&#10;      const a = document.createElement(&#39;a&#39;);&#10;      document.body.appendChild(a);&#10;      a.href = downloadURL;&#10;      a.download = &#39;plot_sankey$data.csv&#39;; a.click();&#10;      window.URL.revokeObjectURL(downloadURL);&#10;      document.body.removeChild(a);&#10;    });">
 <button class="btn btn-default"><i class="fa fa-save"></i> Data v CSV</button>
@@ -374,7 +448,7 @@ $(document).ready(function () {
 <button class="btn btn-default"><i class="fa fa-save"></i> Data v CSV</button>
 </a>
 <p><img src="s_output_files/figure-html/plot-comparison-bysc-1.svg" width="100%" /></p>
-<a onclick="fetch(&#39;data:text/csv;base64,c2M7b3BfemtyO3JldGFnO2JlZztlbmQ7ZGlmZjtsYmwKRW5lcmdldGlja8OpIMO6c3BvcnkgdiBtxJtzdHNrw71jaCBvYmpla3RlY2ggZG9zYcW+ZW7DqSB0YWvDqSBzIHZ5dcW+aXTDrW0gdmhvZG7DvWNoIG9ibm92aXRlbG7DvWNoIHpkcm9qxa8gZW5lcmdpZSwgZW5lcmdldGlja3kgZWZla3Rpdm7DrWNoIHphxZnDrXplbsOtIGEgaW50ZWxpZ2VudG7DrWNoIHN5c3TDqW3FryDFmcOtemVuw607T1AgUFBSO+KGkyAxMDAg4oaSIDQwOzEsNTMzNTM5MjU3ODkwMDAwOzAsNjEzNDE1NzAzMTU2MDA7LTAsOTIwMTIzNTU0NzM0MDAwO09QIFBQUjogRW5lcmdldGlja8OpIMO6c3BvcnkgdiBtxJtzdHNrw71jaCBvYmpla3RlY2ggZG9zYcW+ZW7DqSB0YWvDqSBzIC4uLiAo4oaTIDEwMCDihpIgNDApClBvc8OtbGVuw60ga29tdW5pdG7EmyB2ZWRlbsOpaG8gbcOtc3Ruw61obyByb3p2b2plIHphIMO6xI1lbGVtIHp2w73FoWVuw60ga3ZhbGl0eSDFvml2b3RhIHZlIHZlbmtvdnNrw71jaCBvYmxhc3RlY2ggYSBha3Rpdml6YWNlIG3DrXN0bsOtaG8gcG90ZW5jacOhbHU7SVJPUDvihpEgMCDihpIgNDA7MCwzODc2MTg2NDQ2MjAwMDA7MCwxNTUwNDc0NTc4NDgwMDstMCwyMzI1NzExODY3NzIwMDA7SVJPUDogUG9zw61sZW7DrSBrb211bml0bsSbIHZlZGVuw6lobyBtw61zdG7DrWhvIHJvenZvamUgemEgw7rEjWVsZW0genYuLi4gKOKGkyAxMDAg4oaSIDQwKQpQcmV2ZW5jZSB2em5pa3Ugb2RwYWTFrztPUCBaUDvihpEgMCDihpIgNDA7MCwwMDAwMDAwMDAwMDAwMDA7MCw4MDY5OTE2NzQ5NzIwMDswLDgwNjk5MTY3NDk3MjAwMDtPUCBaUDogUHJldmVuY2UgdnpuaWt1IG9kcGFkxa8gKOKGkSAwIOKGkiA0MCkKUkVBQ1QtRVU7SVJPUDvihpMgMTAwIOKGkiA0MDswLDU0NjE0OTQ4NDgwMzcyNDswLDIxODQ1OTc5MzkyMTQ5Oy0wLDMyNzY4OTY5MDg4MjIzNDtJUk9QOiBSRUFDVC1FVSAo4oaTIDEwMCDihpIgNDApClJla3VsdGl2b3ZhdCBzdGFyw6kgc2tsw6Fka3k7T1AgWlA74oaRIDAg4oaSIDQwOzAsMDAwMDAwMDAwMDAwMDAwOzAsMTI5NDY5Mjk4MTQ0MDA7MCwxMjk0NjkyOTgxNDQwMDA7T1AgWlA6IFJla3VsdGl2b3ZhdCBzdGFyw6kgc2tsw6Fka3kgKOKGkSAwIOKGkiA0MCkKUm96dm9qIG7DrXprb2VtaXNuw60gbW9iaWxpdHkgdiBvYmxhc3RpIG3Em3N0c2vDqSBkb3ByYXZ5IHYgdWxpxI1uw61tIHByb3ZvenU7T1AgUFBSO+KGkSA0MCDihpIgMTAwOzAsMDY4NzE1MzYwMDAwMDAwOzAsMTcxNzg4NDAwMDAwMDA7MCwxMDMwNzMwNDAwMDAwMDA7T1AgUFBSOiBSb3p2b2ogbsOtemtvZW1pc27DrSBtb2JpbGl0eSB2IG9ibGFzdGkgbcSbc3Rza8OpIGRvcHJhdnkgdiB1Li4uICjihpEgNDAg4oaSIDEwMCkKU27DrcW+aXQgZW1pc2Ugc3RhY2lvbsOhcm7DrWNoIHpkcm9qxa8gcG9kw61sZWrDrWPDrSBzZSBuYSBleHBvemljaSBvYnl2YXRlbHN0dmEgbmFkbGltaXRuw61tIGtvbmNlbnRyYWPDrW0gem5lxI1pxaHFpXVqw61jw61jaCBsw6F0ZWs7T1AgWlA74oaTIDQwIOKGkiAwOzEsOTU4MDQwNjk4OTkyMDAwOzAsMDAwMDAwMDAwMDAwMDA7LTEsOTU4MDQwNjk4OTkyMDAwO09QIFpQOiBTbsOtxb5pdCBlbWlzZSBzdGFjaW9uw6FybsOtY2ggemRyb2rFryBwb2TDrWxlasOtY8OtIHNlIG5hIGV4cG96aS4uLiAo4oaTIDQwIOKGkiAwKQpTbsOtxb5pdCBlbWlzZSBzdGFjaW9uw6FybsOtY2ggemRyb2rFryBwb2TDrWxlasOtY8OtIHNlIG5hIGV4cG96aWNpIG9ieXZhdGVsc3R2YSBuYWRsaW1pdG7DrW0ga29uY2VudHJhY8OtbSB6bmXEjWnFocWldWrDrWPDrWNoIGzDoXRlayB2IHVoZWxuw71jaCByZWdpb25lY2g7T1AgWlA74oaTIDQwIOKGkiAwOzAsMTM5NjU3MjA5MzI4MDAwOzAsMDAwMDAwMDAwMDAwMDA7LTAsMTM5NjU3MjA5MzI4MDAwO09QIFpQOiBTbsOtxb5pdCBlbWlzZSBzdGFjaW9uw6FybsOtY2ggemRyb2rFryBwb2TDrWxlasOtY8OtIHNlIG5hIGV4cG96aS4uLiAo4oaTIDQwIOKGkiAwKQpTbsOtxb5pdCBlbWlzZSB6IGxva8OhbG7DrWhvIHZ5dMOhcMSbbsOtIGRvbcOhY25vc3TDrSBwb2TDrWxlasOtY8OtIHNlIG5hIGV4cG96aWNpIG9ieXZhdGVsc3R2YSBuYWRsaW1pdG7DrW0ga29uY2VudHJhY8OtbSB6bmXEjWnFocWldWrDrWPDrWNoIGzDoXRlay47T1AgWlA74oaTIDQwIOKGkiAtNDA7Myw5OTAzODMyNTM4ODQwMDE7LTMsOTkwMzgzMjUzODg0MDA7LTcsOTgwNzY2NTA3NzY4MDAxO09QIFpQOiBTbsOtxb5pdCBlbWlzZSB6IGxva8OhbG7DrWhvIHZ5dMOhcMSbbsOtIGRvbcOhY25vc3TDrSBwb2TDrWxlasOtY8OtIHMuLi4gKOKGkyA0MCDihpIgLTQwKQpTbsOtxb5pdCBlbmVyZ2V0aWNrb3UgbsOhcm/EjW5vc3QgdmXFmWVqbsO9Y2ggYnVkb3YgYSB6dsO9xaFpdCB2eXXFvml0w60gb2Jub3ZpdGVsbsO9Y2ggemRyb2rFryBlbmVyZ2llIHYgYnVkb3bDoWNoIMO6c3TFmWVkbsOtY2ggdmzDoWRuw61jaCBpbnN0aXR1Y8OtO09QIFpQO+KGkyAxMDAg4oaSIDQwOzAsMjc4MzI1ODM4MTMwMDAwOzAsMTExMzMwMzM1MjUyMDA7LTAsMTY2OTk1NTAyODc4MDAwO09QIFpQOiBTbsOtxb5pdCBlbmVyZ2V0aWNrb3UgbsOhcm/EjW5vc3QgdmXFmWVqbsO9Y2ggYnVkb3YgYSB6dsO9xaFpdCB2eS4uLiAo4oaTIDEwMCDihpIgNDApClZ5dHZvxZllbsOtIHBvZG3DrW5layBwcm8gxaFpcsWhw60gdnl1xb5pdMOtIHZvemlkZWwgbmEgYWx0ZXJuYXRpdm7DrSBwb2hvbiBuYSBzaWxuacSNbsOtIHPDrXRpO09QIEQ74oaTIDEwMCDihpIgNDA7MCwyOTgyODM4OTgyMTAwMDA7MCwxMTkzMTM1NTkyODQwMDstMCwxNzg5NzAzMzg5MjYwMDA7T1AgRDogVnl0dm/FmWVuw60gcG9kbcOtbmVrIHBybyDFoWlyxaHDrSB2eXXFvml0w60gdm96aWRlbCBuYSBhbHRlcm5hdGkuLi4gKOKGkyAxMDAg4oaSIDQwKQpWeXR2b8WZZW7DrSBwb2Rtw61uZWsgcHJvIHp2w73FoWVuw60gdnl1xb7DrXbDoW7DrSB2ZcWZZWpuw6kgaHJvbWFkbsOpIGRvcHJhdnkgdmUgbcSbc3RlY2ggdiBlbGVrdHJpY2vDqSB0cmFrY2k7T1AgRDvihpEgNDAg4oaSIDEwMDsyLDQ5MzExNTg4MjgyMDAwMTs2LDIzMjc4OTcwNzA1MDAwOzMsNzM5NjczODI0MjMwMDAxO09QIEQ6IFZ5dHZvxZllbsOtIHBvZG3DrW5layBwcm8genbDvcWhZW7DrSB2eXXFvsOtdsOhbsOtIHZlxZllam7DqSBocm9tYWRuw6kuLi4gKOKGkSA0MCDihpIgMTAwKQpabGVwxaFlbsOtIMWZw616ZW7DrSBkb3ByYXZuw61obyBwcm92b3p1IGEgenZ5xaFvdsOhbsOtIGJlenBlxI1ub3N0aSBkb3ByYXZuw61obyBwcm92b3p1O09QIEQ74oaTIDQwIOKGkiAwOzAsNDk4MTUyMTI2OTY0MDAwOzAsMDAwMDAwMDAwMDAwMDA7LTAsNDk4MTUyMTI2OTY0MDAwO09QIEQ6IFpsZXDFoWVuw60gxZnDrXplbsOtIGRvcHJhdm7DrWhvIHByb3ZvenUgYSB6dnnFoW92w6Fuw60gYmV6cGXEjW5vc3QuLi4gKOKGkyA0MCDihpIgMCkKWnbDvcWhZW7DrSBwxZlpcHJhdmVub3N0aSBrIMWZZcWhZW7DrSBhIMWZw616ZW7DrSByaXppayBhIGthdGFzdHJvZjtJUk9QO+KGkyAxMDAg4oaSIDQwOzQsNDUxODU1OTQ3MjUwMDA1OzEsNzgwNzQyMzc4OTAwMDA7LTIsNjcxMTEzNTY4MzUwMDA1O0lST1A6IFp2w73FoWVuw60gcMWZaXByYXZlbm9zdGkgayDFmWXFoWVuw60gYSDFmcOtemVuw60gcml6aWsgYSBrYXRhc3Ryb2YgKOKGkyAxMDAg4oaSIDQwKQpadsO9xaFlbsOtIHDFmWlwcmF2ZW5vc3RpIGsgxZllxaFlbsOtIGEgxZnDrXplbsOtIHJpemlrIGEga2F0YXN0cm9mO0lST1A74oaTIDQwIOKGkiAwOzAsMTk1MDM5NjE4MDIwMDAwOzAsMDAwMDAwMDAwMDAwMDA7LTAsMTk1MDM5NjE4MDIwMDAwO0lST1A6IFp2w73FoWVuw60gcMWZaXByYXZlbm9zdGkgayDFmWXFoWVuw60gYSDFmcOtemVuw60gcml6aWsgYSBrYXRhc3Ryb2YgKOKGkyA0MCDihpIgMCkKWnbDvcWhaXQgYXBsaWthY2kgcHJ2a8WvIGludGVsaWdlbnRuw61jaCBzw610w60gdiBkaXN0cmlidcSNbsOtY2ggc291c3RhdsOhY2g7T1AgUElLO+KGkyAxMDAg4oaSIDQwOzAsMjAxNjQwOTcwMTcwMDAwOzAsMDgwNjU2Mzg4MDY4MDA7LTAsMTIwOTg0NTgyMTAyMDAwO09QIFBJSzogWnbDvcWhaXQgYXBsaWthY2kgcHJ2a8WvIGludGVsaWdlbnRuw61jaCBzw610w60gdiBkaXN0cmlidcSNbsOtY2guLi4gKOKGkyAxMDAg4oaSIDQwKQpadsO9xaFpdCBlbmVyZ2V0aWNrb3Ugw7rEjWlubm9zdCBwb2RuaWthdGVsc2vDqWhvIHNla3RvcnU7T1AgUElLO+KGkyAxMDAg4oaSIDQwOzI1LDM1OTk5NTg1NDYyMDAxNzsxMCwxNDM5OTgzNDE4NDc5NjstMTUsMjE1OTk3NTEyNzcyMDU0O09QIFBJSzogWnbDvcWhaXQgZW5lcmdldGlja291IMO6xI1pbm5vc3QgcG9kbmlrYXRlbHNrw6lobyBzZWt0b3J1ICjihpMgMTAwIOKGkiA0MCkKWnbDvcWhaXQgZW5lcmdldGlja291IMO6xI1pbm5vc3QgcG9kbmlrYXRlbHNrw6lobyBzZWt0b3J1IDtPUCBQSUs74oaTIDEwMCDihpIgNDA7MCwzMjY2NTU1OTQ2MzAwMDA7MCwxMzA2NjIyMzc4NTIwMDstMCwxOTU5OTMzNTY3NzgwMDA7T1AgUElLOiBadsO9xaFpdCBlbmVyZ2V0aWNrb3Ugw7rEjWlubm9zdCBwb2RuaWthdGVsc2vDqWhvIHNla3RvcnUgICjihpMgMTAwIOKGkiA0MCkKWnbDvcWhaXQgaW5vdmHEjW7DrSB2w71rb25ub3N0IHBvZG5pa8WvO09QIFBJSzvihpMgMTAwIOKGkiAwOzIsOTMxOTQzMDM0NzE1NDc0OzAsMDAwMDAwMDAwMDAwMDA7LTIsOTMxOTQzMDM0NzE1NDc0O09QIFBJSzogWnbDvcWhaXQgaW5vdmHEjW7DrSB2w71rb25ub3N0IHBvZG5pa8WvICjihpMgMTAwIOKGkiAwKQpadsO9xaFpdCBwb2TDrWwgdsO9cm9ieSBlbmVyZ2llIHogb2Jub3ZpdGVsbsO9Y2ggemRyb2rFryBuYSBocnViw6kga29uZcSNbsOpIHNwb3TFmWVixJsgxIxSO09QIFBJSzvihpMgMTAwIOKGkiA0MDswLDc1NDMwMDQyNTM0MDAwMDswLDMwMTcyMDE3MDEzNjAwOy0wLDQ1MjU4MDI1NTIwNDAwMDtPUCBQSUs6IFp2w73FoWl0IHBvZMOtbCB2w71yb2J5IGVuZXJnaWUgeiBvYm5vdml0ZWxuw71jaCB6ZHJvasWvIG5hIGhydS4uLiAo4oaTIDEwMCDihpIgNDApClp2w73FoWl0IMO6xI1pbm5vc3Qgc291c3RhdiB6w6Fzb2JvdsOhbsOtIHRlcGxlbTtPUCBQSUs74oaTIDEwMCDihpIgNDA7NSw2MDI5MDcwMDA1MjAwMDE7MiwyNDExNjI4MDAyMDgwMDstMywzNjE3NDQyMDAzMTIwMDI7T1AgUElLOiBadsO9xaFpdCDDusSNaW5ub3N0IHNvdXN0YXYgesOhc29ib3bDoW7DrSB0ZXBsZW0gKOKGkyAxMDAg4oaSIDQwKQo=&#39;).then(res =&gt; res.blob()).then(blob =&gt; {&#10;      const downloadURL = window.URL.createObjectURL(blob);&#10;      const a = document.createElement(&#39;a&#39;);&#10;      document.body.appendChild(a);&#10;      a.href = downloadURL;&#10;      a.download = &#39;..csv&#39;; a.click();&#10;      window.URL.revokeObjectURL(downloadURL);&#10;      document.body.removeChild(a);&#10;    });">
+<a onclick="fetch(&#39;data:text/csv;base64,c2M7b3BfemtyO3JldGFnO2JlZztlbmQ7ZGlmZjtsYmwKRW5lcmdldGlja8OpIMO6c3BvcnkgdiBtxJtzdHNrw71jaCBvYmpla3RlY2ggZG9zYcW+ZW7DqSB0YWvDqSBzIHZ5dcW+aXTDrW0gdmhvZG7DvWNoIG9ibm92aXRlbG7DvWNoIHpkcm9qxa8gZW5lcmdpZSwgZW5lcmdldGlja3kgZWZla3Rpdm7DrWNoIHphxZnDrXplbsOtIGEgaW50ZWxpZ2VudG7DrWNoIHN5c3TDqW3FryDFmcOtemVuw607T1AgUFBSO+KGkyAxMDAg4oaSIDQwOzEsNTMzNTM5MjU3ODkwMDAwOzAsNjEzNDE1NzAzMTU2MDA7LTAsOTIwMTIzNTU0NzM0MDAwO09QIFBQUjogRW5lcmdldGlja8OpIMO6c3BvcnkgdiBtxJtzdHNrw71jaCBvYmpla3RlY2ggZG9zYcW+ZW7DqSB0YWvDqSBzIC4uLiAo4oaTIDEwMCDihpIgNDApClBvc8OtbGVuw60ga29tdW5pdG7EmyB2ZWRlbsOpaG8gbcOtc3Ruw61obyByb3p2b2plIHphIMO6xI1lbGVtIHp2w73FoWVuw60ga3ZhbGl0eSDFvml2b3RhIHZlIHZlbmtvdnNrw71jaCBvYmxhc3RlY2ggYSBha3Rpdml6YWNlIG3DrXN0bsOtaG8gcG90ZW5jacOhbHU7SVJPUDvihpMgMTAwIOKGkiA0MDswLDM4NzYxODY0NDYyMDAwMDswLDE1NTA0NzQ1Nzg0ODAwOy0wLDIzMjU3MTE4Njc3MjAwMDtJUk9QOiBQb3PDrWxlbsOtIGtvbXVuaXRuxJsgdmVkZW7DqWhvIG3DrXN0bsOtaG8gcm96dm9qZSB6YSDDusSNZWxlbSB6di4uLiAo4oaTIDEwMCDihpIgNDApClByZXZlbmNlIHZ6bmlrdSBvZHBhZMWvO09QIFpQO+KGkSAwIOKGkiA0MDswLDAwMDAwMDAwMDAwMDAwMDswLDgwNjk5MTY3NDk3MjAwOzAsODA2OTkxNjc0OTcyMDAwO09QIFpQOiBQcmV2ZW5jZSB2em5pa3Ugb2RwYWTFryAo4oaRIDAg4oaSIDQwKQpSRUFDVC1FVTtJUk9QO+KGkyAxMDAg4oaSIDQwOzAsNTQ2MTQ5NDg0ODAzNzI0OzAsMjE4NDU5NzkzOTIxNDk7LTAsMzI3Njg5NjkwODgyMjM0O0lST1A6IFJFQUNULUVVICjihpMgMTAwIOKGkiA0MCkKUmVrdWx0aXZvdmF0IHN0YXLDqSBza2zDoWRreTtPUCBaUDvihpEgMCDihpIgNDA7MCwwMDAwMDAwMDAwMDAwMDA7MCwxMjk0NjkyOTgxNDQwMDswLDEyOTQ2OTI5ODE0NDAwMDtPUCBaUDogUmVrdWx0aXZvdmF0IHN0YXLDqSBza2zDoWRreSAo4oaRIDAg4oaSIDQwKQpSb3p2b2ogbsOtemtvZW1pc27DrSBtb2JpbGl0eSB2IG9ibGFzdGkgbcSbc3Rza8OpIGRvcHJhdnkgdiB1bGnEjW7DrW0gcHJvdm96dTtPUCBQUFI74oaRIDQwIOKGkiAxMDA7MCwwNjg3MTUzNjAwMDAwMDA7MCwxNzE3ODg0MDAwMDAwMDswLDEwMzA3MzA0MDAwMDAwMDtPUCBQUFI6IFJvenZvaiBuw616a29lbWlzbsOtIG1vYmlsaXR5IHYgb2JsYXN0aSBtxJtzdHNrw6kgZG9wcmF2eSB2IHUuLi4gKOKGkSA0MCDihpIgMTAwKQpTbsOtxb5pdCBlbWlzZSBzdGFjaW9uw6FybsOtY2ggemRyb2rFryBwb2TDrWxlasOtY8OtIHNlIG5hIGV4cG96aWNpIG9ieXZhdGVsc3R2YSBuYWRsaW1pdG7DrW0ga29uY2VudHJhY8OtbSB6bmXEjWnFocWldWrDrWPDrWNoIGzDoXRlaztPUCBaUDvihpMgNDAg4oaSIDA7MSw5NTgwNDA2OTg5OTIwMDA7MCwwMDAwMDAwMDAwMDAwMDstMSw5NTgwNDA2OTg5OTIwMDA7T1AgWlA6IFNuw63Fvml0IGVtaXNlIHN0YWNpb27DoXJuw61jaCB6ZHJvasWvIHBvZMOtbGVqw61jw60gc2UgbmEgZXhwb3ppLi4uICjihpMgNDAg4oaSIDApClNuw63Fvml0IGVtaXNlIHN0YWNpb27DoXJuw61jaCB6ZHJvasWvIHBvZMOtbGVqw61jw60gc2UgbmEgZXhwb3ppY2kgb2J5dmF0ZWxzdHZhIG5hZGxpbWl0bsOtbSBrb25jZW50cmFjw61tIHpuZcSNacWhxaV1asOtY8OtY2ggbMOhdGVrIHYgdWhlbG7DvWNoIHJlZ2lvbmVjaDtPUCBaUDvihpMgNDAg4oaSIDA7MCwxMzk2NTcyMDkzMjgwMDA7MCwwMDAwMDAwMDAwMDAwMDstMCwxMzk2NTcyMDkzMjgwMDA7T1AgWlA6IFNuw63Fvml0IGVtaXNlIHN0YWNpb27DoXJuw61jaCB6ZHJvasWvIHBvZMOtbGVqw61jw60gc2UgbmEgZXhwb3ppLi4uICjihpMgNDAg4oaSIDApClNuw63Fvml0IGVtaXNlIHogbG9rw6FsbsOtaG8gdnl0w6FwxJtuw60gZG9tw6Fjbm9zdMOtIHBvZMOtbGVqw61jw60gc2UgbmEgZXhwb3ppY2kgb2J5dmF0ZWxzdHZhIG5hZGxpbWl0bsOtbSBrb25jZW50cmFjw61tIHpuZcSNacWhxaV1asOtY8OtY2ggbMOhdGVrLjtPUCBaUDvihpMgNDAg4oaSIC00MDszLDk5MDM4MzI1Mzg4NDAwMTstMyw5OTAzODMyNTM4ODQwMDstNyw5ODA3NjY1MDc3NjgwMDE7T1AgWlA6IFNuw63Fvml0IGVtaXNlIHogbG9rw6FsbsOtaG8gdnl0w6FwxJtuw60gZG9tw6Fjbm9zdMOtIHBvZMOtbGVqw61jw60gcy4uLiAo4oaTIDQwIOKGkiAtNDApClNuw63Fvml0IGVuZXJnZXRpY2tvdSBuw6Fyb8SNbm9zdCB2ZcWZZWpuw71jaCBidWRvdiBhIHp2w73FoWl0IHZ5dcW+aXTDrSBvYm5vdml0ZWxuw71jaCB6ZHJvasWvIGVuZXJnaWUgdiBidWRvdsOhY2ggw7pzdMWZZWRuw61jaCB2bMOhZG7DrWNoIGluc3RpdHVjw607T1AgWlA74oaTIDEwMCDihpIgNDA7MCwyNzgzMjU4MzgxMzAwMDA7MCwxMTEzMzAzMzUyNTIwMDstMCwxNjY5OTU1MDI4NzgwMDA7T1AgWlA6IFNuw63Fvml0IGVuZXJnZXRpY2tvdSBuw6Fyb8SNbm9zdCB2ZcWZZWpuw71jaCBidWRvdiBhIHp2w73FoWl0IHZ5Li4uICjihpMgMTAwIOKGkiA0MCkKVnl0dm/FmWVuw60gcG9kbcOtbmVrIHBybyDFoWlyxaHDrSB2eXXFvml0w60gdm96aWRlbCBuYSBhbHRlcm5hdGl2bsOtIHBvaG9uIG5hIHNpbG5pxI1uw60gc8OtdGk7T1AgRDvihpMgMTAwIOKGkiA0MDswLDI5ODI4Mzg5ODIxMDAwMDswLDExOTMxMzU1OTI4NDAwOy0wLDE3ODk3MDMzODkyNjAwMDtPUCBEOiBWeXR2b8WZZW7DrSBwb2Rtw61uZWsgcHJvIMWhaXLFocOtIHZ5dcW+aXTDrSB2b3ppZGVsIG5hIGFsdGVybmF0aS4uLiAo4oaTIDEwMCDihpIgNDApClZ5dHZvxZllbsOtIHBvZG3DrW5layBwcm8genbDvcWhZW7DrSB2eXXFvsOtdsOhbsOtIHZlxZllam7DqSBocm9tYWRuw6kgZG9wcmF2eSB2ZSBtxJtzdGVjaCB2IGVsZWt0cmlja8OpIHRyYWtjaTtPUCBEO+KGkSA0MCDihpIgMTAwOzIsNDkzMTE1ODgyODIwMDAxOzYsMjMyNzg5NzA3MDUwMDA7Myw3Mzk2NzM4MjQyMzAwMDE7T1AgRDogVnl0dm/FmWVuw60gcG9kbcOtbmVrIHBybyB6dsO9xaFlbsOtIHZ5dcW+w612w6Fuw60gdmXFmWVqbsOpIGhyb21hZG7DqS4uLiAo4oaRIDQwIOKGkiAxMDApClpsZXDFoWVuw60gxZnDrXplbsOtIGRvcHJhdm7DrWhvIHByb3ZvenUgYSB6dnnFoW92w6Fuw60gYmV6cGXEjW5vc3RpIGRvcHJhdm7DrWhvIHByb3ZvenU7T1AgRDvihpMgNDAg4oaSIDA7MCw0OTgxNTIxMjY5NjQwMDA7MCwwMDAwMDAwMDAwMDAwMDstMCw0OTgxNTIxMjY5NjQwMDA7T1AgRDogWmxlcMWhZW7DrSDFmcOtemVuw60gZG9wcmF2bsOtaG8gcHJvdm96dSBhIHp2ecWhb3bDoW7DrSBiZXpwZcSNbm9zdC4uLiAo4oaTIDQwIOKGkiAwKQpadsO9xaFlbsOtIHDFmWlwcmF2ZW5vc3RpIGsgxZllxaFlbsOtIGEgxZnDrXplbsOtIHJpemlrIGEga2F0YXN0cm9mO0lST1A74oaTIDEwMCDihpIgNDA7NCw0NTE4NTU5NDcyNTAwMDU7MSw3ODA3NDIzNzg5MDAwMDstMiw2NzExMTM1NjgzNTAwMDU7SVJPUDogWnbDvcWhZW7DrSBwxZlpcHJhdmVub3N0aSBrIMWZZcWhZW7DrSBhIMWZw616ZW7DrSByaXppayBhIGthdGFzdHJvZiAo4oaTIDEwMCDihpIgNDApClp2w73FoWVuw60gcMWZaXByYXZlbm9zdGkgayDFmWXFoWVuw60gYSDFmcOtemVuw60gcml6aWsgYSBrYXRhc3Ryb2Y7SVJPUDvihpMgNDAg4oaSIDA7MCwxOTUwMzk2MTgwMjAwMDA7MCwwMDAwMDAwMDAwMDAwMDstMCwxOTUwMzk2MTgwMjAwMDA7SVJPUDogWnbDvcWhZW7DrSBwxZlpcHJhdmVub3N0aSBrIMWZZcWhZW7DrSBhIMWZw616ZW7DrSByaXppayBhIGthdGFzdHJvZiAo4oaTIDQwIOKGkiAwKQpadsO9xaFpdCBhcGxpa2FjaSBwcnZrxa8gaW50ZWxpZ2VudG7DrWNoIHPDrXTDrSB2IGRpc3RyaWJ1xI1uw61jaCBzb3VzdGF2w6FjaDtPUCBQSUs74oaTIDEwMCDihpIgNDA7MCwyMDE2NDA5NzAxNzAwMDA7MCwwODA2NTYzODgwNjgwMDstMCwxMjA5ODQ1ODIxMDIwMDA7T1AgUElLOiBadsO9xaFpdCBhcGxpa2FjaSBwcnZrxa8gaW50ZWxpZ2VudG7DrWNoIHPDrXTDrSB2IGRpc3RyaWJ1xI1uw61jaC4uLiAo4oaTIDEwMCDihpIgNDApClp2w73FoWl0IGVuZXJnZXRpY2tvdSDDusSNaW5ub3N0IHBvZG5pa2F0ZWxza8OpaG8gc2VrdG9ydTtPUCBQSUs74oaTIDEwMCDihpIgNDA7MjUsMzU5OTk1ODU0NjIwMDE3OzEwLDE0Mzk5ODM0MTg0Nzk2Oy0xNSwyMTU5OTc1MTI3NzIwNTQ7T1AgUElLOiBadsO9xaFpdCBlbmVyZ2V0aWNrb3Ugw7rEjWlubm9zdCBwb2RuaWthdGVsc2vDqWhvIHNla3RvcnUgKOKGkyAxMDAg4oaSIDQwKQpadsO9xaFpdCBlbmVyZ2V0aWNrb3Ugw7rEjWlubm9zdCBwb2RuaWthdGVsc2vDqWhvIHNla3RvcnUgO09QIFBJSzvihpMgMTAwIOKGkiA0MDswLDMyNjY1NTU5NDYzMDAwMDswLDEzMDY2MjIzNzg1MjAwOy0wLDE5NTk5MzM1Njc3ODAwMDtPUCBQSUs6IFp2w73FoWl0IGVuZXJnZXRpY2tvdSDDusSNaW5ub3N0IHBvZG5pa2F0ZWxza8OpaG8gc2VrdG9ydSAgKOKGkyAxMDAg4oaSIDQwKQpadsO9xaFpdCBpbm92YcSNbsOtIHbDvWtvbm5vc3QgcG9kbmlrxa87T1AgUElLO+KGkyAxMDAg4oaSIDA7Miw5MzE5NDMwMzQ3MTU0NzQ7MCwwMDAwMDAwMDAwMDAwMDstMiw5MzE5NDMwMzQ3MTU0NzQ7T1AgUElLOiBadsO9xaFpdCBpbm92YcSNbsOtIHbDvWtvbm5vc3QgcG9kbmlrxa8gKOKGkyAxMDAg4oaSIDApClp2w73FoWl0IHBvZMOtbCB2w71yb2J5IGVuZXJnaWUgeiBvYm5vdml0ZWxuw71jaCB6ZHJvasWvIG5hIGhydWLDqSBrb25lxI1uw6kgc3BvdMWZZWLEmyDEjFI7T1AgUElLO+KGkyAxMDAg4oaSIDQwOzAsNzU0MzAwNDI1MzQwMDAwOzAsMzAxNzIwMTcwMTM2MDA7LTAsNDUyNTgwMjU1MjA0MDAwO09QIFBJSzogWnbDvcWhaXQgcG9kw61sIHbDvXJvYnkgZW5lcmdpZSB6IG9ibm92aXRlbG7DvWNoIHpkcm9qxa8gbmEgaHJ1Li4uICjihpMgMTAwIOKGkiA0MCkKWnbDvcWhaXQgw7rEjWlubm9zdCBzb3VzdGF2IHrDoXNvYm92w6Fuw60gdGVwbGVtO09QIFBJSzvihpMgMTAwIOKGkiA0MDs1LDYwMjkwNzAwMDUyMDAwMTsyLDI0MTE2MjgwMDIwODAwOy0zLDM2MTc0NDIwMDMxMjAwMjtPUCBQSUs6IFp2w73FoWl0IMO6xI1pbm5vc3Qgc291c3RhdiB6w6Fzb2JvdsOhbsOtIHRlcGxlbSAo4oaTIDEwMCDihpIgNDApCg==&#39;).then(res =&gt; res.blob()).then(blob =&gt; {&#10;      const downloadURL = window.URL.createObjectURL(blob);&#10;      const a = document.createElement(&#39;a&#39;);&#10;      document.body.appendChild(a);&#10;      a.href = downloadURL;&#10;      a.download = &#39;..csv&#39;; a.click();&#10;      window.URL.revokeObjectURL(downloadURL);&#10;      document.body.removeChild(a);&#10;    });">
 <button class="btn btn-default"><i class="fa fa-save"></i> Data v CSV</button>
 </a>
 </div>
@@ -439,12 +513,100 @@ weights</p>
 </div>
 </div>
 </div>
-<div id="data" class="section level2 tabset">
-<h2 class="tabset">Data</h2>
+<div id="analýza-vybraných-témat" class="section level2">
+<h2>Analýza vybraných témat</h2>
+<div id="teplárenství" class="section level3">
+<h3>Teplárenství</h3>
+<p>Co je v balíku projektů k teplárenství?</p>
+<ul>
+<li>jde hlavně o distribuci, nebo i o zdroje?</li>
+<li>jsou zde různé skupiny projektů?</li>
+</ul>
+<p>Tady jen trknou slova “elektrárna” a “Opatovice”: je to klastr
+projektů, kde se rekonstruovala kogerenační infrastruktura - sada
+navazujících projektů pod názvy “Úspory energie v SZT Elektrárny
+Opatovice”.</p>
+<p>Vysvětlivky:</p>
+<ul>
+<li>SZT: systém zásobování teplem</li>
+<li>SCZT: systém centrálního zásobování teplem</li>
+<li>HV: horkovodní</li>
+</ul>
+<p><img src="s_output_files/figure-html/plt-tepl-wordfreqs-1.svg" width="100%" /></p>
+<p><img src="s_output_files/figure-html/plt-tepl-wordpairs-1.svg" width="100%" /></p>
+<p><img src="s_output_files/figure-html/plt-tepl-bigrams-bars-1.svg" width="100%" /></p>
+<p><img src="s_output_files/figure-html/plt-tepl-bigrams-network-1.svg" width="100%" /></p>
+<p>Na úplně jiné skupiny to nevypadá:</p>
+<p><img src="s_output_files/figure-html/plt-tepl-topics-1.svg" width="100%" /></p>
+</div>
+<div id="úspory-ve-firmách" class="section level3">
+<h3>Úspory ve firmách</h3>
+<p><img src="s_output_files/figure-html/plt-firmy-wordfreqs-1.svg" width="100%" /></p>
+<p><img src="s_output_files/figure-html/plt-firmy-wordpairs-1.svg" width="100%" /></p>
+<p><img src="s_output_files/figure-html/plt-firmy-bigrams-bars-1.svg" width="100%" /></p>
+<p><img src="s_output_files/figure-html/plt-firmy-bigrams-network-1.svg" width="100%" /></p>
+<p><img src="s_output_files/figure-html/plt-firmy-topics-1.svg" width="100%" /></p>
+</div>
+</div>
+<div id="příklady-revize-klasifikací" class="section level2">
+<h2>Příklady revize klasifikací</h2>
+<div id="typy-reklasifikací" class="section level3">
+<h3>Typy reklasifikací</h3>
+<p>příklad, kdy se jedna OI rozpadá do víc SC a s každým jsme zacházeli
+jinak:</p>
+<ul>
+<li><p>Air Quality Measures (Opatření v oblasti kvality ovzduší):
+rozpadá se do</p>
+<ul>
+<li>OP ŽP SC “Snížit emise z lokálního vytápění” - tzv. kotlíkové
+dotace. Tam jsme tag snížili na záporný kvůli carbon lock-inu dotovaných
+lokálních topenišť</li>
+<li>OP ŽP SC “Snížit emise stacionárních zdrojů podílejících se na
+expozici” - snížili jsme tag na 0 kvůli klimatické nerelevanci daných
+opatření</li>
+</ul></li>
+</ul>
+<p>příklad, kdy se jeden SC rozpadá do více OI a s každou jsme zacházeli
+jinak:</p>
+<ul>
+<li><p>IROP SC Zvýšení připravenosti k řešení a řízení rizik a katastrof
+se rozpadá na</p>
+<ul>
+<li>Předcházení rizikům nesouvisejícím s klimatem: metodologie EK vede
+ke klimatagu 40 %, ale už z názvu oblasti intervence je patrné, že nejde
+o opatření s přispěním k cílům v oblasti klimatu</li>
+<li>Opatření pro přizpůsobení se změně klimatu:</li>
+</ul></li>
+</ul>
+<p>jedna k jedné: energetická učinnost a demonstrační projekty v malých
+a středních podnicích - celé v OP PIK SC “Zvýšit energetickou účinnost
+podnikatelského sektoru”: v SC jsou projekty, které téměř určitě nejsou
+ze 100 % klima pozitivní (běžné inovace s dílčími aktivitami zaměřenými
+na zvýšení energetické účinnosti; vývoj dílů pro EV)</p>
+</div>
+<div id="specifické-reklasifikace" class="section level3">
+<h3>Specifické reklasifikace</h3>
+</div>
+</div>
+<div id="validace-výstupu" class="section level2">
+<h2>Validace výstupu</h2>
+<pre><code>[1] 447.962</code></pre>
+<pre><code>[1] 707.5993</code></pre>
+<pre><code>[1] 652.2399</code></pre>
+</div>
+<div id="zdroje-dat" class="section level2">
+<h2>Zdroje dat</h2>
+<p>Používáme veřejná data z 2023-04-01 stažená z <a
+href="https://mmr.cz/getmedia/675ca92e-ca00-475a-a2d6-1c6bc0d665ca/2023_04_Seznam-operaci_List-of-Operations.xlsx.aspx?ext=.xlsx">této
+adresy</a>.</p>
+<p>Detaily v <a href="dev.html">technické dokumentaci</a>.</p>
+</div>
+<div id="datový-výstup" class="section level2">
+<h2>Datový výstup</h2>
 <div id="soubory" class="section level3">
 <h3>Soubory</h3>
-<p>Vše v <code>data-export/export_202204</code> (<a
-href="https://github.com/cdeorgcz/esiftagging/tree/master/data-export/export_202204">Github</a>)</p>
+<p>Vše v <code>data-export/export_202304</code> (<a
+href="https://github.com/cdeorgcz/esiftagging/tree/master/data-export/export_202304">Github</a>)</p>
 <ul>
 <li>OP + klimatag: <code>sum_tagged_all_ops.xlsx</code> /
 <code>sum_tagged_all_ops.csv</code></li>
@@ -465,11 +627,11 @@ je ve formátu Parquet</li>
 <p>CSV soubory uzpůsobeny pro Excel (úprava konce řádků) a CEE region
 (odděleno středníky, desetinná čárka).</p>
 </div>
-<div id="codebook" class="section level3 tabset tabset-pills">
-<h3 class="tabset tabset-pills">Codebook</h3>
+<div id="codebook" class="section level3">
+<h3>Codebook</h3>
 <div id="projektová-úroveň" class="section level4">
 <h4>Projektová úroveň</h4>
-<p>Zapsáno v data-export/export_202204/codebook_prj.yaml</p>
+<p>Zapsáno v data-export/export_202304/codebook_prj.yaml</p>
 <div id="pb_information" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
@@ -1063,9 +1225,9 @@ html {
   </tbody>
   <tfoot class="gt_sourcenotes">
     <tr>
-      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2023-04-17 01:44:21 CEST</span>
+      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2023-04-18 11:46:10 CEST</span>
 <span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;margin:5px 1px 5px 0;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">&lt; 1 s</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2023-04-17 01:44:21 CEST</span></td>
+<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2023-04-18 11:46:10 CEST</span></td>
     </tr>
   </tfoot>
   
@@ -1074,7 +1236,7 @@ html {
 </div>
 <div id="součty" class="section level4">
 <h4>Součty</h4>
-<p>Zapsáno v data-export/export_202204/codebook_sum.yaml</p>
+<p>Zapsáno v data-export/export_202304/codebook_sum.yaml</p>
 <div id="pb_information" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
@@ -1651,9 +1813,9 @@ html {
   </tbody>
   <tfoot class="gt_sourcenotes">
     <tr>
-      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2023-04-17 01:44:21 CEST</span>
+      <td class="gt_sourcenote" colspan="1"><span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin-left:10px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;padding:2px 10px 2px 10px;">2023-04-18 11:46:10 CEST</span>
 <span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;margin:5px 1px 5px 0;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">&lt; 1 s</span>
-<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2023-04-17 01:44:21 CEST</span></td>
+<span style="background-color:#FFF;color:#444;padding:0.5em 0.5em;position:inherit;text-transform:uppercase;margin:5px 1px 5px -1px;border:solid 1px #999999;font-variant-numeric:tabular-nums;border-radius:0;padding:2px 10px 2px 10px;">2023-04-18 11:46:11 CEST</span></td>
     </tr>
   </tfoot>
   
@@ -1661,8 +1823,8 @@ html {
 </div>
 </div>
 </div>
-<div id="náhled-proměnných" class="section level3 tabset tabset-pills">
-<h3 class="tabset tabset-pills">Náhled proměnných</h3>
+<div id="náhled-proměnných" class="section level3">
+<h3>Náhled proměnných</h3>
 <div id="projektová-úroveň-1" class="section level4">
 <h4>Projektová úroveň</h4>
 <pre><code>Rows: 129,349
@@ -1721,98 +1883,11 @@ $ prv_opatreni_nazev            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, 
 </div>
 </div>
 </div>
-<div id="validace-výstupu" class="section level2">
-<h2>Validace výstupu</h2>
-<pre><code>[1] 447.962</code></pre>
-<pre><code>[1] 707.5993</code></pre>
-<pre><code>[1] 652.2399</code></pre>
-</div>
-<div id="zdroje" class="section level2">
-<h2>Zdroje</h2>
-<p>Používáme veřejná data z 2023-04-01 stažená z <a
-href="https://mmr.cz/getmedia/675ca92e-ca00-475a-a2d6-1c6bc0d665ca/2023_04_Seznam-operaci_List-of-Operations.xlsx.aspx?ext=.xlsx">této
-adresy</a>.</p>
-<p>Detaily v <a href="dev.html">technické dokumentaci</a>.</p>
-</div>
-<div id="témata" class="section level2 tabset tabset-pills">
-<h2 class="tabset tabset-pills">Témata</h2>
-<div id="teplárenství" class="section level3">
-<h3>Teplárenství</h3>
-<p>Co je v balíku projektů k teplárenství?</p>
-<ul>
-<li>jde hlavně o distribuci, nebo i o zdroje?</li>
-<li>jsou zde různé skupiny projektů?</li>
-</ul>
-<p>Tady jen trknou slova “elektrárna” a “Opatovice”: je to klastr
-projektů, kde se rekonstruovala kogerenační infrastruktura - sada
-navazujících projektů pod názvy “Úspory energie v SZT Elektrárny
-Opatovice”.</p>
-<p>Vysvětlivky:</p>
-<ul>
-<li>SZT: systém zásobování teplem</li>
-<li>SCZT: systém centrálního zásobování teplem</li>
-<li>HV: horkovodní</li>
-</ul>
-<p><img src="s_output_files/figure-html/plt-tepl-wordfreqs-1.svg" width="100%" /></p>
-<p><img src="s_output_files/figure-html/plt-tepl-wordpairs-1.svg" width="100%" /></p>
-<p><img src="s_output_files/figure-html/plt-tepl-bigrams-bars-1.svg" width="100%" /></p>
-<p><img src="s_output_files/figure-html/plt-tepl-bigrams-network-1.svg" width="100%" /></p>
-<p>Na úplně jiné skupiny to nevypadá:</p>
-<p><img src="s_output_files/figure-html/plt-tepl-topics-1.svg" width="100%" /></p>
-</div>
-<div id="úspory-ve-firmách" class="section level3">
-<h3>Úspory ve firmách</h3>
-<p><img src="s_output_files/figure-html/plt-firmy-wordfreqs-1.svg" width="100%" /></p>
-<p><img src="s_output_files/figure-html/plt-firmy-wordpairs-1.svg" width="100%" /></p>
-<p><img src="s_output_files/figure-html/plt-firmy-bigrams-bars-1.svg" width="100%" /></p>
-<p><img src="s_output_files/figure-html/plt-firmy-bigrams-network-1.svg" width="100%" /></p>
-<p><img src="s_output_files/figure-html/plt-firmy-topics-1.svg" width="100%" /></p>
-</div>
-</div>
-<div id="příklady" class="section level2">
-<h2>Příklady</h2>
-<div id="typy-reklasifikací" class="section level3">
-<h3>Typy reklasifikací</h3>
-<p>příklad, kdy se jedna OI rozpadá do víc SC a s každým jsme zacházeli
-jinak:</p>
-<ul>
-<li><p>Air Quality Measures (Opatření v oblasti kvality ovzduší):
-rozpadá se do</p>
-<ul>
-<li>OP ŽP SC “Snížit emise z lokálního vytápění” - tzv. kotlíkové
-dotace. Tam jsme tag snížili na záporný kvůli carbon lock-inu dotovaných
-lokálních topenišť</li>
-<li>OP ŽP SC “Snížit emise stacionárních zdrojů podílejících se na
-expozici” - snížili jsme tag na 0 kvůli klimatické nerelevanci daných
-opatření</li>
-</ul></li>
-</ul>
-<p>příklad, kdy se jeden SC rozpadá do více OI a s každou jsme zacházeli
-jinak:</p>
-<ul>
-<li><p>IROP SC Zvýšení připravenosti k řešení a řízení rizik a katastrof
-se rozpadá na</p>
-<ul>
-<li>Předcházení rizikům nesouvisejícím s klimatem: metodologie EK vede
-ke klimatagu 40 %, ale už z názvu oblasti intervence je patrné, že nejde
-o opatření s přispěním k cílům v oblasti klimatu</li>
-<li>Opatření pro přizpůsobení se změně klimatu:</li>
-</ul></li>
-</ul>
-<p>jedna k jedné: energetická učinnost a demonstrační projekty v malých
-a středních podnicích - celé v OP PIK SC “Zvýšit energetickou účinnost
-podnikatelského sektoru”: v SC jsou projekty, které téměř určitě nejsou
-ze 100 % klima pozitivní (běžné inovace s dílčími aktivitami zaměřenými
-na zvýšení energetické účinnosti; vývoj dílů pro EV)</p>
-</div>
-<div id="specifické-reklasifikace" class="section level3">
-<h3>Specifické reklasifikace</h3>
-</div>
-</div>
-</div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -1845,6 +1920,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 
 </body>

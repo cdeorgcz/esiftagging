@@ -1,6 +1,9 @@
 ---
 title: "Výstup: dokumentace, validace"
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -27,9 +30,7 @@ targets::tar_load(esif_tagged_sum_op)
 targets::tar_load(efs_tagged_sum_prj)
 ```
 
-# {.tabset}
-
-## Hlavní grafy {.tabset .tabset-pills}
+## Hlavní grafy
 
 ### Celkem - EK
 
@@ -71,7 +72,7 @@ plot_all_m$data |> download_this(button_label = "Data v CSV")
 ```
 
 
-### Srovnání tagů {.tabset .tabset-pills}
+### Srovnání tagů
 
 ```{r plot-sankey, out.width="100%"}
 tar_load(plot_sankey)
@@ -191,90 +192,7 @@ EU contribution only, climate contribution based on Rio marker weights
 <iframe width="100%" height="754" frameborder="0"
   src="https://observablehq.com/embed/@petrbouchal/cohesion-climate?cells=viewof+mss%2Cbarplot3"></iframe>
 
-## Data {.tabset}
-
-### Soubory
-
-Vše v `` `r  
-c_export_dir` `` ([Github](`r paste0(c_repo_remote, "/tree/master/", c_export_dir)`)) 
-
-- OP + klimatag: `` `r  
-c_export_all_ops_xlsx` `` / `` `r  
-c_export_all_ops_csv` ``
-- totéž + kategorie, z níž je odvozen klimatag: `` `r  
-c_export_all_ops_detail_xlsx` `` / `` `r  
-c_export_all_ops_detail_csv` ``
-- totéž + kategorie, z níž je odvozen klimatag + spec. cíl; vše mimo PRV: `` `r  
-c_export_nonagri_detail_xlsx` `` / `` `r  
-c_export_nonagri_detail_csv` ``
-- totéž + kategorie, z níž je odvozen klimatag + spec. cíl + projekt; vše mimo PRV: `` `r  
-c_export_nonagri_projekty_xlsx` `` / `` `r  
-c_export_nonagri_projekty_parquet` `` - velký soubor, export je ve formátu Parquet
-- celé CAP výdaje s klimatagy a opatřeními determinujícími klimatag: `` `r  
-c_export_agri_detail_xlsx` `` / `` `r  
-c_export_agri_detail_csv` ``
-
-CSV soubory uzpůsobeny pro Excel (úprava konce řádků) a CEE region (odděleno středníky, desetinná čárka).
-
-### Codebook {.tabset .tabset-pills}
-
-#### Projektová úroveň
-
-Zapsáno v `r file.path(c_export_dir, c_export_cdbk_prj)`
-
-```{r codebook-prj}
-prj_codebook
-```
-
-
-#### Součty
-
-Zapsáno v `r file.path(c_export_dir, c_export_cdbk_sum)`
-
-```{r codebook-sum}
-sum_codebook
-```
-
-### Náhled proměnných {.tabset .tabset-pills}
-
-#### Projektová úroveň
-
-```{r columns}
-glimpse(efs_tagged_sum_prj)
-```
-
-#### Součty
-
-```{r columns-sum}
-glimpse(esif_tagged_sum_op)
-```
-
-
-## Validace výstupu
-
-```{r}
-targets::tar_load(efs_fin)
-targets::tar_load(esif_tagged_sum)
-targets::tar_load(efs_tagged)
-```
-
-```{r}
-sum(efs_fin$fin_vyuct_czv, na.rm = TRUE)/1e9
-sum(esif_tagged_sum$fin_vyuct_czv, na.rm = TRUE)/1e9
-sum(efs_tagged$fin_vyuct_czv*efs_tagged$radek_podil, na.rm = TRUE)/1e9
-```
-
-## Zdroje
-
-```{r}
-targets::tar_load(ef_source)
-```
-
-Používáme veřejná data z `r ef_source$date` stažená z [této adresy](`r ef_source$url`).
-
-Detaily v [technické dokumentaci](dev.html).
-
-## Témata {.tabset .tabset-pills}
+## Analýza vybraných témat
 
 ### Teplárenství
 
@@ -335,7 +253,7 @@ targets::tar_read(plt_bigram_network_firmy)
 targets::tar_read(plt_topics_firmy)
 ```
 
-## Příklady
+## Příklady revize klasifikací
 
 ### Typy reklasifikací
 
@@ -359,4 +277,87 @@ jedna k jedné: energetická učinnost a demonstrační projekty v malých a st�
 ### Specifické reklasifikace
 
 
+
+
+## Validace výstupu
+
+```{r}
+targets::tar_load(efs_fin)
+targets::tar_load(esif_tagged_sum)
+targets::tar_load(efs_tagged)
+```
+
+```{r}
+sum(efs_fin$fin_vyuct_czv, na.rm = TRUE)/1e9
+sum(esif_tagged_sum$fin_vyuct_czv, na.rm = TRUE)/1e9
+sum(efs_tagged$fin_vyuct_czv*efs_tagged$radek_podil, na.rm = TRUE)/1e9
+```
+
+## Zdroje dat
+
+```{r}
+targets::tar_load(ef_source)
+```
+
+Používáme veřejná data z `r ef_source$date` stažená z [této adresy](`r ef_source$url`).
+
+Detaily v [technické dokumentaci](dev.html).
+
+## Datový výstup
+
+### Soubory
+
+Vše v `` `r  
+c_export_dir` `` ([Github](`r paste0(c_repo_remote, "/tree/master/", c_export_dir)`)) 
+
+- OP + klimatag: `` `r  
+c_export_all_ops_xlsx` `` / `` `r  
+c_export_all_ops_csv` ``
+- totéž + kategorie, z níž je odvozen klimatag: `` `r  
+c_export_all_ops_detail_xlsx` `` / `` `r  
+c_export_all_ops_detail_csv` ``
+- totéž + kategorie, z níž je odvozen klimatag + spec. cíl; vše mimo PRV: `` `r  
+c_export_nonagri_detail_xlsx` `` / `` `r  
+c_export_nonagri_detail_csv` ``
+- totéž + kategorie, z níž je odvozen klimatag + spec. cíl + projekt; vše mimo PRV: `` `r  
+c_export_nonagri_projekty_xlsx` `` / `` `r  
+c_export_nonagri_projekty_parquet` `` - velký soubor, export je ve formátu Parquet
+- celé CAP výdaje s klimatagy a opatřeními determinujícími klimatag: `` `r  
+c_export_agri_detail_xlsx` `` / `` `r  
+c_export_agri_detail_csv` ``
+
+CSV soubory uzpůsobeny pro Excel (úprava konce řádků) a CEE region (odděleno středníky, desetinná čárka).
+
+### Codebook
+
+#### Projektová úroveň
+
+Zapsáno v `r file.path(c_export_dir, c_export_cdbk_prj)`
+
+```{r codebook-prj}
+prj_codebook
+```
+
+
+#### Součty
+
+Zapsáno v `r file.path(c_export_dir, c_export_cdbk_sum)`
+
+```{r codebook-sum}
+sum_codebook
+```
+
+### Náhled proměnných
+
+#### Projektová úroveň
+
+```{r columns}
+glimpse(efs_tagged_sum_prj)
+```
+
+#### Součty
+
+```{r columns-sum}
+glimpse(esif_tagged_sum_op)
+```
 
