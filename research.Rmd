@@ -176,7 +176,7 @@ Oproti minulému období jsou zveřejněna jemnější data o plánovaných výd
 - přímo v datech EK jsou specifické cíle OP, tj. odpadá jejich dovolzování z projektů
 - v rozpadu na oblasti intervencí a ESF secondary themes jsou vyčísleny podíly a součty výdajů na klima
 - jsou odděleny výdaje na klima, životní prostředí, biodiverzitu, čistý vzduch a gender
-- podíly klimavýdajů jsou oproti minule stanoveny (a snad budou i sledovány) na všech výdajích, tj. nejen na evropském podílu
+- podíly klimavýdajů jsou oproti minule stanoveny (a snad budou i sledovány) na všech výdajích, tj. nejen na EU podílu
 
 Ale: kódy priorit a spec. cílů nedávají moc smysl a názvy cílů jsou anglicky a neodpovídají názvům v textu OP - bude třeba napárovat ručně (zároveň cílů je míň - nižší desítky, ne stovky)
 
