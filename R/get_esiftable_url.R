@@ -1,6 +1,6 @@
 library(rvest)
 
-esif_list_tables <- function(base_url = "https://dotaceeu.cz/cs/statistiky-a-analyzy/seznamy-prijemcu") {
+esif_list_tables <- function(base_url = "https://www.dotaceeu.cz/cs/evropske-fondy-v-cr/2014-2020/seznamy-prijemcu-(1)") {
   h <- read_html(base_url)
   urls <- html_elements(h, "a.js-gtm-file-download") |>
     html_attr("href")
