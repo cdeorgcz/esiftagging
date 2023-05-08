@@ -177,7 +177,7 @@ Built in [this Observable Notebook](https://observablehq.com/@petrbouchal/cohesi
 
 #### Climate-related spending as a share of total spending
 
-Actual declared spending cumulative to ${yr}, EU cofinancing only. Weighted contribution based on Rio tags; see [EC story](https://cohesiondata.ec.europa.eu/stories/s/a8jn-38y8) for details on the underlying data and methodology.
+Actual declared spending cumulative to selected year, EU cofinancing only. Weighted contribution based on Rio tags; see [EC story](https://cohesiondata.ec.europa.eu/stories/s/a8jn-38y8) for details on the underlying data and methodology.
 
 
 <iframe width="100%" height="518" frameborder="0"
