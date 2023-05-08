@@ -140,3 +140,67 @@ Vysvětlivky
 - GEN?
 - EZ = EKOZ - Ekologické zemědělství
 - DŽPZ = Welfare = dobré životní podmínky zvířat
+
+## Období 2021-2027
+
+### Pravidla
+
+- [Obecné nařízení](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32021R1060#d1e32-252-1): je v něm více detailů než minule - neexistuje prováděcí nařízení ke klimatu, téměř vše zřejmě je v nařízení samotném
+  - [článek 6](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32021R1060#d1e2828-159-1): ERDF 30 %, CF 37 %
+  - zdá se, že odpadlo dodatečné pravidlo o tematickém cíli (v tomto období Policy Objective), tj. climate shares lze dovodit přímo z oblastí intervence, tj. jsou přímo v datech EK
+- [prováděcí legislativa - ale tam zřejmě není nic relevantního](https://ec.europa.eu/regional_policy/information-sources/legislation-and-guidance/implementing-acts_en)
+
+Celkový climate share výdajů v jednom státu je součástí Dohody o partnerství, detailnější cíle pak v jednotlivých OP - to je odraženo v datech EK k plánovaným výdajům (viz níže).
+
+Na národní úrovni je stanovena (v [metodice k evaluacím](https://dotaceeu.cz/getattachment/61c005d1-d800-4e2a-b9a8-b7eb82ca7c3b/MP-Indikatory-Evaluace-Publicita-2021-2027.pdf.aspx?lang=cs-CZ&ext=.pdf)) mj. povinnost evaluace "Podklady pro Zhodnocení pokroku v dosahování cílů příspěvku v oblasti klimatu na národní úrovni" - jako podklad pro Mid-Term review 2025
+
+### Data EK
+
+Doplněno 2023-05-08 jako záznam rešerše nad možnostmi, jak využít nová data pro období 2021+.
+
+EK zatím zveřejnilo plánované částky v několika rozpadech. 
+
+- [Datová sada hgyj-gyin](https://cohesiondata.ec.europa.eu/2021-2027-Categorisation/2021-2027-Finances-details-categorisation-multi-fu/hgyj-gyin)
+
+Další data:
+
+- [vysvětlivka ke klimatu v ESIF 2021-2027](https://cohesiondata.ec.europa.eu/stories/s/mdt2-qvkd/#which-are-the-main-climate-relevant-investments)
+- [vysvětlivka o kategorizacích](https://cohesiondata.ec.europa.eu/stories/s/2021-2027-categorisation-information-system/hhu3-atyz)
+- [Metadata ke kategorizačnímu systému](https://cohesiondata.ec.europa.eu/2021-2027-Categorisation/2021-2027-Cohesion-financial-categorisation-system/qc6z-w4rz)
+- [Všechny datové sady k 2021-27](https://cohesiondata.ec.europa.eu/browse?category=2021+/+2027&limitTo=datasets)
+- [převodová tabulka kategorií intervence 2014+ a 2021+](https://cohesiondata.ec.europa.eu/2021-2027-Categorisation/Correspondence-21-27-to-14-20-intervention-fields/4s7y-iy43)
+- [trackování indikátorů](https://cohesiondata.ec.europa.eu/2021-2027-Indicators/2021-2027-Achievement-Details-multi-funds-/xi3a-zddk) - ale zřejmě nic relevantního
+
+Oproti minulému období jsou zveřejněna jemnější data o plánovaných výdajích
+
+- přímo v datech EK jsou specifické cíle OP, tj. odpadá jejich dovolzování z projektů
+- v rozpadu na oblasti intervencí a ESF secondary themes jsou vyčísleny podíly a součty výdajů na klima
+- jsou odděleny výdaje na klima, životní prostředí, biodiverzitu, čistý vzduch a gender
+- podíly klimavýdajů jsou oproti minule stanoveny (a snad budou i sledovány) na všech výdajích, tj. nejen na evropském podílu
+
+Ale: kódy priorit a spec. cílů nedávají moc smysl a názvy cílů jsou anglicky a neodpovídají názvům v textu OP - bude třeba napárovat ručně (zároveň cílů je míň - nižší desítky, ne stovky)
+
+### Data MMR-NOK
+
+MMR-NOK zveřejňuje
+
+- [tabulku projektů pro 2021-2027](https://dotaceeu.cz/cs/statistiky-a-analyzy/seznam-operaci-(prijemcu))
+
+Co se z nich dá dovědět:
+
+- nově jsou tam veřejné zakázky navázané na projekty
+- jeden projekt stále může spadat do více OP, v datech nejsou podíly
+- stejně tak s oblastí intervence - jeden projekt může spadat do více, poměry v datech nejsou
+- kódy SC vypadají krypticky
+- v datech stále nejsou Policy Objectives (obdoba TC), ale to tentokrát snad nevadí, protože se od nich neodvozují climate tags
+
+[Otevřená data](https://data.gov.cz/datov%C3%A9-sady?poskytovatel=https://rpp-opendata.egon.gov.cz/odrpp/zdroj/org%C3%A1n-ve%C5%99ejn%C3%A9-moci/66002222&kl%C3%AD%C4%8Dov%C3%A1-slova=esif) zatím pro období 2021-27 neexistují.
+
+## Další updates
+
+EK nově zveřejnila seznamy projektů a příjemců - [projekt Kohesio](https://kohesio.ec.europa.eu/en/).
+
+- [projekty](https://kohesio.ec.europa.eu/data/projects/)
+- [příjemci](https://kohesio.ec.europa.eu/data/beneficiaries/)
+
+V datech ale nejsou čísla projektů ani IČO/ID příjemců, ani ID projektů nebo jejich jemnější srovnatelná kategorizace, takže na detailěnější srovnáavací analýzu to není použitelné.
