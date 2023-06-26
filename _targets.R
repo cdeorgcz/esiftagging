@@ -33,8 +33,7 @@ options(crayon.enabled = TRUE,
 
 future::plan(multisession)
 
-source("R/utils.R")
-source("R/functions.R")
+lapply(list.files("R", full.names = TRUE, recursive = TRUE), source)
 
 cnf <- config::get(config = "default")
 names(cnf) <- paste0("c_", names(cnf))

@@ -7,6 +7,17 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+## Update 14. 5. 2023
+
+### Co je nového
+
+### Co jsme se dověděli
+
+- JTF má climate tag 100 %, bez ohledu na kategorii intervence
+  - věcný následek: mix fondů má dopad na celkový klima podíl člsnksých států
+  - datový následe
+  
+
 ## Update 15. 4. 2023
 
 - doplněna [metodologie](s_metodologie.html) kompilace dat
