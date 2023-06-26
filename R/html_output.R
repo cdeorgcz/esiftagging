@@ -69,6 +69,13 @@ t_html <- list(
     rmarkdown::render_site(s_listing_rmd)
     "docs/s_listing.html"}),
 
+  tar_file(s_2021plus_rmd, "ec2021plus.Rmd"),
+  tar_file(s_2021plus_html, command = {!! tar_knitr_deps_expr("ec2021plus.Rmd")
+    siteconf
+    sitefiles
+    rmarkdown::render_site(s_2021plus_rmd)
+    "docs/s_listing.html"}),
+
   tar_file(s_sample_rmd, "sample.Rmd"),
   tar_file(s_sample_html, command = {!! tar_knitr_deps_expr("sample.Rmd")
     siteconf

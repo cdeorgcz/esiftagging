@@ -58,7 +58,15 @@ Vůbec se pak nezabýváme výdaji z EMFF, tj. v ČR programu OP Rybářství.
 
 ### Glosář: fondy a programy
 
+Fondy
+
+| Zkratka | Název | Název česky | Poznámka
+| 
+|
+
 ### Glosář: informace o projektech
+
+TO DO
 
 #### ERDF, CF, ESF
 
