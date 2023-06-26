@@ -1,0 +1,191 @@
+---
+title: "Mezinárodní srovnání plánovaných výdajů 2021+"
+format: 
+  html:
+    toc: true
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(dplyr)
+library(ggplot2)
+library(forcats)
+library(stringr)
+library(tidyr)
+library(ggiraph)
+library(ptrr)
+
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+# Heading
+
+```{r load-targets}
+targets::tar_load(ec_fin_21_plan)
+ec_fin_21_plan <- ec_fin_21_plan |> 
+  mutate(cz = ms == "CZ",
+         is_tc = fund != "Interreg Funds" | ms == "TC",
+         cee = ms %in% c("CZ", "SK", "PL", "EE", "LT", "LV", "HU", "SI",
+                         "BG", "RO", "HR"),
+         neigh = ms %in% c("DE", "AT", "SK", "PL"))
+```
+
+
+```{r}
+ec21_sum_ms <- ec_fin_21_plan |> 
+  group_by(ms, cee, cz) |> 
+  summarise(total = sum(total_amount, na.rm = TRUE), 
+            climate = sum(total_climate_amount, na.rm = TRUE), .groups = "drop") |> 
+  mutate(climate_ratio = climate/total,
+         ms = fct_reorder(as.factor(ms), climate_ratio))
+```
+
+```{r}
+ggplot(ec21_sum_ms, 
+       aes(climate_ratio, ms, alpha = cee, fill = cz)) +
+  geom_col(width = 0.8) +
+  scale_alpha_discrete(range = c(.6, 1)) +
+  theme_ptrr("x", legend.position = "none") +
+  scale_x_percent_cz() +
+  scale_fill_manual(values = c("darkgrey", "darkblue")) +
+  labs(title = "Výdaje na klimatické cíle jako % celku (plán)",
+       subtitle = "Tmavě státy CEE, ČR modře. Celkové způsobilé výdaje.",
+       caption = "Zdroj: EK – DG Regio open data, dataset <hgyj-gyin>, stav k červnu 2023")
+```
+Q: je to tažené rozdílným složením fondů?
+
+```{r}
+ec21_sum_ms_fund <- ec_fin_21_plan |> 
+  group_by(ms, fund, cz, cee) |> 
+  summarise(total = sum(total_amount, na.rm = TRUE), 
+            climate = sum(total_climate_amount, na.rm = TRUE), .groups = "drop") |> 
+  group_by(ms) |> 
+  mutate(fund_share = total/sum(total)) |> 
+  ungroup() |> 
+  mutate(climate_ratio = climate/total,
+         fund = fct_reorder(as.factor(fund), climate_ratio, max, na.rm = TRUE),
+         ms = fct_reorder(as.factor(ms), climate_ratio, mean))
+```
+
+```{r}
+ggplot(ec21_sum_ms_fund, 
+       aes(climate_ratio, ms, colour = fund)) +
+  geom_point() +
+  theme_ptrr("both", legend.position = "top") +
+  guides(colour = guide_legend(title = NULL, nrow = 1)) +
+  scale_x_percent_cz() +
+  scale_color_brewer(type = "qual", palette = "Dark2") +
+  labs(title = "Výdaje na klimatické cíle jako % celku, podle fondů (plán)",
+       subtitle = "Tmavě státy CEE, ČR modře. Celkové způsobilé výdaje.",
+       caption = "Zdroj: EK – DG Regio open data, dataset <hgyj-gyin>, stav k červnu 2023")
+```
+```{r}
+#| fig-height: 8
+plt <- ggplot(ec21_sum_ms_fund |> arrange(cz), 
+              aes(climate_ratio, fund_share, 
+                  size = cz,
+                  colour = cz,
+                  fill = fund, tooltip = paste(ms, fund))) +
+  scale_size_discrete(range = c(2, 3), guide = "none") +
+  scale_colour_manual(values = c("white", "grey20")) +
+  scale_fill_brewer(type = "qual", palette = "Dark2") +
+  geom_point_interactive(alpha = .6, shape = 21) +
+  scale_x_percent_cz() +
+  scale_y_percent_cz() +
+  theme_ptrr(gridlines = "scatter", axis_titles = TRUE) +
+  labs(fill = "Fond",
+       title = "Podíl fondů a podíl klima+ výdajů podle států",
+       subtitle = "ČR zvýrazněna velikostí a obrysem; plány - celkové způsobilé výdaje",
+       x = "Podíl klima+ výdajů na výdajích fondu v daném státu",
+       y = "Podíl fondu na výdajích ESIF daného státu",
+       caption = "Zdroj: EK – DG Regio open data, dataset <hgyj-gyin>, stav k červnu 2023") +
+  guides(colour = "none")
+
+girafe(ggobj = plt, height_svg = 5)
+```
+
+Máme vysoký podíl kohezního fondu na celku, v něm relativně nižší podíl klimatu, ale celkově to přispěje k relativně vysokému klimatickému závazku.
+
+```{r}
+ggplot(ec21_sum_ms_fund, 
+       aes(total, ms)) +
+  geom_col(aes(fill = fund), position = "fill", width = 0.8) +
+  theme_ptrr("x") +
+  scale_fill_brewer(type = "qual", palette = "Dark2") +
+  scale_x_percent_cz() +
+  labs(title = "Výdaje ESIF v členských státech podle fondů",
+       caption = "Zdroj: EK – DG Regio open data, dataset <hgyj-gyin>, stav k červnu 2023")
+```
+
+```{r}
+ec21_sum_ai <- ec_fin_21_plan |> 
+  group_by(ms, cz, cee, category_code, category_title_short, category_name,
+           climate_weighting) |> 
+  summarise(total_amount = sum(total_amount), .groups = "drop") |> 
+  group_by(ms, cz, cee) |> 
+  mutate(share_categ_ms = total_amount/sum(total_amount)) |> 
+  ungroup()
+
+ec_21_share_ai <- ec21_sum_ai |> 
+  group_by(category_code, category_name, category_title_short, climate_weighting) |> 
+  summarise(total_amount = sum(total_amount), .groups = "drop")
+
+ec21_top_ai <- ec21_sum_ai |> 
+  filter(climate_weighting > 0) |> 
+  group_by(ms, cz, cee) |> 
+  mutate(categ = fct_lump_n(category_title_short, 10, w = total_amount)) |> 
+  group_by(ms, cz, cee, categ) |>
+  summarise(total_amount = sum(total_amount)) |> 
+  mutate(categ = fct_relevel(categ, "Other", after = 0),
+         ordr = rank(total_amount)) |> 
+  ungroup() |> 
+  mutate(ordr_fct = ifelse(categ == "Other", -100, ordr) |> 
+           as.factor() |> 
+           fct_reorder(ordr) |> fct_relevel("-100", after = 0)) |> 
+  group_by(ms, cz, cee) |> 
+  mutate(share_categ = total_amount/sum(total_amount)) |> 
+  ungroup()
+
+```
+
+```{r}
+plt <- ggplot(ec21_top_ai, 
+              aes(total_amount, ms)) +
+  geom_col_interactive(aes(fill = ordr_fct, tooltip = categ, data_id = categ),
+                       hover_css = "background-color: orange;",
+                       position = "fill", width = 0.8) +
+  scale_fill_viridis_d(guide = "none") +
+  ptrr::scale_x_percent_cz() +
+  ptrr::theme_ptrr("x") +
+  labs(title = "Klima+ výdaje podle kategorií intervence",
+       subtitle = "top 10 kategorií + ostatní, v každém státu řazeno dle objemu\nNajetím myší lze zvýraznit napříč státy",
+       caption = "Zdroj: EK – DG Regio open data, dataset <hgyj-gyin>, stav k červnu 2023")
+girafe(ggobj = plt, height_svg = 5)
+```
+
+Takže ČR má výdaje fragmentované mezi mnoho kategorií, je relativně atypická ve vysokých investících do městské dopravy. V top 10 vůbec nemáme zvyšování efektivity budov (kromě veřejné infrastruktury - co se za tím skrývá?)
+
+```{r, fig.asp=1.2}
+plt <- ggplot(ec21_top_ai |> 
+         arrange(cz) |> 
+         mutate(categ = fct_reorder(categ, share_categ, mean) |> 
+                  fct_relevel("Other", after = 0)), 
+       aes(share_categ, categ)) +
+  geom_point_interactive(aes(color = cz, alpha = cz, tooltip = ms)) +
+  scale_alpha_discrete(range = c(.6, 1)) +
+  scale_color_manual(values = c("darkgrey", "darkblue")) +
+  guides(color = "none", alpha = "none") +
+  scale_x_percent_cz() +
+  theme_ptrr("both") +
+  labs(title = "Rozložení klima+ výdajů v kategoriích\n(jen 10 největších kategorií v každém státu)",
+       subtitle = "Podíl kategorie na celkových klima+ výdajích\nCo tečka, to stát - ČR modře",
+       caption = "Zdroj: EK – DG Regio open data, dataset <hgyj-gyin>, stav k červnu 2023")
+
+girafe(ggobj = plt, height_svg = 10)
+```
+
+```{r}
+ec21_sum_ai <- ec_fin_21_plan |> 
+  group_by(ms, cee, cz, category_title_short, climate_weighting) |> 
+  summarise(across(c(total_amount, total_clean_air_amount), sum), .groups = "drop")
+```
+

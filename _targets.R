@@ -136,6 +136,22 @@ t_sestavy <- list(
   tar_target(efs_zop_quarterly, summarise_zop(efs_zop, quarterly = TRUE))
 )
 
+
+## EC data -----------------------------------------------------------
+
+
+### 2021+ ----------------------------------------------------------------
+
+t_ec <- list(
+  tar_target(ec_fin_21_plan,
+             get_cohdata("hgyj-gyin", `$query` =
+                         "SELECT *
+                         where dimension_type == 'Intervention Field'
+                         LIMIT 100000")
+
+  )
+)
+
 ## Compile  ----------------------------------------------------------------
 
 t_esif_compile <- list(
@@ -488,6 +504,6 @@ source("R/html_output.R")
 list(t_public_list, t_sestavy, t_esif_compile, t_export, t_codebook, t_html,
      t_agri_opendata, t_opendata, t_esif_compile_withopendata, t_switch,
      t_mtagged_summarised, t_text_teplarny, t_text_firmy,
-     t_climacat_reg, t_climacat_manual, t_hier,
+     t_climacat_reg, t_climacat_manual, t_hier, t_ec,
      t_climate_tag, t_tagged_summarised, t_tagging_aid, t_tagged_compiled,
      t_tagged_plots, t_prv_priorities, t_sample)
