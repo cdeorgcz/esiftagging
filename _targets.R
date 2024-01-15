@@ -99,7 +99,15 @@ t_public_list <- list(
   tar_target(ef_url, ef_source |> pull(url), format = "url"),
   tar_file(ef_pubxls,
            curl::curl_download(ef_url, here::here("data-input/ef_public.xlsx"))),
-  tar_target(ef_pub, read_pubxls(ef_pubxls))
+  tar_target(ef_pub, read_pubxls(ef_pubxls)),
+  tar_target(ef_source_21,
+             esif_list_tables(base_url = "https://dotaceeu.cz/cs/statistiky-a-analyzy/seznam-operaci-(prijemcu)")),
+  tar_target(ef_url_21, esif_get_table_entry(ef_source_21)$url, format = "url"),
+  tar_file(ef_pubxls_21,
+           curl::curl_download(ef_url_21, here::here("data-input/ef_public_2021.xlsx"))),
+  tar_target(ef_pub_2021, read_excel(ef_pubxls_21, skip = 2) |> slice(-1) |> clean_names())
+
+### 2021+ -------------------------------------------------------------------
 )
 
 ## Custom MS sestavy -------------------------------------------------------

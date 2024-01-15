@@ -12,8 +12,10 @@ navbar:
       href: s_metodologie.html
     - text: Technický popis
       href: s_doc.html
-  - text: Vizualizace výstupů
+  - text: Vizualizace 2014-20
     href: s_output.html
+  - text: Vizualizace 2021+
+    href: ec2021plus.html
   - text: Náhledy
     menu:
     - text: Příklady reklasifikovaných projektů

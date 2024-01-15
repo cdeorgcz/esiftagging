@@ -3,8 +3,8 @@
     "Version": "4.3.1",
     "Repositories": [
       {
-        "Name": "CRAN",
-        "URL": "https://cran.rstudio.com"
+        "Name": "P3M",
+        "URL": "https://packagemanager.posit.co"
       }
     ]
   },
@@ -601,13 +601,13 @@
     },
     "curl": {
       "Package": "curl",
-      "Version": "4.3.2",
+      "Version": "5.1.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
         "R"
       ],
-      "Hash": "022c42d49c28e95d69ca60446dbabf88"
+      "Hash": "9123f3ef96a2c1a93927d828b2fe7d4c"
     },
     "czso": {
       "Package": "czso",
@@ -3278,7 +3278,7 @@
     },
     "vctrs": {
       "Package": "vctrs",
-      "Version": "0.6.1",
+      "Version": "0.6.4",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -3288,7 +3288,7 @@
         "lifecycle",
         "rlang"
       ],
-      "Hash": "06eceb3a5d716fd0654cc23ca3d71a99"
+      "Hash": "266c1ca411266ba8f365fcc726444b87"
     },
     "viridis": {
       "Package": "viridis",
