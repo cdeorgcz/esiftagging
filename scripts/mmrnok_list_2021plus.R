@@ -22,7 +22,11 @@ dta_21_clnd |>
         cislo_specifickeho_cile, nazev_specifickeho_cile,
         wt = as.numeric(celkove_naklady_na_operaci_czk)/1e9)
 
-
+targets::tar_load(dt7_cz)
 dt7_cz |>
   filter(str_detect(programme_title_short, "omenius")) |>
   count(priority_name, specific_objective_name)
+
+dta_21_lng <- dta_21_clnd |>
+  filter(str_detect(oblast_intervence_kod, "081|083"))
+
