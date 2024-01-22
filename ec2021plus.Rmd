@@ -52,15 +52,18 @@ ec21_sum_ms <- ec_fin_21_plan |>
 
 ```{r}
 plt_ec21_sum_ms <- ggplot(ec21_sum_ms, 
-       aes(climate_ratio, ms, alpha = cee, fill = cz)) +
+                          aes(climate_ratio, ms, alpha = cee, fill = cz)) +
   geom_col(width = 0.8) +
   scale_alpha_discrete(range = c(.6, 1)) +
-  theme_ptrr("x", legend.position = "none") +
-  scale_x_percent_cz() +
+  theme_ptrr("x", legend.position = "none",
+             plot.background = element_rect(color = NA, fill = ptrr::ptclr_l),
+             
+  ) +
+  scale_x_percent_cz(expand = expansion(add = c(0, 0.005))) +
   scale_fill_manual(values = c("darkgrey", "darkblue")) +
   labs(title = "Výdaje na klimatické cíle jako % celku (plán)",
        subtitle = "Tmavě státy CEE, ČR modře. Celkové způsobilé výdaje.",
-       caption = "Zdroj: EK – DG Regio open data, dataset <hgyj-gyin>, stav k červnu 2023")
+       caption = "Zdroj: vlastní výpočty dle EK – DG Regio open data, dataset <hgyj-gyin>, stav k lednu 2024")
 ```
 
 ```{r}
@@ -68,8 +71,10 @@ plt_ec21_sum_ms
 ```
 
 ```{r}
-ggsave(plot = plt_ec21_sum_ms, device = svg, file = "charts/plt_ec21_sum_ms.svg", 
-       width = 16, height = 11, units = "cm")
+ggsave(plot = plt_ec21_sum_ms, device = "svg", file = "charts/plt_ec21_sum_ms.svg", 
+       width = 16, height = 11, units = "cm", bg = "white", scale = 1.2)
+ggsave(plot = plt_ec21_sum_ms, device = ragg::agg_png, file = "charts/plt_ec21_sum_ms.png", 
+       width = 16, height = 8, units = "cm", bg = "white", dpi = 300, scale = 1.2)
 ```
 
 ## Jaký je klima podíl v českých projektových datech?
@@ -82,6 +87,14 @@ climate_tags <- ec_fin_21_plan |>
   arrange(category_code) |> 
   drop_na(climate_weighting)
 ```
+
+```{r}
+ai_names <- ec_fin_21_plan |> 
+  drop_na(climate_weighting) |> 
+  distinct(category_code, category_name, category_title_short) |> 
+  mutate(category_title_shortest = str_remove(category_title_short, "[0-9]{3}"))
+```
+
 
 ```{r}
 ef_pub_2021_tgd <- ef_pub_2021 |> 
@@ -97,7 +110,7 @@ ef_pub_2021_tgd <- ef_pub_2021 |>
   mutate(climate_weighting_orig = climate_weighting,
          climate_weighting = 
            ifelse(op_nazev == "Operační program Spravedlivá transformace 2021–2027",
-                                    1, climate_weighting)) |> 
+                  1, climate_weighting)) |> 
   mutate(contracted_weighted = contracted * climate_weighting)
 ```
 
@@ -145,7 +158,7 @@ ggplot(ec21_sum_ms_fund,
   scale_color_brewer(type = "qual", palette = "Dark2") +
   labs(title = "Výdaje na klimatické cíle jako % celku, podle fondů (plán)",
        subtitle = "Tmavě státy CEE, ČR modře. Celkové způsobilé výdaje.",
-       caption = "Zdroj: EK – DG Regio open data, dataset <hgyj-gyin>, stav k červnu 2023")
+       caption = "Zdroj: vlastní výpočty dle EK – DG Regio open data, dataset <hgyj-gyin>, stav k lednu 2024")
 ```
 ```{r}
 #| fig-height: 8
@@ -166,7 +179,7 @@ plt <- ggplot(ec21_sum_ms_fund |> arrange(cz),
        subtitle = "ČR zvýrazněna velikostí a obrysem; plány - celkové způsobilé výdaje",
        x = "Podíl klima+ výdajů na výdajích fondu v daném státu",
        y = "Podíl fondu na výdajích ESIF daného státu",
-       caption = "Zdroj: EK – DG Regio open data, dataset <hgyj-gyin>, stav k červnu 2023") +
+       caption = "Zdroj: vlastní výpočty dle EK – DG Regio open data, dataset <hgyj-gyin>, stav k lednu 2024") +
   guides(colour = "none")
 
 girafe(ggobj = plt, height_svg = 5)
@@ -182,7 +195,7 @@ ggplot(ec21_sum_ms_fund,
   scale_fill_brewer(type = "qual", palette = "Dark2") +
   scale_x_percent_cz() +
   labs(title = "Výdaje ESIF v členských státech podle fondů",
-       caption = "Zdroj: EK – DG Regio open data, dataset <hgyj-gyin>, stav k červnu 2023")
+       caption = "Zdroj: vlastní výpočty dle EK – DG Regio open data, dataset <hgyj-gyin>, stav k lednu 2024")
 ```
 ```{r, include=FALSE}
 ec_fin_21_plan |> 
@@ -204,8 +217,26 @@ ec21_sum_ai <- ec_fin_21_plan |>
   mutate(share_categ_ms = total_amount/sum(total_amount)) |> 
   ungroup()
 
+ec21_sum_ai_nonjtf <- ec_fin_21_plan |> 
+  filter(fund != "JTF") |> 
+  group_by(ms, cz, cee, category_code, category_title_short, category_name,
+           climate_weighting) |> 
+  summarise(total_amount = sum(total_amount), .groups = "drop") |> 
+  group_by(ms, cz, cee) |> 
+  mutate(share_categ_ms = total_amount/sum(total_amount)) |> 
+  ungroup()
+
+ec21_sum_ai_jtf <- ec_fin_21_plan |> 
+  filter(fund == "JTF") |> 
+  group_by(ms, cz, cee, category_code, category_title_short, category_name,
+           climate_weighting) |> 
+  summarise(total_amount = sum(total_amount), .groups = "drop") |> 
+  group_by(ms, cz, cee) |> 
+  mutate(share_categ_ms = total_amount/sum(total_amount)) |> 
+  ungroup()
+
 ec21_sum_ai_nowt <- ec_fin_21_plan |> 
-  filter(climate_weighting > 0) |> 
+  filter(climate_weighting > 0, fund != "JTF") |> 
   group_by(ms, cz, cee, category_code, category_title_short, category_name) |> 
   summarise(total_amount = sum(total_amount), .groups = "drop") |> 
   group_by(ms, cz, cee) |> 
@@ -256,10 +287,91 @@ ec21_top_allai <- ec21_sum_ai |>
   mutate(share_categ = total_amount/sum(total_amount)) |> 
   ungroup()
 
+ec21_top_allai_nonjtf <- ec21_sum_ai_nonjtf |> 
+  # filter(climate_weighting > 0) |> 
+  group_by(ms, cz, cee) |> 
+  mutate(categ = fct_lump_n(category_title_short, 10, w = total_amount)) |> 
+  group_by(ms, cz, cee, categ) |>
+  summarise(total_amount = sum(total_amount)) |> 
+  mutate(categ = fct_relevel(categ, "Other", after = 0),
+         ordr = rank(total_amount)) |> 
+  ungroup() |> 
+  mutate(ordr_fct = ifelse(categ == "Other", -100, ordr) |> 
+           as.factor() |> 
+           fct_reorder(ordr) |> fct_relevel("-100", after = 0)) |> 
+  group_by(ms, cz, cee) |> 
+  mutate(share_categ = total_amount/sum(total_amount)) |> 
+  ungroup()
+
+ec21_top_allai_jtf <- ec21_sum_ai_jtf |> 
+  # filter(climate_weighting > 0) |> 
+  group_by(ms, cz, cee) |> 
+  mutate(categ = fct_lump_n(category_title_short, 10, w = total_amount)) |> 
+  group_by(ms, cz, cee, categ) |>
+  summarise(total_amount = sum(total_amount)) |> 
+  mutate(categ = fct_relevel(categ, "Other", after = 0),
+         ordr = rank(total_amount)) |> 
+  ungroup() |> 
+  mutate(ordr_fct = ifelse(categ == "Other", -100, ordr) |> 
+           as.factor() |> 
+           fct_reorder(ordr) |> fct_relevel("-100", after = 0)) |> 
+  group_by(ms, cz, cee) |> 
+  mutate(share_categ = total_amount/sum(total_amount)) |> 
+  ungroup()
+
+```
+
+## Tematická koncentrace
+
+```{r}
+top10_shares_all <- bind_rows(
+  # ec21_top_ai |> mutate(grp = "Klima+ kategorie") |> filter(categ == "Other", ms != "TC"),
+  ec21_top_allai_nonjtf |> mutate(grp = "Klima+ kategorie *") |> filter(categ == "Other", ms != "TC"),
+  ec21_top_allai_jtf |> mutate(grp = "Jen JTF") |> filter(categ == "Other", ms != "TC"),
+  ec21_top_allai |> mutate(grp = "Všechny kategorie") |> filter(categ == "Other", ms != "TC")
+) |> arrange(cz)
 ```
 
 ```{r}
-ec21_median_ai_nowt <- ec21_sum_ai_nowt |> 
+bind_rows(
+  top10_shares_all |> filter(ms == "CZ") |> mutate(share_categ = 1 - share_categ),
+  top10_shares_all |> summarise(share_categ = median(1 - share_categ), .by = grp) |> mutate(ms = "median EU")
+) |> select(ms, share_categ, grp) |> 
+  spread(ms, share_categ)
+```
+
+
+```{r}
+plt_koncentrace <- ggplot(top10_shares_all, aes(x = 1 - share_categ, y = grp, colour = cz)) +
+  geom_point(aes(alpha = cz, size = cz), shape = "|") +
+  scale_alpha_discrete(range = c(.7, 1)) +
+  scale_size_discrete(range = c(4, 9)) +
+  scale_x_percent_cz(n.breaks = 6) +
+  scale_colour_manual(values = c("grey10", "darkblue")) +
+  scale_shape_manual(values = c("|", "•")) +
+  theme_ptrr("both", legend.position = "none", multiplot = FALSE,
+             plot.background = element_rect(color = NA, fill = ptrr::ptclr_l),
+             plot.caption = element_text(margin = unit(c(12, 0, 0, 0), "pt"))) +
+  labs(title = "Tematická koncentrace plánovaných výdajů EU fondů v členských státech",
+       subtitle = "Podíl 10 největších kategorií intervencí na celkových výdajích 2021–2027 (vyšší číslo = méně roztříštěné výdaje)\nCo značka, to stát, ČR modře", 
+       caption = "* Bez výdajů v JTF, které mají automaticky vždy klima tag 100 %\nZdroj: vlastní výpočty dle EK – DG Regio open data, dataset <hgyj-gyin>, stav k lednu 2024")
+```
+
+```{r}
+plt_koncentrace
+```
+
+```{r}
+ggsave("charts/koncentrace.png", plt_koncentrace, height = 6, device = ragg::agg_png,
+       width = 17, units = "cm", dpi = 300, scale = 1.2, bg = "white")
+ggsave("charts/koncentrace.svg", plt_koncentrace, height = 6, device = "svg",
+       width = 17, units = "cm", dpi = 300, scale = 1.2, bg = "white")
+```
+
+
+
+```{r}
+ec21_median_ai_nowt <- ec21_sum_ai_nonjtf |> 
   group_by(category_title_short, category_code, category_name) |> 
   summarise(eu_median = median(share_categ_ms), .groups = "drop") |> 
   left_join(ec21_sum_ai_nowt |> filter(ms == "CZ") |> 
@@ -305,7 +417,7 @@ ec21_cz_diff_all <- bind_rows(
            fct_reorder(diff)) |> 
   left_join(climate_tags) |> 
   mutate(climateplus = climate_weighting > 0)
-  
+
 ```
 
 ```{r}
@@ -335,20 +447,20 @@ plt_ec21_cz_diff_max <- ggplot(ec21_cz_diff |>
                                  filter(category_code != "999",
                                         grp == "max") |> 
                                  mutate(category_title_lbl = fct_rev(category_title_lbl)), 
-       aes(y = category_title_lbl)) +
+                               aes(y = category_title_lbl)) +
   geom_linerange(aes(xmin = cz, xmax = eu_median)) +
   geom_point(aes(x = cz, colour = "ČR"), size = 2) +
   geom_point(aes(x = eu_median, colour = "mediánový stát EU")) +
-  scale_x_percent_cz(expand = expansion(add = 0.002, 0.0), limits = c(0, .15)) + 
+  scale_x_percent_cz(expand = expansion(add = 0.004, 0.0), limits = c(0, .15)) + 
   theme_ptrr("both", plot.subtitle = element_text(hjust = .5),
-             legend.position = "none") +
+             legend.position = "none", strip.text = element_text(lineheight = .7)) +
   scale_color_manual(values = c("darkblue", "darkgrey")) +
   labs(subtitle = "V ČR nižší podíl na alokaci než v EU")
 
 plt_ec21_cz_diff_min <- ggplot(ec21_cz_diff |> 
                                  filter(category_code != "999",
                                         grp == "min"), 
-       aes(y = category_title_lbl)) +
+                               aes(y = category_title_lbl)) +
   geom_linerange(aes(xmin = cz, xmax = eu_median)) +
   geom_point(aes(x = cz, colour = "ČR"), size = 2) +
   geom_point(aes(x = eu_median, colour = "mediánový stát EU")) +
@@ -356,17 +468,32 @@ plt_ec21_cz_diff_min <- ggplot(ec21_cz_diff |>
   scale_color_manual(values = c("darkblue", "darkgrey")) +
   guides(colour = guide_legend(direction = "horizontal", title = NULL)) +
   theme_ptrr("both", plot.subtitle = element_text(hjust = .5),
-             legend.position = "top") +
+             legend.justification = -0.8,
+             legend.position = "top", strip.text = element_text(lineheight = .7)) +
   labs(subtitle = "V ČR vyšší podíl na alokaci než v EU")
 
-(plt_ec21_cz_diff_min + 
-  plt_ec21_cz_diff_max) +
+plt_topbottom_climate <- plt_ec21_cz_diff_min + 
+  plt_ec21_cz_diff_max +
   plot_layout(guides = 'keep') +
   plot_annotation(title = "Oblasti klima+ výdajů, kde se ČR nejvíce liší od EU", 
                   theme = theme_ptrr(plot.background = element_rect(fill =ptrr::ptclr_l),
                                      legend.position = "top",
-                                     legend.direction = "horizontal"))
+                                     legend.direction = "horizontal"),
+                  caption = "Zdroj: vlastní výpočty dle EK – DG Regio open data, dataset <hgyj-gyin>, stav k lednu 2024\nBez JTF, který má automaticky klima tag 100 %")
 ```
+
+```{r}
+plt_topbottom_climate
+```
+
+```{r}
+ggsave("charts/topbottom_climate.png", plt_topbottom_climate, height = 11, device = ragg::agg_png,
+       width = 17, units = "cm", dpi = 300, scale = 1.2, bg = "white")
+ggsave("charts/topbottom_climate.svg", plt_topbottom_climate, height = 11, device = "svg",
+       width = 17, units = "cm", dpi = 300, scale = 1.2, bg = "white")
+```
+
+
 ```{r, include=FALSE}
 ec_fin_21_plan |> 
   filter(ms == "CZ", fund == "CF") |> 
@@ -378,25 +505,25 @@ ec_fin_21_plan |>
 
 ```{r}
 plt_ec21_cz_diff_all_max <- ggplot(ec21_cz_diff_all |> 
-                                 filter(category_code != "999",
-                                        grp == "max") |> 
-                                 mutate(category_title_lbl = fct_rev(category_title_lbl)), 
-       aes(y = category_title_lbl)) +
+                                     filter(category_code != "999",
+                                            grp == "max") |> 
+                                     mutate(category_title_lbl = fct_rev(category_title_lbl)), 
+                                   aes(y = category_title_lbl)) +
   geom_linerange(aes(xmin = cz, xmax = eu_median, alpha = climateplus)) +
   geom_point(aes(x = cz, colour = "ČR", alpha = climateplus), size = 2) +
   geom_point(aes(x = eu_median, colour = "mediánový stát EU", alpha = climateplus)) +
   scale_x_percent_cz(expand = expansion(add = 0.002, 0.0), limits = c(0, .08)) + 
   theme_ptrr("x", plot.subtitle = element_text(hjust = .5),
-             legend.position = "none") +
+             legend.position = "none", strip.text = element_text(lineheight = .7)) +
   scale_color_manual(values = c("darkblue", "darkgrey")) +
   guides(alpha = "none") +
   scale_alpha_discrete(range = c(0.4, 1)) +
   labs(subtitle = "V ČR nižší podíl na alokaci než v EU")
 
 plt_ec21_cz_diff_all_min <- ggplot(ec21_cz_diff_all |> 
-                                 filter(category_code != "999",
-                                        grp == "min"), 
-       aes(y = category_title_lbl)) +
+                                     filter(category_code != "999",
+                                            grp == "min"), 
+                                   aes(y = category_title_lbl)) +
   geom_linerange(aes(xmin = cz, xmax = eu_median, alpha = climateplus)) +
   geom_point(aes(x = cz, colour = "ČR", alpha = climateplus), size = 2) +
   geom_point(aes(x = eu_median, colour = "mediánový stát EU", alpha = climateplus)) +
@@ -405,12 +532,12 @@ plt_ec21_cz_diff_all_min <- ggplot(ec21_cz_diff_all |>
   guides(colour = guide_legend(direction = "horizontal", title = NULL),
          alpha = "none") +
   theme_ptrr("x", plot.subtitle = element_text(hjust = .5),
-             legend.position = "top") +
+             legend.position = "top", strip.text = element_text(lineheight = .7)) +
   scale_alpha_discrete(range = c(0.4, 1)) +
   labs(subtitle = "V ČR vyšší podíl na alokaci než v EU")
 
 (plt_ec21_cz_diff_all_min + 
-  plt_ec21_cz_diff_all_max) +
+    plt_ec21_cz_diff_all_max) +
   plot_layout(guides = 'keep') +
   plot_annotation(title = "Oblasti výdajů, kde se ČR nejvíce liší od EU", 
                   subtitle = "Tmavě jsou kategorie s pozitivním klima tagem",
@@ -421,19 +548,19 @@ plt_ec21_cz_diff_all_min <- ggplot(ec21_cz_diff_all |>
 
 ```{r, fig.asp=1.2}
 plt <- ggplot(ec21_top_ai |> 
-         arrange(cz) |> 
-         mutate(categ = fct_reorder(categ, share_categ, mean) |> 
-                  fct_relevel("Other", after = 0)), 
-       aes(share_categ, categ)) +
+                arrange(cz) |> 
+                mutate(categ = fct_reorder(categ, share_categ, mean) |> 
+                         fct_relevel("Other", after = 0)), 
+              aes(share_categ, categ)) +
   geom_point_interactive(aes(color = cz, alpha = cz, tooltip = ms)) +
   scale_alpha_discrete(range = c(.6, 1)) +
   scale_color_manual(values = c("darkgrey", "darkblue")) +
   guides(color = "none", alpha = "none") +
   scale_x_percent_cz() +
   theme_ptrr("both") +
-  labs(title = "Rozložení klima+ výdajů v kategoriích\n(jen 10 největších kategorií v každém státu)",
+  labs(title = "Rozložení klimaticky pozitivních výdajů v kategoriích\n(jen 10 největších kategorií v každém státu)",
        subtitle = "Podíl kategorie na celkových klima+ výdajích\nCo tečka, to stát - ČR modře",
-       caption = "Zdroj: EK – DG Regio open data, dataset <hgyj-gyin>, stav k červnu 2023")
+       caption = "Zdroj: vlastní výpočty dle EK – DG Regio open data, dataset <hgyj-gyin>, stav k lednu 2024")
 
 girafe(ggobj = plt, height_svg = 10)
 ```
@@ -460,14 +587,14 @@ plt <- ggplot(ec21_top_ai,
   ptrr::theme_ptrr("x") +
   labs(title = "Klima+ výdaje podle kategorií intervence",
        subtitle = "top 10 kategorií + ostatní, v každém státu řazeno dle objemu\nNajetím myší lze zvýraznit napříč státy",
-       caption = "Zdroj: EK – DG Regio open data, dataset <hgyj-gyin>, stav k červnu 2023")
+       caption = "Zdroj: vlastní výpočty dle EK – DG Regio open data, dataset <hgyj-gyin>, stav k lednu 2024")
 girafe(ggobj = plt, height_svg = 4)
 ```
 
 
 ```{r}
 plt_allai <- ggplot(ec21_top_allai, 
-              aes(total_amount, ms)) +
+                    aes(total_amount, ms)) +
   geom_col_interactive(aes(fill = ordr_fct, tooltip = categ, data_id = categ),
                        hover_css = "background-color: orange;",
                        position = "fill", width = 0.8) +
@@ -536,7 +663,7 @@ U klimatických opatření je vidět větší koncentrace napříč EU než u ce
 
 ## Oblasti jednotlivě - alokace v programech a podpořené projekty
 
-### Doprava
+### Čistá městská mobilita
 
 ```{r}
 ec_fin_21_plan |> 
@@ -554,7 +681,7 @@ ef_pub_2021 |>
 
 - všechny zatím financované projekty v kategorii clean urban transport jsou terminály v menších městech.
 
-### Čistá městská mobilita
+### Alternativní paliva
 
 ```{r}
 ec_fin_21_plan |> 
@@ -563,6 +690,12 @@ ec_fin_21_plan |>
         wt = round(total_amount/1e9*25, 1), sort = TRUE)
 ```
 
+```{r}
+ef_pub_2021 |> 
+  filter(oblast_intervence_kod == "081") |> 
+  mutate(czk = round(as.numeric(celkove_naklady_na_operaci_czk)/1e6)) |> 
+  count(wt = czk)
+```
 
 
 
@@ -573,8 +706,15 @@ ef_pub_2021 |>
   select(nazev_projektu, czk) |> 
   arrange(-czk)
 ```
+```{r}
+ef_pub_2021 |> 
+  filter(oblast_intervence_kod == "086") |> 
+  mutate(czk = round(as.numeric(celkove_naklady_na_operaci_czk)/1e6)) |> 
+  count(wt = czk)
+```
 
-### Prevence a zvládní změny klimatu
+
+### Prevence a zvládání změny klimatu
 
 ```{r}
 ef_pub_2021 |> 
@@ -583,6 +723,15 @@ ef_pub_2021 |>
   select(nazev_projektu, czk) |> 
   arrange(-czk)
 ```
+
+```{r}
+ef_pub_2021 |> 
+  filter(oblast_intervence_kod == "060") |> 
+  mutate(czk = round(as.numeric(celkove_naklady_na_operaci_czk)/1e6)) |> 
+  summarise(mean = mean(czk), sum = sum(czk))
+```
+
+
 ### Příroda a biodiverzita
 
 ```{r}
@@ -592,6 +741,24 @@ ef_pub_2021 |>
   select(nazev_projektu, czk) |> 
   arrange(-czk)
 ```
+### Cyklodoprava
+
+```{r}
+ef_pub_2021 |> 
+  filter(oblast_intervence_kod == "083") |> 
+  mutate(czk = round(as.numeric(celkove_naklady_na_operaci_czk)/1e6)) |> 
+  select(nazev_projektu, czk) |> 
+  arrange(-czk)
+```
+
+```{r}
+ef_pub_2021 |> 
+  filter(oblast_intervence_kod == "083") |> 
+  mutate(czk = round(as.numeric(celkove_naklady_na_operaci_czk)/1e6)) |> 
+  count(wt = czk)
+```
+
+
 ### Kvalita vzduchu a hluk
 
 ```{r}
@@ -610,12 +777,27 @@ ec21_cz_diff |>
 ### Revitalizace průmyslových areálů a kontaminované půdy
 
 ```{r}
+ec_fin_21_plan |> 
+  filter(category_code == "073", ms == "CZ") |> 
+  distinct(category_title_short, programme_title_short)
+```
+
+
+```{r}
 ef_pub_2021 |> 
   filter(oblast_intervence_kod == "073") |> 
   mutate(czk = round(as.numeric(celkove_naklady_na_operaci_czk)/1e6)) |> 
   select(nazev_projektu, czk) |> 
   arrange(-czk)
 ```
+
+```{r}
+ef_pub_2021 |> 
+  filter(oblast_intervence_kod == "073") |> 
+  mutate(czk = round(as.numeric(celkove_naklady_na_operaci_czk)/1e6)) |> 
+  count(wt = czk)
+```
+
 
 ```{r}
 ec_21_cz <- ec_21_share_ai
@@ -646,10 +828,16 @@ ef_pub_2021 |>
 ```{r}
 ef_pub_2021 |> 
   filter(str_detect(oblast_intervence_kod, "045")) |> 
-  select(nazev_projektu)
+  mutate(czk = as.numeric(financni_prostredky_v_pravnich_aktech_celkove_zpusobile_vydaje_czk)/1e6) |> 
+  select(nazev_projektu, czk)
 ```
 
 ## Srovnání plánů a dosavadní reality
+
+```{r}
+length(unique(ef_pub_2021$registracni_cislo_projektu))
+table(ef_pub_2021$stav_projektu)
+```
 
 ```{r}
 library(ggrepel)
@@ -659,10 +847,11 @@ cz_compare_top10 <- ec21_median_allai_nowt |>
   left_join(ef_pub_2021_ai, by = join_by(category_code == ai_kod)) |> 
   filter(climate_weighting > 0) |> 
   slice_max(cz, n = 10) |> 
-  mutate(roste = podil > cz) |> 
+  mutate(roste = podil > cz,
+         category_title_short = str_remove(category_title_short, "[0-9]{3}\\s")) |> 
   pivot_longer(c(cz, podil))
 
-ggplot(cz_compare_top10,
+plt_cz_compare_top10 <- ggplot(cz_compare_top10,
        aes(name, value, group = category_title_short)) +
   geom_line(aes(colour = roste)) +
   scale_x_discrete(expand = expansion(add = c(0.05, 2)),
@@ -671,11 +860,31 @@ ggplot(cz_compare_top10,
   scale_y_percent_cz() +
   scale_color_manual(values = c("darkred", "darkblue")) +
   geom_point(aes(colour = roste)) +
-  geom_text(aes(label = category_title_short), hjust = 0, nudge_x = .05,
+  geom_text_repel(aes(label = category_title_short), hjust = -0.1,
             data = cz_compare_top10 |> filter(name == "podil"),
-            , family = "IBM Plex Sans Condensed") +
-  theme_ptrr("both", legend.position = "none")
+            , family = "IBM Plex Sans Condensed", direction = "y",
+            force_pull = 6,
+            label.padding = 0, box.padding = 0,
+            min.segment.length = unit(12, "pt")) +
+  theme_ptrr("both", legend.position = "none",
+             plot.background = element_rect(color = NA, fill = ptrr::ptclr_l),
+             axis.text.x = element_text(size = 12)) +
+  labs(title = "Složení plánovaných a doposud podpořených opatření",
+       subtitle = "10 nejobjemnějších oblastí intervence (dle alokace) s pozitivním klima dopadem\nPodíl oblasti intervence na plánovaných vs. doposud podpořených opatřeních",
+       caption = "Zdroj: Data EK (alokace) a seznam podpořených projektů k lednu 2024")
 ```
+
+```{r}
+plt_cz_compare_top10
+```
+
+```{r}
+ggsave("charts/cz_compare_top10.png", plt_cz_compare_top10, device = ragg::agg_png, width = 16, height = 14 , 
+       units = "cm", dpi = 300, scale = 1.2, bg = "white")
+ggsave("charts/cz_compare_top10.svg", plt_cz_compare_top10, device = "svg", width = 16, height = 14, 
+       units = "cm", dpi = 300, scale = 1.2, bg = "white")
+```
+
 
 
 ## JTF
@@ -714,7 +923,8 @@ ec_fin_21_plan |>
 ```{r}
 ec_fin_21_plan |> 
   filter(fund == "JTF") |> 
-  count(ms, ms_name_en, cee, cz, category_title_short, category_code, wt = total_amount, name = "total_amount") |> 
+  count(ms, ms_name_en, cee, cz, category_title_short, category_code, wt = total_amount, 
+        name = "total_amount") |> 
   mutate(area_share = total_amount/sum(total_amount), .by = ms) |> 
   arrange(cz) |> 
   mutate(category_title_short = fct_lump(category_title_short, n = 30, w = area_share) |> 
@@ -732,6 +942,98 @@ ec_fin_21_plan |>
 - relativně hodně: revitalizace industriálu, investice do výzkumu a VŠ, infrastruktura pro podnikání, smart energy systems
 - relativně málo: RDI ve velkých firmách, RDI v malých firmách, kolejových vozidel, adaptace lidí na trhu práce
 
+### JTF srovnání 2
+
+```{r}
+ec21_sum_ai_jtf_nowt <- ec_fin_21_plan |> 
+  filter(fund == "JTF") |>
+  group_by(ms, cz, cee, category_code, category_title_short, category_name) |> 
+  summarise(total_amount = sum(total_amount), .groups = "drop") |> 
+  group_by(ms, cz, cee) |> 
+  mutate(share_categ_ms = total_amount/sum(total_amount)) |> 
+  ungroup()
+
+ec21_median_ai_jtf_nowt <- ec21_sum_ai_jtf_nowt |> 
+  group_by(category_title_short, category_code, category_name) |> 
+  summarise(eu_median = median(share_categ_ms), .groups = "drop") |> 
+  left_join(ec21_sum_ai_jtf_nowt |> filter(ms == "CZ") |> 
+              select(cz = share_categ_ms, starts_with("category_")),
+            by = join_by(category_title_short, category_code, category_name)) |> 
+  replace_na(list(cz = 0)) |> 
+  mutate(diff = cz - eu_median) |> 
+  arrange(diff)
+
+ec21_cz_diff_jtf <- bind_rows(
+  ec21_median_ai_jtf_nowt |> 
+    mutate(grp = "min") |> 
+    slice_max(diff, n = 10),
+  ec21_median_ai_jtf_nowt |> 
+    mutate(grp = "max") |> 
+    slice_min(diff, n = 11)
+) |> 
+  mutate(category_title_lbl = 
+           str_remove(category_title_short, "[0-9]{3}\\s") |>
+           # str_remove(category_title_short, "xxx") |> 
+           str_wrap(35) |> 
+           as.factor() |> 
+           fct_reorder(diff)) |> 
+  left_join(climate_tags) |> 
+  mutate(climateplus = climate_weighting > 0)
+```
+
+```{r}
+plt_ec21_cz_diff_jtf_max <- ggplot(ec21_cz_diff_jtf |> 
+                                     filter(category_code != "999",
+                                            grp == "max") |> 
+                                     mutate(category_title_lbl = fct_rev(category_title_lbl)), 
+                                   aes(y = category_title_lbl)) +
+  geom_linerange(aes(xmin = cz, xmax = eu_median)) +
+  geom_point(aes(x = cz, colour = "ČR"), size = 2) +
+  geom_point(aes(x = eu_median, colour = "mediánový stát EU")) +
+  scale_x_percent_cz(expand = expansion(add = 0.006, 0.0), limits = c(0, .2)) + 
+  theme_ptrr("both", plot.subtitle = element_text(hjust = .5),
+             legend.position = "none", strip.text = element_text(lineheight = .7)) +
+  scale_color_manual(values = c("darkblue", "darkgrey")) +
+  labs(subtitle = "V ČR nižší podíl na alokaci než v EU")
+
+plt_ec21_cz_diff_jtf_min <- ggplot(ec21_cz_diff_jtf |> 
+                                     filter(category_code != "999",
+                                            grp == "min"), 
+                                   aes(y = category_title_lbl)) +
+  geom_linerange(aes(xmin = cz, xmax = eu_median)) +
+  geom_point(aes(x = cz, colour = "ČR"), size = 2) +
+  geom_point(aes(x = eu_median, colour = "mediánový stát EU")) +
+  scale_x_percent_cz(expand = expansion(add = 0.002, 0.0), limits = c(0, .2)) + 
+  scale_color_manual(values = c("darkblue", "darkgrey")) +
+  guides(colour = guide_legend(direction = "horizontal", title = NULL)) +
+  theme_ptrr("both", plot.subtitle = element_text(hjust = .5),
+             legend.justification = -.5,
+             legend.position = "top", strip.text = element_text(lineheight = .7)) +
+  labs(subtitle = "V ČR vyšší podíl na alokaci než v EU")
+
+plt_comp_jtf <- plt_ec21_cz_diff_jtf_min + 
+  plt_ec21_cz_diff_jtf_max +
+  plot_layout(guides = 'keep') +
+  plot_annotation(title = "Oblasti výdajů v JTF, kde se ČR nejvíce liší od EU", 
+                  theme = theme_ptrr(plot.background = element_rect(fill =ptrr::ptclr_l, colour = NA),
+                                     legend.position = "top",
+                                     legend.direction = "horizontal"),
+                  caption = "Zdroj: vlastní výpočty dle EK – DG Regio open data, dataset <hgyj-gyin>, stav k lednu 2024")
+```
+```{r}
+plt_comp_jtf
+```
+
+
+```{r}
+ggsave("charts/srovnani-jtf.png", plt_comp_jtf, device = ragg::agg_png, width = 16, height = 10, 
+       units = "cm", dpi = 300, scale = 1.2)
+ggsave("charts/srovnani-jtf.svg", plt_comp_jtf, device = "svg", width = 16, height = 10, 
+       units = "cm", dpi = 300, scale = 1.2)
+```
+
+
+
 ### JTF implementace
 
 Jaké projekty jsou zatím podpořené v JTF?
@@ -746,6 +1048,17 @@ ef_pub_2021 |>
   relocate(oblast_intervence_nazev, wt = nonjtf_climate_weighting)
 ```
 
+```{r}
+ef_pub_2021 |> 
+  filter(str_detect(oblast_intervence_kod, "123")) |>
+  filter(fond == "Fond pro spravedlivou transformaci (FST)") |>
+  # count(oblast_intervence_nazev = str_sub(oblast_intervence_nazev, 1, 40), oblast_intervence_kod, 
+  #       wt = as.numeric(celkove_naklady_na_operaci_czk)/1e6, sort = TRUE) |> 
+  left_join(non_jtf_weights |> rename(oblast_intervence_kod = category_code)) |> 
+  relocate(oblast_intervence_nazev, wt = nonjtf_climate_weighting)
+```
+
+
 - infrastruktura pro terciární vzdělávání: ve skutečnosti jeden projekt multifunkční knihovny v Ostravě (Černá kostka) -- nejen pro VŠ s tématy digitalizace a spol.
 
 ### JTF zelenost
@@ -753,26 +1066,78 @@ ef_pub_2021 |>
 Kdybychom na alokace v JTF aplikovali stejné climate markery jako na peníze mimo JTF, jaký by byl jeho climate share v jednotlivých státech?
 
 ```{r}
-ec_fin_21_plan |> 
+jtf_notag <- ec_fin_21_plan |> 
   filter(fund == "JTF") |> 
   group_by(category_code, ms, cee, cz) |> 
   # select(category_title_short, climate_weighting) |> 
   summarise(across(c(total_amount), sum, na.rm = TRUE)) |> 
   left_join(non_jtf_weights) |> 
   mutate(nonjtf_climate_amount = total_amount * nonjtf_climate_weighting,
-         nonjtf_air_amount = total_amount * nonjtf_air_weighting) |>
+         nonjtf_air_amount = total_amount * nonjtf_air_weighting)
+```
+
+Kolik % akokace českého JTF tvoří "neklima" výdaje?
+
+```{r}
+jtf_notag |> 
+  filter(ms == "CZ") |> 
+  ungroup() |> 
+  count(nonjtf_climate_weighting, wt = total_amount/1e6, 
+        name = "total_amount") |> 
+  mutate(share = total_amount/sum(total_amount))
+```
+
+Které z těchto kategorií jsou největší?
+
+```{r}
+jtf_notag |> 
+  filter(ms == "CZ", nonjtf_climate_weighting == 0) |> 
+  ungroup() |> 
+  arrange(desc(total_amount)) |> 
+  mutate(total_amount = round(total_amount/1e6, 1),
+         share = total_amount/sum(total_amount)) |> 
+  select(category_code, total_amount, share) |> 
+  left_join(ai_names |> select(category_code, category_title_shortest)) |> 
+  relocate(category_title_shortest, total_amount, share)
+```
+
+Evropské srovnání
+
+```{r}
+jtf_notag_sum <- jtf_notag |> 
   group_by(ms, cee, cz) |> 
   summarise(across(c(total_amount, nonjtf_climate_amount, nonjtf_air_amount), sum, na.rm = TRUE)) |> 
   mutate(climate_ratio = nonjtf_climate_amount/total_amount, air_ratio = nonjtf_air_amount/total_amount) |> 
   ungroup() |> 
-  mutate(ms = as.factor(ms) |> fct_reorder(climate_ratio, .desc = TRUE)) |> 
-  ggplot(aes(y = ms)) +
+  mutate(ms = as.factor(ms) |> fct_reorder(climate_ratio, .desc = TRUE))
+```
+
+
+```{r}
+plt_jtf_notag <- ggplot(jtf_notag_sum, aes(y = ms)) +
   # geom_point(aes(x = air_ratio), colour = "darkblue") +
-  geom_point(aes(x = climate_ratio), colour = "darkgreen") +
-  theme_ptrr("both", plot.margin = unit(c(6, 12, 6, 6), "pt")) +
-  labs(title = "Pomyslný podíl klima+ výdajů v alokacích JTF podle států") + 
+  geom_point(aes(x = climate_ratio, colour = ms == "CZ"), fill = "darkgreen", 
+             shape = 21, size = 3, linewidth = 1) +
+  theme_ptrr("both", plot.margin = unit(c(6, 12, 6, 6), "pt"),
+             plot.background = element_rect(fill = ptrr::ptclr_l, colour = NA)) +
+  labs(title = "Pomyslný podíl klima+ výdajů v alokacích JTF podle států",
+       subtitle = "Výdaje vážené podle běžných klima tagů",
+       caption = "Zdroj: vlastní výpočty dle EK – DG Regio open data, dataset <hgyj-gyin>, stav k lednu 2024") + 
+  # scale_size_discrete(range = c(1.5, 3), guide = "none") +
+  scale_colour_manual(values = c("white", "blue"), guide = "none") +
   scale_x_percent_cz()
 ```
+
+```{r}
+plt_jtf_notag
+```
+```{r}
+ggsave("charts/zelenost-jtf.png", plt_jtf_notag, device = ragg::agg_png, width = 16, height = 10, 
+       units = "cm", dpi = 300, scale = 1.2)
+ggsave("charts/zelenost-jtf.svg", plt_jtf_notag, device = "svg", width = 16, height = 10, 
+       units = "cm", dpi = 300, scale = 1.2)
+```
+
 
 Na co jde JTF v Dánsku, když není skoro vůbec zelené?
 
@@ -782,5 +1147,44 @@ ec_fin_21_plan |>
   count(category_title_short, category_code, wt = total_amount/1e6*25, sort = TRUE) |> 
   left_join(non_jtf_weights) |> 
   relocate(category_title_short, wt = nonjtf_climate_weighting)
+```
+
+```{r}
+ec_fin_21_plan |> 
+  filter(fund == "JTF", ms == "HR") |> 
+  count(category_title_short, category_code, wt = total_amount/1e6*25, sort = TRUE) |> 
+  left_join(non_jtf_weights) |> 
+  relocate(category_title_short, wt = nonjtf_climate_weighting)
+```
+```{r}
+ec_fin_21_plan |> 
+  filter(fund == "JTF", ms == "SE") |> 
+  count(category_title_short, category_code, wt = total_amount/1e6*25, sort = TRUE) |> 
+  left_join(non_jtf_weights) |> 
+  relocate(category_title_short, wt = nonjtf_climate_weighting)
+```
+```{r}
+ec_fin_21_plan |> 
+  filter(fund == "JTF", ms == "EE") |> 
+  count(category_title_short, category_code, wt = total_amount/1e6*25, sort = TRUE) |> 
+  left_join(non_jtf_weights) |> 
+  relocate(category_title_short, wt = nonjtf_climate_weighting)
+```
+
+## Annex
+
+```{r}
+ec_fin_21_plan |> 
+  distinct(fund)
+```
+```{r}
+ec_fin_21_plan |> 
+  drop_na(climate_weighting) |> 
+  distinct(fund)
+```
+
+```{r}
+ef_pub_2021 |> 
+  distinct(nazev_programu)
 ```
 
