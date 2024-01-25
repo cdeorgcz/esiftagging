@@ -1104,6 +1104,12 @@ jtf_notag |>
 Evropské srovnání
 
 ```{r}
+jtf_notag |> 
+  filter(ms == "CY")
+```
+
+
+```{r}
 jtf_notag_sum <- jtf_notag |> 
   group_by(ms, cee, cz) |> 
   summarise(across(c(total_amount, nonjtf_climate_amount, nonjtf_air_amount), sum, na.rm = TRUE)) |> 
@@ -1112,10 +1118,14 @@ jtf_notag_sum <- jtf_notag |>
   mutate(ms = as.factor(ms) |> fct_reorder(climate_ratio, .desc = TRUE))
 ```
 
+```{r}
+jtf_notag_sum |> 
+  filter(ms == "CZ")
+```
+
 
 ```{r}
 plt_jtf_notag <- ggplot(jtf_notag_sum, aes(y = ms)) +
-  # geom_point(aes(x = air_ratio), colour = "darkblue") +
   geom_point(aes(x = climate_ratio, colour = ms == "CZ"), fill = "darkgreen", 
              shape = 21, size = 3, linewidth = 1) +
   theme_ptrr("both", plot.margin = unit(c(6, 12, 6, 6), "pt"),
@@ -1125,7 +1135,7 @@ plt_jtf_notag <- ggplot(jtf_notag_sum, aes(y = ms)) +
        caption = "Zdroj: vlastní výpočty dle EK – DG Regio open data, dataset <hgyj-gyin>, stav k lednu 2024") + 
   # scale_size_discrete(range = c(1.5, 3), guide = "none") +
   scale_colour_manual(values = c("white", "blue"), guide = "none") +
-  scale_x_percent_cz()
+  scale_x_percent_cz(limits = c(0, 1), expand = expansion(add = c(0, 0.01)))
 ```
 
 ```{r}
